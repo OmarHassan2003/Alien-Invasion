@@ -2,10 +2,10 @@
 //
 
 #include <iostream>
-
+using namespace std;
 int main()
 {
-    std::cout << "Hello World!\n";
+	cout << "Fucking finally" << endl;
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu
