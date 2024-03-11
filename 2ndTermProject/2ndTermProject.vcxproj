@@ -130,6 +130,7 @@
     <ClCompile Include="2ndTermProject.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Queue.h" />
     <ClInclude Include="SingleLinkedList.h" />
     <ClInclude Include="Stack.h" />
   </ItemGroup>
