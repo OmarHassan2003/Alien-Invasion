@@ -1,9 +1,5 @@
 #pragma once
-
-#include <iostream>
-#include "SingleLinkedList.h"
-using namespace std;
-
+#include "Node.h"
 /************************************Stack Implementation**************************************/
 template<typename T>
 class Stack 

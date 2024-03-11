@@ -1,8 +1,5 @@
 #pragma once
-
-#include <iostream>
-using namespace std;
-
+#include "Node.h"
 /************************************Queue Implementation**************************************/
 
 template <typename T>

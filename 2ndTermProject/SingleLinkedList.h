@@ -1,12 +1,5 @@
-#include <iostream>
-using namespace std;
+#include "Node.h"
 /************************************Single Linked List Implementation**************************************/
-template<typename T>
-struct Node
-{
-    Node* NextNode;
-    T* Ptr_To_Value;
-};
 template<class T>
 class SingleLinkedList
 {

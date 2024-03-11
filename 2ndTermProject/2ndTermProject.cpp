@@ -1,10 +1,6 @@
-#include <iostream>
 #include "SingleLinkedList.h"
-#include "Queue.h"
 #include "Stack.h"
-
-
-using namespace std;
+#include "Queue.h"
 
 int main()
 {
@@ -31,5 +27,14 @@ int main()
 	MyStack.Pop();
 	MyStack.Print();
 	cout << *(MyStack.TopElement()->Ptr_To_Value) << endl;
+	SingleLinkedList<int>List;
+	List.Push_Back(x1);
+	List.Push_Back(x);
+	List.Push_Back(x3);
+	List.Push_Back(x2);
+	List.Print();
+	cout << "/////////////////////////////////////" << endl;
+	List.Sort();
+	List.Print();
 }
 
