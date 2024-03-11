@@ -1,8 +1,5 @@
-#pragma once
-
 #include <iostream>
 using namespace std;
-
 /************************************Single Linked List Implementation**************************************/
 template<typename T>
 struct Node
@@ -281,7 +278,7 @@ void SingleLinkedList<T>::CopyList(SingleLinkedList<T>& DestinationList)
 template<class T>
 void SingleLinkedList<T>::Sort()
 {
-
+    MergeSort(this);
 }
 template<class T>
 bool SingleLinkedList<T>::IsEmpty()
@@ -299,7 +296,7 @@ void SingleLinkedList<T>::Print()
     Node<T>* LoopNode = HeadNode;
     while (LoopNode)
     {
-        cout << *LoopNode->Ptr_To_Value << endl;
+        cout << (*LoopNode->Ptr_To_Value) << endl;
         LoopNode = LoopNode->NextNode;
     }
 }
@@ -307,4 +304,42 @@ template<class T>
 SingleLinkedList<T>::~SingleLinkedList()
 {
     this->ClearList();
+}
+/*******************************************Merge Sorting ALgorithm****************************************/
+template<class T>
+void Merge(SingleLinkedList<T>* MergedList, SingleLinkedList<T>& LeftList, SingleLinkedList<T>& RightList)
+{
+    unsigned int i = 0;
+    unsigned int j = 0;
+    unsigned int k = 0;
+    const unsigned long long int sizeLeft = LeftList.GetCounter(), sizeRight = RightList.GetCounter();
+    while (i < sizeLeft && j < sizeRight)
+    {
+        if (*LeftList.Return_Ptr_To_Element(i) < *RightList.Return_Ptr_To_Element(j))
+            *MergedList->Return_Ptr_To_Element(k++) = *LeftList.Return_Ptr_To_Element(i++);
+        else
+            *MergedList->Return_Ptr_To_Element(k++) = *RightList.Return_Ptr_To_Element(j++);
+    }
+    while (i < sizeLeft)
+        *MergedList->Return_Ptr_To_Element(k++) = *LeftList.Return_Ptr_To_Element(i++);
+    while (j < sizeRight)
+        *MergedList->Return_Ptr_To_Element(k++) = *RightList.Return_Ptr_To_Element(j++);
+}
+template<class T>
+void MergeSort(SingleLinkedList<T>* Passed_list)
+{
+    const unsigned long long int size = Passed_list->GetCounter();
+    if (size > 1)
+    {
+        SingleLinkedList<T>LeftList, RightList;
+        for (unsigned int i = 0;i < size - size / 2;i++)
+            LeftList.Push_Back(*Passed_list->Return_Ptr_To_Element(i));
+        for (unsigned int i = size - size / 2;i < size;i++)
+            RightList.Push_Back(*Passed_list->Return_Ptr_To_Element(i));
+        MergeSort(&LeftList);
+        MergeSort(&RightList);
+        Merge(Passed_list, LeftList, RightList);
+    }
+    else
+        return;
 }
