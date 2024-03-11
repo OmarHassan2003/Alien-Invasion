@@ -88,3 +88,4 @@ inline Queue<T>::~Queue()
 	Rear = NULL;
 	count = 0;
 }
+
