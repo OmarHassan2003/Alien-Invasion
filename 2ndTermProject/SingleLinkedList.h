@@ -9,6 +9,7 @@ public:
     SingleLinkedList(T* Head_Node_Value = NULL);
     Node<T>* GetHeadNode() const;
     unsigned long long int GetCounter() const; //Size of Linked List
+    bool AddSortedOccurrences(SingleLinkedList<T>& Num, SingleLinkedList<T>& Freq);
     void Push_Back(T& Passed_Node_Value);
     void Push_Back(SingleLinkedList<T>& Passed_List);
     void Push_After(T& Passed_Node_Value, long long int Pos = -1);
@@ -45,6 +46,16 @@ template<class T>
 unsigned long long int SingleLinkedList<T>::GetCounter() const
 {
     return Counter;
+}
+template<class T>
+bool SingleLinkedList<T>::AddSortedOccurrences(SingleLinkedList<T>& Num, SingleLinkedList<T>& Freq)
+{
+    const int size = Num.GetCounter();
+    for (int i = 0;i < size;i++)
+        for (unsigned int j = 0; j < *Freq.Return_Ptr_To_Element(i); j++)
+            this->Push_Back(*Num.Return_Ptr_To_Element(i));
+    this->Sort();
+    return true;
 }
 template<class T>
 void SingleLinkedList<T>::Push_Back(T& Passed_Node_Value)
@@ -94,7 +105,14 @@ void SingleLinkedList<T>::Push_Back(SingleLinkedList<T>& Passed_List)
 template<class T>
 void SingleLinkedList<T>::Push_After(T& Passed_Node_Value, long long int Pos)
 {
-    if (Pos >= Counter || Pos == -1)
+    if (Pos == -2)
+    {
+        Node<T>* TempNode = new Node<T>;
+        TempNode->Ptr_To_Value = &Passed_Node_Value;
+        TempNode->NextNode = HeadNode;
+        HeadNode = TempNode;
+    }
+    else if (Pos >= Counter || Pos == -1)
         Push_Back(Passed_Node_Value);
     else
     {
@@ -112,7 +130,16 @@ void SingleLinkedList<T>::Push_After(T& Passed_Node_Value, long long int Pos)
 template<class T>
 void SingleLinkedList<T>::Push_After(SingleLinkedList<T>& Passed_List, unsigned long long int Pos)
 {
-    if (Pos >= Counter)
+    if (Pos == -2)
+    {
+        Node<T>* LoopNode = new Node<T>;
+        LoopNode = Passed_List.GetHeadNode();
+        while (LoopNode->NextNode)
+            LoopNode = LoopNode->NextNode;
+        LoopNode->NextNode = HeadNode;
+        HeadNode = Passed_List.GetHeadNode();
+    }
+    else if (Pos >= Counter)
         Push_Back(Passed_List);
     else if (Passed_List.GetHeadNode())
     {
@@ -296,7 +323,7 @@ void SingleLinkedList<T>::Print()
 template<class T>
 SingleLinkedList<T>::~SingleLinkedList()
 {
-    this->ClearList();
+    //this->ClearList();
 }
 /*******************************************Merge Sorting ALgorithm****************************************/
 template<class T>

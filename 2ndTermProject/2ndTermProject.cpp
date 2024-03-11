@@ -4,7 +4,7 @@
 
 int main()
 {
-	cout << "The Real Slim Shady" << endl;
+	/*cout << "The Real Slim Shady" << endl;
 	Stack<int> MyStack;
 	Node<int>* s1 = new Node<int>;
 	int x = 5;
@@ -35,6 +35,27 @@ int main()
 	List.Print();
 	cout << "/////////////////////////////////////" << endl;
 	List.Sort();
-	List.Print();
+	List.Print();*/
+
+	SingleLinkedList<int>L1, L2;
+	int x ,y;
+
+	cin >> x;
+	while (x != -1)
+	{
+		L1.Push_Back(x);
+		cin >> x;
+	}
+	cin >> y;
+	while (y != -1)
+	{
+		L2.Push_Back(y);
+		cin >> y;
+	}
+
+	L1.Push_After(L2, -2);
+	L1.Print();
+
+	return 0;
 }
 
