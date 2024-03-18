@@ -37,7 +37,7 @@ int main()
 	List.Sort();
 	List.Print();*/
 
-	SingleLinkedList<int>L1, L2;
+	DoubleLinkedList<int>L1, L2;
 	int x ,y;
 
 	cin >> x;
@@ -53,7 +53,7 @@ int main()
 		cin >> y;
 	}
 
-	L1.Push_After(L2, -2);
+	L1.Push_At_Index(L2, 0);
 	L1.Print();
 
 	return 0;
