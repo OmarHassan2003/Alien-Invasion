@@ -12,7 +12,7 @@ public:
 	Queue();
 	bool EnQueue(Node<T>*);
 	bool DeQueue();
-	Node<T>* PickFront();
+	Node<T>* PeekFront();
 	bool IsEmpty();
 	//bool PriorityEnQueue();
 	//bool PriorityDeQueue();
@@ -57,7 +57,7 @@ bool Queue<T>::DeQueue()
 }
 
 template<typename T>
-Node<T>* Queue<T>::PickFront()
+Node<T>* Queue<T>::PeekFront()
 {
 	Node<T>* N = Front;
 	if (!count)

@@ -18,6 +18,24 @@
     <ClCompile Include="2ndTermProject.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="ArmyUnit.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="EarthSoldier.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Game.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="AlienSoldier.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="EarthArmy.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="AlienArmy.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="SingleLinkedList.h">
@@ -30,6 +48,24 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Node.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ArmyUnit.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="EarthSoldier.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Game.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="AlienSoldier.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="EarthArmy.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="AlienArmy.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

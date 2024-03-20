@@ -128,8 +128,20 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="2ndTermProject.cpp" />
+    <ClCompile Include="AlienArmy.cpp" />
+    <ClCompile Include="AlienSoldier.cpp" />
+    <ClCompile Include="ArmyUnit.cpp" />
+    <ClCompile Include="EarthArmy.cpp" />
+    <ClCompile Include="EarthSoldier.cpp" />
+    <ClCompile Include="Game.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="AlienArmy.h" />
+    <ClInclude Include="AlienSoldier.h" />
+    <ClInclude Include="ArmyUnit.h" />
+    <ClInclude Include="EarthArmy.h" />
+    <ClInclude Include="EarthSoldier.h" />
+    <ClInclude Include="Game.h" />
     <ClInclude Include="Node.h" />
     <ClInclude Include="Queue.h" />
     <ClInclude Include="SingleLinkedList.h" />

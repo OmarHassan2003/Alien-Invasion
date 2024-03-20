@@ -2,6 +2,13 @@
 #include "Stack.h"
 #include "Queue.h"
 
+#include "EarthArmy.h"
+#include "AlienArmy.h"
+
+#include "ArmyUnit.h"
+#include "EarthSoldier.h"
+#include "AlienSoldier.h"
+
 int main()
 {
 	/*cout << "The Real Slim Shady" << endl;
