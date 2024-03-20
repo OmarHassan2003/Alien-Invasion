@@ -2,9 +2,10 @@
 #include <iostream>
 using namespace std;
 
-template<typename T>
+template<class T>
 struct Node
 {
-    Node* NextNode;
     T* Ptr_To_Value;
+    Node<T>* NextNode;
+    Node<T>* PrevNode;
 };
