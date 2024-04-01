@@ -62,6 +62,7 @@ bool Stack<T>::pop(T& TopEntry)
 		Top = Top->getNext();
 		TopEntry = temp->getItem(); //temp->ptrtovalue ??
 		count--;
+		delete temp;
 		return true;
 	}
 }
@@ -84,8 +85,8 @@ void Stack<T>::print() const
 		return;
 	}
 	while (temp != nullptr) {
-		cout << *(temp->Ptr_To_Value) << '\t';//should be changed to the armyunit details
-		temp = temp->NextNode;
+		cout << temp->getItem() << '\t';//should be changed to the armyunit details
+		temp = temp->getNext();
 	}
 	cout << endl;
 }

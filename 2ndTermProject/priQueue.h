@@ -1,54 +1,69 @@
 #pragma once
 #include "priNode.h"
-
+#include "QueueADT.h"
 
 //This class impelements the priority queue as a sorted list (Linked List)
 //The item with highest priority is at the front of the queue
 template <typename T>
-class priQueue
+class priQueue:public QueueADT<T>
 {
     priNode<T>* head;
+    unsigned long int count;
 public:
-    priQueue() : head(nullptr) {}
+    priQueue() 
+    {
+        head = NULL;
+        count = 0;
+    }
 
-    ~priQueue() {
+    ~priQueue() 
+    {
         T tmp;
         int p;
         while (dequeue(tmp, p));
     }
 
     //insert the new node in its correct position according to its priority
-    void enqueue(const T& data, int priority) {
+    virtual bool enqueue(const T& data, int priority) 
+    {
         priNode<T>* newNode = new priNode<T>(data, priority);
 
-        if (head == nullptr || priority > head->getPri()) {
+        if (head == nullptr || priority > head->getPri()) 
+        {
 
             newNode->setNext(head);
             head = newNode;
-            return;
+            count++;
+            return true;
         }
 
         priNode<T>* current = head;
-        while (current->getNext() && priority <= current->getNext()->getPri()) {
+        while (current->getNext() && priority <= current->getNext()->getPri()) 
+        {
             current = current->getNext();
         }
         newNode->setNext(current->getNext());
         current->setNext(newNode);
+        count++;
+        return true;
     }
 
-    bool dequeue(T& topEntry, int& pri) {
-        if (isEmpty())
+    bool dequeue(T& topEntry, int& pri) 
+    {
+        if (!count)
             return false;
 
         topEntry = head->getItem(pri);
         priNode<T>* temp = head;
         head = head->getNext();
         delete temp;
+        count--;
         return true;
     }
 
-    bool peek(T& topEntry, int& pri) {
-        if (isEmpty())
+    bool peek(T& topEntry, int& pri) 
+    {
+        if (!count)
             return false;
 
         topEntry = head->getItem(pri);
@@ -56,7 +71,24 @@ public:
         return true;
     }
 
-    bool isEmpty() const {
+    bool isEmpty() const 
+    {
         return head == nullptr;
+    }
+
+    void print() const
+    {
+        priNode<T>* temp = head;
+        if (!count) 
+        {
+            cout << "NO ELEMENTS !" << endl;
+            return;
+        }
+        while (temp != nullptr) 
+        {
+            cout << "value in Node is " << temp->getItem() << " and its priority is " << temp->getPri() << " ";
+            temp = temp->getNext();
+        }
+        cout << endl;
     }
 };
