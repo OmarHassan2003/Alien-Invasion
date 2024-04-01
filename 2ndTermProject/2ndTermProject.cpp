@@ -1,6 +1,7 @@
 #include "Stack.h"
 #include "Queue.h"
 
+
 int main()
 {
 	Stack<int> S1;
