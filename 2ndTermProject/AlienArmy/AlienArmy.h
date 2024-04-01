@@ -1,8 +1,8 @@
 #pragma once
-#include "ArmyUnit.h"
+#include "../ArmyUnit.h"
 #include "AlienSoldier.h"
-#include "Queue.h"
-#include "Stack.h"
+#include "../Queue/Queue.h"
+#include "../Stack/Stack.h"
 
 class AlienArmy
 {

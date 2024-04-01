@@ -1,5 +1,5 @@
 #pragma once
-#include "Node.h"
+#include "../Node.h"
 #include "QueueADT.h"
 /************************************Queue Implementation**************************************/
 template <typename T>

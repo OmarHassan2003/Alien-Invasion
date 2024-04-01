@@ -128,31 +128,32 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="2ndTermProject.cpp" />
-    <ClCompile Include="AlienArmy.cpp" />
-    <ClCompile Include="AlienSoldier.cpp" />
+    <ClCompile Include="AlienArmy\AlienArmy.cpp" />
+    <ClCompile Include="AlienArmy\AlienSoldier.cpp" />
     <ClCompile Include="ArmyUnit.cpp" />
-    <ClCompile Include="EarthArmy.cpp" />
-    <ClCompile Include="EarthSoldier.cpp" />
+    <ClCompile Include="DoubleLinkedQueue.cpp" />
+    <ClCompile Include="EarthArmy\EarthArmy.cpp" />
+    <ClCompile Include="EarthArmy\EarthSoldier.cpp" />
     <ClCompile Include="Game.cpp" />
-    <ClCompile Include="QueueADT.cpp" />
-    <ClCompile Include="RandomGenerator.cpp" />
-    <ClCompile Include="StackADT.cpp" />
+    <ClCompile Include="Queue\QueueADT.cpp" />
+    <ClCompile Include="Stack\StackADT.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="AlienArmy.h" />
-    <ClInclude Include="AlienSoldier.h" />
+    <ClInclude Include="AlienArmy\AlienArmy.h" />
+    <ClInclude Include="AlienArmy\AlienSoldier.h" />
     <ClInclude Include="ArmyUnit.h" />
-    <ClInclude Include="EarthArmy.h" />
-    <ClInclude Include="EarthSoldier.h" />
+    <ClInclude Include="DoubleLinkedQueue.h" />
+    <ClInclude Include="DoubleNode.h" />
+    <ClInclude Include="EarthArmy\EarthArmy.h" />
+    <ClInclude Include="EarthArmy\EarthSoldier.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="Node.h" />
-    <ClInclude Include="Queue.h" />
+    <ClInclude Include="Queue\Queue.h" />
     <ClInclude Include="DoubleLinkedList.h" />
-    <ClInclude Include="QueueADT.h" />
-    <ClInclude Include="RandomGenerator.h" />
+    <ClInclude Include="Queue\QueueADT.h" />
     <ClInclude Include="resource1.h" />
-    <ClInclude Include="Stack.h" />
-    <ClInclude Include="StackADT.h" />
+    <ClInclude Include="Stack\Stack.h" />
+    <ClInclude Include="Stack\StackADT.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="2ndTermProject1.rc" />
