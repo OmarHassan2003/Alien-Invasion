@@ -35,16 +35,16 @@ bool Stack<T>::push(const T& newEntry)
 {
 	if (!newEntry) return false;
 	Node<T>* New = new Node<T>;
-	New = newEntry;
+	New->setItem(newEntry);
 	if (!Top) 
 	{
 		Top = New;
-		Top->NextNode = nullptr;
+		Top->setNext(nullptr);
 		count++;
 	}
 	else 
 	{
-		New->NextNode = Top;
+		New->setNext(Top);
 		Top = New;
 		count++;
 	}
@@ -54,12 +54,13 @@ bool Stack<T>::push(const T& newEntry)
 template<typename T>
 bool Stack<T>::pop(T& TopEntry)
 {
-	if (!Top) return false;
+	if (!Top) 
+		return false;
 	else
 	{
 		Node<T>* temp = Top;
-		Top = Top->NextNode;
-		TopEntry = temp; //temp->ptrtovalue ??
+		Top = Top->getNext();
+		TopEntry = temp->getItem(); //temp->ptrtovalue ??
 		count--;
 		return true;
 	}
@@ -69,11 +70,8 @@ template<typename T>
 bool Stack<T>::peek(T& TopEntry) const
 {
 	if (!Top) 
-	{
-		TopEntry = nullptr;
 		return false;
-	}
-	TopEntry = Top;
+	TopEntry = Top->getItem();
 	return true;
 }
 
@@ -98,7 +96,7 @@ Stack<T>::~Stack()
 	Node<T>* temp = Top;
 	while (Top) 
 	{
-		Top = Top->NextNode;
+		Top = Top->getNext();
 		delete temp;
 		temp = Top;
 	}

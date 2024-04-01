@@ -40,11 +40,11 @@ bool Queue<T>::enqueue(const T& newEntry)
 		return false;
 
 	Node<T>* New = new Node<T>;
-	New->Ptr_To_Value = newEntry;
+	New->setItem(newEntry);
 	if (!count)
 		Front = New;
 	else
-		Rear->NextNode = New;
+		Rear->setNext(New);
 
 	Rear = New;
 	count++;
@@ -55,14 +55,11 @@ template<typename T>
 bool Queue<T>::dequeue(T& FrontEntry)
 {
 	if (!count)
-	{
-		FrontEntry = nullptr;
 		return false;
-	}
 	else
 	{
-		FrontEntry = Front;
-		Front = Front->NextNode;
+		FrontEntry = Front->getItem();
+		Front = Front->getNext();
 		count--;
 		return true;
 	}
@@ -72,13 +69,10 @@ template<typename T>
 bool Queue<T>::peek(T& FrontEntry) const
 {
 	if (!count)
-	{
-		FrontEntry = nullptr;
 		return false;
-	}
 	else
 	{
-		FrontEntry = Front;
+		FrontEntry = Front->getItem();
 		return true;
 	}
 }
@@ -104,7 +98,7 @@ Queue<T>::~Queue()
 	Node<T>* temp = Front;
 	while (temp)
 	{
-		Front = Front->NextNode;
+		Front = Front->getNext();
 		delete temp;
 		temp = Front;
 	}
