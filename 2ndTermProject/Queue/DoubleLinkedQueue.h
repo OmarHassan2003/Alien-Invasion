@@ -36,7 +36,7 @@ inline bool DoubleLinkedQueue<T>::isEmpty() const
 template<class T>
 bool DoubleLinkedQueue<T>::enqueue(const T& newEntry)
 {
-	DoubleNode<T>* New = new Node<T>(newEntry);
+	DoubleNode<T>* New = new DoubleNode<T>(newEntry);
 	if (!count)
 		Front = New;
 	else
@@ -55,7 +55,7 @@ bool DoubleLinkedQueue<T>::dequeue(T& FrontEntry)
 	if (!count)
 		return false;
 
-	Node<T>* Del = Front;
+	DoubleNode<T>* Del = Front;
 	FrontEntry = Front->getItem();
 	Front = Front->getNext();
 	if(Front)
@@ -91,7 +91,7 @@ inline void DoubleLinkedQueue<T>::print() const
 		return;
 	}
 	while (temp != nullptr) {
-		cout << *(temp->getItem()) << '\t';//should be changed to the armyunit details
+		cout << temp->getItem() << '\t';//should be changed to the armyunit details
 		temp = temp->getNext();
 	}
 	cout << endl;

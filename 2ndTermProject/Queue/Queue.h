@@ -85,7 +85,7 @@ void Queue<T>::print() const
 		return;
 	}
 	while (temp != nullptr) {
-		cout << *(temp->getItem()) << '\t';//should be changed to the armyunit details
+		cout << temp->getItem() << '\t';//should be changed to the armyunit details
 		temp = temp->getNext();
 	}
 	cout << endl;

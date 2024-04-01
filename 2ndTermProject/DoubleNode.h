@@ -3,7 +3,7 @@
 template<class T>
 class DoubleNode
 {
-	DoubleNode* PrevNode, NextNode;
+	DoubleNode* PrevNode, *NextNode;
 	T item;
 public:
 	DoubleNode();
