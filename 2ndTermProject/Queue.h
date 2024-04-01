@@ -1,37 +1,46 @@
 #pragma once
 #include "Node.h"
+#include "QueueADT.h"
 /************************************Queue Implementation**************************************/
-
 template <typename T>
-class Queue
+class Queue :public QueueADT<T>
 {
 	Node<T>* Front;
 	Node<T>* Rear;
-	int count;
+	unsigned long int count;
 public:
 	Queue();
-	bool EnQueue(Node<T>*);
-	bool DeQueue();
-	Node<T>* PeekFront();
-	bool IsEmpty();
-	//bool PriorityEnQueue();
-	//bool PriorityDeQueue();
+	bool isEmpty() const;
+	bool enqueue(const T& newEntry);
+	bool dequeue(T& FrontEntry);
+	bool peek(T& FrontEntry) const;
+
+	void print() const;
 	~Queue();
 };
 
 template<typename T>
 Queue<T>::Queue()
 {
-	Front = NULL;
-	Rear = NULL;
+	Front = nullptr;
+	Rear = nullptr;
 	count = 0;
 }
 
 template<typename T>
-inline bool Queue<T>::EnQueue(Node<T>* New_Node)
+bool Queue<T>::isEmpty() const
 {
+	return !count ;
+}
+
+template<typename T>
+bool Queue<T>::enqueue(const T& newEntry)
+{
+	if (!newEntry) 
+		return false;
+
 	Node<T>* New = new Node<T>;
-	New = New_Node;
+	New->Ptr_To_Value = newEntry;
 	if (!count)
 		Front = New;
 	else
@@ -43,46 +52,62 @@ inline bool Queue<T>::EnQueue(Node<T>* New_Node)
 }
 
 template<typename T>
-bool Queue<T>::DeQueue()
+bool Queue<T>::dequeue(T& FrontEntry)
 {
 	if (!count)
+	{
+		FrontEntry = nullptr;
 		return false;
+	}
 	else
 	{
-		Node<T>* N = Front;
+		FrontEntry = Front;
 		Front = Front->NextNode;
-		delete N;
+		count--;
 		return true;
 	}
 }
 
 template<typename T>
-Node<T>* Queue<T>::PeekFront()
+bool Queue<T>::peek(T& FrontEntry) const
 {
-	Node<T>* N = Front;
 	if (!count)
-		return NULL;
+	{
+		FrontEntry = nullptr;
+		return false;
+	}
 	else
-		return N;
+	{
+		FrontEntry = Front;
+		return true;
+	}
 }
 
 template<typename T>
-bool Queue<T>::IsEmpty()
+void Queue<T>::print() const
 {
-	return !count ;
+	Node<T>* temp = Front;
+	if (!count) {
+		cout << "NO ELEMENTS !" << endl;
+		return;
+	}
+	while (temp != nullptr) {
+		cout << *(temp->Ptr_To_Value) << '\t';//should be changed to the armyunit details
+		temp = temp->NextNode;
+	}
+	cout << endl;
 }
 
 template<typename T>
-inline Queue<T>::~Queue()
+Queue<T>::~Queue()
 {
-	Node<T>* N = Front;
-	while (N)
+	Node<T>* temp = Front;
+	while (temp)
 	{
 		Front = Front->NextNode;
-		delete N;
-		N = Front;
+		delete temp;
+		temp = Front;
 	}
-	Rear = NULL;
+	Rear = nullptr;
 	count = 0;
 }
-

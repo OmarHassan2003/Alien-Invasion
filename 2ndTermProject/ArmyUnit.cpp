@@ -1,6 +1,6 @@
 #include "ArmyUnit.h"
 
-ArmyUnit::ArmyUnit(Game* p, int HP, int pow, int ID_, int cap, Unit U)
+ArmyUnit::ArmyUnit(Game* p, int HP, int pow, int ID_, int cap, int Tj, Unit U)
 {
 	pGame = p;
 	Health = HP;
@@ -8,6 +8,7 @@ ArmyUnit::ArmyUnit(Game* p, int HP, int pow, int ID_, int cap, Unit U)
 	ID = ID_;
 	AttackCap = cap;
 	Type = U;
+	Tj = Tj;
 }
 
 int ArmyUnit::GetHealth()
@@ -20,7 +21,7 @@ int ArmyUnit::GetPower()
 	return Power;
 }
 
-int ArmyUnit::GetID()
+int ArmyUnit::GetID() // delete if just needed in printing.
 {
 	return ID;
 }

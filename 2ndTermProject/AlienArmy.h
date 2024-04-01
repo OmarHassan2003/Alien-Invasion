@@ -2,10 +2,11 @@
 #include "ArmyUnit.h"
 #include "AlienSoldier.h"
 #include "Queue.h"
+#include "Stack.h"
 
 class AlienArmy
 {
-	Queue<AlienSoldier*> AS;
+	//Queue<AlienSoldier*> AS;
 public:
 	AlienArmy();
 	bool Attack();

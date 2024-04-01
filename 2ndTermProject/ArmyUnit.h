@@ -14,13 +14,13 @@ private:
 	int ID;
 	int AttackCap;
 	Unit Type;
-	//Tj,Ta,Td,Df,Dd,Db?? Here or in another class??
+	int Tj, Ta, Td;
 	
 public:
-	ArmyUnit(Game* p, int HP, int pow, int ID_, int cap, Unit U);
+	ArmyUnit(Game* p, int HP, int pow, int ID_, int cap, int Tj, Unit U);
+
 	virtual bool Attack() = 0;
-	//virtual bool AddUnit() = 0; //
-	//virtual bool RemoveUnit() = 0;
+
 	virtual int GetHealth();
 	virtual int GetPower();
 	virtual int GetID();

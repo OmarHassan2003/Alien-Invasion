@@ -134,6 +134,8 @@
     <ClCompile Include="EarthArmy.cpp" />
     <ClCompile Include="EarthSoldier.cpp" />
     <ClCompile Include="Game.cpp" />
+    <ClCompile Include="QueueADT.cpp" />
+    <ClCompile Include="StackADT.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AlienArmy.h" />
@@ -145,7 +147,13 @@
     <ClInclude Include="Node.h" />
     <ClInclude Include="Queue.h" />
     <ClInclude Include="DoubleLinkedList.h" />
+    <ClInclude Include="QueueADT.h" />
+    <ClInclude Include="resource1.h" />
     <ClInclude Include="Stack.h" />
+    <ClInclude Include="StackADT.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="2ndTermProject1.rc" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

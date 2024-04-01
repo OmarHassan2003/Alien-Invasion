@@ -2,10 +2,11 @@
 #include "ArmyUnit.h"
 #include "EarthSoldier.h"
 #include "Queue.h"
+#include "Stack.h"
 
 class EarthArmy
 {
-	Queue<EarthSoldier*> ES;
+	//Queue<EarthSoldier*> ES;
 public:
 	EarthArmy();
 	bool Attack();

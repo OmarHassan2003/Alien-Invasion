@@ -7,7 +7,7 @@ class DoubleLinkedList
     Node<T>* TailNode;
     unsigned long long int Counter;
 public:
-    DoubleLinkedList(T* value = NULL);
+    DoubleLinkedList(T* value = nullptr);
     Node<T>* GetHeadNode() const;
     Node<T>* GetTailNode() const;
     unsigned long long int GetCounter() const;
@@ -19,7 +19,7 @@ public:
     void DeepCopy(DoubleLinkedList<T>& CopiedList);
     T* ReturnPtrToElementAtIndex(long long int index = -1);
     void DeleteElementAtIndex(long long int index = -1);
-    unsigned long long int GetFreqOf(T& Passed_T, Node<T>* = NULL);
+    unsigned long long int GetFreqOf(T& Passed_T, Node<T>* = nullptr);
     void ClearList();
     void Print();
     void Sort();
@@ -48,7 +48,7 @@ void DoubleLinkedList<T>::ClearList()
 template<class T>
 unsigned long long int DoubleLinkedList<T>::GetFreqOf(T& Passed_T, Node<T>* Temp_Node)
 {
-    if (Temp_Node == NULL)
+    if (Temp_Node == nullptr)
     {
         if (HeadNode)
             return GetFreqOf(Passed_T, HeadNode);
@@ -57,14 +57,14 @@ unsigned long long int DoubleLinkedList<T>::GetFreqOf(T& Passed_T, Node<T>* Temp
     }
     else if (*Temp_Node->Ptr_To_Value == Passed_T)
     {
-        if (Temp_Node->NextNode != NULL)
+        if (Temp_Node->NextNode != nullptr)
             return 1 + GetFreqOf(Passed_T, Temp_Node->NextNode);
         else
             return 1;
     }
     else
     {
-        if (Temp_Node->NextNode != NULL)
+        if (Temp_Node->NextNode != nullptr)
             return GetFreqOf(Passed_T, Temp_Node->NextNode);
         else
             return 0;
@@ -111,13 +111,13 @@ void DoubleLinkedList<T>::DeleteElementAtIndex(long long int index)
             if (Counter == 1)
             {
                 delete HeadNode;
-                HeadNode = NULL;
-                TailNode = NULL;
+                HeadNode = nullptr;
+                TailNode = nullptr;
             }
             else
             {
                 Node<T>* Temp_Node = TailNode->PrevNode;
-                Temp_Node->NextNode = NULL;
+                Temp_Node->NextNode = nullptr;
                 delete TailNode;
                 TailNode = Temp_Node;
             }
@@ -127,8 +127,8 @@ void DoubleLinkedList<T>::DeleteElementAtIndex(long long int index)
             if (Counter == 1)
             {
                 delete HeadNode;
-                HeadNode = NULL;
-                TailNode = NULL;
+                HeadNode = nullptr;
+                TailNode = nullptr;
             }
             else
             {
@@ -145,7 +145,7 @@ void DoubleLinkedList<T>::DeleteElementAtIndex(long long int index)
             Loop_Node->PrevNode->NextNode = Loop_Node->NextNode;
             Loop_Node->NextNode->PrevNode = Loop_Node->PrevNode;
             delete Loop_Node;
-            Loop_Node = NULL;
+            Loop_Node = nullptr;
         }
         Counter--;
     }
@@ -166,7 +166,7 @@ T* DoubleLinkedList<T>::ReturnPtrToElementAtIndex(long long int index)
         }
     }
     else
-        return NULL;
+        return nullptr;
 }
 template<class T>
 DoubleLinkedList<T>::DoubleLinkedList(T* value)
@@ -177,15 +177,15 @@ DoubleLinkedList<T>::DoubleLinkedList(T* value)
         *Temp_Value = *value;
         HeadNode = new Node<T>;
         HeadNode->Ptr_To_Value = Temp_Value;
-        HeadNode->NextNode = NULL;
-        HeadNode->PrevNode = NULL;
+        HeadNode->NextNode = nullptr;
+        HeadNode->PrevNode = nullptr;
         TailNode = HeadNode;
         Counter = 1;
     }
     else
     {
-        HeadNode = NULL;
-        TailNode = NULL;
+        HeadNode = nullptr;
+        TailNode = nullptr;
         Counter = 0;
     }
 }
@@ -213,7 +213,7 @@ void DoubleLinkedList<T>::Push_Back(T& Passed_Value)
     {
         Node<T>* Temp_Node = new Node<T>;
         Temp_Node->Ptr_To_Value = Temp_Value;
-        Temp_Node->NextNode = NULL;
+        Temp_Node->NextNode = nullptr;
         Temp_Node->PrevNode = TailNode;
         TailNode->NextNode = Temp_Node;
         TailNode = Temp_Node;
@@ -222,8 +222,8 @@ void DoubleLinkedList<T>::Push_Back(T& Passed_Value)
     {
         HeadNode = new Node<T>;
         HeadNode->Ptr_To_Value = Temp_Value;
-        HeadNode->NextNode = NULL;
-        HeadNode->PrevNode = NULL;
+        HeadNode->NextNode = nullptr;
+        HeadNode->PrevNode = nullptr;
         TailNode = HeadNode;
     }
     Counter++;
@@ -262,7 +262,7 @@ void DoubleLinkedList<T>::Push_At_Index(T& Passed_Value, long long int index)
         *Temp_Value = Passed_Value;
         Node<T>* Temp_Node = new Node<T>;
         Temp_Node->Ptr_To_Value = Temp_Value;
-        Temp_Node->PrevNode = NULL;
+        Temp_Node->PrevNode = nullptr;
         HeadNode->PrevNode = Temp_Node;
         Temp_Node->NextNode = HeadNode;
         HeadNode = Temp_Node;

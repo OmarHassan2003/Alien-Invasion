@@ -1,37 +1,45 @@
 #pragma once
 #include "Node.h"
+#include "StackADT.h"
 /************************************Stack Implementation**************************************/
 template<typename T>
-class Stack 
+class Stack :public StackADT<T>
 {
 	Node<T>* Top;
 	unsigned long int count;
 public:
 	Stack();
-	bool Push(Node<T>*);
-	bool Pop();
-	Node<T>* TopElement() const;
-	bool IsEmpty();
-	void Print() const;
+	bool isEmpty() const;
+	bool push(const T& newEntry);
+	bool pop(T& TopEntry);
+	bool peek(T& TopEntry) const;
+
+	void print() const;
 	~Stack();
 };
 
 template<typename T>
 Stack<T>::Stack() {
-	Top = NULL;
+	Top = nullptr;
 	count = 0;
 }
 
 template<typename T>
-bool Stack<T>::Push(Node<T>* NodeToBeAdded) 
+bool Stack<T>::isEmpty() const {
+	if (!count) return true;
+	else return false;
+}
+
+template<typename T>
+bool Stack<T>::push(const T& newEntry)
 {
-	if (!NodeToBeAdded) return false;
+	if (!newEntry) return false;
 	Node<T>* New = new Node<T>;
-	New = NodeToBeAdded;
+	New = newEntry;
 	if (!Top) 
 	{
 		Top = New;
-		Top->NextNode = NULL;
+		Top->NextNode = nullptr;
 		count++;
 	}
 	else 
@@ -44,31 +52,44 @@ bool Stack<T>::Push(Node<T>* NodeToBeAdded)
 }
 
 template<typename T>
-bool Stack<T>::Pop()
+bool Stack<T>::pop(T& TopEntry)
 {
 	if (!Top) return false;
 	else
 	{
 		Node<T>* temp = Top;
 		Top = Top->NextNode;
-		delete temp;
+		TopEntry = temp; //temp->ptrtovalue ??
 		count--;
 		return true;
 	}
 }
 
 template<typename T>
-Node<T>* Stack<T>::TopElement() const
+bool Stack<T>::peek(T& TopEntry) const
 {
-	if (!Top) return NULL;
-	Node<T>* temp = Top;
-	return temp;
+	if (!Top) 
+	{
+		TopEntry = nullptr;
+		return false;
+	}
+	TopEntry = Top;
+	return true;
 }
 
 template<typename T>
-bool Stack<T>::IsEmpty() {
-	if (!count) return true;
-	else return false;
+void Stack<T>::print() const
+{
+	Node<T>* temp = Top;
+	if (!count) {
+		cout << "NO ELEMENTS !" << endl;
+		return;
+	}
+	while (temp != nullptr) {
+		cout << *(temp->Ptr_To_Value) << '\t';//should be changed to the armyunit details
+		temp = temp->NextNode;
+	}
+	cout << endl;
 }
 
 template<typename T>
@@ -82,19 +103,4 @@ Stack<T>::~Stack()
 		temp = Top;
 	}
 	count = 0;
-}
-
-template<typename T>
-void Stack<T>::Print() const
-{
-	Node<T>* temp = Top;
-	if (!count) {
-		cout << "NO ELEMENTS !" << endl;
-		return;
-	}
-	while (temp != NULL) {
-		cout << *(temp->Ptr_To_Value) << '\t';
-		temp = temp->NextNode;
-	}
-	cout << endl;
 }
