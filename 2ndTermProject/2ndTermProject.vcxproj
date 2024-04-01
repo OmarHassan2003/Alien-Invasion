@@ -149,7 +149,6 @@
     <ClInclude Include="Game.h" />
     <ClInclude Include="Node.h" />
     <ClInclude Include="Queue\Queue.h" />
-    <ClInclude Include="DoubleLinkedList.h" />
     <ClInclude Include="Queue\QueueADT.h" />
     <ClInclude Include="resource1.h" />
     <ClInclude Include="Stack\Stack.h" />
