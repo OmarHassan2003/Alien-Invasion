@@ -1,6 +1,6 @@
 #pragma once
-#include "Queue/Queue.h"
-#include "DoubleNode.h"
+#include "Queue.h"
+#include "../DoubleNode.h"
 
 
 template<class T>

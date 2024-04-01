@@ -131,18 +131,19 @@
     <ClCompile Include="AlienArmy\AlienArmy.cpp" />
     <ClCompile Include="AlienArmy\AlienSoldier.cpp" />
     <ClCompile Include="ArmyUnit.cpp" />
-    <ClCompile Include="DoubleLinkedQueue.cpp" />
+    <ClCompile Include="Queue\DoubleLinkedQueue.cpp" />
     <ClCompile Include="EarthArmy\EarthArmy.cpp" />
     <ClCompile Include="EarthArmy\EarthSoldier.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="Queue\QueueADT.cpp" />
+    <ClCompile Include="RandomGenerator.cpp" />
     <ClCompile Include="Stack\StackADT.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AlienArmy\AlienArmy.h" />
     <ClInclude Include="AlienArmy\AlienSoldier.h" />
     <ClInclude Include="ArmyUnit.h" />
-    <ClInclude Include="DoubleLinkedQueue.h" />
+    <ClInclude Include="Queue\DoubleLinkedQueue.h" />
     <ClInclude Include="DoubleNode.h" />
     <ClInclude Include="EarthArmy\EarthArmy.h" />
     <ClInclude Include="EarthArmy\EarthSoldier.h" />
@@ -151,6 +152,7 @@
     <ClInclude Include="Queue\Queue.h" />
     <ClInclude Include="DoubleLinkedList.h" />
     <ClInclude Include="Queue\QueueADT.h" />
+    <ClInclude Include="RandomGenerator.h" />
     <ClInclude Include="resource1.h" />
     <ClInclude Include="Stack\Stack.h" />
     <ClInclude Include="Stack\StackADT.h" />
