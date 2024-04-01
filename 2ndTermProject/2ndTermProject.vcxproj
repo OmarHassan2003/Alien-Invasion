@@ -135,6 +135,7 @@
     <ClCompile Include="EarthSoldier.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="QueueADT.cpp" />
+    <ClCompile Include="RandomGenerator.cpp" />
     <ClCompile Include="StackADT.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -148,6 +149,7 @@
     <ClInclude Include="Queue.h" />
     <ClInclude Include="DoubleLinkedList.h" />
     <ClInclude Include="QueueADT.h" />
+    <ClInclude Include="RandomGenerator.h" />
     <ClInclude Include="resource1.h" />
     <ClInclude Include="Stack.h" />
     <ClInclude Include="StackADT.h" />
