@@ -30,17 +30,13 @@ Queue<T>::Queue()
 template<typename T>
 bool Queue<T>::isEmpty() const
 {
-	return !count ;
+	return (Front==nullptr);
 }
 
 template<typename T>
 bool Queue<T>::enqueue(const T& newEntry)
 {
-	if (!newEntry) 
-		return false;
-
-	Node<T>* New = new Node<T>;
-	New->setItem(newEntry);
+	Node<T>* New = new Node<T>(newEntry);
 	if (!count)
 		Front = New;
 	else
@@ -56,13 +52,16 @@ bool Queue<T>::dequeue(T& FrontEntry)
 {
 	if (!count)
 		return false;
-	else
-	{
-		FrontEntry = Front->getItem();
-		Front = Front->getNext();
-		count--;
-		return true;
-	}
+
+	Node<T>* Del = Front;
+	FrontEntry = Front->getItem();
+	Front = Front->getNext();
+	if (Front == nullptr)
+		Rear = nullptr;
+
+	delete Del;
+	count--;
+	return true;
 }
 
 template<typename T>
@@ -86,8 +85,8 @@ void Queue<T>::print() const
 		return;
 	}
 	while (temp != nullptr) {
-		cout << *(temp->Ptr_To_Value) << '\t';//should be changed to the armyunit details
-		temp = temp->NextNode;
+		cout << *(temp->getItem()) << '\t';//should be changed to the armyunit details
+		temp = temp->getNext();
 	}
 	cout << endl;
 }
@@ -95,13 +94,6 @@ void Queue<T>::print() const
 template<typename T>
 Queue<T>::~Queue()
 {
-	Node<T>* temp = Front;
-	while (temp)
-	{
-		Front = Front->getNext();
-		delete temp;
-		temp = Front;
-	}
-	Rear = nullptr;
-	count = 0;
+	T temp;
+	while (dequeue(temp));
 }
