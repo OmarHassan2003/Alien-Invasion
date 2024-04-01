@@ -1,12 +1,12 @@
 #pragma once
-#include "Queue/Queue.h"
-#include "DoubleNode.h"
+#include "Queue.h"
+#include "../DoubleNode.h"
 
 
 template<class T>
 class DoubleLinkedQueue : public Queue<T>
 {
-	DoubleNode<T> Front, Rear;
+	DoubleNode<T>* Front,* Rear;
 	unsigned long int count;
 public:
 	DoubleLinkedQueue();
@@ -58,12 +58,14 @@ bool DoubleLinkedQueue<T>::dequeue(T& FrontEntry)
 	Node<T>* Del = Front;
 	FrontEntry = Front->getItem();
 	Front = Front->getNext();
-	Front->setPrev(nullptr);
+	if(Front)
+		Front->setPrev(nullptr);
 
 	if (Front == nullptr)
 		Rear = nullptr;
 
 	delete Del;
+	Del = NULL;
 	count--;
 	return true;
 }
@@ -93,6 +95,14 @@ inline void DoubleLinkedQueue<T>::print() const
 		temp = temp->getNext();
 	}
 	cout << endl;
+}
+
+template<class T>
+inline DoubleLinkedQueue<T>::~DoubleLinkedQueue()
+{
+	T x;
+	for (int i = 0;i < count;i++)
+		dequeue(x);
 }
 
 

@@ -3,6 +3,8 @@
 #include "DoubleLinkedQueue.h"
 //#include "priQueue.h"
 
+#include <fstream>
+
 int main()
 {
 	Stack<int> S1;

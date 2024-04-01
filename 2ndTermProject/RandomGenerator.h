@@ -16,6 +16,11 @@ protected:
 public:
 	RandomGenerator()
 	{
-		ifstream FIN;
+		
+	}
+	void Read()
+	{
+		 
 	}
 };
+

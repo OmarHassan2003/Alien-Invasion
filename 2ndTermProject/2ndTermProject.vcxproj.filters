@@ -42,7 +42,10 @@
     <ClCompile Include="Queue\QueueADT.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="DoubleLinkedQueue.cpp">
+    <ClCompile Include="Queue\DoubleLinkedQueue.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="RandomGenerator.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -83,10 +86,13 @@
     <ClInclude Include="resource1.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="DoubleLinkedQueue.h">
+    <ClInclude Include="Queue\DoubleLinkedQueue.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="DoubleNode.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="RandomGenerator.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
