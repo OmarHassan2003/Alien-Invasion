@@ -1,5 +1,5 @@
 #pragma once
-#include "Node.h"
+#include "../Node.h"
 #include "StackADT.h"
 /************************************Stack Implementation**************************************/
 template<typename T>

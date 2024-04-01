@@ -21,25 +21,25 @@
     <ClCompile Include="ArmyUnit.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="EarthSoldier.cpp">
+    <ClCompile Include="EarthArmy\EarthSoldier.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Game.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="AlienSoldier.cpp">
+    <ClCompile Include="AlienArmy\AlienSoldier.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="EarthArmy.cpp">
+    <ClCompile Include="EarthArmy\EarthArmy.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="AlienArmy.cpp">
+    <ClCompile Include="AlienArmy\AlienArmy.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="StackADT.cpp">
+    <ClCompile Include="Stack\StackADT.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="QueueADT.cpp">
+    <ClCompile Include="Queue\QueueADT.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="DoubleLinkedQueue.cpp">
@@ -50,10 +50,10 @@
     <ClInclude Include="DoubleLinkedList.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Queue.h">
+    <ClInclude Include="Queue\Queue.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Stack.h">
+    <ClInclude Include="Stack\Stack.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Node.h">
@@ -62,25 +62,25 @@
     <ClInclude Include="ArmyUnit.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="EarthSoldier.h">
+    <ClInclude Include="EarthArmy\EarthSoldier.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Game.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="AlienSoldier.h">
+    <ClInclude Include="AlienArmy\AlienSoldier.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="EarthArmy.h">
+    <ClInclude Include="EarthArmy\EarthArmy.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="AlienArmy.h">
+    <ClInclude Include="AlienArmy\AlienArmy.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="StackADT.h">
+    <ClInclude Include="Stack\StackADT.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="QueueADT.h">
+    <ClInclude Include="Queue\QueueADT.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="resource1.h">

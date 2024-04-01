@@ -55,7 +55,7 @@ inline void DoubleNode<T>::setNext(DoubleNode<T>* nextNodePtr)
 template<class T>
 inline void DoubleNode<T>::setPrev(DoubleNode<T>* prevNodePtr)
 {
-	PrevNode = prevNodePtr
+	PrevNode = prevNodePtr;
 }
 
 template<class T>

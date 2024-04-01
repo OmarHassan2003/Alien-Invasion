@@ -1,5 +1,5 @@
 #pragma once
-#include "ArmyUnit.h"
+#include "../ArmyUnit.h"
 class EarthSoldier :public ArmyUnit
 {
 public:

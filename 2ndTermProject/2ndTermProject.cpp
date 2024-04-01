@@ -1,5 +1,5 @@
-#include "Stack.h"
-#include "Queue.h"
+#include "Stack/Stack.h"
+#include "Queue/Queue.h"
 
 
 int main()
