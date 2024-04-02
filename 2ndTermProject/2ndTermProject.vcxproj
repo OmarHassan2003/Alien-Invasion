@@ -143,6 +143,8 @@
     <ClInclude Include="AlienArmy\AlienArmy.h" />
     <ClInclude Include="AlienArmy\AlienSoldier.h" />
     <ClInclude Include="ArmyUnit.h" />
+    <ClInclude Include="priNode.h" />
+    <ClInclude Include="priQueue.h" />
     <ClInclude Include="Queue\DoubleLinkedQueue.h" />
     <ClInclude Include="DoubleNode.h" />
     <ClInclude Include="EarthArmy\EarthArmy.h" />

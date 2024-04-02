@@ -1,22 +1,22 @@
 #pragma once
 #include "priNode.h"
-#include "QueueADT.h"
+#include "Queue/QueueADT.h"
 
 //This class impelements the priority queue as a sorted list (Linked List)
 //The item with highest priority is at the front of the queue
 template <typename T>
-class priQueue:public QueueADT<T>
+class priQueue
 {
     priNode<T>* head;
     unsigned long int count;
 public:
-    priQueue() 
+    priQueue()
     {
         head = NULL;
         count = 0;
     }
 
-    ~priQueue() 
+    ~priQueue()
     {
         T tmp;
         int p;
@@ -24,11 +24,11 @@ public:
     }
 
     //insert the new node in its correct position according to its priority
-    virtual bool enqueue(const T& data, int priority) 
+    virtual bool enqueue(const T& data, int priority)
     {
         priNode<T>* newNode = new priNode<T>(data, priority);
 
-        if (head == nullptr || priority > head->getPri()) 
+        if (head == nullptr || priority > head->getPri())
         {
 
             newNode->setNext(head);
@@ -38,7 +38,7 @@ public:
         }
 
         priNode<T>* current = head;
-        while (current->getNext() && priority <= current->getNext()->getPri()) 
+        while (current->getNext() && priority <= current->getNext()->getPri())
         {
             current = current->getNext();
         }
@@ -48,7 +48,7 @@ public:
         return true;
     }
 
-    bool dequeue(T& topEntry, int& pri) 
+    bool dequeue(T& topEntry, int& pri)
     {
         if (!count)
             return false;
@@ -61,7 +61,7 @@ public:
         return true;
     }
 
-    bool peek(T& topEntry, int& pri) 
+    bool peek(T& topEntry, int& pri)
     {
         if (!count)
             return false;
@@ -71,7 +71,7 @@ public:
         return true;
     }
 
-    bool isEmpty() const 
+    bool isEmpty() const
     {
         return head == nullptr;
     }
@@ -79,14 +79,15 @@ public:
     void print() const
     {
         priNode<T>* temp = head;
-        if (!count) 
+        if (!count)
         {
             cout << "NO ELEMENTS !" << endl;
             return;
         }
-        while (temp != nullptr) 
+        while (temp != nullptr)
         {
-            cout << "value in Node is " << temp->getItem() << " and its priority is " << temp->getPri() << " ";
+            int temporary = temp->getPri();
+            cout << temp->getItem(temporary) << " ";
             temp = temp->getNext();
         }
         cout << endl;
