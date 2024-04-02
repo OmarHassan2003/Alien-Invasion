@@ -14,7 +14,7 @@ public:
 	bool enqueue(const T& newEntry);
 	bool dequeue(T& FrontEntry);
 	bool peek(T& FrontEntry) const;
-
+	bool GetRear(T& RearEntry) const;
 	void print() const;
 	~DoubleLinkedQueue();
 };
@@ -78,6 +78,18 @@ inline bool DoubleLinkedQueue<T>::peek(T& FrontEntry) const
 	else
 	{
 		FrontEntry = Front->getItem();
+		return true;
+	}
+}
+
+template<class T>
+inline bool DoubleLinkedQueue<T>::GetRear(T& RearEntry) const
+{
+	if (!count)
+		return false;
+	else
+	{
+		RearEntry = Rear->getItem();
 		return true;
 	}
 }
