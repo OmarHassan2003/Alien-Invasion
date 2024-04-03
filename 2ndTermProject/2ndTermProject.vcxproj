@@ -131,8 +131,10 @@
     <ClCompile Include="AlienArmy\AlienArmy.cpp" />
     <ClCompile Include="AlienArmy\AlienSoldier.cpp" />
     <ClCompile Include="AlienDrone.cpp" />
+    <ClCompile Include="AlienMonster.cpp" />
     <ClCompile Include="ArmyUnit.cpp" />
     <ClCompile Include="EarthGunnery.cpp" />
+    <ClCompile Include="EarthTank.cpp" />
     <ClCompile Include="Queue\DoubleLinkedQueue.cpp" />
     <ClCompile Include="EarthArmy\EarthArmy.cpp" />
     <ClCompile Include="EarthArmy\EarthSoldier.cpp" />
@@ -145,8 +147,10 @@
     <ClInclude Include="AlienArmy\AlienArmy.h" />
     <ClInclude Include="AlienArmy\AlienSoldier.h" />
     <ClInclude Include="AlienDrone.h" />
+    <ClInclude Include="AlienMonster.h" />
     <ClInclude Include="ArmyUnit.h" />
     <ClInclude Include="EarthGunnery.h" />
+    <ClInclude Include="EarthTank.h" />
     <ClInclude Include="priNode.h" />
     <ClInclude Include="priQueue.h" />
     <ClInclude Include="Queue\DoubleLinkedQueue.h" />
