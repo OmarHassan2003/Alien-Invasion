@@ -3,6 +3,7 @@
 #include "EarthSoldier.h"
 #include "../EarthGunnery.h"
 #include "../Queue/Queue.h"
+#include "../EarthTank.h"
 #include "../priQueue.h"
 #include "../Stack/Stack.h"
 
@@ -10,6 +11,7 @@ class EarthArmy
 {
 	Queue<EarthSoldier*> ES;
 	priQueue<EarthGunnery*> EG;
+	Stack<EarthTank*> ET;
 public:
 	EarthArmy();
 	bool Attack();
