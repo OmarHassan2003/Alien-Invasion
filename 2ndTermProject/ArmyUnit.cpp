@@ -11,6 +11,31 @@ ArmyUnit::ArmyUnit(Game* p, int HP, int pow, int ID_, int cap, int Tj, Unit U)
 	Tj = Tj;
 }
 
+void ArmyUnit::Set_Ta(int _Ta)
+{
+	Ta = _Ta;
+}
+
+void ArmyUnit::Set_Td(int _Td)
+{
+	Td = _Td;
+}
+
+int ArmyUnit::Get_Ta()
+{
+	return Ta;
+}
+
+int ArmyUnit::Get_Tj()
+{
+	return Tj;
+}
+
+int ArmyUnit::Get_Td()
+{
+	return Td;
+}
+
 int ArmyUnit::GetHealth()
 {
 	return Health;

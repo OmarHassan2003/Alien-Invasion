@@ -5,3 +5,8 @@ AlienDrone::AlienDrone(Game* p, int HP, int pow, int ID_, int cap, int Tj, Unit 
 {
 
 }
+
+bool AlienDrone::Attack()
+{
+	return false;
+}

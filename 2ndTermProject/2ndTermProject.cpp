@@ -2,6 +2,8 @@
 #include "Queue/Queue.h"
 #include "Queue/DoubleLinkedQueue.h"
 #include "priQueue.h"
+#include "EarthArmy/EarthArmy.h"
+#include "AlienArmy/AlienArmy.h"
 
 #include "RandomGenerator/RandomGenerator.h"
 

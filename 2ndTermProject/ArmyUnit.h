@@ -21,12 +21,18 @@ public:
 
 	virtual bool Attack() = 0;
 
+	virtual void Set_Ta(int);
+	virtual void Set_Td(int);
+	ArmyUnit* operator -= (int damage);
+
+	virtual int Get_Ta();
+	virtual int Get_Tj();
+	virtual int Get_Td();
 	virtual int GetHealth();
 	virtual int GetPower();
 	virtual int GetID();
 	virtual int GetAttackCap();
 	virtual Unit GetUnitType(); // Maybe causes a logical error
-	ArmyUnit* operator -= (int damage);
 
 	void PrintUnitInfo();
 };

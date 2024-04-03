@@ -13,7 +13,7 @@ class EarthArmy
 public:
 	EarthArmy();
 	bool Attack();
-	bool AddUnit();
+	bool AddUnit(char u, int, int, int, int, int); //pass parameters as an array.
 	void PrintArmyInfo();
 };
 
