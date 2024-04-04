@@ -3,57 +3,6 @@
 RandomGenerator::RandomGenerator()
 {
 	cout << "Random Generator Class has been started" << endl;
-	Read();
-}
-
-void RandomGenerator::Read()
-{
-	ifstream Fin("../test.txt");
-	if (Fin.is_open())
-	{
-		Fin >> n >> ES >> ET >> EG >> AS >> AM >> AD >> Prop;
-		/***********************Read Earth Data*************************/
-		Fin >> min_E_Power;
-		Fin.ignore();
-
-		Fin >> max_E_Power;
-		Fin.ignore();
-
-		Fin >> min_E_health;
-		Fin.ignore();
-
-		Fin >> max_E_health;
-		Fin.ignore();
-
-		Fin >> min_E_Attack_Capacity;
-		Fin.ignore();
-
-		Fin >> max_E_Attack_Capacity;
-		Fin.ignore();
-		/***********************Read Earth Data*************************/
-		/***********************Read ALien Data*************************/
-		Fin >> min_A_Power;
-		Fin.ignore();
-
-		Fin >> max_A_Power;
-		Fin.ignore();
-
-		Fin >> min_A_health;
-		Fin.ignore();
-
-		Fin >> max_A_health;
-		Fin.ignore();
-
-		Fin >> min_A_Attack_Capacity;
-		Fin.ignore();
-
-		Fin >> max_A_Attack_Capacity;
-		Fin.ignore();
-		/***********************Read ALien Data*************************/
-		Fin.close();
-	}
-	else
-		cout << "File failed" << endl;
 }
 
 inline unsigned short RandomGenerator::RandGen(unsigned short lower_bound, unsigned short upper_bound)
@@ -61,20 +10,41 @@ inline unsigned short RandomGenerator::RandGen(unsigned short lower_bound, unsig
 	return lower_bound + rand() % (upper_bound - lower_bound + 1);
 }
 
-void RandomGenerator::Print()
+ArmyUnit* RandomGenerator::CreateUnit(unsigned short& unit1, unsigned short& unit2, unsigned short& unit3,
+	unsigned short& min_Power, unsigned short& min_health, unsigned short& min_Attack_Capacity,
+	unsigned short& max_Power, unsigned short& max_health, unsigned short& max_Attack_Capacity,
+	unsigned short Tj, ArmyUnit::Unit ut)
 {
-	cout << n << " " << ES << " " << ET << " " << EG << " " << AS << " " << AM << " " << AD << " " << Prop << endl;
-	cout << min_E_Power << endl;
-	cout << max_E_Power << endl;
-	cout << min_E_health << endl;
-	cout << max_E_health << endl;
-	cout << min_E_Attack_Capacity << endl;
-	cout << max_E_Attack_Capacity << endl;
-
-	cout << min_A_Power << endl;
-	cout << max_A_Power << endl;
-	cout << min_A_health << endl;
-	cout << max_A_health << endl;
-	cout << min_A_Attack_Capacity << endl;
-	cout << max_A_Attack_Capacity << endl;
+	ArmyUnit* pArmyUnit;
+	if (ut == 0)
+	{
+		static unsigned short EarthID = 1;
+		unsigned short x = RandGen(1, 100);
+		unsigned short health = RandGen(min_health, max_health);
+		unsigned short power = RandGen(min_Power, max_Power);
+		unsigned short attack_capacity = RandGen(min_Attack_Capacity, max_Attack_Capacity);
+		if (x <= unit1)
+			pArmyUnit = new EarthSoldier(pGame, health, power, EarthID, attack_capacity, Tj);
+		else if (x <= unit1 + unit2)
+			pArmyUnit = new EarthTank(pGame, health, power, EarthID, attack_capacity, Tj);
+		else
+			pArmyUnit = new EarthGunnery(pGame, health, power, EarthID, attack_capacity, Tj);
+		EarthID++;
+	}
+	else
+	{
+		static unsigned short AlienID = 2000;
+		unsigned short x = RandGen(1, 100);
+		unsigned short health = RandGen(min_health, max_health);
+		unsigned short power = RandGen(min_Power, max_Power);
+		unsigned short attack_capacity = RandGen(min_Attack_Capacity, max_Attack_Capacity);
+		if (x <= unit1)
+			pArmyUnit = new AlienSoldier(pGame, health, power, AlienID, attack_capacity, Tj);
+		else if (x <= unit1 + unit2)
+			pArmyUnit = new AlienMonster(pGame, health, power, AlienID, attack_capacity, Tj);
+		else
+			pArmyUnit = new AlienDrone(pGame, health, power, AlienID, attack_capacity, Tj);;
+		AlienID++;
+	}
+	return pArmyUnit;
 }

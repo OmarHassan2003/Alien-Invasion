@@ -2,20 +2,20 @@
 #include "Game.h"
 
 class ArmyUnit
-{
-protected:
-	enum Unit {
-		ES,AS,ET,AM,EG,AD
-	};
+{	
 private:
 	Game* pGame;
 	int Health;
 	int Power;
 	int ID;
 	int AttackCap;
-	Unit Type;
 	int Tj, Ta, Td;
-	
+public:
+	enum Unit {
+		ES, EG, ET, AS, AM, AD
+	};
+private:
+	Unit Type;
 public:
 	ArmyUnit(Game* p, int HP, int pow, int ID_, int cap, int Tj, Unit U);
 

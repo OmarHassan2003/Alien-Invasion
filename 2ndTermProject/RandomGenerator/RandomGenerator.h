@@ -1,22 +1,24 @@
 #pragma once
+
 #include <iostream>
 #include <fstream>
+#include "../EarthArmy/EarthArmy.h"
+#include "../AlienArmy/AlienArmy.h"
+
+class Game;
+class ArmyUnit;
 using namespace std;
 
 class RandomGenerator
 {
 protected:
-	unsigned short n, ES, ET, EG, AS, AM, AD, Prop, Thr;
-
-	unsigned short min_E_Power, min_E_health, min_E_Attack_Capacity;
-	unsigned short max_E_Power, max_E_health, max_E_Attack_Capacity;
-
-	unsigned short min_A_Power, min_A_health, min_A_Attack_Capacity;
-	unsigned short max_A_Power, max_A_health, max_A_Attack_Capacity;
+	Game* pGame;
 public:
 	RandomGenerator();
-	void Read();
 	inline unsigned short RandGen(unsigned short lower_bound, unsigned short upper_bound);
-	void Print();
+	ArmyUnit* CreateUnit(unsigned short& unit1, unsigned short& unit2, unsigned short& unit3,
+		unsigned short& min_Power, unsigned short& min_health, unsigned short& min_Attack_Capacity,
+		unsigned short& max_Power, unsigned short& max_health, unsigned short& max_Attack_Capacity
+		, unsigned short Tj, ArmyUnit::Unit ut);
 };
 
