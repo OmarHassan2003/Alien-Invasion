@@ -1,5 +1,7 @@
 #pragma once
-#include "ArmyUnit.h"
+
+class Game;
+class ArmyUnit;
 
 class AlienDrone : public ArmyUnit
 {
