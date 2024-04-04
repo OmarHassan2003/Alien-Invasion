@@ -5,13 +5,12 @@ AlienArmy::AlienArmy()
 {
 }
 
-bool AlienArmy::AddUnit(char u, int hp, int pow, int id, int cap, int Tj)
+bool AlienArmy::AddUnit(Game*pG, char u, int hp, int pow, int id, int cap, int Tj)
 {
-	//Game* p;
 	if (u == 'S')
 	{
-		//AlienSoldier* AlienS = new AlienSoldier(p, hp, pow, id, cap, Tj);
-		//AS.enqueue(AlienS);
+		AlienSoldier* AlienS = new AlienSoldier(pG, hp, pow, id, cap, Tj);
+		AS.enqueue(AlienS);
 		return true;
 	}
 	if (u == 'M')

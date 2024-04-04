@@ -5,13 +5,12 @@ EarthArmy::EarthArmy()
 {
 }
 
-bool EarthArmy::AddUnit(char u, int hp, int pow, int id, int cap, int Tj)
+bool EarthArmy::AddUnit(Game* pG, char u, int hp, int pow, int id, int cap, int Tj)
 {
-	//Game* p;
 	if (u == 'S')
 	{
-		//EarthSoldier* EarthS = new EarthSoldier(p, hp, pow, id, cap, Tj);
-		//ES.enqueue(EarthS);
+		EarthSoldier* EarthS = new EarthSoldier(pG, hp, pow, id, cap, Tj);
+		ES.enqueue(EarthS);
 		return true;
 	}
 	if (u == 'T')

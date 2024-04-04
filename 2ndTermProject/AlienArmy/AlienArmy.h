@@ -1,12 +1,11 @@
 #pragma once
-#include "../ArmyUnit.h"
 #include "AlienSoldier.h"
 #include "../AlienDrone.h"
 #include "../AlienMonster.h"
 #include "../Queue/Queue.h"
-#include "../Queue/DoubleLinkedQueue.h"
 #include "../Stack/Stack.h"
 #include "../Queue/DoubleLinkedQueue.h"
+#include "../Game.h"
 
 class AlienArmy
 {
@@ -16,7 +15,7 @@ class AlienArmy
 public:
 	AlienArmy();
 	bool Attack();
-	bool AddUnit(char u, int, int, int, int, int); //pass parameters as an array.
+	bool AddUnit(Game* pG, char u, int, int, int, int, int); //pass parameters as an array.
 	void PrintArmyInfo();
 };
 
