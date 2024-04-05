@@ -3,6 +3,8 @@
 
 
 class Game;
+class EarthArmy;
+class AlienArmy;
 
 class ArmyUnit
 {	
@@ -26,6 +28,8 @@ public:
 
 	virtual void Set_Ta(int);
 	virtual void Set_Td(int);
+
+	virtual void AddEarthUnitToList(EarthArmy* passed_EA) = 0;
 	ArmyUnit* operator -= (int damage);
 
 	virtual int Get_Ta();

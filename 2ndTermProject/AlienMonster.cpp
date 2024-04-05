@@ -10,6 +10,10 @@ AlienMonster::AlienMonster(Game* p, int HP, int pow, int ID_, int cap, int _Tj)
 {
 }
 
+void AlienMonster::AddEarthUnitToList(EarthArmy* passed_EA)
+{
+}
+
 bool AlienMonster::Attack()
 {
 	return false;

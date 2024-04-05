@@ -5,6 +5,10 @@ AlienSoldier::AlienSoldier(Game* p, int HP, int pow, int ID_, int cap, int _Tj, 
 {
 }
 
+void AlienSoldier::AddEarthUnitToList(EarthArmy* passed_EA)
+{
+}
+
 bool AlienSoldier::Attack()
 {
 	return false;

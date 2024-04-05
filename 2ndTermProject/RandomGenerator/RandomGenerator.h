@@ -1,5 +1,6 @@
 #pragma once
 #include <iostream>
+#include <ctime>
 #include "../EarthGunnery.h"
 #include "../EarthTank.h"
 #include "../EarthArmy/EarthSoldier.h"

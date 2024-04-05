@@ -5,6 +5,11 @@ EarthGunnery::EarthGunnery(Game* p, int HP, int pow, int ID_, int cap, int Tj, U
 {
 }
 
+void EarthGunnery::AddEarthUnitToList(EarthArmy* passed_EA)
+{
+	passed_EA->AddInPriQueue(this);
+}
+
 bool EarthGunnery::Attack()
 {
 	return false;

@@ -4,7 +4,7 @@ EarthArmy::EarthArmy()
 {
 }
 
-bool EarthArmy::AddUnit(Game* pG, ArmyUnit* AU)
+/*bool EarthArmy::AddUnit(Game* pG, ArmyUnit* AU)
 {
 	if (AU->GetUnitType()==ArmyUnit::ES)
 	{
@@ -23,9 +23,34 @@ bool EarthArmy::AddUnit(Game* pG, ArmyUnit* AU)
 		return true;
 	}
 	return false;
+}*/
+
+void EarthArmy::AddInStack(EarthTank* passed_AU)
+{
+	ET_Stack.push(passed_AU);
+}
+
+void EarthArmy::AddInQueue(EarthSoldier* passed_AU)
+{
+	ES_Queue.enqueue(passed_AU);
+}
+
+void EarthArmy::AddInPriQueue(EarthGunnery* passed_AU)
+{
+	ArmyUnit* temp = (ArmyUnit*)passed_AU;
+	EG_priQ.enqueue(passed_AU,temp->GetHealth() + temp->GetAttackCap());
+}
+
+bool EarthArmy::AddUnit(ArmyUnit* passed_AU)
+{
+	passed_AU->AddEarthUnitToList(this);
+	return true;
 }
 
 void EarthArmy::PrintArmyInfo()
 {
-	ES.print();
+	EG_priQ.print();
+	cout << "//////////////////////" << endl;
+	ES_Queue.print();
+	ET_Stack.print();
 }

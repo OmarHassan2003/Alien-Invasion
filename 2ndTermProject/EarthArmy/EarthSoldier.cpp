@@ -5,6 +5,12 @@ EarthSoldier::EarthSoldier(Game* p, int HP, int pow, int ID_, int cap, int _Tj, 
 {
 }
 
+void EarthSoldier::AddEarthUnitToList(EarthArmy* passed_EA)
+{
+	passed_EA->AddInQueue(this);
+}
+
+
 bool EarthSoldier::Attack()
 {
 	return false;
