@@ -24,3 +24,8 @@ bool EarthArmy::AddUnit(Game* pG, ArmyUnit* AU)
 	}
 	return false;
 }
+
+void EarthArmy::PrintArmyInfo()
+{
+	ES.print();
+}

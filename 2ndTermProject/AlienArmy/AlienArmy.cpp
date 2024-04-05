@@ -23,3 +23,8 @@ bool AlienArmy::AddUnit(Game* pG, ArmyUnit* AU)
 	}
 	return false;
 }
+
+void AlienArmy::PrintArmyInfo()
+{
+	AS.print();
+}

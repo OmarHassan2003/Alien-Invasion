@@ -9,5 +9,6 @@ int main()
 	Game gmain;
 	gmain.Generate_Earth_Army();
 	gmain.Generate_Alien_Army();
+	gmain.print();
 }
 

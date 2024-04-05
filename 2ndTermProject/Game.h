@@ -24,6 +24,7 @@ public:
 	void Generate_Earth_Army();
 	void Generate_Alien_Army();
 	unsigned short Get_And_Inc_Tj();
+	void print();
 };
 
 static void ReadData(unsigned short& n, unsigned short& ES,

@@ -78,14 +78,16 @@ bool Queue<T>::peek(T& FrontEntry) const
 
 template<typename T>
 void Queue<T>::print() const
-{
+{ 
+	cout << count << " ";
 	Node<T>* temp = Front;
 	if (!count) {
 		cout << "NO ELEMENTS !" << endl;
 		return;
 	}
 	while (temp != nullptr) {
-		cout << temp->getItem() << '\t';//should be changed to the armyunit details
+		//cout << temp->getItem() << '\t';//should be changed to the armyunit details
+		cout << "data printed ";
 		temp = temp->getNext();
 	}
 	cout << endl;
