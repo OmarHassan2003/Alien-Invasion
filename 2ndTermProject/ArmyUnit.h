@@ -1,5 +1,8 @@
-#pragma once
-#include "Game.h"
+#ifndef ARMY_UNIT_H_
+#define ARMY_UNIT_H_
+
+
+class Game;
 
 class ArmyUnit
 {	
@@ -37,3 +40,4 @@ public:
 	void PrintUnitInfo();
 };
 
+#endif // !ARMY_UNIT_H_

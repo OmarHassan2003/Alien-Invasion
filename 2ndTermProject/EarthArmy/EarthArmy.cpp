@@ -1,5 +1,4 @@
 #include "EarthArmy.h"
-#include "../Game.h"
 
 EarthArmy::EarthArmy()
 {

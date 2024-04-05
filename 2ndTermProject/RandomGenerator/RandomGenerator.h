@@ -2,11 +2,14 @@
 
 #include <iostream>
 #include <fstream>
-#include "../EarthArmy/EarthArmy.h"
-#include "../AlienArmy/AlienArmy.h"
+#include "../EarthGunnery.h"
+#include "../EarthTank.h"
+#include "../EarthArmy/EarthSoldier.h"
+#include "../AlienDrone.h"
+#include "../AlienMonster.h"
+#include "../AlienArmy/AlienSoldier.h"
+#include "../ArmyUnit.h"
 
-class Game;
-class ArmyUnit;
 using namespace std;
 
 class RandomGenerator

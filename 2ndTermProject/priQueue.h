@@ -1,7 +1,8 @@
 #pragma once
 #include "priNode.h"
 #include "Queue/QueueADT.h"
-
+#include <iostream>
+using namespace std;
 //This class impelements the priority queue as a sorted list (Linked List)
 //The item with highest priority is at the front of the queue
 template <typename T>
