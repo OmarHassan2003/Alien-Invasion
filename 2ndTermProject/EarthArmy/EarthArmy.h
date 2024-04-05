@@ -1,15 +1,16 @@
 #pragma once
-//#include "../ArmyUnit.h"
-//#include "EarthSoldier.h"
-//#include "../EarthGunnery.h"
+#include "../ArmyUnit.h"
+#include "EarthSoldier.h"
+#include "../EarthTank.h"
+#include "../EarthGunnery.h"
+//class ArmyUnit;
+//class EarthGunnery;
+//class EarthTank;
+//class EarthSoldier;
+//class Game;
 #include "../Queue/Queue.h"
-//#include "../EarthTank.h"
-class EarthGunnery;
-class EarthTank;
-class EarthSoldier;
 #include "../priQueue.h"
 #include "../Stack/Stack.h"
-#include "../Game.h"
 
 class EarthArmy
 {
@@ -19,7 +20,7 @@ class EarthArmy
 public:
 	EarthArmy();
 	bool Attack();
-	bool AddUnit(Game* pG, char u, int, int, int, int, int); //pass parameters as an array.
+	bool AddUnit(Game* pG, ArmyUnit*); //pass parameters as an array.
 	void PrintArmyInfo();
 };
 

@@ -1,15 +1,13 @@
-#include "ArmyUnit.h"
 #include "EarthArmy/EarthArmy.h"
 #include "AlienArmy/AlienArmy.h"
-//#include "Game.h"
-
 #include "RandomGenerator/RandomGenerator.h"
+#include "Game.h"
+
 
 int main()
 {
-	//RandomGenerator InputData;
-	//InputData.Read();
-	//InputData.Print();
-
+	Game gmain;
+	gmain.Generate_Earth_Army();
+	gmain.Generate_Alien_Army();
 }
 

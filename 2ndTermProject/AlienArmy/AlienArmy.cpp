@@ -4,22 +4,21 @@ AlienArmy::AlienArmy()
 {
 }
 
-bool AlienArmy::AddUnit(Game*pG, char u, int hp, int pow, int id, int cap, int Tj)
+bool AlienArmy::AddUnit(Game* pG, ArmyUnit* AU)
 {
-	if (u == 'S')
+	if (AU->GetUnitType()==ArmyUnit::AS)
 	{
-		AlienSoldier* AlienS = new AlienSoldier(pG, hp, pow, id, cap, Tj);
-		AS.enqueue(AlienS);
+		AS.enqueue(dynamic_cast<AlienSoldier*>(AU));
 		return true;
 	}
-	if (u == 'M')
+	if (AU->GetUnitType() == ArmyUnit::AM)
 	{
-		// monster
+		//Add monster
 		return true;
 	}
-	if (u == 'D')
+	if (AU->GetUnitType() == ArmyUnit::AD)
 	{
-		// drone.
+		AD.enqueue(dynamic_cast<AlienDrone*>(AU));
 		return true;
 	}
 	return false;

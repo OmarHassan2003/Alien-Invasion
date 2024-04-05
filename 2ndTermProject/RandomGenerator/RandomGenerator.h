@@ -1,7 +1,5 @@
 #pragma once
-
 #include <iostream>
-#include <fstream>
 #include "../EarthGunnery.h"
 #include "../EarthTank.h"
 #include "../EarthArmy/EarthSoldier.h"

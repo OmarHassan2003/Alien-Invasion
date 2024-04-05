@@ -4,22 +4,22 @@ EarthArmy::EarthArmy()
 {
 }
 
-bool EarthArmy::AddUnit(Game* pG, char u, int hp, int pow, int id, int cap, int Tj)
+bool EarthArmy::AddUnit(Game* pG, ArmyUnit* AU)
 {
-	if (u == 'S')
+	if (AU->GetUnitType()==ArmyUnit::ES)
 	{
-		EarthSoldier* EarthS = new EarthSoldier(pG, hp, pow, id, cap, Tj);
-		ES.enqueue(EarthS);
+		ES.enqueue(dynamic_cast<EarthSoldier*>(AU));
 		return true;
 	}
-	if (u == 'T')
+	if (AU->GetUnitType() == ArmyUnit::ET)
 	{
-		//Tank creation
+		ET.push(dynamic_cast<EarthTank*>(AU));
 		return true;
 	}
-	if (u == 'G')
+	if (AU->GetUnitType() == ArmyUnit::EG)
 	{
-		//Gunnery creation
+		int pri = AU->GetHealth() + AU->GetPower();
+		EG.enqueue(dynamic_cast<EarthGunnery*>(AU), pri);
 		return true;
 	}
 	return false;
