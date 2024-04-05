@@ -1,9 +1,12 @@
 #pragma once
-#include "../ArmyUnit.h"
-#include "EarthSoldier.h"
-#include "../EarthGunnery.h"
+//#include "../ArmyUnit.h"
+//#include "EarthSoldier.h"
+//#include "../EarthGunnery.h"
 #include "../Queue/Queue.h"
-#include "../EarthTank.h"
+//#include "../EarthTank.h"
+class EarthGunnery;
+class EarthTank;
+class EarthSoldier;
 #include "../priQueue.h"
 #include "../Stack/Stack.h"
 

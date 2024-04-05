@@ -1,5 +1,4 @@
 #include "AlienArmy.h"
-#include "../Game.h"
 
 AlienArmy::AlienArmy()
 {

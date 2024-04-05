@@ -1,12 +1,14 @@
 #pragma once
-#include "../ArmyUnit.h"
-#include "AlienSoldier.h"
-#include "../AlienDrone.h"
-#include "../AlienMonster.h"
+//#include "../ArmyUnit.h"
+//#include "AlienSoldier.h"
+class AlienSoldier;
+class AlienDrone;
+class AlienMonster;
+//#include "../AlienDrone.h"
+//#include "../AlienMonster.h"
 #include "../Queue/Queue.h"
 #include "../Queue/DoubleLinkedQueue.h"
 #include "../Stack/Stack.h"
-#include "../Queue/DoubleLinkedQueue.h"
 
 class AlienArmy
 {

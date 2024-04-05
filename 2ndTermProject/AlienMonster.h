@@ -1,8 +1,6 @@
 #pragma once
-class Game;
-class ArmyUnit;
-
-class AlienMonster:public ArmyUnit
+#include "ArmyUnit.h"
+class AlienMonster :public ArmyUnit
 {
 public:
 	AlienMonster();

@@ -1,7 +1,5 @@
 #pragma once
-class Game;
-class ArmyUnit;
-
+#include "../ArmyUnit.h"
 class AlienSoldier :public ArmyUnit
 {
 public:

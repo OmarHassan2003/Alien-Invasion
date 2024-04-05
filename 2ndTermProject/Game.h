@@ -7,7 +7,7 @@ using namespace std;
 
 class Game
 {
-	RandomGenerator* randgen;
+	RandomGenerator* randgenn;
 	unsigned short Tj_value;
 	unsigned short n, ES, ET, EG, AS, AM, AD, Prop;
 

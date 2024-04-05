@@ -1,7 +1,5 @@
 #pragma once
-
-class Game;
-class ArmyUnit;
+#include "../ArmyUnit.h"
 
 class EarthSoldier : public ArmyUnit
 {
