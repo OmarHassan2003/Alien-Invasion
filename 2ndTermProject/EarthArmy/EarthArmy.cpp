@@ -4,6 +4,11 @@ EarthArmy::EarthArmy()
 {
 }
 
+bool EarthArmy::Attack()
+{
+	return false;
+}
+
 /*bool EarthArmy::AddUnit(Game* pG, ArmyUnit* AU)
 {
 	if (AU->GetUnitType()==ArmyUnit::ES)

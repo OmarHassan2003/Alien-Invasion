@@ -5,9 +5,14 @@
 class Game;
 class EarthArmy;
 class AlienArmy;
+class Army;
 
 class ArmyUnit
-{	
+{
+protected:
+	enum Unit {
+		ES, EG, ET, AS, AM, AD
+	};
 private:
 	Game* pGame;
 	int Health;
@@ -15,12 +20,8 @@ private:
 	int ID;
 	int AttackCap;
 	int Tj, Ta, Td;
-public:
-	enum Unit {
-		ES, EG, ET, AS, AM, AD
-	};
-private:
 	Unit Type;
+
 public:
 	ArmyUnit(Game* p, int HP, int pow, int ID_, int cap, int Tj, Unit U);
 
@@ -29,7 +30,8 @@ public:
 	virtual void Set_Ta(int);
 	virtual void Set_Td(int);
 
-	virtual void AddEarthUnitToList(EarthArmy* passed_EA) = 0;
+	virtual void AddEarthUnitToList(EarthArmy* passed_EA);
+	virtual void AddAlienUnitToList(AlienArmy* passed_EA);
 	ArmyUnit* operator -= (int damage);
 
 	virtual int Get_Ta();

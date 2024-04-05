@@ -4,6 +4,12 @@ AlienArmy::AlienArmy()
 {
 }
 
+bool AlienArmy::Attack()
+{
+	return false;
+}
+
+/*
 bool AlienArmy::AddUnit(Game* pG, ArmyUnit* AU)
 {
 	if (AU->GetUnitType()==ArmyUnit::AS)
@@ -22,6 +28,13 @@ bool AlienArmy::AddUnit(Game* pG, ArmyUnit* AU)
 		return true;
 	}
 	return false;
+}
+*/
+
+bool AlienArmy::AddUnit(ArmyUnit* passed_AU)
+{
+	passed_AU->AddAlienUnitToList(this);
+	return true;
 }
 
 void AlienArmy::PrintArmyInfo()

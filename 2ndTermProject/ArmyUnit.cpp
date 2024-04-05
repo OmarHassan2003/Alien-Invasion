@@ -21,6 +21,14 @@ void ArmyUnit::Set_Td(int _Td)
 	Td = _Td;
 }
 
+void ArmyUnit::AddEarthUnitToList(EarthArmy* passed_EA)
+{
+}
+
+void ArmyUnit::AddAlienUnitToList(AlienArmy* passed_EA)
+{
+}
+
 int ArmyUnit::Get_Ta()
 {
 	return Ta;

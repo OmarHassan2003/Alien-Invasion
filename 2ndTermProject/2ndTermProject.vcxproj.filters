@@ -60,6 +60,9 @@
     <ClCompile Include="EarthTank.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Army.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Queue\Queue.h">
@@ -123,6 +126,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="priQueue.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Army.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

@@ -14,10 +14,10 @@ inline unsigned short RandomGenerator::RandGen(unsigned short lower_bound, unsig
 ArmyUnit* RandomGenerator::CreateUnit(unsigned short& unit1, unsigned short& unit2, unsigned short& unit3,
 	unsigned short& min_Power, unsigned short& min_health, unsigned short& min_Attack_Capacity,
 	unsigned short& max_Power, unsigned short& max_health, unsigned short& max_Attack_Capacity,
-	unsigned short Tj, ArmyUnit::Unit ut)
+	unsigned short Tj, Game* pGame, char u)
 {
 	ArmyUnit* pArmyUnit;
-	if (ut == 0)
+	if (u == 'E')
 	{
 		static unsigned short EarthID = 1;
 		unsigned short x = RandGen(1, 100);

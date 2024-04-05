@@ -1,4 +1,4 @@
-#pragma once
+ #pragma once
 #include "ArmyUnit.h"
 #include "EarthArmy/EarthArmy.h"
 
