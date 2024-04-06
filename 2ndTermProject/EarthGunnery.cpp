@@ -10,6 +10,10 @@ void EarthGunnery::AddEarthUnitToList(EarthArmy* passed_EA)
 	passed_EA->AddInPriQueue(this);
 }
 
+void EarthGunnery::AddAlienUnitToList(AlienArmy* passed_AA)
+{
+}
+
 bool EarthGunnery::Attack()
 {
 	return false;

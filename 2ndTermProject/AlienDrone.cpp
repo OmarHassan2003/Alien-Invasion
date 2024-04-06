@@ -6,6 +6,10 @@ AlienDrone::AlienDrone(Game* p, int HP, int pow, int ID_, int cap, int Tj, Unit 
 
 }
 
+void AlienDrone::AddEarthUnitToList(EarthArmy* passed_EA)
+{
+}
+
 void AlienDrone::AddAlienUnitToList(AlienArmy* passed_EA)
 {
 }

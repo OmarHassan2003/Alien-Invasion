@@ -5,8 +5,13 @@ AlienSoldier::AlienSoldier(Game* p, int HP, int pow, int ID_, int cap, int _Tj, 
 {
 }
 
-void AlienSoldier::AddAlienUnitToList(AlienArmy* passed_EA)
+void AlienSoldier::AddEarthUnitToList(EarthArmy* passed_EA)
 {
+}
+
+void AlienSoldier::AddAlienUnitToList(AlienArmy* passed_AA)
+{
+	passed_AA->AddInQueue(this);
 }
 
 bool AlienSoldier::Attack()

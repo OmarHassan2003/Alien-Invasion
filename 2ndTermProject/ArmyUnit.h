@@ -21,7 +21,6 @@ private:
 	int AttackCap;
 	int Tj, Ta, Td;
 	Unit Type;
-
 public:
 	ArmyUnit(Game* p, int HP, int pow, int ID_, int cap, int Tj, Unit U);
 
@@ -30,8 +29,8 @@ public:
 	virtual void Set_Ta(int);
 	virtual void Set_Td(int);
 
-	virtual void AddEarthUnitToList(EarthArmy* passed_EA);
-	virtual void AddAlienUnitToList(AlienArmy* passed_EA);
+	virtual void AddEarthUnitToList(EarthArmy* passed_EA) = 0;
+	virtual void AddAlienUnitToList(AlienArmy* passed_EA) = 0;
 	ArmyUnit* operator -= (int damage);
 
 	virtual int Get_Ta();

@@ -39,5 +39,16 @@ bool AlienArmy::AddUnit(ArmyUnit* passed_AU)
 
 void AlienArmy::PrintArmyInfo()
 {
-	AS.print();
+	AS_Queue.print();
+	AD_DQueue.print();
+}
+
+void AlienArmy::AddInQueue(ArmyUnit* passed_AU)
+{
+	AS_Queue.enqueue((AlienSoldier*)passed_AU);
+}
+
+void AlienArmy::AddInDoubleLinkedQueueQueue(ArmyUnit* passed_AU)
+{
+	AD_DQueue.enqueue((AlienDrone*)passed_AU);
 }

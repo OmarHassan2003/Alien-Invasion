@@ -2,8 +2,6 @@
 
 Game::Game()
 {
-	EA = new EarthArmy;
-	AA = new AlienArmy;
 	randgenn = new RandomGenerator; // could be deleted??
 	ReadData(n, ES,ET, EG, AS, AM, AD,Prop,min_E_Power, min_E_health, min_E_Attack_Capacity,max_E_Power,
 	max_E_health, max_E_Attack_Capacity,min_A_Power,  min_A_health, min_A_Attack_Capacity, 
@@ -20,7 +18,7 @@ void Game::Generate_Earth_Army()
 		{
 			AU = randgenn->CreateUnit(ES, ET, EG, min_E_health, min_E_Attack_Capacity, min_E_Power, max_E_Power,
 				max_E_health, max_E_Attack_Capacity, Tj_value, this, 'E');
-			EA->AddUnit(AU);
+			EA.AddUnit(AU);
 		}
 	}
 }
@@ -34,7 +32,7 @@ void Game::Generate_Alien_Army()
 		for (unsigned short i = 0;i < n;i++)
 			AU = randgenn->CreateUnit(AS, AM, AD, min_A_health, min_A_Attack_Capacity, min_A_Power, max_A_Power,
 				max_E_health, max_E_Attack_Capacity, Tj_value, this, 'A');
-		AA->AddUnit(AU);
+		AA.AddUnit(AU);
 	}
 }
 
@@ -46,8 +44,8 @@ unsigned short Game::Get_And_Inc_Tj()
 
 void Game::print()
 {
-	EA->PrintArmyInfo();
-	AA->PrintArmyInfo();
+	EA.PrintArmyInfo();
+	AA.PrintArmyInfo();
 }
 
 void ReadData(unsigned short& n, unsigned short& ES, unsigned short& ET, unsigned short& EG, unsigned short& AS, unsigned short& AM, unsigned short& AD, unsigned short& Prop, unsigned short& min_E_Power,

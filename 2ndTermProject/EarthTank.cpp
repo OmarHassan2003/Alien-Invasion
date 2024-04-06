@@ -10,6 +10,10 @@ void EarthTank::AddEarthUnitToList(EarthArmy* passed_EA)
 	passed_EA->AddInStack(this);
 }
 
+void EarthTank::AddAlienUnitToList(AlienArmy* passed_AA)
+{
+}
+
 bool EarthTank::Attack()
 {
 	return false;

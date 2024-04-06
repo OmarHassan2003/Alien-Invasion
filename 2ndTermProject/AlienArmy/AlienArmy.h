@@ -9,8 +9,8 @@ class Game;
 
 class AlienArmy :public Army
 {
-	Queue<AlienSoldier*> AS;
-	DoubleLinkedQueue<AlienDrone*> AD;
+	Queue<AlienSoldier*> AS_Queue;
+	DoubleLinkedQueue<AlienDrone*> AD_DQueue;
 	AlienMonster* AM[1000];
 public:
 	AlienArmy();
@@ -19,5 +19,7 @@ public:
 	void PrintArmyInfo();
 	
 	//bool AddUnit(Game* pG, ArmyUnit* AU); //pass parameters as an array.
+	void AddInQueue(ArmyUnit* passed_AU);
+	void AddInDoubleLinkedQueueQueue(ArmyUnit* passed_AU);
 };
 
