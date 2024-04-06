@@ -2,6 +2,7 @@
 #include "priNode.h"
 #include "Queue/QueueADT.h"
 #include <iostream>
+
 using namespace std;
 //This class impelements the priority queue as a sorted list (Linked List)
 //The item with highest priority is at the front of the queue
@@ -79,6 +80,7 @@ public:
 
     void print() const
     {
+        cout << count << '\t';
         priNode<T>* temp = head;
         if (!count)
         {
@@ -87,8 +89,7 @@ public:
         }
         while (temp != nullptr)
         {
-            int temporary = temp->getPri();
-            cout << temp->getItem(temporary) << " ";
+            cout << temp;
             temp = temp->getNext();
         }
         cout << endl;

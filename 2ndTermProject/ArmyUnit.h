@@ -1,11 +1,11 @@
 #ifndef ARMY_UNIT_H_
 #define ARMY_UNIT_H_
-
-
 class Game;
 class EarthArmy;
 class AlienArmy;
 class Army;
+#include <iostream>
+using namespace std;
 
 class ArmyUnit
 {
@@ -41,7 +41,7 @@ public:
 	virtual int GetID();
 	virtual int GetAttackCap();
 	virtual Unit GetUnitType(); // Maybe causes a logical error
-
+	friend ostream& operator<<(ostream& COUT, ArmyUnit& Passed_AU);
 	void PrintUnitInfo();
 };
 

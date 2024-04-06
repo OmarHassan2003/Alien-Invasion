@@ -43,7 +43,7 @@ void EarthArmy::AddInQueue(EarthSoldier* passed_AU)
 void EarthArmy::AddInPriQueue(EarthGunnery* passed_AU)
 {
 	ArmyUnit* temp = (ArmyUnit*)passed_AU;
-	EG_priQ.enqueue(passed_AU,temp->GetHealth() + temp->GetAttackCap());
+	EG_priQ.enqueue(passed_AU,temp->GetHealth() + temp->GetPower());
 }
 
 bool EarthArmy::AddUnit(ArmyUnit* passed_AU)
@@ -55,7 +55,6 @@ bool EarthArmy::AddUnit(ArmyUnit* passed_AU)
 void EarthArmy::PrintArmyInfo()
 {
 	EG_priQ.print();
-	cout << "//////////////////////" << endl;
 	ES_Queue.print();
 	ET_Stack.print();
 }

@@ -10,8 +10,9 @@ void AlienDrone::AddEarthUnitToList(EarthArmy* passed_EA)
 {
 }
 
-void AlienDrone::AddAlienUnitToList(AlienArmy* passed_EA)
+void AlienDrone::AddAlienUnitToList(AlienArmy* passed_AA)
 {
+	passed_AA->AddInDoubleLinkedQueueQueue(this);
 }
 
 

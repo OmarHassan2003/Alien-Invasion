@@ -97,13 +97,14 @@ inline bool DoubleLinkedQueue<T>::GetRear(T& RearEntry) const
 template<class T>
 inline void DoubleLinkedQueue<T>::print() const
 {
+	cout << count << '\t';
 	DoubleNode<T>* temp = Front;
 	if (!count) {
 		cout << "NO ELEMENTS !" << endl;
 		return;
 	}
 	while (temp != nullptr) {
-		cout << temp->getItem() << '\t';//should be changed to the armyunit details
+		cout << temp << " ";//should be changed to the armyunit details
 		temp = temp->getNext();
 	}
 	cout << endl;

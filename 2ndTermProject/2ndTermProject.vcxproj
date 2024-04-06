@@ -130,7 +130,7 @@
     <ClCompile Include="2ndTermProject.cpp" />
     <ClCompile Include="AlienArmy\AlienArmy.cpp" />
     <ClCompile Include="AlienArmy\AlienSoldier.cpp" />
-    <ClCompile Include="AlienDrone.cpp" />
+    <ClCompile Include="AlienArmy\AlienDrone.cpp" />
     <ClCompile Include="AlienMonster.cpp" />
     <ClCompile Include="Army.cpp" />
     <ClCompile Include="ArmyUnit.cpp" />
@@ -147,7 +147,7 @@
   <ItemGroup>
     <ClInclude Include="AlienArmy\AlienArmy.h" />
     <ClInclude Include="AlienArmy\AlienSoldier.h" />
-    <ClInclude Include="AlienDrone.h" />
+    <ClInclude Include="AlienArmy\AlienDrone.h" />
     <ClInclude Include="AlienMonster.h" />
     <ClInclude Include="Army.h" />
     <ClInclude Include="ArmyUnit.h" />

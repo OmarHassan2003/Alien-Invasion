@@ -48,7 +48,7 @@
     <ClCompile Include="RandomGenerator\RandomGenerator.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="AlienDrone.cpp">
+    <ClCompile Include="AlienArmy\AlienDrone.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="AlienMonster.cpp">
@@ -110,7 +110,7 @@
     <ClInclude Include="RandomGenerator\RandomGenerator.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="AlienDrone.h">
+    <ClInclude Include="AlienArmy\AlienDrone.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="AlienMonster.h">

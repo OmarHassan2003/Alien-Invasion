@@ -18,3 +18,11 @@ bool EarthGunnery::Attack()
 {
 	return false;
 }
+
+ostream& operator<<(ostream& COUT, EarthGunnery& Passed_AU)
+{
+	{
+		COUT << Passed_AU.GetID() << " ";
+		return COUT;
+	}
+}

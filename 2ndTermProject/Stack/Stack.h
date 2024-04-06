@@ -79,13 +79,14 @@ bool Stack<T>::peek(T& TopEntry) const
 template<typename T>
 void Stack<T>::print() const
 {
+	cout << count << '\t';
 	Node<T>* temp = Top;
 	if (!count) {
 		cout << "NO ELEMENTS !" << endl;
 		return;
 	}
 	while (temp != nullptr) {
-		cout << temp->getItem() << '\t';//should be changed to the armyunit details
+		cout << temp << " ";//should be changed to the armyunit details
 		temp = temp->getNext();
 	}
 	cout << endl;

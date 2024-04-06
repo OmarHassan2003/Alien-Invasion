@@ -1,5 +1,6 @@
 #include "ArmyUnit.h"
 
+
 ArmyUnit::ArmyUnit(Game* p, int HP, int pow, int ID_, int cap, int Tj, Unit U)
 {
 	pGame = p;
@@ -70,4 +71,10 @@ ArmyUnit* ArmyUnit::operator-=(int damage)
 void ArmyUnit::PrintUnitInfo()
 {
 
+}
+
+ostream& operator<<(ostream& COUT, ArmyUnit& Passed_AU)
+{
+	COUT << Passed_AU.GetID() << " ";
+	return COUT;
 }

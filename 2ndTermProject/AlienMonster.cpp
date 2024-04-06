@@ -13,9 +13,9 @@ AlienMonster::AlienMonster(Game* p, int HP, int pow, int ID_, int cap, int _Tj)
 void AlienMonster::AddEarthUnitToList(EarthArmy* passed_EA)
 {}
 
-void AlienMonster::AddAlienUnitToList(AlienArmy* passed_EA)
+void AlienMonster::AddAlienUnitToList(AlienArmy* passed_AA)
 {
-	passed_EA->AddInDoubleLinkedQueueQueue(this);
+	passed_AA->AddInAmArray(this);
 }
 
 bool AlienMonster::Attack()

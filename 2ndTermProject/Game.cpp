@@ -3,6 +3,7 @@
 Game::Game()
 {
 	randgenn = new RandomGenerator; // could be deleted??
+	Tj_value = 0;
 	ReadData(n, ES,ET, EG, AS, AM, AD,Prop,min_E_Power, min_E_health, min_E_Attack_Capacity,max_E_Power,
 	max_E_health, max_E_Attack_Capacity,min_A_Power,  min_A_health, min_A_Attack_Capacity, 
 	max_A_Power,  max_A_health, max_A_Attack_Capacity);
@@ -11,7 +12,7 @@ Game::Game()
 void Game::Generate_Earth_Army()
 {
 	ArmyUnit* AU = nullptr;
-	unsigned short x = randgenn->RandGen(1, 10);
+	unsigned short x = randgenn->RandGen(1, 100);
 	if (x <= Prop)
 	{
 		for (unsigned short i = 0; i < n; i++)
@@ -29,7 +30,7 @@ void Game::Generate_Alien_Army()
 	unsigned short x = randgenn->RandGen(1, 100);
 	if (x <= Prop)
 	{
-		for (unsigned short i = 0;i < n;i++)
+		for (unsigned short i = 0; i < n; i++)
 			AU = randgenn->CreateUnit(AS, AM, AD, min_A_health, min_A_Attack_Capacity, min_A_Power, max_A_Power,
 				max_E_health, max_E_Attack_Capacity, Tj_value, this, 'A');
 		AA.AddUnit(AU);
@@ -44,7 +45,10 @@ unsigned short Game::Get_And_Inc_Tj()
 
 void Game::print()
 {
+	cout << "====================== Earth Army Alive Units ====================" << endl;
 	EA.PrintArmyInfo();
+	cout << endl;
+	cout << "====================== Alien Army Alive Units ====================" << endl;
 	AA.PrintArmyInfo();
 }
 

@@ -2,6 +2,8 @@
 
 AlienArmy::AlienArmy()
 {
+	for (int i = 0; i < 1000; i++)
+		AM[i] = NULL;
 }
 
 bool AlienArmy::Attack()
@@ -43,12 +45,18 @@ void AlienArmy::PrintArmyInfo()
 	AD_DQueue.print();
 }
 
-void AlienArmy::AddInQueue(ArmyUnit* passed_AU)
+void AlienArmy::AddInQueue(AlienSoldier* passed_AU)
 {
-	AS_Queue.enqueue((AlienSoldier*)passed_AU);
+	AS_Queue.enqueue(passed_AU);
 }
 
-void AlienArmy::AddInDoubleLinkedQueueQueue(ArmyUnit* passed_AU)
+void AlienArmy::AddInDoubleLinkedQueueQueue(AlienDrone* passed_AU)
 {
-	AD_DQueue.enqueue((AlienDrone*)passed_AU);
+	AD_DQueue.enqueue(passed_AU);
+}
+
+void AlienArmy::AddInAmArray(AlienMonster* passed_AU)
+{
+	static int x = 0;
+	AM[x++] = passed_AU;
 }

@@ -19,7 +19,8 @@ public:
 	void PrintArmyInfo();
 	
 	//bool AddUnit(Game* pG, ArmyUnit* AU); //pass parameters as an array.
-	void AddInQueue(ArmyUnit* passed_AU);
-	void AddInDoubleLinkedQueueQueue(ArmyUnit* passed_AU);
+	void AddInQueue(AlienSoldier* passed_AU);
+	void AddInDoubleLinkedQueueQueue(AlienDrone* passed_AU);
+	void AddInAmArray(AlienMonster* passed_AU);
 };
 
