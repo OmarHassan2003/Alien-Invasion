@@ -1,6 +1,8 @@
 #pragma once
 #include "../Node.h"
 #include "QueueADT.h"
+class AlienSoldier;
+class EarthSoldier;
 /************************************Queue Implementation**************************************/
 template <typename T>
 class Queue :public QueueADT<T>
@@ -81,13 +83,13 @@ void Queue<T>::print() const
 {
 	cout << count << '\t';
 	Node<T>* temp = Front;
-	//if (!count) {
-	//	cout << "NO ELEMENTS !" << endl;
-	//	return;
-	//}
+	if (!count) {
+		cout << "NO ELEMENTS !" << endl;
+		return;
+	}
 	while (temp != nullptr)
 	{
-		cout << (temp->getItem()) << " ";
+		cout << *temp->getItem() << " ";
 		temp = temp->getNext();
 	}
 	cout << endl;

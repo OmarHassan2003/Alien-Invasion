@@ -2,12 +2,12 @@
 
 RandomGenerator::RandomGenerator()
 {
+	srand(time(0));
 	cout << "Random Generator Class has been started" << endl;
 }
 
 inline unsigned short RandomGenerator::RandGen(unsigned short lower_bound, unsigned short upper_bound)
-{
-	srand(time(0));
+{	
 	return lower_bound + rand() % (upper_bound - lower_bound + 1);
 }
 

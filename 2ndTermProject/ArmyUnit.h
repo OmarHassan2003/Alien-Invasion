@@ -31,7 +31,6 @@ public:
 
 	virtual void AddEarthUnitToList(EarthArmy* passed_EA) = 0;
 	virtual void AddAlienUnitToList(AlienArmy* passed_EA) = 0;
-	ArmyUnit* operator -= (int damage);
 
 	virtual int Get_Ta();
 	virtual int Get_Tj();
@@ -41,6 +40,8 @@ public:
 	virtual int GetID();
 	virtual int GetAttackCap();
 	virtual Unit GetUnitType(); // Maybe causes a logical error
+
+	void SetHealth(int h);
 	friend ostream& operator<<(ostream& COUT, ArmyUnit& Passed_AU);
 	void PrintUnitInfo();
 };

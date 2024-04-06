@@ -10,6 +10,7 @@ class Game
 {
 	EarthArmy EA;
 	AlienArmy AA;
+	Queue<ArmyUnit*> Killed_List;
 	RandomGenerator* randgenn;
 	unsigned short Tj_value;
 	unsigned short n, ES, ET, EG, AS, AM, AD, Prop;
@@ -24,6 +25,10 @@ public:
 	void Generate_Earth_Army();
 	void Generate_Alien_Army();
 	unsigned short Get_And_Inc_Tj();
+	void AddInKilledList(ArmyUnit* passed_AU);
+	void process_ES();
+	void process_ET();
+	void process_EG();
 	void print();
 };
 

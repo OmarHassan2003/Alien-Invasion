@@ -62,15 +62,14 @@ ArmyUnit::Unit ArmyUnit::GetUnitType()
 	return Type;
 }
 
-ArmyUnit* ArmyUnit::operator-=(int damage)
+void ArmyUnit::SetHealth(int h)
 {
-	Health -= damage;
-	return this;
+	Health = h;
 }
 
 void ArmyUnit::PrintUnitInfo()
 {
-
+	cout << Health << endl;
 }
 
 ostream& operator<<(ostream& COUT, ArmyUnit& Passed_AU)

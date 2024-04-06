@@ -17,7 +17,14 @@ public:
 	bool Attack();
 	bool AddUnit(ArmyUnit* passed_AU);
 	void PrintArmyInfo();
-
+	/****************pick units from lists********************/
+	EarthSoldier* pick_ES();
+	EarthGunnery* pick_EG();
+	EarthTank* pick_ET();
+	/****************insert units from lists********************/
+	void InsertES(EarthSoldier* passed_ES);
+	void InsertEG(EarthGunnery* passed_EG);
+	void InsertET(EarthTank* passed_ET);
 	//bool AddUnit(Game* pG, ArmyUnit*);
 	void AddInStack(EarthTank* passed_AU);
 	void AddInQueue(EarthSoldier* passed_AU);

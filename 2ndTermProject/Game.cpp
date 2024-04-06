@@ -43,6 +43,37 @@ unsigned short Game::Get_And_Inc_Tj()
 	return Tj_value;
 }
 
+void Game::AddInKilledList(ArmyUnit* passed_AU)
+{
+	Killed_List.enqueue(passed_AU);
+}
+
+void Game::process_ES()
+{
+	EarthSoldier* temp;
+	temp = EA.pick_ES();
+	EA.InsertES(temp);
+}
+
+void Game::process_ET()
+{
+	EarthTank* temp;
+	temp = EA.pick_ET();
+	Killed_List.enqueue(temp);
+}
+
+void Game::process_EG()
+{
+	EarthGunnery* temp;
+	temp = EA.pick_EG();
+	if (temp)
+	{
+		ArmyUnit* ultra_temp = (ArmyUnit*)temp;
+		ultra_temp->SetHealth(temp->GetHealth() / 2);
+		EA.InsertEG(temp);
+	}
+}
+
 void Game::print()
 {
 	cout << "====================== Earth Army Alive Units ====================" << endl;

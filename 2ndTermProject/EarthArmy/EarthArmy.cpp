@@ -54,7 +54,50 @@ bool EarthArmy::AddUnit(ArmyUnit* passed_AU)
 
 void EarthArmy::PrintArmyInfo()
 {
-	EG_priQ.print();
+	//EG_priQ.print();
 	ES_Queue.print();
-	ET_Stack.print();
+	//ET_Stack.print();
+}
+
+EarthSoldier* EarthArmy::pick_ES()
+{
+	EarthSoldier* temp_ptr;
+	ES_Queue.dequeue(temp_ptr);
+	return temp_ptr;
+}
+
+EarthGunnery* EarthArmy::pick_EG()
+{
+	EarthGunnery* temp_ptr;
+	int x = 0;
+	if (EG_priQ.dequeue(temp_ptr, x))
+		return temp_ptr;
+	else
+		return NULL;
+}
+
+EarthTank* EarthArmy::pick_ET()
+{
+	EarthTank* temp_ptr;
+	ET_Stack.pop(temp_ptr);
+	return temp_ptr;
+}
+
+void EarthArmy::InsertES(EarthSoldier* passed_ES)
+{
+	ES_Queue.enqueue(passed_ES);
+}
+
+void EarthArmy::InsertEG(EarthGunnery* passed_EG)
+{
+	if (passed_EG)
+	{
+		ArmyUnit* temp = (ArmyUnit*)passed_EG;
+		EG_priQ.enqueue(passed_EG, temp->GetHealth() + temp->GetPower());
+	}
+}
+
+void EarthArmy::InsertET(EarthTank* passed_ET)
+{
+	ET_Stack.push(passed_ET);
 }
