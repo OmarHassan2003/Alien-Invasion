@@ -1,11 +1,11 @@
 #pragma once
 #include <iostream>
 #include <ctime>
-#include "../EarthGunnery.h"
-#include "../EarthTank.h"
+#include "../EarthArmy/EarthGunnery.h"
+#include "../EarthArmy/EarthTank.h"
 #include "../EarthArmy/EarthSoldier.h"
 #include "../AlienArmy/AlienDrone.h"
-#include "../AlienMonster.h"
+#include "../AlienArmy/AlienMonster.h"
 #include "../AlienArmy/AlienSoldier.h"
 #include "../ArmyUnit.h"
 

@@ -29,7 +29,11 @@ public:
 	void process_ES();
 	void process_ET();
 	void process_EG();
+	void process_AS();
+	void process_AD();
+	void process_AM();
 	void print();
+	//void amcnt();
 };
 
 static void ReadData(unsigned short& n, unsigned short& ES,

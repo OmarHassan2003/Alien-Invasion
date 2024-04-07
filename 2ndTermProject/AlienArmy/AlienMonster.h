@@ -1,6 +1,6 @@
 #pragma once
-#include "ArmyUnit.h"
-#include "AlienArmy/AlienArmy.h"
+#include "../ArmyUnit.h"
+#include "../AlienArmy/AlienArmy.h"
 
 class AlienMonster :public ArmyUnit
 {

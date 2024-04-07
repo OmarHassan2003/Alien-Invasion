@@ -1,6 +1,6 @@
 #pragma once
-#include "priNode.h"
-#include "Queue/QueueADT.h"
+#include "../priNode.h"
+#include "../Queue/QueueADT.h"
 #include <iostream>
 
 using namespace std;

@@ -28,15 +28,16 @@ int main()
 		}
 		else if (randomNumber < 40)
 		{
-
+				gmain.process_AS();
 		}
 		else if (randomNumber < 50)
 		{
-
+			for (int i = 1; i <= 5; i++)
+				gmain.process_AM();
 		}
 		else if (randomNumber < 60)
 		{
-
+			gmain.process_AD();
 		}
 		gmain.print();
 	}

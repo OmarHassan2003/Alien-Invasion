@@ -1,6 +1,6 @@
 #pragma once
 #include "Queue/Queue.h"
-#include "priQueue.h"
+#include "Queue/priQueue.h"
 #include "Stack/Stack.h"
 #include "Queue/DoubleLinkedQueue.h"
 

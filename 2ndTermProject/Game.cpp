@@ -74,6 +74,45 @@ void Game::process_EG()
 	}
 }
 
+void Game::process_AS()
+{
+	Queue<AlienSoldier*>temp;
+	for (int i = 1; i <= 5; i++)
+	{
+		temp.enqueue(AA.pick_AS());
+	}
+	cout << "The soldiers enqueued to the temp list are : " << '\n';
+	while (!temp.isEmpty())
+	{
+		AlienSoldier* temporary;
+		temp.dequeue(temporary);
+		ArmyUnit* ultra_temp = (ArmyUnit*)temporary;
+		if (ultra_temp)
+		{
+			cout << ultra_temp->GetID() << " , ";
+			AA.InsertAS(temporary);
+		}
+	}
+	cout << endl;
+}
+
+void Game::process_AD()
+{
+	for (int x = 2; x < 8; x++)
+	{
+		AlienDrone* temp = AA.pick_AD(x);
+		if (temp)
+			Killed_List.enqueue(temp);
+	}
+}
+
+void Game::process_AM()
+{
+	AlienMonster* temp;
+	temp = AA.pick_AM();
+	AA.AddInAmArray(temp);
+}
+
 void Game::print()
 {
 	cout << "====================== Earth Army Alive Units ====================" << endl;
@@ -82,6 +121,11 @@ void Game::print()
 	cout << "====================== Alien Army Alive Units ====================" << endl;
 	AA.PrintArmyInfo();
 }
+
+//int Game::amcnt()
+//{
+//	return AA.RETAMCOUNT();
+//}
 
 void ReadData(unsigned short& n, unsigned short& ES, unsigned short& ET, unsigned short& EG, unsigned short& AS, unsigned short& AM, unsigned short& AD, unsigned short& Prop, unsigned short& min_E_Power,
 	unsigned short& min_E_health, unsigned short& min_E_Attack_Capacity, unsigned short& max_E_Power, unsigned short& max_E_health, unsigned short& max_E_Attack_Capacity, unsigned short& min_A_Power,
