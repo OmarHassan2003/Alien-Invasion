@@ -1,6 +1,6 @@
  #pragma once
-#include "ArmyUnit.h"
-#include "EarthArmy/EarthArmy.h"
+#include "../ArmyUnit.h"
+#include "EarthArmy.h"
 
 
 class EarthGunnery : public ArmyUnit

@@ -51,13 +51,13 @@
     <ClCompile Include="AlienArmy\AlienDrone.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="AlienMonster.cpp">
+    <ClCompile Include="AlienArmy\AlienMonster.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="EarthGunnery.cpp">
+    <ClCompile Include="EarthArmy\EarthGunnery.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="EarthTank.cpp">
+    <ClCompile Include="EarthArmy\EarthTank.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Army.cpp">
@@ -113,19 +113,19 @@
     <ClInclude Include="AlienArmy\AlienDrone.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="AlienMonster.h">
+    <ClInclude Include="AlienArmy\AlienMonster.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="EarthGunnery.h">
+    <ClInclude Include="EarthArmy\EarthGunnery.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="EarthTank.h">
+    <ClInclude Include="EarthArmy\EarthTank.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="priNode.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="priQueue.h">
+    <ClInclude Include="Queue\priQueue.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Army.h">

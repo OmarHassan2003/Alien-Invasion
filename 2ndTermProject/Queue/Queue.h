@@ -89,7 +89,7 @@ void Queue<T>::print() const
 	}
 	while (temp != nullptr)
 	{
-		cout << *temp->getItem() << " ";
+		cout << temp->getItem() << " ";
 		temp = temp->getNext();
 	}
 	cout << endl;
