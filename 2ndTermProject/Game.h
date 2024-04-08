@@ -30,6 +30,7 @@ public:
 	void process_ET();
 	void process_EG();
 	void print();
+	~Game();
 };
 
 static void ReadData(unsigned short& n, unsigned short& ES,
