@@ -22,3 +22,10 @@ bool AlienMonster::Attack()
 {
 	return false;
 }
+
+ostream& operator<<(ostream& COUT, AlienMonster& PAssed_AM)
+{
+	COUT << PAssed_AM.GetHealth() << " ";
+	return COUT;
+	// TODO: insert return statement here
+}

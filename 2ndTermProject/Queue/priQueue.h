@@ -80,6 +80,7 @@ public:
 
     void print() const
     {
+        int x;
         cout << count << '\t';
         priNode<T>* temp = head;
         if (!count)
@@ -89,7 +90,7 @@ public:
         }
         while (temp != nullptr)
         {
-            cout << temp;
+            cout << temp->getItem(x) << " ";
             temp = temp->getNext();
         }
         cout << endl;

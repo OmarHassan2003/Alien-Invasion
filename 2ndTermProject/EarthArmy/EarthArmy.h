@@ -1,9 +1,11 @@
 #pragma once
+
 #include "../Army.h"
 
+class EarthSoldier;
 class EarthGunnery;
 class EarthTank;
-class EarthSoldier;
+
 class ArmyUnit;
 class Game;
 
