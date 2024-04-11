@@ -22,7 +22,7 @@ int main()
 		{
 			gmain.process_ET();
 		}
-		else if (randomNumber < 30)1
+		else if (randomNumber < 30)
 		{
 			gmain.process_EG();
 		}
