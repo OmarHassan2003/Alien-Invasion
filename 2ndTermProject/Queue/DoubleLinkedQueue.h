@@ -104,7 +104,7 @@ inline void DoubleLinkedQueue<T>::print() const
 		return;
 	}
 	while (temp != nullptr) {
-		cout << temp << " ";//should be changed to the armyunit details
+		cout << temp->getItem() << " ";//should be changed to the armyunit details
 		temp = temp->getNext();
 	}
 	cout << endl;

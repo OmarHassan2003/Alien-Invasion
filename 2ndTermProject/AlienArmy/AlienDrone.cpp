@@ -21,9 +21,8 @@ bool AlienDrone::Attack()
 	return false;
 }
 
-ostream& operator<<(ostream& COUT, AlienDrone& PAssed_AD)
+ostream& operator<<(ostream& COUT, AlienDrone* PAssed_AD)
 {
-	COUT << PAssed_AD.GetID() << " ";
+	COUT << PAssed_AD->GetID() << " ";
 	return COUT;
-	// TODO: insert return statement here
 }

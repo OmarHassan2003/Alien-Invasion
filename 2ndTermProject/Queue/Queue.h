@@ -1,8 +1,6 @@
 #pragma once
 #include "../Node.h"
 #include "QueueADT.h"
-class AlienSoldier;
-class EarthSoldier;
 /************************************Queue Implementation**************************************/
 template <typename T>
 class Queue :public QueueADT<T>

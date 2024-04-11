@@ -1,6 +1,6 @@
 #pragma once
 #include "../Army.h"
-
+#include "../RandomGenerator/RandomGenerator.h"
 
 class AlienSoldier;
 class AlienDrone;
