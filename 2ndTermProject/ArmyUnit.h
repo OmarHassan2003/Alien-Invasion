@@ -42,7 +42,7 @@ public:
 	virtual Unit GetUnitType(); // Maybe causes a logical error
 
 	void SetHealth(int h);
-	friend ostream& operator<<(ostream& COUT, ArmyUnit& Passed_AU);
+	friend ostream& operator<<(ostream& COUT, ArmyUnit* Passed_AU);
 	void PrintUnitInfo();
 };
 
