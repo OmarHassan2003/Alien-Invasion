@@ -43,6 +43,11 @@ unsigned short Game::Get_And_Inc_Tj()
 	return Tj_value;
 }
 
+unsigned short Game::Get_Tj()
+{
+	return Tj_value;
+}
+
 void Game::AddInKilledList(ArmyUnit* passed_AU)
 {
 	Killed_List.enqueue(passed_AU);

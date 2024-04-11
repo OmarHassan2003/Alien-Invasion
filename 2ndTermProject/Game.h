@@ -25,6 +25,7 @@ public:
 	void Generate_Earth_Army();
 	void Generate_Alien_Army();
 	unsigned short Get_And_Inc_Tj();
+	unsigned short Get_Tj();
 	void AddInKilledList(ArmyUnit* passed_AU);
 	void process_ES();
 	void process_ET();
