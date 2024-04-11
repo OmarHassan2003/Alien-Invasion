@@ -13,7 +13,7 @@ public:
 	bool push(const T& newEntry);
 	bool pop(T& TopEntry);
 	bool peek(T& TopEntry) const;
-
+	int GetCount() const;
 	void print() const;
 	~Stack();
 };
@@ -54,8 +54,11 @@ bool Stack<T>::push(const T& newEntry)
 template<typename T>
 bool Stack<T>::pop(T& TopEntry)
 {
-	if (!Top) 
+	if (!Top)
+	{
+		TopEntry = NULL;
 		return false;
+	}
 	else
 	{
 		Node<T>* temp = Top;
@@ -79,17 +82,19 @@ bool Stack<T>::peek(T& TopEntry) const
 template<typename T>
 void Stack<T>::print() const
 {
-	cout << count << '\t';
 	Node<T>* temp = Top;
 	if (!count) {
-		cout << "NO ELEMENTS !" << endl;
+		cout << "NO ELEMENTS";
 		return;
 	}
 	while (temp != nullptr) {
-		cout << temp->getItem() << " ";//should be changed to the armyunit details
+		if (!temp->getNext()) cout << temp->getItem();
+		else
+		{
+			cout << temp->getItem() << ",";
+		}
 		temp = temp->getNext();
 	}
-	cout << endl;
 }
 
 template<typename T>
@@ -103,4 +108,10 @@ Stack<T>::~Stack()
 		temp = Top;
 	}
 	count = 0;
+}
+
+template<typename T>
+int Stack<T>::GetCount() const
+{
+	return count;
 }

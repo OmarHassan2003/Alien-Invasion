@@ -22,6 +22,9 @@ bool EarthSoldier::Attack()
 
 ostream& operator<<(ostream& COUT, EarthSoldier* Passed_AU)
 {
-	COUT << Passed_AU->GetID() << " ";
-	return COUT;
+	if (Passed_AU != NULL)
+	{
+		COUT << Passed_AU->GetID() << " ";
+		return COUT;
+	}
 }

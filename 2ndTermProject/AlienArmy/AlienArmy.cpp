@@ -23,8 +23,21 @@ bool AlienArmy::AddUnit(ArmyUnit* passed_AU)
 
 void AlienArmy::PrintArmyInfo()
 {
+	cout << AS_Queue.GetCount() << " AS [";
 	AS_Queue.print();
+	cout << "]" << endl;
+	cout << RETAMCOUNT() << " AM [";
+	Print_AM_Array(); 
+	cout << "]" << endl << AD_DQueue.GetCount() << " AD [";
 	AD_DQueue.print();
+	cout << "]";
+	//cout << ES_Queue.GetCount() << " ES [";
+	//ES_Queue.print();
+	//cout << "]" << endl << ET_Stack.GetCount() << " ET [";
+	//ET_Stack.print();
+	//cout << "]" << endl << EG_priQ.GetCount() << " EG [";
+	//EG_priQ.print();
+	//cout << "]" << endl;
 }
 
 AlienSoldier* AlienArmy::pick_AS()
@@ -35,17 +48,26 @@ AlienSoldier* AlienArmy::pick_AS()
 	else return NULL;
 }
 
+AlienSoldier* AlienArmy::Remove_AS()
+{
+	AlienSoldier* tempPtr;
+	if (AS_Queue.dequeue(tempPtr))
+		return tempPtr;
+	else return NULL;
+}
+
 AlienMonster* AlienArmy::pick_AM()
 {
 	AlienMonster* tempPtr;
 	tempPtr = randAM();
-	if(tempPtr)
+	if (tempPtr)
 		return tempPtr;
+	else return NULL;
 }
 
 AlienDrone* AlienArmy::pick_AD(int x)
 {
-	AlienDrone* temp;
+	AlienDrone* temp = NULL;
 	if (x % 2 == 0)
 		AD_DQueue.dequeue(temp);
 	else AD_DQueue.GetRear(temp);
@@ -96,13 +118,30 @@ AlienMonster* AlienArmy::randAM()
 	RandomGenerator* randdo = new RandomGenerator();
 	int y = randdo->RandGen(0, AM_Count);
 	AlienMonster* temp = AM[y];
-	AM[y] = AM[AM_Count];
-	AM[AM_Count] = NULL;
+	AM[y] = AM[AM_Count - 1];
+	AM[AM_Count - 1] = NULL;
 	AM_Count--;
 	return temp;
 }
 
-//int AlienArmy::RETAMCOUNT()
-//{
-//	return AM_Count;
-//}
+int AlienArmy::RETAMCOUNT()
+{
+	return AM_Count;
+}
+
+void AlienArmy::Print_AM_Array()
+{
+	if (!AM_Count)
+	{
+		cout << "NO ELEMENTS";
+		return;
+	}
+	for (int i = 0; i < AM_Count; i++)
+	{
+		if (AM_Count)
+		{
+			if (i == AM_Count - 1) cout << AM[i];
+			else cout << AM[i] << ",";
+		}
+	}
+}

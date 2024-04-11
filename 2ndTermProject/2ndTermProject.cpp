@@ -22,7 +22,7 @@ int main()
 		{
 			gmain.process_ET();
 		}
-		else if (randomNumber < 30)
+		else if (randomNumber < 30)1
 		{
 			gmain.process_EG();
 		}
@@ -40,6 +40,8 @@ int main()
 			gmain.process_AD();
 		}
 		gmain.print();
+		//cout << "Press Any key to move to the next timestep" << endl;
+		//getchar();
 	}
 }
 

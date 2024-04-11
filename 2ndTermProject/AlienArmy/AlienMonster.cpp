@@ -25,6 +25,9 @@ bool AlienMonster::Attack()
 
 ostream& operator<<(ostream& COUT, AlienMonster* PAssed_AM)
 {
-	COUT << PAssed_AM->GetHealth() << " ";
-	return COUT;
+	if (PAssed_AM)
+	{
+		COUT << PAssed_AM->GetID() << " ";
+		return COUT;
+	}
 }

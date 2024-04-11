@@ -38,9 +38,13 @@ bool EarthArmy::AddUnit(ArmyUnit* passed_AU)
 
 void EarthArmy::PrintArmyInfo()
 {
-	EG_priQ.print();
+	cout << ES_Queue.GetCount() << " ES [";
 	ES_Queue.print();
+	cout << "]" << endl << ET_Stack.GetCount() << " ET [";
 	ET_Stack.print();
+	cout << "]" << endl << EG_priQ.GetCount() << " EG [";
+	EG_priQ.print();
+	cout << "]";
 }
 
 EarthSoldier* EarthArmy::pick_ES()
