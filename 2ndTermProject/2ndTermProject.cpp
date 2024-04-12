@@ -41,10 +41,10 @@ int main()
 			gmain.process_AD();
 		}
 		gmain.print();
-		cout << "Press Any key to move to the next timestep" << endl;
-		cout << "===============================================================================================================" << endl;
-		std::cin.ignore();
-		std::cin.get();
+		//cout << "Press Any key to move to the next timestep" << endl;
+		//cout << "===============================================================================================================" << endl;
+		//std::cin.ignore();
+		//std::cin.get();
 	}
 }
 

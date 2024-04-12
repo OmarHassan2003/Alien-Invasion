@@ -15,7 +15,7 @@ ArmyUnit* RandomGenerator::CreateUnit(unsigned short& unit1, unsigned short& uni
 	unsigned short& max_Power, unsigned short& max_health, unsigned short& max_Attack_Capacity,
 	unsigned short Tj, Game* pGame, char u)
 {
-	ArmyUnit* pArmyUnit;
+	ArmyUnit* pArmyUnit = nullptr;
 	if (u == 'E')
 	{
 		static unsigned short EarthID = 1;

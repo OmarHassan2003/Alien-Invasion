@@ -31,9 +31,11 @@ void Game::Generate_Alien_Army()
 	if (x <= Prop)
 	{
 		for (unsigned short i = 0; i < n; i++)
+		{
 			AU = randgenn->CreateUnit(AS, AM, AD, min_A_health, min_A_Attack_Capacity, min_A_Power, max_A_Power,
 				max_E_health, max_E_Attack_Capacity, Tj_value, this, 'A');
-		AA.AddUnit(AU);
+			AA.AddUnit(AU);
+		}
 	}
 }
 
@@ -148,10 +150,10 @@ void Game::print()
 	cout << "===============================================================================================================" << endl;
 }
 
-//int Game::amcnt()
-//{
-//	return AA.RETAMCOUNT();
-//}
+Game::~Game()
+{
+	delete randgenn;
+}
 
 void ReadData(unsigned short& n, unsigned short& ES, unsigned short& ET, unsigned short& EG, unsigned short& AS, unsigned short& AM, unsigned short& AD, unsigned short& Prop, unsigned short& min_E_Power,
 	unsigned short& min_E_health, unsigned short& min_E_Attack_Capacity, unsigned short& max_E_Power, unsigned short& max_E_health, unsigned short& max_E_Attack_Capacity, unsigned short& min_A_Power,

@@ -11,7 +11,10 @@ void AlienSoldier::AddEarthUnitToList(EarthArmy* passed_EA)
 
 void AlienSoldier::AddAlienUnitToList(AlienArmy* passed_AA)
 {
-	passed_AA->AddInQueue(this);
+	if(passed_AA)
+	{
+		passed_AA->AddInQueue(this);
+	}
 }
 
 bool AlienSoldier::Attack()
