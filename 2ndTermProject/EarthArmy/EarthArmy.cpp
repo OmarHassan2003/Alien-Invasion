@@ -21,7 +21,10 @@ void EarthArmy::AddInStack(EarthTank* passed_AU)
 
 void EarthArmy::AddInQueue(EarthSoldier* passed_AU)
 {
-	ES_Queue.enqueue(passed_AU);
+	if(passed_AU)
+	{
+		ES_Queue.enqueue(passed_AU);
+	}
 }
 
 void EarthArmy::AddInPriQueue(EarthGunnery* passed_AU)
@@ -32,8 +35,12 @@ void EarthArmy::AddInPriQueue(EarthGunnery* passed_AU)
 
 bool EarthArmy::AddUnit(ArmyUnit* passed_AU)
 {
-	passed_AU->AddEarthUnitToList(this);
-	return true;
+	if(passed_AU)
+	{
+		passed_AU->AddEarthUnitToList(this);
+		return true;
+	}
+	return false;
 }
 
 void EarthArmy::PrintArmyInfo()
@@ -73,8 +80,10 @@ EarthTank* EarthArmy::pick_ET()
 
 void EarthArmy::InsertES(EarthSoldier* passed_ES)
 {
-	
-	ES_Queue.enqueue(passed_ES);
+	if(passed_ES)
+	{
+		ES_Queue.enqueue(passed_ES);
+	}
 }
 
 void EarthArmy::InsertEG(EarthGunnery* passed_EG)

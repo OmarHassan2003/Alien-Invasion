@@ -17,8 +17,12 @@ bool AlienArmy::Attack()
 
 bool AlienArmy::AddUnit(ArmyUnit* passed_AU)
 {
-	passed_AU->AddAlienUnitToList(this);
-	return true;
+	if (passed_AU)
+	{
+		passed_AU->AddAlienUnitToList(this);
+		return true;
+	}
+	return false;
 }
 
 void AlienArmy::PrintArmyInfo()
@@ -89,9 +93,12 @@ void AlienArmy::InsertAM(AlienMonster* passed_AM)
 	AM[AM_Count++] = passed_AM;
 }
 
-void AlienArmy::AddInQueue(AlienSoldier* passed_AU)
+void AlienArmy::AddInQueue(AlienSoldier* passed_AU) 
 {
-	AS_Queue.enqueue(passed_AU);
+	if (passed_AU)
+	{
+		AS_Queue.enqueue(passed_AU);
+	}
 }
 
 void AlienArmy::AddInDoubleLinkedQueueQueue(AlienDrone* passed_AU)

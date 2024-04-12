@@ -31,9 +31,11 @@ void Game::Generate_Alien_Army()
 	if (x <= Prop)
 	{
 		for (unsigned short i = 0; i < n; i++)
+		{
 			AU = randgenn->CreateUnit(AS, AM, AD, min_A_health, min_A_Attack_Capacity, min_A_Power, max_A_Power,
 				max_E_health, max_E_Attack_Capacity, Tj_value, this, 'A');
-		AA.AddUnit(AU);
+			AA.AddUnit(AU);
+		}
 	}
 }
 

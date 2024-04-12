@@ -7,7 +7,10 @@ EarthSoldier::EarthSoldier(Game* p, int HP, int pow, int ID_, int cap, int _Tj, 
 
 void EarthSoldier::AddEarthUnitToList(EarthArmy* passed_EA)
 {
-	passed_EA->AddInQueue(this);
+	if(passed_EA)
+	{
+		passed_EA->AddInQueue(this);
+	}
 }
 
 void EarthSoldier::AddAlienUnitToList(AlienArmy* passed_AA)
