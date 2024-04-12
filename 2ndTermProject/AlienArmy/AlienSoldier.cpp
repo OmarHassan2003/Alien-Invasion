@@ -19,8 +19,8 @@ bool AlienSoldier::Attack()
 	return false;
 }
 
-ostream& operator<<(ostream& COUT, AlienSoldier& Passed_AU)
+ostream& operator<<(ostream& COUT, AlienSoldier* Passed_AU)
 {
-	COUT << Passed_AU.GetID() << " ";
+	COUT << Passed_AU->GetID() << " ";
 	return COUT;
 }

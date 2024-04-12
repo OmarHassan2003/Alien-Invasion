@@ -1,7 +1,7 @@
- #pragma once
+#pragma once
+
 #include "../ArmyUnit.h"
 #include "EarthArmy.h"
-
 
 class EarthGunnery : public ArmyUnit
 {
@@ -10,7 +10,7 @@ public:
 	virtual void AddEarthUnitToList(EarthArmy* passed_EA);
 	virtual void AddAlienUnitToList(AlienArmy* passed_AA);
 	virtual bool Attack();
-	friend ostream& operator<<(ostream& COUT, EarthGunnery& Passed_AU);
-
+	friend ostream& operator<<(ostream& COUT, EarthGunnery* Passed_AU);
 };
+
 

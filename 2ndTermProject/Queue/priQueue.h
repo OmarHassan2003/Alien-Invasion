@@ -80,18 +80,26 @@ public:
 
     void print() const
     {
-        cout << count << '\t';
+        int x;
         priNode<T>* temp = head;
         if (!count)
         {
-            cout << "NO ELEMENTS !" << endl;
+            cout << "NO ELEMENTS";
             return;
         }
         while (temp != nullptr)
         {
-            cout << temp;
+            if (!temp->getNext()) cout << temp->getItem(x);
+            else 
+            {
+                cout << temp->getItem(x) << ',';
+            }
             temp = temp->getNext();
         }
-        cout << endl;
+    }
+
+    int GetCount() const
+    {
+        return count;
     }
 };

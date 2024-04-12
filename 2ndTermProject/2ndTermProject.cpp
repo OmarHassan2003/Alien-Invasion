@@ -11,6 +11,7 @@ int main()
 	Game gmain;
 	while (gmain.Get_And_Inc_Tj() <= 50)
 	{
+		cout << "Current Timestep " << gmain.Get_Tj() << endl;
 		gmain.Generate_Earth_Army();
 		gmain.Generate_Alien_Army();
 		unsigned short randomNumber = randGen.RandGen(0, 100);
@@ -40,6 +41,10 @@ int main()
 			gmain.process_AD();
 		}
 		gmain.print();
+		cout << "Press Any key to move to the next timestep" << endl;
+		cout << "===============================================================================================================" << endl;
+		std::cin.ignore();
+		std::cin.get();
 	}
 }
 

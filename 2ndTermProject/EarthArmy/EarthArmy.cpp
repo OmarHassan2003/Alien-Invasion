@@ -1,34 +1,18 @@
 #include "EarthArmy.h"
 
+#include "EarthSoldier.h"
+#include "EarthGunnery.h"
+#include "EarthTank.h"
+
 EarthArmy::EarthArmy()
 {
+	
 }
 
 bool EarthArmy::Attack()
 {
 	return false;
 }
-
-/*bool EarthArmy::AddUnit(Game* pG, ArmyUnit* AU)
-{
-	if (AU->GetUnitType()==ArmyUnit::ES)
-	{
-		ES.enqueue(dynamic_cast<EarthSoldier*>(AU));
-		return true;
-	}
-	if (AU->GetUnitType() == ArmyUnit::ET)
-	{
-		ET.push(dynamic_cast<EarthTank*>(AU));
-		return true;
-	}
-	if (AU->GetUnitType() == ArmyUnit::EG)
-	{
-		int pri = AU->GetHealth() + AU->GetPower();
-		EG.enqueue(dynamic_cast<EarthGunnery*>(AU), pri);
-		return true;
-	}
-	return false;
-}*/
 
 void EarthArmy::AddInStack(EarthTank* passed_AU)
 {
@@ -54,9 +38,13 @@ bool EarthArmy::AddUnit(ArmyUnit* passed_AU)
 
 void EarthArmy::PrintArmyInfo()
 {
-	//EG_priQ.print();
+	cout << ES_Queue.GetCount() << " ES [";
 	ES_Queue.print();
-	//ET_Stack.print();
+	cout << "]" << endl << ET_Stack.GetCount() << " ET [";
+	ET_Stack.print();
+	cout << "]" << endl << EG_priQ.GetCount() << " EG [";
+	EG_priQ.print();
+	cout << "]";
 }
 
 EarthSoldier* EarthArmy::pick_ES()
@@ -85,6 +73,7 @@ EarthTank* EarthArmy::pick_ET()
 
 void EarthArmy::InsertES(EarthSoldier* passed_ES)
 {
+	
 	ES_Queue.enqueue(passed_ES);
 }
 

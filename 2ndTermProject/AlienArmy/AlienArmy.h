@@ -1,9 +1,11 @@
 #pragma once
 #include "../Army.h"
+#include "../RandomGenerator/RandomGenerator.h"
 
 class AlienSoldier;
 class AlienDrone;
 class AlienMonster;
+
 class ArmyUnit;
 class Game;
 
@@ -22,6 +24,7 @@ public:
 	AlienSoldier* pick_AS();
 	AlienMonster* pick_AM();
 	AlienDrone* pick_AD(int x);
+	AlienSoldier* Remove_AS();
 	/****************insert units from lists********************/
 	void InsertAS(AlienSoldier* passed_AS);
 	void InsertAD(AlienDrone* passed_AD);
@@ -30,8 +33,8 @@ public:
 	void AddInQueue(AlienSoldier* passed_AU);
 	void AddInDoubleLinkedQueueQueue(AlienDrone* passed_AU);
 	void AddInAmArray(AlienMonster* passed_AU);
-	//int AM_Count();
 	AlienMonster* randAM();
-	//int RETAMCOUNT();
+	int RETAMCOUNT();
+	void Print_AM_Array();
 };
 

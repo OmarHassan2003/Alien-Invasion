@@ -1,5 +1,6 @@
 #include "EarthGunnery.h"
 
+
 EarthGunnery::EarthGunnery(Game* p, int HP, int pow, int ID_, int cap, int Tj, Unit U)
 	:ArmyUnit(p, HP, pow, ID_, cap, Tj, U)
 {
@@ -20,10 +21,8 @@ bool EarthGunnery::Attack()
 	return false;
 }
 
-ostream& operator<<(ostream& COUT, EarthGunnery& Passed_AU)
+ostream& operator<<(ostream& COUT, EarthGunnery* Passed_AU)
 {
-	{
-		COUT << Passed_AU.GetID() << " ";
-		return COUT;
-	}
+	COUT << Passed_AU->GetID() << " ";
+	return COUT;
 }

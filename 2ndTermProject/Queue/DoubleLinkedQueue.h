@@ -16,6 +16,7 @@ public:
 	bool peek(T& FrontEntry) const;
 	bool GetRear(T& RearEntry) const;
 	void print() const;
+	int GetCount() const;
 	~DoubleLinkedQueue();
 };
 
@@ -53,8 +54,10 @@ template<class T>
 bool DoubleLinkedQueue<T>::dequeue(T& FrontEntry)
 {
 	if (!count)
+	{
 		return false;
-
+		FrontEntry = NULL;
+	}
 	DoubleNode<T>* Del = Front;
 	FrontEntry = Front->getItem();
 	Front = Front->getNext();
@@ -86,7 +89,10 @@ template<class T>
 inline bool DoubleLinkedQueue<T>::GetRear(T& RearEntry) const
 {
 	if (!count)
+	{
 		return false;
+		RearEntry = NULL;
+	}
 	else
 	{
 		RearEntry = Rear->getItem();
@@ -97,17 +103,26 @@ inline bool DoubleLinkedQueue<T>::GetRear(T& RearEntry) const
 template<class T>
 inline void DoubleLinkedQueue<T>::print() const
 {
-	cout << count << '\t';
 	DoubleNode<T>* temp = Front;
 	if (!count) {
-		cout << "NO ELEMENTS !" << endl;
+		cout << "NO ELEMENTS" ;
 		return;
 	}
 	while (temp != nullptr) {
-		cout << temp << " ";//should be changed to the armyunit details
+		if (!temp->getNext()) cout << temp->getItem();
+		else
+		{
+			cout << temp->getItem() << ",";
+		}
 		temp = temp->getNext();
 	}
-	cout << endl;
+
+}
+
+template<class T>
+inline int DoubleLinkedQueue<T>::GetCount() const
+{
+	return count;
 }
 
 template<class T>

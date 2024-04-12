@@ -22,3 +22,12 @@ bool AlienMonster::Attack()
 {
 	return false;
 }
+
+ostream& operator<<(ostream& COUT, AlienMonster* PAssed_AM)
+{
+	if (PAssed_AM)
+	{
+		COUT << PAssed_AM->GetID() << " ";
+		return COUT;
+	}
+}

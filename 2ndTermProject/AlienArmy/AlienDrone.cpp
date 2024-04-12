@@ -20,3 +20,9 @@ bool AlienDrone::Attack()
 {
 	return false;
 }
+
+ostream& operator<<(ostream& COUT, AlienDrone* PAssed_AD)
+{
+	COUT << PAssed_AD->GetID() << " ";
+	return COUT;
+}

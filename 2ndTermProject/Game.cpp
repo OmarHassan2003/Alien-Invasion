@@ -43,6 +43,11 @@ unsigned short Game::Get_And_Inc_Tj()
 	return Tj_value;
 }
 
+unsigned short Game::Get_Tj()
+{
+	return Tj_value;
+}
+
 void Game::AddInKilledList(ArmyUnit* passed_AU)
 {
 	Killed_List.enqueue(passed_AU);
@@ -59,9 +64,12 @@ void Game::process_ET()
 {
 	EarthTank* temp;
 	temp = EA.pick_ET();
-	Killed_List.enqueue(temp);
+	if (temp)
+	{
+		ArmyUnit* doubletemp = (ArmyUnit*)temp;
+		Killed_List.enqueue(temp);
+	}
 }
-
 void Game::process_EG()
 {
 	EarthGunnery* temp;
@@ -79,7 +87,13 @@ void Game::process_AS()
 	Queue<AlienSoldier*>temp;
 	for (int i = 1; i <= 5; i++)
 	{
-		temp.enqueue(AA.pick_AS());
+		AlienSoldier* dec = AA.Remove_AS();
+		if (dec) 
+		{
+			ArmyUnit* doubletemp = (ArmyUnit*)dec;
+			doubletemp->SetHealth(doubletemp->GetHealth() / 2);
+			temp.enqueue(dec);
+		}
 	}
 	cout << "The soldiers enqueued to the temp list are : " << '\n';
 	while (!temp.isEmpty())
@@ -100,27 +114,38 @@ void Game::process_AD()
 {
 	for (int x = 2; x < 8; x++)
 	{
-		AlienDrone* temp = AA.pick_AD(x);
+		AlienDrone* temp = NULL;
+		temp = AA.pick_AD(x);
 		if (temp)
 			Killed_List.enqueue(temp);
+		else break;
 	}
 }
 
 void Game::process_AM()
 {
-	AlienMonster* temp;
-	temp = AA.pick_AM();
-	AA.AddInAmArray(temp);
+	AlienMonster* temp = NULL;
+	if (AA.RETAMCOUNT() != 0)
+	{
+		temp = AA.pick_AM();
+		if (temp)
+			AA.AddInAmArray(temp);
+	}
 }
 
 void Game::print()
 {
-	cout << "====================== Earth Army Alive Units ====================" << endl;
+	cout << "============================================ Earth Army Alive Units ==========================================" << endl;
 	EA.PrintArmyInfo();
 	cout << endl;
-	cout << "====================== Alien Army Alive Units ====================" << endl;
+	cout << "============================================ Alien Army Alive Units ==========================================" << endl;
 	AA.PrintArmyInfo();
 	cout << endl;
+	cout << "============================================ Killed/Destructed Units ==========================================" << endl;
+	cout << Killed_List.GetCount() << " units [";
+	Killed_List.print();
+	cout << "]" << endl;
+	cout << "===============================================================================================================" << endl;
 }
 
 Game::~Game()
