@@ -20,7 +20,7 @@ public:
 	bool AddUnit(ArmyUnit* passed_AU);
 	void PrintArmyInfo();
 	/****************pick units from lists********************/
-	EarthSoldier* pick_ES();
+	bool pick_ES(EarthSoldier*& EPtr);
 	EarthGunnery* pick_EG();
 	EarthTank* pick_ET();
 	/****************insert units from lists********************/

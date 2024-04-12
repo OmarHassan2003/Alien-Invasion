@@ -56,8 +56,8 @@ void Game::AddInKilledList(ArmyUnit* passed_AU)
 void Game::process_ES()
 {
 	EarthSoldier* temp;
-	temp = EA.pick_ES();
-	EA.InsertES(temp);
+	if(EA.pick_ES(temp))
+		EA.InsertES(temp);
 }
 
 void Game::process_ET()

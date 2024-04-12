@@ -47,11 +47,12 @@ void EarthArmy::PrintArmyInfo()
 	cout << "]";
 }
 
-EarthSoldier* EarthArmy::pick_ES()
+bool EarthArmy::pick_ES(EarthSoldier*& EPtr)
 {
-	EarthSoldier* temp_ptr;
-	ES_Queue.dequeue(temp_ptr);
-	return temp_ptr;
+	if (ES_Queue.dequeue(EPtr))
+		return true;
+	else
+		return false;
 }
 
 EarthGunnery* EarthArmy::pick_EG()
