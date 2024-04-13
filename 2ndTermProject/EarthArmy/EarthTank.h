@@ -5,7 +5,7 @@
 class EarthTank:public ArmyUnit
 {
 public:
-	EarthTank(Game* p, int HP, int pow, int ID_, int cap, int _Tj, Unit U = ArmyUnit::ET);
+	EarthTank(Game* p, int HP, int pow, int ID_, int cap, int _Tj);
 	virtual void AddEarthUnitToList(EarthArmy* passed_EA);
 	virtual void AddAlienUnitToList(AlienArmy* passed_AA);
 	friend ostream& operator<<(ostream& COUT, EarthTank* Passed_AU);

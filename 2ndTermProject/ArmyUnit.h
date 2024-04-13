@@ -9,10 +9,6 @@ using namespace std;
 
 class ArmyUnit
 {
-protected:
-	enum Unit {
-		ES, EG, ET, AS, AM, AD
-	};
 private:
 	Game* pGame;
 	int Health;
@@ -20,9 +16,8 @@ private:
 	int ID;
 	int AttackCap;
 	int Tj, Ta, Td;
-	Unit Type;
 public:
-	ArmyUnit(Game* p, int HP, int pow, int ID_, int cap, int Tj, Unit U);
+	ArmyUnit(Game* p, int HP, int pow, int ID_, int cap, int Tj);
 
 	virtual bool Attack() = 0;
 
@@ -39,7 +34,6 @@ public:
 	virtual int GetPower();
 	virtual int GetID();
 	virtual int GetAttackCap();
-	virtual Unit GetUnitType(); // Maybe causes a logical error
 
 	void SetHealth(int h);
 	friend ostream& operator<<(ostream& COUT, ArmyUnit* Passed_AU);

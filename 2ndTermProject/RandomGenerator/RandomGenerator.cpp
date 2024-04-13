@@ -33,7 +33,7 @@ ArmyUnit* RandomGenerator::CreateUnit(unsigned short& unit1, unsigned short& uni
 	}
 	else
 	{
-		static unsigned short AlienID = 2000;
+		static unsigned short AlienID = 2001;
 		unsigned short x = RandGen(1, 100);
 		unsigned short health = RandGen(min_health, max_health);
 		unsigned short power = RandGen(min_Power, max_Power);

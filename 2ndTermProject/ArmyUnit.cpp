@@ -1,14 +1,13 @@
 #include "ArmyUnit.h"
 
 
-ArmyUnit::ArmyUnit(Game* p, int HP, int pow, int ID_, int cap, int Tj, Unit U)
+ArmyUnit::ArmyUnit(Game* p, int HP, int pow, int ID_, int cap, int Tj)
 {
 	pGame = p;
 	Health = HP;
 	Power = pow;
 	ID = ID_;
 	AttackCap = cap;
-	Type = U;
 	Tj = Tj;
 }
 
@@ -55,11 +54,6 @@ int ArmyUnit::GetID() // delete if just needed in printing.
 int ArmyUnit::GetAttackCap()
 {
 	return AttackCap;
-}
-
-ArmyUnit::Unit ArmyUnit::GetUnitType()
-{
-	return Type;
 }
 
 void ArmyUnit::SetHealth(int h)

@@ -92,7 +92,7 @@ void EarthArmy::InsertEG(EarthGunnery* passed_EG)
 	if (passed_EG)
 	{
 		ArmyUnit* temp = (ArmyUnit*)passed_EG;
-		//EG_priQ.enqueue(passed_EG, temp->GetHealth() + temp->GetPower());
+		EG_priQ.enqueue(passed_EG, temp->GetHealth() + temp->GetPower());
 	}
 }
 

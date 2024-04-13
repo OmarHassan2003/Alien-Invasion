@@ -4,7 +4,6 @@
 #include "Game.h"
 
 
-
 int main()
 {
 	RandomGenerator randGen;
@@ -41,10 +40,11 @@ int main()
 			gmain.process_AD();
 		}
 		gmain.print();
-		//cout << "Press Any key to move to the next timestep" << endl;
-		//cout << "===============================================================================================================" << endl;
-		//std::cin.ignore();
-		//std::cin.get();
+		(gmain.Get_Tj() < 50) ? cout << "Press Any key to move to the next timestep" << endl : 
+			cout << "Application has been ended" << endl;
+		cout << "===============================================================================================================" << endl;
+		cout << endl;
+		std::cin.get();
 	}
 }
 
