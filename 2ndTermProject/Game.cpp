@@ -65,7 +65,7 @@ void Game::process_ES()
 void Game::process_ET()
 {
 	EarthTank* temp;
-	temp = EA.pick_ET();
+	EA.pick_ET(temp);
 	if (temp)
 	{
 		ArmyUnit* doubletemp = (ArmyUnit*)temp;
@@ -75,11 +75,11 @@ void Game::process_ET()
 void Game::process_EG()
 {
 	EarthGunnery* temp;
-	temp = EA.pick_EG();
+	EA.pick_EG(temp);
 	if (temp)
 	{
 		ArmyUnit* ultra_temp = (ArmyUnit*)temp;
-		ultra_temp->SetHealth(temp->GetHealth() / 2);
+		//ultra_temp->SetHealth(temp->GetHealth() / 2);
 		EA.InsertEG(temp);
 	}
 }
@@ -140,7 +140,7 @@ void Game::print()
 	cout << "============================================ Earth Army Alive Units ==========================================" << endl;
 	EA.PrintArmyInfo();
 	cout << endl;
-	cout << "============================================ Alien Army Alive Units ==========================================" << endl;
+	/*cout << "============================================ Alien Army Alive Units ==========================================" << endl;
 	AA.PrintArmyInfo();
 	cout << endl;
 	cout << "============================================ Killed/Destructed Units ==========================================" << endl;
@@ -148,6 +148,7 @@ void Game::print()
 	Killed_List.print();
 	cout << "]" << endl;
 	cout << "===============================================================================================================" << endl;
+*/
 }
 
 Game::~Game()

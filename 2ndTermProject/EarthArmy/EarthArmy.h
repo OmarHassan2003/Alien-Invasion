@@ -21,8 +21,8 @@ public:
 	void PrintArmyInfo();
 	/****************pick units from lists********************/
 	bool pick_ES(EarthSoldier*& EPtr);
-	EarthGunnery* pick_EG();
-	EarthTank* pick_ET();
+	bool pick_EG(EarthGunnery*& EPtr);
+	bool pick_ET(EarthTank*& EPtr);
 	/****************insert units from lists********************/
 	void InsertES(EarthSoldier* passed_ES);
 	void InsertEG(EarthGunnery* passed_EG);

@@ -62,21 +62,21 @@ bool EarthArmy::pick_ES(EarthSoldier*& EPtr)
 		return false;
 }
 
-EarthGunnery* EarthArmy::pick_EG()
+bool EarthArmy::pick_EG(EarthGunnery*& EPtr)
 {
-	EarthGunnery* temp_ptr;
 	int x = 0;
-	if (EG_priQ.dequeue(temp_ptr, x))
-		return temp_ptr;
+	if (EG_priQ.dequeue(EPtr, x))
+		return true;
 	else
-		return NULL;
+		return false;
 }
 
-EarthTank* EarthArmy::pick_ET()
+bool EarthArmy::pick_ET(EarthTank*& Eptr)
 {
-	EarthTank* temp_ptr;
-	ET_Stack.pop(temp_ptr);
-	return temp_ptr;
+	if (ET_Stack.pop(Eptr))
+		return true;
+	else
+		return false;
 }
 
 void EarthArmy::InsertES(EarthSoldier* passed_ES)
@@ -92,7 +92,7 @@ void EarthArmy::InsertEG(EarthGunnery* passed_EG)
 	if (passed_EG)
 	{
 		ArmyUnit* temp = (ArmyUnit*)passed_EG;
-		EG_priQ.enqueue(passed_EG, temp->GetHealth() + temp->GetPower());
+		//EG_priQ.enqueue(passed_EG, temp->GetHealth() + temp->GetPower());
 	}
 }
 
