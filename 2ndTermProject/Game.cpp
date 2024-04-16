@@ -134,6 +134,50 @@ void Game::process_AM()
 	}
 }
 
+void Game::Attack()
+{
+	int x = 5;
+	EarthGunnery* pEG;
+	EA.pick_EG(pEG);
+	AlienDrone* pAD0 = AA.pick_AD(x), * pAD1 = AA.pick_Rear_AD(x);
+	AlienMonster* pAM = AA.pick_AM();
+	if (pEG)
+	{
+		pEG->Attack(pAM);
+		pEG->Attack(pAD0, pAD1);
+		if (pAM->GetHealth() <= 0)
+			AddInKilledList(pAM);
+		if (pAD0->GetHealth() <= 0)
+			AddInKilledList(pAD0);
+		if (pAD1->GetHealth() <= 0)
+			AddInKilledList(pAD1);
+	}
+	if (pAD0 && pAD1)
+	{
+		pAD0->Attack(pEG);
+		pAD1->Attack(pEG);
+		if (pEG->GetHealth() <= 0)
+			AddInKilledList(pEG);
+	}
+
+}
+
+bool Game::CheckWhoWins()
+{
+	if (EA.isCompromised())
+	{
+		cout << "Alien Army has won the game" << endl;
+		return true;
+	}
+	else if (AA.isComromised())
+	{
+		cout << "Earth Army has won the game" << endl;
+		return true;
+	}
+	else
+		return false;
+}
+
 void Game::print()
 {
 	cout << "============================================ Earth Army Alive Units ==========================================" << endl;

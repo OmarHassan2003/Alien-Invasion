@@ -17,8 +17,7 @@ void EarthSoldier::AddAlienUnitToList(AlienArmy* passed_AA)
 {
 }
 
-
-bool EarthSoldier::Attack()
+bool EarthSoldier::Attack(ArmyUnit* AU0, ArmyUnit* AU1)
 {
 	return false;
 }

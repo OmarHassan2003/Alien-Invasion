@@ -25,6 +25,7 @@ public:
 	AlienMonster* pick_AM();
 	AlienDrone* pick_AD(int x);
 	AlienSoldier* Remove_AS();
+	AlienDrone* pick_Rear_AD(int x);
 	/****************insert units from lists********************/
 	void InsertAS(AlienSoldier* passed_AS);
 	void InsertAD(AlienDrone* passed_AD);
@@ -36,5 +37,6 @@ public:
 	AlienMonster* randAM();
 	int RETAMCOUNT();
 	void Print_AM_Array();
+	bool isComromised();
 };
 

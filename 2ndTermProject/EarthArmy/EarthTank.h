@@ -9,7 +9,7 @@ public:
 	virtual void AddEarthUnitToList(EarthArmy* passed_EA);
 	virtual void AddAlienUnitToList(AlienArmy* passed_AA);
 	friend ostream& operator<<(ostream& COUT, EarthTank* Passed_AU);
-	virtual bool Attack();
+	virtual bool Attack(ArmyUnit* AU0 = nullptr, ArmyUnit* AU1 = nullptr);
 };
 
 

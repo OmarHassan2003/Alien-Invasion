@@ -60,6 +60,13 @@ AlienSoldier* AlienArmy::Remove_AS()
 	else return NULL;
 }
 
+AlienDrone* AlienArmy::pick_Rear_AD(int x)
+{
+	AlienDrone* pAD;
+	AD_DQueue.GetRear(pAD);
+	return pAD;
+}
+
 AlienMonster* AlienArmy::pick_AM()
 {
 	AlienMonster* tempPtr;
@@ -151,4 +158,12 @@ void AlienArmy::Print_AM_Array()
 			else cout << AM[i] << ",";
 		}
 	}
+}
+
+bool AlienArmy::isComromised()
+{
+	if (AS_Queue.isEmpty() && AD_DQueue.isEmpty())
+		return true;
+	else
+		return false;
 }

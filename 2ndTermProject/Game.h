@@ -33,6 +33,8 @@ public:
 	void process_AS();
 	void process_AD();
 	void process_AM();
+	void Attack();
+	bool CheckWhoWins();
 	void print();
 	~Game();
 	//void amcnt(); ======= <<<<<<< HEAD >>>>>>> c7e4c4050c80d0bb4d9db9ad1e103b09b6453dc7

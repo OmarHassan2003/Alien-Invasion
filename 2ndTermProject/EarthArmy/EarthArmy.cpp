@@ -33,6 +33,14 @@ void EarthArmy::AddInPriQueue(EarthGunnery* passed_AU)
 	EG_priQ.enqueue(passed_AU,temp->GetHealth() + temp->GetPower());
 }
 
+bool EarthArmy::isCompromised()
+{
+	if (ES_Queue.isEmpty() && EG_priQ.isEmpty() && ET_Stack.isEmpty())
+		return true;
+	else
+		return false;
+}
+
 bool EarthArmy::AddUnit(ArmyUnit* passed_AU)
 {
 	if(passed_AU)
@@ -68,7 +76,10 @@ bool EarthArmy::pick_EG(EarthGunnery*& EPtr)
 	if (EG_priQ.dequeue(EPtr, x))
 		return true;
 	else
+	{
+		EPtr = nullptr;
 		return false;
+	}
 }
 
 bool EarthArmy::pick_ET(EarthTank*& Eptr)
