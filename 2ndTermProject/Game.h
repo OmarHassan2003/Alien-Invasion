@@ -13,15 +13,9 @@ class Game
 	Queue<ArmyUnit*> Killed_List;
 	RandomGenerator* randgenn;
 	unsigned short Tj_value;
-	unsigned short n, ES, ET, EG, AS, AM, AD, Prop;
-
-	unsigned short min_E_Power, min_E_health, min_E_Attack_Capacity;
-	unsigned short max_E_Power, max_E_health, max_E_Attack_Capacity;
-
-	unsigned short min_A_Power, min_A_health, min_A_Attack_Capacity;
-	unsigned short max_A_Power, max_A_health, max_A_Attack_Capacity;
 public:
 	Game();
+	void ReadData();
 	void Generate_Earth_Army();
 	void Generate_Alien_Army();
 	unsigned short Get_And_Inc_Tj();
@@ -35,14 +29,4 @@ public:
 	void process_AM();
 	void print();
 	~Game();
-	//void amcnt(); ======= <<<<<<< HEAD >>>>>>> c7e4c4050c80d0bb4d9db9ad1e103b09b6453dc7
 };
-
-static void ReadData(unsigned short& n, unsigned short& ES,
-	unsigned short& ET, unsigned short& EG, unsigned short& AS, unsigned short& AM, unsigned short& AD,
-	unsigned short& Prop,
-	unsigned short& min_E_Power, unsigned short& min_E_health, unsigned short& min_E_Attack_Capacity,
-	unsigned short& max_E_Power, unsigned short& max_E_health, unsigned short& max_E_Attack_Capacity,
-	unsigned short& min_A_Power, unsigned short& min_A_health, unsigned short& min_A_Attack_Capacity,
-	unsigned short& max_A_Power, unsigned short& max_A_health, unsigned short& max_A_Attack_Capacity);
-

@@ -3,22 +3,8 @@
 #include "Queue/priQueue.h"
 #include "Stack/Stack.h"
 #include "Queue/DoubleLinkedQueue.h"
-
+#include "DynamicArray.h"
 #include "ArmyUnit.h"
-
-/*
-#include "EarthArmy/EarthSoldier.h"
-#include "EarthTank.h"
-#include "EarthGunnery.h"
-
-#include "AlienArmy/AlienSoldier.h"
-#include "AlienMonster.h"
-#include "AlienDrone.h"
-*/
-
-//#include "EarthArmy/EarthArmy.h"
-//#include "AlienArmy/AlienArmy.h"
-
 
 
 class Army

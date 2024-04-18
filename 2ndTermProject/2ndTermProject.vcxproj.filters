@@ -131,6 +131,9 @@
     <ClInclude Include="Army.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="DynamicArray.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="2ndTermProject1.rc">

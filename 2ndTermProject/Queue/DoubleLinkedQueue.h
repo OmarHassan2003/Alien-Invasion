@@ -14,7 +14,7 @@ public:
 	bool enqueue(const T& newEntry);
 	bool dequeue(T& FrontEntry);
 	bool peek(T& FrontEntry) const;
-	bool GetRear(T& RearEntry) const;
+	bool GetRear(T& RearEntry);
 	void print() const;
 	int GetCount() const;
 	~DoubleLinkedQueue();
@@ -86,7 +86,7 @@ inline bool DoubleLinkedQueue<T>::peek(T& FrontEntry) const
 }
 
 template<class T>
-inline bool DoubleLinkedQueue<T>::GetRear(T& RearEntry) const
+inline bool DoubleLinkedQueue<T>::GetRear(T& RearEntry)
 {
 	if (!count)
 	{
@@ -95,7 +95,18 @@ inline bool DoubleLinkedQueue<T>::GetRear(T& RearEntry) const
 	}
 	else
 	{
+		DoubleNode<T>* Del = Rear;
 		RearEntry = Rear->getItem();
+		Rear = Rear->getPrev();
+		if (Rear)
+			Rear->setNext(nullptr);
+
+		if (Rear == nullptr)
+			Rear = nullptr;
+
+		delete Del;
+		Del = NULL;
+		count--;
 		return true;
 	}
 }

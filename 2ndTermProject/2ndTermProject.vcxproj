@@ -151,6 +151,7 @@
     <ClInclude Include="AlienArmy\AlienMonster.h" />
     <ClInclude Include="Army.h" />
     <ClInclude Include="ArmyUnit.h" />
+    <ClInclude Include="DynamicArray.h" />
     <ClInclude Include="EarthArmy\EarthGunnery.h" />
     <ClInclude Include="EarthArmy\EarthTank.h" />
     <ClInclude Include="priNode.h" />

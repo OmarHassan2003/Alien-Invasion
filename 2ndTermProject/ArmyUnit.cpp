@@ -46,7 +46,7 @@ int ArmyUnit::GetPower()
 	return Power;
 }
 
-int ArmyUnit::GetID() // delete if just needed in printing.
+int ArmyUnit::GetID()
 {
 	return ID;
 }

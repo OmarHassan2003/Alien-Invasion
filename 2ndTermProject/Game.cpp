@@ -4,21 +4,18 @@ Game::Game()
 {
 	randgenn = new RandomGenerator; // could be deleted??
 	Tj_value = 0;
-	ReadData(n, ES,ET, EG, AS, AM, AD,Prop,min_E_Power, min_E_health, min_E_Attack_Capacity,max_E_Power,
-	max_E_health, max_E_Attack_Capacity,min_A_Power,  min_A_health, min_A_Attack_Capacity, 
-	max_A_Power,  max_A_health, max_A_Attack_Capacity);
+	ReadData();
 }
 
 void Game::Generate_Earth_Army()
 {
 	ArmyUnit* AU = nullptr;
 	unsigned short x = randgenn->RandGen(1, 100);
-	if (x <= Prop)
+	if (x <= randgenn->get_Prop())
 	{
-		for (unsigned short i = 0; i < n; i++)
+		for (unsigned short i = 0; i < randgenn->get_n(); i++)
 		{
-			AU = randgenn->CreateUnit(ES, ET, EG, min_E_health, min_E_Attack_Capacity, min_E_Power, max_E_Power,
-				max_E_health, max_E_Attack_Capacity, Tj_value, this, 'E');
+			AU = randgenn->CreateUnit(Tj_value, this, 'E');
 			EA.AddUnit(AU);
 		}
 	}
@@ -28,12 +25,11 @@ void Game::Generate_Alien_Army()
 {
 	ArmyUnit* AU = nullptr;
 	unsigned short x = randgenn->RandGen(1, 100);
-	if (x <= Prop)
+	if (x <= randgenn->get_Prop())
 	{
-		for (unsigned short i = 0; i < n; i++)
+		for (unsigned short i = 0; i < randgenn->get_n(); i++)
 		{
-			AU = randgenn->CreateUnit(AS, AM, AD, min_A_health, min_A_Attack_Capacity, min_A_Power, max_A_Power,
-				max_E_health, max_E_Attack_Capacity, Tj_value, this, 'A');
+			AU = randgenn->CreateUnit(Tj_value, this, 'A');
 			AA.AddUnit(AU);
 		}
 	}
@@ -79,6 +75,8 @@ void Game::process_EG()
 	{
 		ArmyUnit* ultra_temp = (ArmyUnit*)temp;
 		ultra_temp->SetHealth(temp->GetHealth() / 2);
+		if (ultra_temp->GetHealth() <= 0)
+			Killed_List.enqueue(temp);
 		EA.InsertEG(temp);
 	}
 }
@@ -93,7 +91,10 @@ void Game::process_AS()
 		{
 			ArmyUnit* doubletemp = (ArmyUnit*)dec;
 			doubletemp->SetHealth(doubletemp->GetHealth() / 2);
-			temp.enqueue(dec);
+			if (doubletemp->GetHealth() <= 0)
+				Killed_List.enqueue(dec);
+			else
+				temp.enqueue(dec);
 		}
 	}
 	cout << "The soldiers enqueued to the temp list are : " << '\n';
@@ -113,25 +114,24 @@ void Game::process_AS()
 
 void Game::process_AD()
 {
-	for (int x = 2; x < 8; x++)
+	for (int x = 1; x <= 3; x++)
 	{
 		AlienDrone* temp = NULL;
-		temp = AA.pick_AD(x);
+		AlienDrone* doubleTemp = NULL;
+		doubleTemp = AA.pick_AD(temp);
 		if (temp)
 			Killed_List.enqueue(temp);
-		else break;
+		if (doubleTemp)
+			Killed_List.enqueue(doubleTemp);
 	}
 }
 
 void Game::process_AM()
 {
 	AlienMonster* temp = NULL;
-	if (AA.RETAMCOUNT() != 0)
-	{
-		temp = AA.pick_AM();
-		if (temp)
-			AA.AddInAmArray(temp);
-	}
+	temp = AA.pick_AM();
+	if (temp)
+		AA.AddInAmArray(temp);
 }
 
 void Game::print()
@@ -154,10 +154,11 @@ Game::~Game()
 	delete randgenn;
 }
 
-void ReadData(unsigned short& n, unsigned short& ES, unsigned short& ET, unsigned short& EG, unsigned short& AS, unsigned short& AM, unsigned short& AD, unsigned short& Prop, unsigned short& min_E_Power,
-	unsigned short& min_E_health, unsigned short& min_E_Attack_Capacity, unsigned short& max_E_Power, unsigned short& max_E_health, unsigned short& max_E_Attack_Capacity, unsigned short& min_A_Power,
-	unsigned short& min_A_health, unsigned short& min_A_Attack_Capacity, unsigned short& max_A_Power, unsigned short& max_A_health, unsigned short& max_A_Attack_Capacity)
+void Game::ReadData()
 {
+	unsigned short n, ES, ET, EG, AS, AM, AD, Prop, min_E_Power, min_E_health, min_E_Attack_Capacity, max_E_Power,
+		max_E_health, max_E_Attack_Capacity, min_A_Power, min_A_health, min_A_Attack_Capacity, max_A_Power,
+		max_A_health, max_A_Attack_Capacity;
 	ifstream Fin("../test.txt");
 	if (Fin.is_open())
 	{
@@ -201,6 +202,27 @@ void ReadData(unsigned short& n, unsigned short& ES, unsigned short& ET, unsigne
 		Fin.ignore();
 		/***********************Read ALien Data*************************/
 		Fin.close();
+		/***********************Create the random generator object*************************/
+		randgenn->set_n(n);
+		randgenn->set_ES(ES);
+		randgenn->set_ET(ET);
+		randgenn->set_EG(EG);
+		randgenn->set_AS(AS);
+		randgenn->set_AM(AM);
+		randgenn->set_AD(AD);
+		randgenn->set_Prop(Prop);
+		randgenn->set_MinEpower(min_E_Power);
+		randgenn->set_MinEhealth(min_E_health);
+		randgenn->set_MinEAttackCapacity(min_E_Attack_Capacity);
+		randgenn->set_MaxEpower(max_E_Power);
+		randgenn->set_MaxEhealth(max_E_health);
+		randgenn->set_MaxEAttackCapacity(max_E_Attack_Capacity);
+		randgenn->set_MinApower(min_A_Power);
+		randgenn->set_MinAhealth(min_A_health);
+		randgenn->set_MinAAttackCapacity(min_A_Attack_Capacity);
+		randgenn->set_MaxApower(max_A_Power);
+		randgenn->set_MaxAhealth(max_A_health);
+		randgenn->set_MaxAAttackCapacity(max_A_Attack_Capacity);
 	}
 	else
 		cout << "File failed" << endl;
