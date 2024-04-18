@@ -138,7 +138,8 @@ void Game::Attack()
 {
 	int x = 5;
 	EarthGunnery* pEG;
-	AlienDrone* pAD0 = AA.pick_AD(x), * pAD1 = AA.pick_Rear_AD(x);
+	AlienDrone* pAD0, * pAD1;
+	pAD0 = AA.pick_AD(pAD1);
 	AlienMonster* pAM = AA.pick_AM();
 	if (EA.pick_EG(pEG))
 	{
