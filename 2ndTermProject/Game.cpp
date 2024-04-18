@@ -143,14 +143,21 @@ void Game::Attack()
 	AlienMonster* pAM = AA.pick_AM();
 	if (EA.pick_EG(pEG))
 	{
-		pEG->Attack(pAM);
-		pEG->Attack(pAD0, pAD1);
-		if (pAM->GetHealth() <= 0)
-			AddInKilledList(pAM);
-		if (pAD0->GetHealth() <= 0)
-			AddInKilledList(pAD0);
-		if (pAD1->GetHealth() <= 0)
-			AddInKilledList(pAD1);
+		if (pAM)
+		{
+			pEG->Attack(pAM);
+			if (pAM->GetHealth() <= 0)
+				AddInKilledList(pAM);
+		}
+		if (pAD0 && pAD1)
+		{
+			pEG->Attack(pAD0, pAD1);
+
+			if (pAD0->GetHealth() <= 0)
+				AddInKilledList(pAD0);
+			if (pAD1->GetHealth() <= 0)
+				AddInKilledList(pAD1);
+		}
 	}
 	if (pAD0 && pAD1 && pEG)
 	{
