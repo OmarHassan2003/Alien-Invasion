@@ -178,6 +178,21 @@ bool Game::CheckWhoWins()
 		return false;
 }
 
+bool Game::Get_AS(AlienSoldier* AU) //PHASE2
+{
+	if (AA.pick_AS(AU))
+		return true;
+	else
+		return false;
+}
+
+bool Game::Get_ES(EarthSoldier* AU)
+{
+	if (EA.pick_ES(AU))
+		return true;
+	else
+		return false;
+}
 void Game::print()
 {
 	cout << "============================================ Earth Army Alive Units ==========================================" << endl;

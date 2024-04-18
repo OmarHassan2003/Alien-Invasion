@@ -9,8 +9,9 @@ using namespace std;
 
 class ArmyUnit
 {
-private:
+protected:
 	Game* pGame;
+private:
 	int Health;
 	int Power;
 	int ID;

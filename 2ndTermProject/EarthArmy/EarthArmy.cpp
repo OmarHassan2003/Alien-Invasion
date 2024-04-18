@@ -9,9 +9,22 @@ EarthArmy::EarthArmy()
 	
 }
 
-bool EarthArmy::Attack()
+bool EarthArmy::Attack() //Eartharmy.cpp
 {
-	return false;
+	EarthSoldier* ES;
+	if (ES_Queue.peek(ES))
+		ES->Attack();
+
+	EarthGunnery* EG;
+	int x;
+	if (EG_priQ.peek(EG, x))
+		EG->Attack();
+
+	EarthTank* ET;
+	if (ET_Stack.peek(ET))
+		ET->Attack();
+
+	return true;
 }
 
 void EarthArmy::AddInStack(EarthTank* passed_AU)

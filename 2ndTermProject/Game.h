@@ -33,10 +33,14 @@ public:
 	void process_AS();
 	void process_AD();
 	void process_AM();
-	void Attack();
 	bool CheckWhoWins();
+
+	void Attack(); //PHASE2
+	bool Get_AS(AlienSoldier* AU);	//PHASE2
+	bool Get_ES(EarthSoldier* AU); //PHASE2
 	void print();
 	~Game();
+
 	//void amcnt(); ======= <<<<<<< HEAD >>>>>>> c7e4c4050c80d0bb4d9db9ad1e103b09b6453dc7
 };
 

@@ -44,12 +44,12 @@ void AlienArmy::PrintArmyInfo()
 	//cout << "]" << endl;
 }
 
-AlienSoldier* AlienArmy::pick_AS()
+bool AlienArmy::pick_AS(AlienSoldier*& EPtr)
 {
-	AlienSoldier* tempPtr;
-	if (AS_Queue.peek(tempPtr))
-		return tempPtr;
-	else return NULL;
+	if (AS_Queue.dequeue(EPtr))
+		return true;
+	else
+		return false;
 }
 
 AlienSoldier* AlienArmy::Remove_AS()

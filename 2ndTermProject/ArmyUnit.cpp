@@ -1,14 +1,15 @@
 #include "ArmyUnit.h"
 
-
-ArmyUnit::ArmyUnit(Game* p, int HP, int pow, int ID_, int cap, int Tj)
+ArmyUnit::ArmyUnit(Game* p, int HP, int pow, int ID_, int cap, int _Tj)
 {
 	pGame = p;
 	Health = HP;
 	Power = pow;
 	ID = ID_;
 	AttackCap = cap;
-	Tj = Tj;
+	Tj = _Tj;
+	Ta = 0;
+	Td = 0;
 }
 
 void ArmyUnit::Set_Ta(int _Ta)
