@@ -135,7 +135,6 @@ void Game::process_AM()
 
 void Game::Attack()
 {
-	int x = 5;
 	EarthGunnery* pEG;
 	AlienDrone* pAD0, * pAD1;
 	AlienMonster* pAM;

@@ -106,5 +106,5 @@ void AlienArmy::AddInAmArray(AlienMonster* passed_AU)
 
 bool AlienArmy::isComromised()
 {
-	return AS_Queue.isEmpty() && AD_DQueue.isEmpty();
+	return AS_Queue.isEmpty() && AD_DQueue.isEmpty() && AM.isEmpty();
 }

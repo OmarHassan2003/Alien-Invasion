@@ -8,6 +8,7 @@ int main()
 	bool EndGame = false;
 	while (!EndGame)
 	{
+		gmain.print();
 		gmain.Get_And_Inc_Tj();
 		gmain.Generate_Earth_Army();
 		gmain.Generate_Alien_Army();

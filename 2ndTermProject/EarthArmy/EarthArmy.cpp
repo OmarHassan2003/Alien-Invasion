@@ -48,10 +48,7 @@ void EarthArmy::AddInPriQueue(EarthGunnery* passed_AU)
 
 bool EarthArmy::isCompromised()
 {
-	if (ES_Queue.isEmpty() && EG_priQ.isEmpty() && ET_Stack.isEmpty())
-		return true;
-	else
-		return false;
+	return ES_Queue.isEmpty() && EG_priQ.isEmpty() && ET_Stack.isEmpty();
 }
 
 bool EarthArmy::AddUnit(ArmyUnit* passed_AU)
