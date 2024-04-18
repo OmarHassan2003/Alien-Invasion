@@ -138,10 +138,9 @@ void Game::Attack()
 {
 	int x = 5;
 	EarthGunnery* pEG;
-	EA.pick_EG(pEG);
 	AlienDrone* pAD0 = AA.pick_AD(x), * pAD1 = AA.pick_Rear_AD(x);
 	AlienMonster* pAM = AA.pick_AM();
-	if (pEG)
+	if (EA.pick_EG(pEG))
 	{
 		pEG->Attack(pAM);
 		pEG->Attack(pAD0, pAD1);
@@ -152,7 +151,7 @@ void Game::Attack()
 		if (pAD1->GetHealth() <= 0)
 			AddInKilledList(pAD1);
 	}
-	if (pAD0 && pAD1)
+	if (pAD0 && pAD1 && pEG)
 	{
 		pAD0->Attack(pEG);
 		pAD1->Attack(pEG);

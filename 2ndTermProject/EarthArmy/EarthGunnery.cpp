@@ -24,7 +24,7 @@ bool EarthGunnery::Attack(ArmyUnit* AU0, ArmyUnit* AU1)
 	}
 	if (AU1)
 	{
-		AU1->SetHealth(AU1->GetHealth() - this->GetAttackCap());
+		AU1->SetHealth(AU1->GetHealth() - this->GetAttackCap()); //POWER not CAPACITY or use the (-=) overloader
 		flag = true;
 	}
 	return flag;

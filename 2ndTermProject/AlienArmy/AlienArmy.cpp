@@ -12,7 +12,15 @@ AlienArmy::AlienArmy()
 
 bool AlienArmy::Attack()
 {
-	return false;
+	AlienSoldier* AS;
+	if (AS_Queue.peek(AS))
+		AS->Attack();
+
+	AlienMonster* ALM;
+	// pick an AM and Attack.
+
+	//Drone Attack. 
+	return true;
 }
 
 bool AlienArmy::AddUnit(ArmyUnit* passed_AU)
