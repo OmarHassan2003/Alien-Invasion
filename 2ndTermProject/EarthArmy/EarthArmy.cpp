@@ -9,7 +9,7 @@ EarthArmy::EarthArmy()
 	
 }
 
-bool EarthArmy::Attack() //Eartharmy.cpp
+bool EarthArmy::Attack() //PHASE2
 {
 	EarthSoldier* ES;
 	if (ES_Queue.peek(ES))

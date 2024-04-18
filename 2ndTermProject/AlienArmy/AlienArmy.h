@@ -21,7 +21,7 @@ public:
 	bool AddUnit(ArmyUnit* passed_AU);
 	void PrintArmyInfo();
 	/****************pick units from lists********************/
-	bool pick_AS(AlienSoldier*& EPtr);
+	bool pick_AS(AlienSoldier*& EPtr); 
 	AlienMonster* pick_AM();
 	AlienDrone* pick_AD(int x);
 	AlienSoldier* Remove_AS();
