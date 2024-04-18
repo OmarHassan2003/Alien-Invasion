@@ -20,10 +20,11 @@ public:
 	bool AddUnit(ArmyUnit* passed_AU);
 	void PrintArmyInfo();
 	/****************pick units from lists********************/
-	AlienSoldier* pick_AS();
+	bool pick_AS(AlienSoldier*& EPtr); 
 	AlienMonster* pick_AM();
 	AlienDrone* pick_AD(AlienDrone*& passed_AM);
 	AlienSoldier* Remove_AS();
+	AlienDrone* pick_Rear_AD(int x);
 	/****************insert units from lists********************/
 	void InsertAS(AlienSoldier* passed_AS);
 	void InsertAD(AlienDrone* passed_AD);
@@ -31,5 +32,6 @@ public:
 	void AddInQueue(AlienSoldier* passed_AU);
 	void AddInDoubleLinkedQueueQueue(AlienDrone* passed_AU);
 	void AddInAmArray(AlienMonster* passed_AU);
+  bool isComromised();
 };
 

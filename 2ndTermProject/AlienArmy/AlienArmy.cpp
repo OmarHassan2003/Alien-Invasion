@@ -10,7 +10,15 @@ AlienArmy::AlienArmy()
 
 bool AlienArmy::Attack()
 {
-	return false;
+	AlienSoldier* AS;
+	if (AS_Queue.peek(AS))
+		AS->Attack();
+
+	AlienMonster* ALM;
+	// pick an AM and Attack.
+
+	//Drone Attack. 
+	return true;
 }
 
 bool AlienArmy::AddUnit(ArmyUnit* passed_AU)
@@ -35,12 +43,12 @@ void AlienArmy::PrintArmyInfo()
 	cout << "]";
 }
 
-AlienSoldier* AlienArmy::pick_AS()
+bool AlienArmy::pick_AS(AlienSoldier*& EPtr)
 {
-	AlienSoldier* tempPtr;
-	if (AS_Queue.peek(tempPtr))
-		return tempPtr;
-	else return NULL;
+	if (AS_Queue.dequeue(EPtr))
+		return true;
+	else
+		return false;
 }
 
 AlienSoldier* AlienArmy::Remove_AS()
@@ -49,6 +57,13 @@ AlienSoldier* AlienArmy::Remove_AS()
 	if (AS_Queue.dequeue(tempPtr))
 		return tempPtr;
 	else return NULL;
+}
+
+AlienDrone* AlienArmy::pick_Rear_AD(int x)
+{
+	AlienDrone* pAD;
+	AD_DQueue.GetRear(pAD);
+	return pAD;
 }
 
 AlienMonster* AlienArmy::pick_AM()
@@ -101,3 +116,10 @@ void AlienArmy::AddInAmArray(AlienMonster* passed_AU)
 	AM.Add(passed_AU);
 }
 
+bool AlienArmy::isComromised()
+{
+	if (AS_Queue.isEmpty() && AD_DQueue.isEmpty())
+		return true;
+	else
+		return false;
+}

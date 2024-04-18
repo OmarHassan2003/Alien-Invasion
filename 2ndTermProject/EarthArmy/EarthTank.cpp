@@ -15,7 +15,7 @@ void EarthTank::AddAlienUnitToList(AlienArmy* passed_AA)
 {
 }
 
-bool EarthTank::Attack()
+bool EarthTank::Attack(ArmyUnit* AU0, ArmyUnit* AU1)
 {
 	return false;
 }

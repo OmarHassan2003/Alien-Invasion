@@ -18,7 +18,7 @@ void AlienMonster::AddAlienUnitToList(AlienArmy* passed_AA)
 	passed_AA->AddInAmArray(this);
 }
 
-bool AlienMonster::Attack()
+bool AlienMonster::Attack(ArmyUnit* AU0, ArmyUnit* AU1)
 {
 	return false;
 }

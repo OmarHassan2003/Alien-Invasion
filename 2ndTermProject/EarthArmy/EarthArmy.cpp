@@ -9,9 +9,22 @@ EarthArmy::EarthArmy()
 	
 }
 
-bool EarthArmy::Attack()
+bool EarthArmy::Attack() //PHASE2
 {
-	return false;
+	EarthSoldier* ES;
+	if (ES_Queue.peek(ES))
+		ES->Attack();
+
+	EarthGunnery* EG;
+	int x;
+	if (EG_priQ.peek(EG, x))
+		EG->Attack();
+
+	EarthTank* ET;
+	if (ET_Stack.peek(ET))
+		ET->Attack();
+
+	return true;
 }
 
 void EarthArmy::AddInStack(EarthTank* passed_AU)
@@ -31,6 +44,14 @@ void EarthArmy::AddInPriQueue(EarthGunnery* passed_AU)
 {
 	ArmyUnit* temp = (ArmyUnit*)passed_AU;
 	EG_priQ.enqueue(passed_AU,temp->GetHealth() + temp->GetPower());
+}
+
+bool EarthArmy::isCompromised()
+{
+	if (ES_Queue.isEmpty() && EG_priQ.isEmpty() && ET_Stack.isEmpty())
+		return true;
+	else
+		return false;
 }
 
 bool EarthArmy::AddUnit(ArmyUnit* passed_AU)
@@ -68,7 +89,10 @@ bool EarthArmy::pick_EG(EarthGunnery*& EPtr)
 	if (EG_priQ.dequeue(EPtr, x))
 		return true;
 	else
+	{
+		EPtr = nullptr;
 		return false;
+	}
 }
 
 bool EarthArmy::pick_ET(EarthTank*& Eptr)

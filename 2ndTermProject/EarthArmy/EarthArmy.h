@@ -27,10 +27,12 @@ public:
 	void InsertES(EarthSoldier* passed_ES);
 	void InsertEG(EarthGunnery* passed_EG);
 	void InsertET(EarthTank* passed_ET);
-	//bool AddUnit(Game* pG, ArmyUnit*);
+	/*************************ADD Units***************************/
 	void AddInStack(EarthTank* passed_AU);
 	void AddInQueue(EarthSoldier* passed_AU);
 	void AddInPriQueue(EarthGunnery* passed_AU);
+	/*************************Check if Army has fallen down***********************/
+	bool isCompromised();
 };
 
 
