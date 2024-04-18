@@ -14,4 +14,5 @@ int main()
 		gmain.Attack();
 		EndGame = gmain.CheckWhoWins();
 	}
+	return 0;
 }

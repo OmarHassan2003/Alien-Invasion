@@ -21,10 +21,10 @@ public:
 	void PrintArmyInfo();
 	/****************pick units from lists********************/
 	bool pick_AS(AlienSoldier*& EPtr); 
-	AlienMonster* pick_AM();
-	AlienDrone* pick_AD(AlienDrone*& passed_AM);
+	bool pick_AM(AlienMonster*& passed_AM);
+	bool pick_AD(AlienDrone*& passed_AD);
 	AlienSoldier* Remove_AS();
-	AlienDrone* pick_Rear_AD(int x);
+	bool pick_Rear_AD(AlienDrone*& passed_AD);
 	/****************insert units from lists********************/
 	void InsertAS(AlienSoldier* passed_AS);
 	void InsertAD(AlienDrone* passed_AD);

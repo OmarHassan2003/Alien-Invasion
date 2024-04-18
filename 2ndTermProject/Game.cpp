@@ -86,7 +86,8 @@ void Game::process_AS()
 	Queue<AlienSoldier*>temp;
 	for (int i = 1; i <= 5; i++)
 	{
-		AlienSoldier* dec = AA.Remove_AS();
+		AlienSoldier* dec;
+		AA.pick_AS(dec);
 		if (dec) 
 		{
 			ArmyUnit* doubletemp = (ArmyUnit*)dec;
@@ -118,19 +119,17 @@ void Game::process_AD()
 	{
 		AlienDrone* temp = NULL;
 		AlienDrone* doubleTemp = NULL;
-		doubleTemp = AA.pick_AD(temp);
-		if (temp)
+		if (AA.pick_AD(temp))
 			Killed_List.enqueue(temp);
-		if (doubleTemp)
+		if (AA.pick_AD(doubleTemp))
 			Killed_List.enqueue(doubleTemp);
 	}
 }
 
 void Game::process_AM()
 {
-	AlienMonster* temp = NULL;
-	temp = AA.pick_AM();
-	if (temp)
+	AlienMonster* temp;
+	if (AA.pick_AM(temp))
 		AA.AddInAmArray(temp);
 }
 
@@ -139,8 +138,10 @@ void Game::Attack()
 	int x = 5;
 	EarthGunnery* pEG;
 	AlienDrone* pAD0, * pAD1;
-	pAD0 = AA.pick_AD(pAD1);
-	AlienMonster* pAM = AA.pick_AM();
+	AlienMonster* pAM;
+	AA.pick_AD(pAD0);
+	AA.pick_Rear_AD(pAD1);
+	AA.pick_AM(pAM);
 	if (EA.pick_EG(pEG))
 	{
 		if (pAM)

@@ -45,10 +45,12 @@ void AlienArmy::PrintArmyInfo()
 
 bool AlienArmy::pick_AS(AlienSoldier*& EPtr)
 {
-	if (AS_Queue.dequeue(EPtr))
-		return true;
-	else
-		return false;
+	return AS_Queue.dequeue(EPtr);
+}
+
+bool AlienArmy::pick_AM(AlienMonster*& passed_AM)
+{
+	return AM.Pick(passed_AM);
 }
 
 AlienSoldier* AlienArmy::Remove_AS()
@@ -59,28 +61,14 @@ AlienSoldier* AlienArmy::Remove_AS()
 	else return NULL;
 }
 
-AlienDrone* AlienArmy::pick_Rear_AD(int x)
+bool AlienArmy::pick_Rear_AD(AlienDrone*& passed_AD)
 {
-	AlienDrone* pAD;
-	AD_DQueue.GetRear(pAD);
-	return pAD;
+	return AD_DQueue.GetRear(passed_AD);
 }
 
-AlienMonster* AlienArmy::pick_AM()
+bool AlienArmy::pick_AD(AlienDrone*& passed_AD)
 {
-	AlienMonster* tempPtr;
-	if (AM.Pick(tempPtr))
-		return tempPtr;
-	else return NULL;
-}
-
-AlienDrone* AlienArmy::pick_AD(AlienDrone*& passed_AD)
-{
-	AlienDrone* temp = NULL;
-	AD_DQueue.GetRear(passed_AD);
-	if (AD_DQueue.dequeue(temp))
-		return temp;
-	else return NULL;
+	return AD_DQueue.dequeue(passed_AD);
 }
 
 void AlienArmy::InsertAS(AlienSoldier* passed_AS)
@@ -118,8 +106,5 @@ void AlienArmy::AddInAmArray(AlienMonster* passed_AU)
 
 bool AlienArmy::isComromised()
 {
-	if (AS_Queue.isEmpty() && AD_DQueue.isEmpty())
-		return true;
-	else
-		return false;
+	return AS_Queue.isEmpty() && AD_DQueue.isEmpty();
 }

@@ -55,8 +55,8 @@ bool DoubleLinkedQueue<T>::dequeue(T& FrontEntry)
 {
 	if (!count)
 	{
+		FrontEntry = nullptr;
 		return false;
-		FrontEntry = NULL;
 	}
 	DoubleNode<T>* Del = Front;
 	FrontEntry = Front->getItem();
@@ -74,7 +74,7 @@ bool DoubleLinkedQueue<T>::dequeue(T& FrontEntry)
 }
 
 template<class T>
-inline bool DoubleLinkedQueue<T>::peek(T& FrontEntry) const
+bool DoubleLinkedQueue<T>::peek(T& FrontEntry) const
 {
 	if (!count)
 		return false;
@@ -86,12 +86,12 @@ inline bool DoubleLinkedQueue<T>::peek(T& FrontEntry) const
 }
 
 template<class T>
-inline bool DoubleLinkedQueue<T>::GetRear(T& RearEntry)
+bool DoubleLinkedQueue<T>::GetRear(T& RearEntry)
 {
 	if (!count)
 	{
+		RearEntry = nullptr;
 		return false;
-		RearEntry = NULL;
 	}
 	else
 	{
@@ -112,7 +112,7 @@ inline bool DoubleLinkedQueue<T>::GetRear(T& RearEntry)
 }
 
 template<class T>
-inline void DoubleLinkedQueue<T>::print() const
+void DoubleLinkedQueue<T>::print() const
 {
 	DoubleNode<T>* temp = Front;
 	if (!count) {
@@ -131,13 +131,13 @@ inline void DoubleLinkedQueue<T>::print() const
 }
 
 template<class T>
-inline int DoubleLinkedQueue<T>::GetCount() const
+int DoubleLinkedQueue<T>::GetCount() const
 {
 	return count;
 }
 
 template<class T>
-inline DoubleLinkedQueue<T>::~DoubleLinkedQueue()
+DoubleLinkedQueue<T>::~DoubleLinkedQueue()
 {
 	T x;
 	for (int i = 0;i < count;i++)
