@@ -16,7 +16,7 @@ class AlienArmy :public Army
 	DynamicArray<AlienMonster*> AM;
 public:
 	AlienArmy();
-	bool Attack();
+	//bool Attack(); phase 2
 	bool AddUnit(ArmyUnit* passed_AU);
 	void PrintArmyInfo();
 	/****************pick units from lists********************/

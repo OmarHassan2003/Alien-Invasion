@@ -15,22 +15,6 @@ void AlienDrone::AddAlienUnitToList(AlienArmy* passed_AA)
 	passed_AA->AddInDoubleLinkedQueueQueue(this);
 }
 
-bool AlienDrone::Attack(ArmyUnit* AU0, ArmyUnit* AU1)
-{
-	if (AU0)
-	{
-		AU0->SetHealth(AU0->GetHealth() - this->GetAttackCap());
-		return true;
-	}
-	else if (AU1)
-	{
-		AU1->SetHealth(AU1->GetHealth() - this->GetAttackCap());
-		return true;
-	}
-	else
-		return false;
-}
-
 ostream& operator<<(ostream& COUT, AlienDrone* PAssed_AD)
 {
 	COUT << PAssed_AD->GetID() << " ";

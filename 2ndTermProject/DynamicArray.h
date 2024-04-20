@@ -3,24 +3,25 @@
 template <typename T>
 class DynamicArray
 {
+	enum { MAX_SIZE = 1000 };
+private:
 	unsigned long int count;
-	const int max_count;
-	T Elements[1000];
+	T* arr;
 public:
 	DynamicArray();
 	bool isEmpty() const;
 	bool Add(T& newEntry);
-	bool Pick(T& FrontEntry);
+	bool Pick(T& Entry);
+	bool Peek(T& Entry) const;
 	int GetCount() const;
 	void print() const;
 	~DynamicArray();
 };
 
 template<typename T>
-DynamicArray<T>::DynamicArray() :max_count(1000)
+DynamicArray<T>::DynamicArray()
 {
-	for (int i = 0; i < max_count; i++)
-		Elements[i] = NULL;
+	arr = new T[MAX_SIZE];
 	count = 0;
 }
 
@@ -33,9 +34,21 @@ bool DynamicArray<T>::isEmpty() const
 template<typename T>
 bool DynamicArray<T>::Add(T& newEntry)
 {
-	if (count < max_count - 1)
+	if (count < MAX_SIZE)
 	{
-		Elements[count++] = newEntry;
+		arr[count++] = newEntry;
+		return true;
+	}
+	else return false;
+}
+
+template<typename T>
+bool DynamicArray<T>::Peek(T& Entry) const
+{
+	if (count)
+	{
+		int y = 1 + rand() % (count);
+		Entry = arr[y];
 		return true;
 	}
 	else return false;
@@ -44,7 +57,7 @@ bool DynamicArray<T>::Add(T& newEntry)
 template<typename T>
 bool DynamicArray<T>::Pick(T& FrontEntry)
 {
-	if (!count) 
+	if (!count)
 	{
 		FrontEntry = NULL;
 		return false;
@@ -52,9 +65,9 @@ bool DynamicArray<T>::Pick(T& FrontEntry)
 	else
 	{
 		int y = 1 + rand() % (count);
-		FrontEntry = Elements[y - 1];
-		Elements[y - 1] = Elements[count - 1];
-		Elements[count - 1] = NULL;
+		FrontEntry = arr[y - 1];
+		arr[y - 1] = arr[count - 1];
+		arr[count - 1] = NULL;
 		count--;
 		return true;
 	}
@@ -72,8 +85,8 @@ void DynamicArray<T>::print() const
 	{
 		if (count)
 		{
-			if (i == count - 1) cout << Elements[i];
-			else cout << Elements[i] << ",";
+			if (i == count - 1) cout << arr[i];
+			else cout << arr[i] << ",";
 		}
 	}
 }
@@ -87,4 +100,5 @@ int DynamicArray<T>::GetCount() const
 template<typename T>
 DynamicArray<T>::~DynamicArray()
 {
+	delete[] arr;
 }

@@ -87,8 +87,7 @@ void Game::process_AS()
 	for (int i = 1; i <= 5; i++)
 	{
 		AlienSoldier* dec;
-		AA.pick_AS(dec);
-		if (dec) 
+		if (AA.pick_AS(dec))
 		{
 			ArmyUnit* doubletemp = (ArmyUnit*)dec;
 			doubletemp->SetHealth(doubletemp->GetHealth() / 2);
@@ -133,73 +132,6 @@ void Game::process_AM()
 		AA.AddInAmArray(temp);
 }
 
-void Game::Attack()
-{
-	EarthGunnery* pEG;
-	AlienDrone* pAD0, * pAD1;
-	AlienMonster* pAM;
-	AA.pick_AD(pAD0);
-	AA.pick_Rear_AD(pAD1);
-	AA.pick_AM(pAM);
-	if (EA.pick_EG(pEG))
-	{
-		if (pAM)
-		{
-			pEG->Attack(pAM);
-			if (pAM->GetHealth() <= 0)
-				AddInKilledList(pAM);
-		}
-		if (pAD0 && pAD1)
-		{
-			pEG->Attack(pAD0, pAD1);
-
-			if (pAD0->GetHealth() <= 0)
-				AddInKilledList(pAD0);
-			if (pAD1->GetHealth() <= 0)
-				AddInKilledList(pAD1);
-		}
-	}
-	if (pAD0 && pAD1 && pEG)
-	{
-		pAD0->Attack(pEG);
-		pAD1->Attack(pEG);
-		if (pEG->GetHealth() <= 0)
-			AddInKilledList(pEG);
-	}
-
-}
-
-bool Game::CheckWhoWins()
-{
-	if (EA.isCompromised())
-	{
-		cout << "Alien Army has won the game" << endl;
-		return true;
-	}
-	else if (AA.isComromised())
-	{
-		cout << "Earth Army has won the game" << endl;
-		return true;
-	}
-	else
-		return false;
-}
-
-bool Game::Get_AS(AlienSoldier* AU) //PHASE2
-{
-	if (AA.pick_AS(AU))
-		return true;
-	else
-		return false;
-}
-
-bool Game::Get_ES(EarthSoldier* AU)
-{
-	if (EA.pick_ES(AU))
-		return true;
-	else
-		return false;
-}
 void Game::print()
 {
 	cout << "============================================ Earth Army Alive Units ==========================================" << endl;
@@ -218,6 +150,12 @@ void Game::print()
 Game::~Game()
 {
 	delete randgenn;
+	while (!Killed_List.isEmpty())
+	{
+		ArmyUnit* temp;
+		Killed_List.dequeue(temp);
+		delete temp;
+	}
 }
 
 void Game::ReadData()

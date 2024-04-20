@@ -16,7 +16,7 @@ class EarthArmy :public Army
 	Stack<EarthTank*> ET_Stack;
 public:
 	EarthArmy();
-	bool Attack();
+	//bool Attack(); phase 2
 	bool AddUnit(ArmyUnit* passed_AU);
 	void PrintArmyInfo();
 	/****************pick units from lists********************/

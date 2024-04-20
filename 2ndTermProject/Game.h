@@ -27,11 +27,7 @@ public:
 	void process_AS();
 	void process_AD();
 	void process_AM();
-	bool CheckWhoWins();
-
 	void Attack(); //PHASE2
-	bool Get_AS(AlienSoldier* AU);	//PHASE2
-	bool Get_ES(EarthSoldier* AU); //PHASE2
 	void print();
 	~Game();
 };

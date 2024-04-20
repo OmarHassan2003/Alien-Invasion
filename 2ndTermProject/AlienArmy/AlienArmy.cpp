@@ -8,19 +8,6 @@ AlienArmy::AlienArmy()
 {
 }
 
-bool AlienArmy::Attack()
-{
-	AlienSoldier* AS;
-	if (AS_Queue.peek(AS))
-		AS->Attack();
-
-	AlienMonster* ALM;
-	// pick an AM and Attack.
-
-	//Drone Attack. 
-	return true;
-}
-
 bool AlienArmy::AddUnit(ArmyUnit* passed_AU)
 {
 	if (passed_AU)
@@ -116,6 +103,7 @@ AlienArmy::~AlienArmy()
 	{
 		AS_Queue.dequeue(dels);
 		delete dels;
+		dels = nullptr;
 	}
 
 	AlienMonster* delm;
@@ -123,6 +111,7 @@ AlienArmy::~AlienArmy()
 	{
 		AM.Pick(delm);
 		delete delm;
+		delm = nullptr;
 	}
 
 	AlienDrone* deld;
@@ -130,5 +119,6 @@ AlienArmy::~AlienArmy()
 	{
 		AD_DQueue.dequeue(deld);
 		delete deld;
+		deld = nullptr;
 	}
 }

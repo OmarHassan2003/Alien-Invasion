@@ -15,11 +15,6 @@ void EarthTank::AddAlienUnitToList(AlienArmy* passed_AA)
 {
 }
 
-bool EarthTank::Attack(ArmyUnit* AU0, ArmyUnit* AU1)
-{
-	return false;
-}
-
 ostream& operator<<(ostream& COUT, EarthTank* Passed_AU)
 {
 	COUT << Passed_AU->GetID() << " ";

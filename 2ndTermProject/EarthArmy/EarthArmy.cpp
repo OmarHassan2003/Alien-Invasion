@@ -9,24 +9,6 @@ EarthArmy::EarthArmy()
 	
 }
 
-bool EarthArmy::Attack() //PHASE2
-{
-	EarthSoldier* ES;
-	if (ES_Queue.peek(ES))
-		ES->Attack();
-
-	EarthGunnery* EG;
-	int x;
-	if (EG_priQ.peek(EG, x))
-		EG->Attack();
-
-	EarthTank* ET;
-	if (ET_Stack.peek(ET))
-		ET->Attack();
-
-	return true;
-}
-
 void EarthArmy::AddInStack(EarthTank* passed_AU)
 {
 	ET_Stack.push(passed_AU);
@@ -129,6 +111,7 @@ EarthArmy::~EarthArmy()
 	{
 		ES_Queue.dequeue(dels);
 		delete dels;
+		dels = nullptr;
 	}
 	
 	EarthTank* delt;
@@ -136,6 +119,7 @@ EarthArmy::~EarthArmy()
 	{
 		ET_Stack.pop(delt);
 		delete delt;
+		delt = nullptr;
 	}
 	
 	EarthGunnery* delg;
@@ -144,5 +128,6 @@ EarthArmy::~EarthArmy()
 	{
 		EG_priQ.dequeue(delg, x);
 		delete delg;
+		delg = nullptr;
 	}
 }
