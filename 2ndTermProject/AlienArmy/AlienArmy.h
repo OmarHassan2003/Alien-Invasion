@@ -20,9 +20,9 @@ public:
 	bool AddUnit(ArmyUnit* passed_AU);
 	void PrintArmyInfo();
 	/****************pick units from lists********************/
-	bool pick_AS(AlienSoldier*& EPtr); 
+	bool pick_AS(AlienSoldier*& EPtr);
 	bool pick_AM(AlienMonster*& passed_AM);
-	bool pick_AD(AlienDrone*& passed_AD);
+	AlienDrone* pick_AD(AlienDrone*& passed_AD);
 	AlienSoldier* Remove_AS();
 	bool pick_Rear_AD(AlienDrone*& passed_AD);
 	/****************insert units from lists********************/

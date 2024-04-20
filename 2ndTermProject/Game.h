@@ -27,7 +27,7 @@ public:
 	void process_AS();
 	void process_AD();
 	void process_AM();
-	void Attack(); //PHASE2
+	//void Attack(); //PHASE2
 	void print();
 	~Game();
 };

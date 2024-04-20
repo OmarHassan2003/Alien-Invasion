@@ -53,9 +53,13 @@ bool AlienArmy::pick_Rear_AD(AlienDrone*& passed_AD)
 	return AD_DQueue.GetRear(passed_AD);
 }
 
-bool AlienArmy::pick_AD(AlienDrone*& passed_AD)
+AlienDrone* AlienArmy::pick_AD(AlienDrone*& passed_AD)
 {
-	return AD_DQueue.dequeue(passed_AD);
+	AlienDrone* temp = NULL;
+	AD_DQueue.GetRear(passed_AD);
+	if (AD_DQueue.dequeue(temp))
+		return temp;
+	else return NULL;
 }
 
 void AlienArmy::InsertAS(AlienSoldier* passed_AS)

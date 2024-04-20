@@ -12,6 +12,7 @@ public:
 	DoubleLinkedQueue();
 	bool isEmpty() const;
 	bool enqueue(const T& newEntry);
+	bool addToFront(const T& newEntry);
 	bool dequeue(T& FrontEntry);
 	bool peek(T& FrontEntry) const;
 	bool GetRear(T& RearEntry);
@@ -55,7 +56,7 @@ bool DoubleLinkedQueue<T>::dequeue(T& FrontEntry)
 {
 	if (!count)
 	{
-		FrontEntry = nullptr;
+		FrontEntry = NULL;
 		return false;
 	}
 	DoubleNode<T>* Del = Front;
@@ -109,6 +110,22 @@ bool DoubleLinkedQueue<T>::GetRear(T& RearEntry)
 		count--;
 		return true;
 	}
+}
+
+template<class T>
+inline bool DoubleLinkedQueue<T>::addToFront(const T& newEntry)
+{
+	DoubleNode<T>* New = new DoubleNode<T>(newEntry);
+	if (!count)
+		Rear = New;
+	else
+	{
+		Front->setPrev(New);
+		New->setNext(Front);
+	}
+	Front = New;
+	count++;
+	return true;
 }
 
 template<class T>

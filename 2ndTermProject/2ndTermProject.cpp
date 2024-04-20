@@ -10,10 +10,10 @@ int main()
     Game gmain;
     while (gmain.Get_And_Inc_Tj() <= 50)
     {
-        cout << "Current Timestep " << gmain.Get_Tj() << endl;
         gmain.Generate_Earth_Army();
         gmain.Generate_Alien_Army();
         unsigned short randomNumber = randGen.RandGen(0, 100);
+        cout << "Current Timestep " << gmain.Get_Tj()  << " \t probability " << randomNumber << endl;
         if (randomNumber < 10)
         {
             gmain.process_ES();

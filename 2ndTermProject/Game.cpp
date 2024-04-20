@@ -118,9 +118,10 @@ void Game::process_AD()
 	{
 		AlienDrone* temp = NULL;
 		AlienDrone* doubleTemp = NULL;
-		if (AA.pick_AD(temp))
+		doubleTemp = AA.pick_AD(temp);
+		if (temp)
 			Killed_List.enqueue(temp);
-		if (AA.pick_AD(doubleTemp))
+		if (doubleTemp)
 			Killed_List.enqueue(doubleTemp);
 	}
 }
