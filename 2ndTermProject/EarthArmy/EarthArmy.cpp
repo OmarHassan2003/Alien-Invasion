@@ -121,3 +121,28 @@ void EarthArmy::InsertET(EarthTank* passed_ET)
 {
 	ET_Stack.push(passed_ET);
 }
+
+EarthArmy::~EarthArmy()
+{
+	EarthSoldier* dels;
+	while (!ES_Queue.isEmpty())
+	{
+		ES_Queue.dequeue(dels);
+		delete dels;
+	}
+	
+	EarthTank* delt;
+	while (!ET_Stack.isEmpty())
+	{
+		ET_Stack.pop(delt);
+		delete delt;
+	}
+	
+	EarthGunnery* delg;
+	int x = 0;
+	while (!EG_priQ.isEmpty())
+	{
+		EG_priQ.dequeue(delg, x);
+		delete delg;
+	}
+}

@@ -108,3 +108,27 @@ bool AlienArmy::isComromised()
 {
 	return AS_Queue.isEmpty() && AD_DQueue.isEmpty() && AM.isEmpty();
 }
+
+AlienArmy::~AlienArmy()
+{
+	AlienSoldier* dels;
+	while (!AS_Queue.isEmpty())
+	{
+		AS_Queue.dequeue(dels);
+		delete dels;
+	}
+
+	AlienMonster* delm;
+	while (!AM.isEmpty())
+	{
+		AM.Pick(delm);
+		delete delm;
+	}
+
+	AlienDrone* deld;
+	while (!AD_DQueue.isEmpty())
+	{
+		AD_DQueue.dequeue(deld);
+		delete deld;
+	}
+}

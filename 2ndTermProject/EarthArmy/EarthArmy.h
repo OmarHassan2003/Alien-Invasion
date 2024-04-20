@@ -33,6 +33,7 @@ public:
 	void AddInPriQueue(EarthGunnery* passed_AU);
 	/*************************Check if Army has fallen down***********************/
 	bool isCompromised();
+	~EarthArmy();
 };
 
 

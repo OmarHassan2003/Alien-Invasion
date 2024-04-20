@@ -33,5 +33,6 @@ public:
 	void AddInDoubleLinkedQueueQueue(AlienDrone* passed_AU);
 	void AddInAmArray(AlienMonster* passed_AU);
 	bool isComromised();
+	~AlienArmy();
 };
 
