@@ -2,7 +2,7 @@
 
 Game::Game()
 {
-	randgenn = new RandomGenerator; // could be deleted??
+	randgenn = new RandomGenerator;
 	Tj_value = 0;
 	ReadData();
 }
@@ -77,7 +77,7 @@ void Game::process_EG()
 		ultra_temp->SetHealth(temp->GetHealth() / 2);
 		if (ultra_temp->GetHealth() <= 0)
 			Killed_List.enqueue(temp);
-		EA.InsertEG(temp);
+		else EA.InsertEG(temp);
 	}
 }
 
