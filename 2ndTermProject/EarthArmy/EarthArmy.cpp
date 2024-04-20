@@ -104,6 +104,11 @@ void EarthArmy::InsertET(EarthTank* passed_ET)
 	ET_Stack.push(passed_ET);
 }
 
+void EarthArmy::InsertHU(HealUnit* passed_HU)
+{
+	HU_Stack.push(passed_HU);
+}
+
 EarthArmy::~EarthArmy()
 {
 	EarthSoldier* dels;

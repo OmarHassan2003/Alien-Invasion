@@ -136,6 +136,7 @@
     <ClCompile Include="ArmyUnit.cpp" />
     <ClCompile Include="EarthArmy\EarthGunnery.cpp" />
     <ClCompile Include="EarthArmy\EarthTank.cpp" />
+    <ClCompile Include="HealUnit.cpp" />
     <ClCompile Include="Queue\DoubleLinkedQueue.cpp" />
     <ClCompile Include="EarthArmy\EarthArmy.cpp" />
     <ClCompile Include="EarthArmy\EarthSoldier.cpp" />
@@ -154,6 +155,7 @@
     <ClInclude Include="DynamicArray.h" />
     <ClInclude Include="EarthArmy\EarthGunnery.h" />
     <ClInclude Include="EarthArmy\EarthTank.h" />
+    <ClInclude Include="HealUnit.h" />
     <ClInclude Include="priNode.h" />
     <ClInclude Include="Queue\priQueue.h" />
     <ClInclude Include="Queue\DoubleLinkedQueue.h" />

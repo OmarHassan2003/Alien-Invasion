@@ -63,6 +63,9 @@
     <ClCompile Include="Army.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="HealUnit.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Queue\Queue.h">
@@ -132,6 +135,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="DynamicArray.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="HealUnit.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
