@@ -133,6 +133,28 @@ void Game::process_AM()
 		AA.AddInAmArray(temp);
 }
 
+bool Game::AddToUML(ArmyUnit* passed_AU, int pri) 
+{
+	if(passed_AU)
+	{
+		//pri= -1 if Tank and max health-current health for soldiers 
+		if (pri == -1)
+			UML.enqueue(passed_AU, -1);
+		else
+			UML.enqueue(passed_AU, Max_E_HP - passed_AU->GetHealth());
+		return true;
+	}
+	return false;
+}
+
+bool Game::GetUML(ArmyUnit* AU, int pri)
+{
+	if (UML.dequeue(AU, pri))
+		return true;
+	else
+		return false;
+}
+
 void Game::print()
 {
 	cout << "============================================ Earth Army Alive Units ==========================================" << endl;
@@ -179,6 +201,7 @@ void Game::ReadData()
 		Fin.ignore();
 
 		Fin >> max_E_health;
+		Max_E_HP = (int) max_E_health;
 		Fin.ignore();
 
 		Fin >> min_E_Attack_Capacity;

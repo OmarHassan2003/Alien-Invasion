@@ -10,6 +10,8 @@ ArmyUnit::ArmyUnit(Game* p, int HP, int pow, int ID_, int cap, int _Tj)
 	Tj = _Tj;
 	Ta = 0;
 	Td = 0;
+	InitialHealth = Health;
+	StepsInUML = 0;
 }
 
 void ArmyUnit::Set_Ta(int _Ta)
@@ -42,6 +44,11 @@ int ArmyUnit::GetHealth()
 	return Health;
 }
 
+int ArmyUnit::GetInitialH()
+{
+	return InitialHealth;
+}
+
 int ArmyUnit::GetPower()
 {
 	return Power;
@@ -55,6 +62,11 @@ int ArmyUnit::GetID()
 int ArmyUnit::GetAttackCap()
 {
 	return AttackCap;
+}
+
+int ArmyUnit::GetStepsInUML()
+{
+	return StepsInUML;
 }
 
 void ArmyUnit::SetHealth(int h)

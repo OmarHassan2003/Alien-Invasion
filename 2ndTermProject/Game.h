@@ -11,8 +11,10 @@ class Game
 	EarthArmy EA;
 	AlienArmy AA;
 	Queue<ArmyUnit*> Killed_List;
+	priQueue<ArmyUnit*> UML;
 	RandomGenerator* randgenn;
 	unsigned short Tj_value;
+	int Max_E_HP;
 public:
 	Game();
 	void ReadData();
@@ -28,6 +30,8 @@ public:
 	void process_AD();
 	void process_AM();
 	//void Attack(); //PHASE2
+	bool AddToUML(ArmyUnit* passed_AU, int pri);
+	bool GetUML(ArmyUnit* AU, int pri);
 	void print();
 	~Game();
 };

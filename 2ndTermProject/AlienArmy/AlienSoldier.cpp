@@ -18,6 +18,11 @@ void AlienSoldier::AddAlienUnitToList(AlienArmy* passed_AA)
 	}
 }
 
+bool AlienSoldier::Attack(ArmyUnit* AU0, ArmyUnit* AU1)
+{
+	return false;
+}
+
 ostream& operator<<(ostream& COUT, AlienSoldier* Passed_AU)
 {
 	COUT << Passed_AU->GetID() << " ";

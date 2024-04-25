@@ -15,6 +15,11 @@ void AlienDrone::AddAlienUnitToList(AlienArmy* passed_AA)
 	passed_AA->AddInDoubleLinkedQueueQueue(this);
 }
 
+bool AlienDrone::Attack(ArmyUnit* AU0, ArmyUnit* AU1)
+{
+	return false;
+}
+
 ostream& operator<<(ostream& COUT, AlienDrone* PAssed_AD)
 {
 	COUT << PAssed_AD->GetID() << " ";
