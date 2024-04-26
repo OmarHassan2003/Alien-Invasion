@@ -24,6 +24,11 @@ void ArmyUnit::Set_Td(int _Td)
 	Td = _Td;
 }
 
+void ArmyUnit::Set_StepsInUML(int step)
+{
+	StepsInUML = step;
+}
+
 int ArmyUnit::Get_Ta()
 {
 	return Ta;

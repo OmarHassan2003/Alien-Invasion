@@ -169,6 +169,10 @@ void Game::Attack()
 
 }
 
+void Game::EA_Attack_AA()
+{
+}
+
 bool Game::CheckWhoWins()
 {
 	if (EA.isCompromised())

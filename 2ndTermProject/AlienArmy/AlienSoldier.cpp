@@ -28,9 +28,11 @@ bool AlienSoldier::Attack(ArmyUnit* AU0, ArmyUnit* AU1)
 			ES -= GetPower();
 			if (ES->GetHealth() <= 0)
 				pGame->AddInKilledList(ES);
+			else if (ES->GetHealth() < 0.2 * ES->GetInitialH())
+				pGame->AddToUML(ES, 0);
 			else
 			{
-				// move to templist.
+				// move to templist. //specisl one for each unit class or in GAME.
 			}
 		}
 		else

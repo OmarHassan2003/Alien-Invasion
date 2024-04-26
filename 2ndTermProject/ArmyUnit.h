@@ -26,6 +26,7 @@ public:
 
 	virtual void Set_Ta(int);
 	virtual void Set_Td(int);
+	virtual void Set_StepsInUML(int);
 
 	virtual void AddEarthUnitToList(EarthArmy* passed_EA) = 0;
 	virtual void AddAlienUnitToList(AlienArmy* passed_EA) = 0;

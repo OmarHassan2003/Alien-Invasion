@@ -23,18 +23,19 @@ public:
 	unsigned short Get_And_Inc_Tj();
 	unsigned short Get_Tj();
 	void AddInKilledList(ArmyUnit* passed_AU);
+	bool AddToUML(ArmyUnit* passed_AU, int pri);
 	void process_ES();
 	void process_ET();
 	void process_EG();
 	void process_AS();
 	void process_AD();
 	void process_AM();
-	void Attack(); //PHASE2
 	bool CheckWhoWins();
-	bool Get_AS(AlienSoldier* AU);	//PHASE2
+	bool Get_AS(AlienSoldier* AU);
 	bool Get_ES(EarthSoldier* AU);
-	bool AddToUML(ArmyUnit* passed_AU, int pri);
 	bool GetUML(ArmyUnit* AU, int pri);
+	void Attack();
+	void EA_Attack_AA();
 	void print();
 	~Game();
 };

@@ -3,13 +3,13 @@
 #include "EarthSoldier.h"
 #include "EarthGunnery.h"
 #include "EarthTank.h"
-
+#include "../HealUnit.h"
 EarthArmy::EarthArmy()
 {
 	
 }
 
-bool EarthArmy::Attack() //PHASE2
+bool EarthArmy::Attack()
 {
 	EarthSoldier* ES;
 	if (ES_Queue.peek(ES))
@@ -24,6 +24,10 @@ bool EarthArmy::Attack() //PHASE2
 	if (ET_Stack.peek(ET))
 		ET->Attack();
 
+	HealUnit* HU;
+	if (HU_Stack.peek(HU))
+		HU->Attack();
+	 // How to move the HU to the killedlist in the GAME class?
 	return true;
 }
 

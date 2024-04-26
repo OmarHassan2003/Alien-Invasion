@@ -12,6 +12,8 @@ int main()
 		gmain.Generate_Earth_Army();
 		gmain.Generate_Alien_Army();
 		gmain.Attack();
-		EndGame = gmain.CheckWhoWins();
+		gmain.print();
+		if(gmain.Get_Tj()>40)
+			EndGame = gmain.CheckWhoWins();
 	}
 }

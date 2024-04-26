@@ -20,18 +20,36 @@ void HealUnit::AddAlienUnitToList(AlienArmy* passed_AA)
 
 bool HealUnit::Attack(ArmyUnit* AU0, ArmyUnit* AU1)
 {
+	bool flag = 1;
 	ArmyUnit* AU = nullptr;
 	int pri = 0;
+	priQueue<ArmyUnit*> templist;
 	for (int i = 0; i < this->GetAttackCap(); i++)
-	{
 		if (pGame->GetUML(AU, pri))
 			if (AU->GetStepsInUML() <= 10)
-				AU += (this->GetHealth() * this->GetPower()) / (100 * AU->GetHealth());
+			{
+				AU += ((this->GetHealth() * this->GetPower()) / (100 * AU->GetHealth()));
+				if (AU->GetHealth() > 0.2 * AU->GetInitialH())
+					if (pri == -1)
+					{
+						//Add to Tanklist and set its steps in UML to zero.
+					}
+					else
+					{
+						//Add to ES_list and set its steps in UML to zero.
+					}
+				else //still under 20% hp.
+					templist.enqueue(AU, pri);
+			}
 			else
 				pGame->AddInKilledList(AU);
 		else
-			return false;
-	}
+			flag = 0; // no. of available units to be attacked less than the attack cap.
+
+	while (templist.dequeue(AU, pri))
+		pGame->AddToUML(AU, pri);
+	
+	return flag;
 }
 
 ostream& operator<<(ostream& COUT, HealUnit* Passed_AU)

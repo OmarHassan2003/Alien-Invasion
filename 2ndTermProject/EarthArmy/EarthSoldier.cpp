@@ -30,7 +30,7 @@ bool EarthSoldier::Attack(ArmyUnit* AU0, ArmyUnit* AU1) //PHASE2
 				pGame->AddInKilledList(AS);
 			else
 			{
-				// move to templist.
+				// move to templist. //specisl one for each unit class or in GAME.
 			}
 		}
 		else
