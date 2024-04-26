@@ -31,40 +31,6 @@ bool EarthArmy::Attack()
 	return true;
 }
 
-void EarthArmy::AddInStack(EarthTank* passed_AU)
-{
-	ET_Stack.push(passed_AU);
-}
-
-void EarthArmy::AddInQueue(EarthSoldier* passed_AU)
-{
-	if(passed_AU)
-	{
-		ES_Queue.enqueue(passed_AU);
-	}
-}
-
-void EarthArmy::AddInPriQueue(EarthGunnery* passed_AU)
-{
-	ArmyUnit* temp = (ArmyUnit*)passed_AU;
-	EG_priQ.enqueue(passed_AU,temp->GetHealth() + temp->GetPower());
-}
-
-bool EarthArmy::isCompromised()
-{
-	return ES_Queue.isEmpty() && EG_priQ.isEmpty() && ET_Stack.isEmpty();
-}
-
-bool EarthArmy::AddUnit(ArmyUnit* passed_AU)
-{
-	if(passed_AU)
-	{
-		passed_AU->AddEarthUnitToList(this);
-		return true;
-	}
-	return false;
-}
-
 void EarthArmy::PrintArmyInfo()
 {
 	cout << ES_Queue.GetCount() << " ES [";
@@ -78,57 +44,59 @@ void EarthArmy::PrintArmyInfo()
 
 bool EarthArmy::pick_ES(EarthSoldier*& EPtr)
 {
-	if (ES_Queue.dequeue(EPtr))
-		return true;
-	else
-		return false;
+	return ES_Queue.dequeue(EPtr);
+}
+
+bool EarthArmy::pick_ET(EarthTank*& Eptr)
+{
+	return ET_Stack.pop(Eptr);
 }
 
 bool EarthArmy::pick_EG(EarthGunnery*& EPtr)
 {
 	int x = 0;
-	if (EG_priQ.dequeue(EPtr, x))
+	return EG_priQ.dequeue(EPtr, x);
+}
+
+bool EarthArmy::pick_HU(HealUnit*& Eptr)
+{
+	return HU_Stack.pop(Eptr);
+}
+
+bool EarthArmy::AddUnit(ArmyUnit* passed_AU)
+{
+	if(passed_AU)
+	{
+		passed_AU->AddEarthUnitToList(this);
 		return true;
-	else
-	{
-		EPtr = nullptr;
-		return false;
 	}
+	return false;
 }
 
-bool EarthArmy::pick_ET(EarthTank*& Eptr)
+void EarthArmy::AddInQueue(EarthSoldier* passed_AU)
 {
-	if (ET_Stack.pop(Eptr))
-		return true;
-	else
-		return false;
+		ES_Queue.enqueue(passed_AU);
 }
 
-void EarthArmy::InsertES(EarthSoldier* passed_ES)
+void EarthArmy::AddInStack(EarthTank* passed_AU)
 {
-	if(passed_ES)
-	{
-		ES_Queue.enqueue(passed_ES);
-	}
+	ET_Stack.push(passed_AU);
 }
 
-void EarthArmy::InsertEG(EarthGunnery* passed_EG)
+void EarthArmy::AddInPriQueue(EarthGunnery* passed_AU)
 {
-	if (passed_EG)
-	{
-		ArmyUnit* temp = (ArmyUnit*)passed_EG;
-		EG_priQ.enqueue(passed_EG, temp->GetHealth() + temp->GetPower());
-	}
+	ArmyUnit* temp = (ArmyUnit*)passed_AU;
+	EG_priQ.enqueue(passed_AU,temp->GetHealth() + temp->GetPower());
 }
 
-void EarthArmy::InsertET(EarthTank* passed_ET)
-{
-	ET_Stack.push(passed_ET);
-}
-
-void EarthArmy::InsertHU(HealUnit* passed_HU)
+void EarthArmy::AddInHUStack(HealUnit* passed_HU)
 {
 	HU_Stack.push(passed_HU);
+}
+
+bool EarthArmy::isCompromised()
+{
+	return ES_Queue.isEmpty() && EG_priQ.isEmpty() && ET_Stack.isEmpty();
 }
 
 EarthArmy::~EarthArmy()

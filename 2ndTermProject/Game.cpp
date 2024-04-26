@@ -20,7 +20,6 @@ void Game::Generate_Earth_Army()
 		}
 	}
 }
-
 void Game::Generate_Alien_Army()
 {
 	ArmyUnit* AU = nullptr;
@@ -40,7 +39,6 @@ unsigned short Game::Get_And_Inc_Tj()
 	Tj_value++;
 	return Tj_value;
 }
-
 unsigned short Game::Get_Tj()
 {
 	return Tj_value;
@@ -51,86 +49,67 @@ void Game::AddInKilledList(ArmyUnit* passed_AU)
 	Killed_List.enqueue(passed_AU);
 }
 
-void Game::process_ES()
+bool Game::CheckWhoWins()
 {
-	EarthSoldier* temp;
-	if(EA.pick_ES(temp))
-		EA.InsertES(temp);
+	if (EA.isCompromised())
+	{
+		cout << "Alien Army has won the game" << endl;
+		return true;
+	}
+	else if (AA.isCompromised())
+	{
+		cout << "Earth Army has won the game" << endl;
+		return true;
+	}
+	else
+		return false;
 }
 
-void Game::process_ET()
+bool Game::Get_AM(AlienMonster*& AU)
 {
-	EarthTank* temp;
-	EA.pick_ET(temp);
-	if (temp)
-	{
-		ArmyUnit* doubletemp = (ArmyUnit*)temp;
-		Killed_List.enqueue(temp);
-	}
+	return AA.pick_AM(AU);
 }
-void Game::process_EG()
+bool Game::Get_AS(AlienSoldier*& AU)
 {
-	EarthGunnery* temp;
-	if (EA.pick_EG(temp))
-	{
-		ArmyUnit* ultra_temp = (ArmyUnit*)temp;
-		ultra_temp->SetHealth(temp->GetHealth() / 2);
-		if (ultra_temp->GetHealth() <= 0)
-			Killed_List.enqueue(temp);
-		else EA.InsertEG(temp);
-	}
+	return AA.pick_AS(AU);
 }
-
-void Game::process_AS()
+bool Game::Get_ES(EarthSoldier*& AU)
 {
-	Queue<AlienSoldier*>temp;
-	for (int i = 1; i <= 5; i++)
-	{
-		AlienSoldier* dec;
-		if (AA.pick_AS(dec))
-		{
-			ArmyUnit* doubletemp = (ArmyUnit*)dec;
-			doubletemp->SetHealth(doubletemp->GetHealth() / 2);
-			if (doubletemp->GetHealth() <= 0)
-				Killed_List.enqueue(dec);
-			else
-				temp.enqueue(dec);
-		}
-	}
-	cout << "The soldiers enqueued to the temp list are : " << '\n';
-	while (!temp.isEmpty())
-	{
-		AlienSoldier* temporary;
-		temp.dequeue(temporary);
-		ArmyUnit* ultra_temp = (ArmyUnit*)temporary;
-		if (ultra_temp)
-		{
-			cout << ultra_temp->GetID() << " , ";
-			AA.InsertAS(temporary);
-		}
-	}
-	cout << endl;
+	return EA.pick_ES(AU);
+}
+bool Game::Get_EG(EarthGunnery*& AU)
+{
+	return EA.pick_EG(AU);
+}
+bool Game::Get_AD(AlienDrone*& AU)
+{
+	return AA.pick_AD(AU);
+}
+bool Game::Get_L_AD(AlienDrone*& AU)
+{
+	return AA.pick_Rear_AD(AU);
+}
+bool Game::GetUML(ArmyUnit* AU, int pri)
+{
+	return UML.dequeue(AU, pri);
 }
 
-void Game::process_AD()
+void Game::AddToUML(ArmyUnit* passed_AU, int pri) 
 {
-	for (int x = 1; x <= 3; x++)
-	{
-		AlienDrone* temp = NULL;
-		AlienDrone* doubleTemp = NULL;
-		doubleTemp = AA.pick_AD(temp);
-		if (temp)
-			Killed_List.enqueue(temp);
-		if (doubleTemp)
-			Killed_List.enqueue(doubleTemp);
-	}
+	if(passed_AU)
+		//pri= -1 if Tank and max health-current health for soldiers 
+		if (pri == -1)
+			UML.enqueue(passed_AU, -1);
+		else
+			UML.enqueue(passed_AU, Max_E_HP - passed_AU->GetHealth());
 }
-
-void Game::process_AM()
+void Game::Add_ES(EarthSoldier* AU)
 {
-	AlienMonster* temp;
-	if (AA.pick_AM(temp))
-		AA.AddInAmArray(temp);
+	EA.AddInQueue(AU);
+}
+void Game::Add_AS(AlienSoldier* AU)
+{
+	AA.AddInQueue(AU);
 }
 
 void Game::Attack()
@@ -183,73 +162,6 @@ void Game::Attack()
 	//	if (pEG->GetHealth() <= 0)
 	//		AddInKilledList(pEG);
 	//}
-}
-
-void Game::EA_Attack_AA()
-{
-}
-
-bool Game::CheckWhoWins()
-{
-	if (EA.isCompromised())
-	{
-		cout << "Alien Army has won the game" << endl;
-		return true;
-	}
-	else if (AA.isCompromised())
-	{
-		cout << "Earth Army has won the game" << endl;
-		return true;
-	}
-	else
-		return false;
-}
-
-bool Game::Get_AM(AlienMonster*& AU)
-{
-	return AA.pick_AM(AU);
-}
-bool Game::Get_AS(AlienSoldier*& AU)
-{
-	return AA.pick_AS(AU);
-}
-bool Game::Get_ES(EarthSoldier*& AU)
-{
-	return EA.pick_ES(AU);
-}
-bool Game::Get_EG(EarthGunnery*& AU)
-{
-	return EA.pick_EG(AU);
-}
-bool Game::Get_AD(AlienDrone*& AU)
-{
-	return AA.pick_AD(AU);
-}
-bool Game::Get_L_AD(AlienDrone*& AU)
-{
-	return AA.pick_Rear_AD(AU);
-}
-
-bool Game::AddToUML(ArmyUnit* passed_AU, int pri) 
-{
-	if(passed_AU)
-	{
-		//pri= -1 if Tank and max health-current health for soldiers 
-		if (pri == -1)
-			UML.enqueue(passed_AU, -1);
-		else
-			UML.enqueue(passed_AU, Max_E_HP - passed_AU->GetHealth());
-		return true;
-	}
-	return false;
-}
-
-bool Game::GetUML(ArmyUnit* AU, int pri)
-{
-	if (UML.dequeue(AU, pri))
-		return true;
-	else
-		return false;
 }
 
 void Game::print()

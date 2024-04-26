@@ -19,24 +19,19 @@ class EarthArmy :public Army
 public:
 	EarthArmy();
 	bool Attack();
-	bool AddUnit(ArmyUnit* passed_AU);
 	void PrintArmyInfo(); // Add HU
 	/****************pick units from lists********************/
 	bool pick_ES(EarthSoldier*& EPtr);
-	bool pick_EG(EarthGunnery*& EPtr);
 	bool pick_ET(EarthTank*& EPtr);
-	/****************insert units from lists********************/
-	void InsertES(EarthSoldier* passed_ES);
-	void InsertEG(EarthGunnery* passed_EG);
-	void InsertET(EarthTank* passed_ET);
-	void InsertHU(HealUnit* passed_HU);
-	/*************************ADD Units***************************/
-	void AddInStack(EarthTank* passed_AU);
+	bool pick_EG(EarthGunnery*& EPtr);
+	bool pick_HU(HealUnit*& Eptr);
+	/****************insert units to lists********************/
+	bool AddUnit(ArmyUnit* passed_AU); // THE GENERAL ONE
 	void AddInQueue(EarthSoldier* passed_AU);
+	void AddInStack(EarthTank* passed_AU);
 	void AddInPriQueue(EarthGunnery* passed_AU);
+	void AddInHUStack(HealUnit* passed_HU);
 	/*************************Check if Army has fallen down***********************/
 	bool isCompromised();
 	~EarthArmy();
 };
-
-

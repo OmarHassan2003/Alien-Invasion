@@ -21,16 +21,6 @@ bool AlienArmy::Attack()
 	return true;
 }
 
-bool AlienArmy::AddUnit(ArmyUnit* passed_AU)
-{
-	if (passed_AU)
-	{
-		passed_AU->AddAlienUnitToList(this);
-		return true;
-	}
-	return false;
-}
-
 void AlienArmy::PrintArmyInfo()
 {
 	cout << AS_Queue.GetCount() << " AS [";
@@ -53,20 +43,12 @@ bool AlienArmy::pick_AM(AlienMonster*& passed_AM)
 	return AM.Pick(passed_AM);
 }
 
-AlienSoldier* AlienArmy::Remove_AS()
-{
-	AlienSoldier* tempPtr;
-	if (AS_Queue.dequeue(tempPtr))
-		return tempPtr;
-	else return NULL;
-}
-
 bool AlienArmy::pick_Rear_AD(AlienDrone*& passed_AD)
 {
 	return AD_DQueue.GetRear(passed_AD);
 }
 
-AlienDrone* AlienArmy::pick_AD(AlienDrone*& passed_AD)
+AlienDrone* AlienArmy::pick_AD(AlienDrone*& passed_AD) //change to bool
 {
 	AlienDrone* temp = NULL;
 	AD_DQueue.GetRear(passed_AD);
@@ -75,37 +57,29 @@ AlienDrone* AlienArmy::pick_AD(AlienDrone*& passed_AD)
 	else return NULL;
 }
 
-void AlienArmy::InsertAS(AlienSoldier* passed_AS)
+bool AlienArmy::AddUnit(ArmyUnit* passed_AU)
 {
-	AS_Queue.enqueue(passed_AS);
-}
-
-void AlienArmy::InsertAD(AlienDrone* passed_AD)
-{
-	AD_DQueue.enqueue(passed_AD);
-}
-
-void AlienArmy::InsertAM(AlienMonster* passed_AM)
-{
-	AM.Add(passed_AM);
+	if (passed_AU)
+	{
+		passed_AU->AddAlienUnitToList(this);
+		return true;
+	}
+	return false;
 }
 
 void AlienArmy::AddInQueue(AlienSoldier* passed_AU) 
 {
-	if (passed_AU)
-	{
-		AS_Queue.enqueue(passed_AU);
-	}
-}
-
-void AlienArmy::AddInDoubleLinkedQueueQueue(AlienDrone* passed_AU)
-{
-	AD_DQueue.enqueue(passed_AU);
+	AS_Queue.enqueue(passed_AU);
 }
 
 void AlienArmy::AddInAmArray(AlienMonster* passed_AU)
 {
 	AM.Add(passed_AU);
+}
+
+void AlienArmy::AddInDoubleLinkedQueueQueue(AlienDrone* passed_AU)
+{
+	AD_DQueue.enqueue(passed_AU);
 }
 
 bool AlienArmy::isCompromised()

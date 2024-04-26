@@ -11,7 +11,7 @@ class Game
 	EarthArmy EA;
 	AlienArmy AA;
 	Queue<ArmyUnit*> Killed_List;
-	priQueue<ArmyUnit*> UML;
+	priQueue<ArmyUnit*> UML; // HERE or in EA class.
 	RandomGenerator* randgenn;
 	unsigned short Tj_value;
 	unsigned short Max_E_HP;
@@ -23,14 +23,8 @@ public:
 	unsigned short Get_And_Inc_Tj();
 	unsigned short Get_Tj();
 	void AddInKilledList(ArmyUnit* passed_AU);
-	bool AddToUML(ArmyUnit* passed_AU, int pri);
-	void process_ES();
-	void process_ET();
-	void process_EG();
-	void process_AS();
-	void process_AD();
-	void process_AM();
 	bool CheckWhoWins();
+	/////////////////////////////////////
 	bool Get_AM(AlienMonster*& AU);
 	bool Get_AS(AlienSoldier*& AU);
 	bool Get_ES(EarthSoldier*& AU);
@@ -38,8 +32,12 @@ public:
 	bool Get_AD(AlienDrone*& AU);
 	bool Get_L_AD(AlienDrone*& AU);
 	bool GetUML(ArmyUnit* AU, int pri);
+	/////////////////////////////////////
+	void AddToUML(ArmyUnit* passed_AU, int pri);
+	void Add_ES(EarthSoldier* AU);
+	void Add_AS(AlienSoldier* AU);
+	/////////////////////////////////////
 	void Attack();
-	void EA_Attack_AA();
 	void print();
 	~Game();
 };

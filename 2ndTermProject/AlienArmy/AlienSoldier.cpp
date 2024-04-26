@@ -22,6 +22,7 @@ bool AlienSoldier::Attack(ArmyUnit* AU0, ArmyUnit* AU1)
 {
 	bool flag = 1;
 	EarthSoldier* ES = nullptr;
+	Queue<EarthSoldier*> templist;
 	for (int i = 0; i < GetAttackCap(); i++)
 		if (pGame->Get_ES(ES))
 		{
@@ -31,13 +32,15 @@ bool AlienSoldier::Attack(ArmyUnit* AU0, ArmyUnit* AU1)
 			else if (ES->GetHealth() < 0.2 * ES->GetInitialH())
 				pGame->AddToUML(ES, 0);
 			else
-			{
-				// move to templist. //specisl one for each unit class or in GAME.
-			}
+				templist.enqueue(ES);
 		}
 		else
-			flag = 0; // no. of available units to be attacked less than the attack cap.
-
+		{
+			flag = 0;
+			break;
+		}
+	while (templist.dequeue(ES))
+		pGame->Add_ES(ES);
 	return flag;
 }
 

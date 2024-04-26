@@ -10,7 +10,7 @@ void HealUnit::AddEarthUnitToList(EarthArmy* passed_EA)
 {
 	if (passed_EA)
 	{
-		passed_EA->InsertHU(this);
+		passed_EA->AddInHUStack(this);
 	}
 }
 
@@ -32,11 +32,13 @@ bool HealUnit::Attack(ArmyUnit* AU0, ArmyUnit* AU1)
 				if (AU->GetHealth() > 0.2 * AU->GetInitialH())
 					if (pri == -1)
 					{
-						//Add to Tanklist and set its steps in UML to zero.
+						//Add to Tanklist 
+						AU->Set_StepsInUML(0);
 					}
 					else
 					{
-						//Add to ES_list and set its steps in UML to zero.
+						//Add to ES_list
+						AU->Set_StepsInUML(0);
 					}
 				else //still under 20% hp.
 					templist.enqueue(AU, pri);
