@@ -14,7 +14,7 @@ class Game
 	priQueue<ArmyUnit*> UML;
 	RandomGenerator* randgenn;
 	unsigned short Tj_value;
-	int Max_E_HP;
+	unsigned short Max_E_HP;
 public:
 	Game();
 	void ReadData();
@@ -31,8 +31,12 @@ public:
 	void process_AD();
 	void process_AM();
 	bool CheckWhoWins();
+	bool Get_AM(AlienMonster*& AU);
 	bool Get_AS(AlienSoldier*& AU);
 	bool Get_ES(EarthSoldier*& AU);
+	bool Get_EG(EarthGunnery*& AU);
+	bool Get_AD(AlienDrone*& AU);
+	bool Get_L_AD(AlienDrone*& AU);
 	bool GetUML(ArmyUnit* AU, int pri);
 	void Attack();
 	void EA_Attack_AA();
