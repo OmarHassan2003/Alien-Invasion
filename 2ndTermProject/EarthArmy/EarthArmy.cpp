@@ -11,7 +11,7 @@ EarthArmy::EarthArmy()
 
 bool EarthArmy::Attack()
 {
-	EarthSoldier* ES;
+	EarthSoldier* ES = nullptr;
 	if (ES_Queue.peek(ES))
 		ES->Attack();
 

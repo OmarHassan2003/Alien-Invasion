@@ -34,7 +34,10 @@ bool EarthSoldier::Attack(ArmyUnit* AU0, ArmyUnit* AU1) //PHASE2
 			}
 		}
 		else
+		{
 			flag = 0; // no. of available units to be attacked less than the attack cap.
+			break;
+		}
 
 	return flag;
 }

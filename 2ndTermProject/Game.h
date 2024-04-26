@@ -31,8 +31,8 @@ public:
 	void process_AD();
 	void process_AM();
 	bool CheckWhoWins();
-	bool Get_AS(AlienSoldier* AU);
-	bool Get_ES(EarthSoldier* AU);
+	bool Get_AS(AlienSoldier*& AU);
+	bool Get_ES(EarthSoldier*& AU);
 	bool GetUML(ArmyUnit* AU, int pri);
 	void Attack();
 	void EA_Attack_AA();

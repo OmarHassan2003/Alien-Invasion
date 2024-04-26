@@ -74,6 +74,12 @@ int ArmyUnit::GetStepsInUML()
 	return StepsInUML;
 }
 
+ArmyUnit* ArmyUnit::operator-=(int damage)
+{
+	Health -= damage;
+	return this;
+}
+
 void ArmyUnit::SetHealth(int h)
 {
 	Health = h;

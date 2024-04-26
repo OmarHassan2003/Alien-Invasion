@@ -41,7 +41,7 @@ public:
 	virtual int GetAttackCap();
 	virtual int GetStepsInUML();
 	
-	// -= operator to modify the health
+	ArmyUnit* operator-=(int damage);
 	// ++ operator to increase StepsInUML
 
 	void SetHealth(int h);
