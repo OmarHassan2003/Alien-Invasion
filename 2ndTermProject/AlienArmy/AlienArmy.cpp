@@ -8,6 +8,19 @@ AlienArmy::AlienArmy()
 {
 }
 
+bool AlienArmy::Attack()
+{
+	AlienSoldier* AS;
+	if (AS_Queue.peek(AS))
+		AS->Attack();
+
+	AlienMonster* ALM;
+	// pick an AM and Attack.
+
+	//Drone Attack. 
+	return true;
+}
+
 bool AlienArmy::AddUnit(ArmyUnit* passed_AU)
 {
 	if (passed_AU)
@@ -95,7 +108,7 @@ void AlienArmy::AddInAmArray(AlienMonster* passed_AU)
 	AM.Add(passed_AU);
 }
 
-bool AlienArmy::isComromised()
+bool AlienArmy::isCompromised()
 {
 	return AS_Queue.isEmpty() && AD_DQueue.isEmpty() && AM.isEmpty();
 }

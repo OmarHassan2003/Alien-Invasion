@@ -12,7 +12,7 @@ class Army
 
 public:
 	Army();
-	//virtual bool Attack() = 0; phase 2
+	virtual bool Attack() = 0;
 	virtual bool AddUnit(ArmyUnit* passed_AU) = 0;
 	virtual void PrintArmyInfo() = 0;
 };

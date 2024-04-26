@@ -9,6 +9,24 @@ EarthArmy::EarthArmy()
 	
 }
 
+bool EarthArmy::Attack() //PHASE2
+{
+	EarthSoldier* ES;
+	if (ES_Queue.peek(ES))
+		ES->Attack();
+
+	EarthGunnery* EG;
+	int x;
+	if (EG_priQ.peek(EG, x))
+		EG->Attack();
+
+	EarthTank* ET;
+	if (ET_Stack.peek(ET))
+		ET->Attack();
+
+	return true;
+}
+
 void EarthArmy::AddInStack(EarthTank* passed_AU)
 {
 	ET_Stack.push(passed_AU);

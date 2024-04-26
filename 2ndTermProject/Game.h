@@ -29,7 +29,10 @@ public:
 	void process_AS();
 	void process_AD();
 	void process_AM();
-	//void Attack(); //PHASE2
+	void Attack(); //PHASE2
+	bool CheckWhoWins();
+	bool Get_AS(AlienSoldier* AU);	//PHASE2
+	bool Get_ES(EarthSoldier* AU);
 	bool AddToUML(ArmyUnit* passed_AU, int pri);
 	bool GetUML(ArmyUnit* AU, int pri);
 	void print();

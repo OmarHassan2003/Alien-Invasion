@@ -16,7 +16,7 @@ class AlienArmy :public Army
 	DynamicArray<AlienMonster*> AM;
 public:
 	AlienArmy();
-	//bool Attack(); phase 2
+	bool Attack();
 	bool AddUnit(ArmyUnit* passed_AU);
 	void PrintArmyInfo();
 	/****************pick units from lists********************/
@@ -32,7 +32,7 @@ public:
 	void AddInQueue(AlienSoldier* passed_AU);
 	void AddInDoubleLinkedQueueQueue(AlienDrone* passed_AU);
 	void AddInAmArray(AlienMonster* passed_AU);
-	bool isComromised();
+	bool isCompromised();
 	~AlienArmy();
 };
 

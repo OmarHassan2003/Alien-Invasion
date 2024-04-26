@@ -18,7 +18,7 @@ class EarthArmy :public Army
 	Stack<HealUnit*> HU_Stack;
 public:
 	EarthArmy();
-	//bool Attack(); phase 2
+	bool Attack();
 	bool AddUnit(ArmyUnit* passed_AU);
 	void PrintArmyInfo(); // Add HU
 	/****************pick units from lists********************/
