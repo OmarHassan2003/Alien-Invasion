@@ -143,30 +143,46 @@ void Game::Attack()
 	AA.pick_AM(pAM);
 	if (EA.pick_EG(pEG))
 	{
-		if (pAM)
+		unsigned short i;
+		unsigned short EG_Attack_Drone_Capacity = pEG->GetAttackCap() / 2;
+		unsigned short EG_Attack_Monster_Capacity;
+		for (i = 0;i < EG_Attack_Drone_Capacity; i++)
 		{
-			pEG->Attack(pAM);
-			if (pAM->GetHealth() <= 0)
-				AddInKilledList(pAM);
+			if (Get_AD(pAD0))
+			{
+				pEG->Attack(pAD0);
+				if (pAD0->GetHealth() <= 0)
+					AddInKilledList(pAD0);
+			}
+			if (Get_L_AD(pAD1))
+			{
+				pEG->Attack(pAD1);
+				if (pAD1->GetHealth() <= 0)
+					AddInKilledList(pAD1);
+			}
+			if (!pAD0 && !pAD1)
+				break;
 		}
-		if (pAD0 && pAD1)
+		EG_Attack_Monster_Capacity = EG_Attack_Drone_Capacity - i;
+		for (i = 0;i < EG_Attack_Monster_Capacity; i++)
 		{
-			pEG->Attack(pAD0, pAD1);
-
-			if (pAD0->GetHealth() <= 0)
-				AddInKilledList(pAD0);
-			if (pAD1->GetHealth() <= 0)
-				AddInKilledList(pAD1);
+			if (Get_AM(pAM))
+			{
+				pEG->Attack(pAM);
+				if (pAM->GetHealth() <= 0)
+					AddInKilledList(pAM);
+			}
+			else
+				break;
 		}
 	}
-	if (pAD0 && pAD1 && pEG)
-	{
-		pAD0->Attack(pEG);
-		pAD1->Attack(pEG);
-		if (pEG->GetHealth() <= 0)
-			AddInKilledList(pEG);
-	}
-
+	//if (pAD0 && pAD1 && pEG)
+	//{
+	//	pAD0->Attack(pEG);
+	//	pAD1->Attack(pEG);
+	//	if (pEG->GetHealth() <= 0)
+	//		AddInKilledList(pEG);
+	//}
 }
 
 void Game::EA_Attack_AA()
@@ -189,20 +205,29 @@ bool Game::CheckWhoWins()
 		return false;
 }
 
-bool Game::Get_AS(AlienSoldier* AU) //PHASE2
+bool Game::Get_AM(AlienMonster*& AU)
 {
-	if (AA.pick_AS(AU))
-		return true;
-	else
-		return false;
+	return AA.pick_AM(AU);
 }
-
-bool Game::Get_ES(EarthSoldier* AU)
+bool Game::Get_AS(AlienSoldier*& AU)
 {
-	if (EA.pick_ES(AU))
-		return true;
-	else
-		return false;
+	return AA.pick_AS(AU);
+}
+bool Game::Get_ES(EarthSoldier*& AU)
+{
+	return EA.pick_ES(AU);
+}
+bool Game::Get_EG(EarthGunnery*& AU)
+{
+	return EA.pick_EG(AU);
+}
+bool Game::Get_AD(AlienDrone*& AU)
+{
+	return AA.pick_AD(AU);
+}
+bool Game::Get_L_AD(AlienDrone*& AU)
+{
+	return AA.pick_Rear_AD(AU);
 }
 
 bool Game::AddToUML(ArmyUnit* passed_AU, int pri) 
