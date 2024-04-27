@@ -50,6 +50,21 @@ bool AlienArmy::pick_Rear_AD(AlienDrone*& passed_AD)
 	return AD_DQueue.GetRear(passed_AD);
 }
 
+bool AlienArmy::peek_AD(AlienDrone*& passed_AD)
+{
+	return AD_DQueue.peek(passed_AD);
+}
+
+bool AlienArmy::peek_AD_Rear(AlienDrone*& passed_AD)
+{
+	return AD_DQueue.peek_rear(passed_AD);
+}
+
+bool AlienArmy::peek_AM(AlienMonster*& passed_AM)
+{
+	return AM.Peek(passed_AM);
+}
+
 AlienDrone* AlienArmy::pick_AD(AlienDrone*& passed_AD) //change to bool
 {
 	AlienDrone* temp = NULL;

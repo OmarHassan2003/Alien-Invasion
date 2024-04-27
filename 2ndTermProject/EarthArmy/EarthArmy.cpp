@@ -63,6 +63,12 @@ bool EarthArmy::pick_HU(HealUnit*& Eptr)
 	return HU_Stack.pop(Eptr);
 }
 
+bool EarthArmy::peek_EG(EarthGunnery*& EPtr)
+{
+	int x;
+	return EG_priQ.peek(EPtr,x);
+}
+
 bool EarthArmy::AddUnit(ArmyUnit* passed_AU)
 {
 	if(passed_AU)

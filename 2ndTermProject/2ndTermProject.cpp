@@ -2,8 +2,10 @@
 #include "AlienArmy/AlienArmy.h"
 #include "RandomGenerator/RandomGenerator.h"
 #include "Game.h"
+
 int main()
 {
+	int x;
 	Game gmain;
 	bool EndGame = false;
 	while (!EndGame)

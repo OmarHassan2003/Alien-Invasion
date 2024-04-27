@@ -15,6 +15,7 @@ public:
 	bool addToFront(const T& newEntry);
 	bool dequeue(T& FrontEntry);
 	bool peek(T& FrontEntry) const;
+	bool peek_rear(T& RearEntry) const;
 	bool GetRear(T& RearEntry);
 	void print() const;
 	int GetCount() const;
@@ -87,6 +88,18 @@ bool DoubleLinkedQueue<T>::peek(T& FrontEntry) const
 }
 
 template<class T>
+bool DoubleLinkedQueue<T>::peek_rear(T& RearEntry) const
+{
+	if (!count)
+		return false;
+	else
+	{
+		RearEntry = Rear->getItem();
+		return true;
+	}
+}
+
+template<class T>
 bool DoubleLinkedQueue<T>::GetRear(T& RearEntry)
 {
 	if (!count)
@@ -113,7 +126,7 @@ bool DoubleLinkedQueue<T>::GetRear(T& RearEntry)
 }
 
 template<class T>
-inline bool DoubleLinkedQueue<T>::addToFront(const T& newEntry)
+bool DoubleLinkedQueue<T>::addToFront(const T& newEntry)
 {
 	DoubleNode<T>* New = new DoubleNode<T>(newEntry);
 	if (!count)

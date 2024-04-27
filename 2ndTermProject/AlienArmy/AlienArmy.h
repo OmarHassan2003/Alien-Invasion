@@ -23,6 +23,10 @@ public:
 	bool pick_AM(AlienMonster*& passed_AM);
 	AlienDrone* pick_AD(AlienDrone*& passed_AD); //change to bool.
 	bool pick_Rear_AD(AlienDrone*& passed_AD);
+	/****************peek units from lists********************/
+	bool peek_AD(AlienDrone*& passed_AD);
+	bool peek_AD_Rear(AlienDrone*& passed_AD);
+	bool peek_AM(AlienMonster*& passed_AM);
 	/****************insert units to lists********************/
 	bool AddUnit(ArmyUnit* passed_AU); // THE GENERAL ONE
 	void AddInQueue(AlienSoldier* passed_AU);

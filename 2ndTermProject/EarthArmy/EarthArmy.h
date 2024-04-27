@@ -25,6 +25,8 @@ public:
 	bool pick_ET(EarthTank*& EPtr);
 	bool pick_EG(EarthGunnery*& EPtr);
 	bool pick_HU(HealUnit*& Eptr);
+	/*****************peek units from list********************/
+	bool peek_EG(EarthGunnery*& EPtr);
 	/****************insert units to lists********************/
 	bool AddUnit(ArmyUnit* passed_AU); // THE GENERAL ONE
 	void AddInQueue(EarthSoldier* passed_AU);

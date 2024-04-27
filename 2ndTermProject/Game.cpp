@@ -117,27 +117,31 @@ void Game::Attack()
 	EarthGunnery* pEG;
 	AlienDrone* pAD0, * pAD1;
 	AlienMonster* pAM;
-	AA.pick_AD(pAD0);
-	AA.pick_Rear_AD(pAD1);
-	AA.pick_AM(pAM);
-	if (EA.pick_EG(pEG))
+	AA.peek_AM(pAM);
+	if (EA.peek_EG(pEG))
 	{
 		unsigned short i;
 		unsigned short EG_Attack_Drone_Capacity = pEG->GetAttackCap() / 2;
 		unsigned short EG_Attack_Monster_Capacity;
 		for (i = 0;i < EG_Attack_Drone_Capacity; i++)
 		{
-			if (Get_AD(pAD0))
+			if (AA.peek_AD(pAD0))
 			{
 				pEG->Attack(pAD0);
 				if (pAD0->GetHealth() <= 0)
+				{
+					AA.pick_AD(pAD0);
 					AddInKilledList(pAD0);
+				}
 			}
-			if (Get_L_AD(pAD1))
+			if (AA.peek_AD_Rear(pAD1))
 			{
 				pEG->Attack(pAD1);
 				if (pAD1->GetHealth() <= 0)
+				{
+					AA.pick_Rear_AD(pAD1);
 					AddInKilledList(pAD1);
+				}
 			}
 			if (!pAD0 && !pAD1)
 				break;
@@ -149,7 +153,10 @@ void Game::Attack()
 			{
 				pEG->Attack(pAM);
 				if (pAM->GetHealth() <= 0)
+				{
+					AA.pick_AM(pAM);
 					AddInKilledList(pAM);
+				}
 			}
 			else
 				break;
