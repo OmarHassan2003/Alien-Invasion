@@ -15,9 +15,11 @@ bool AlienArmy::Attack()
 		AS->Attack();
 
 	AlienMonster* ALM;
-	// pick an AM and Attack.
+	if (AM.Peek(ALM))
+		ALM->Attack();
 
-	//Drone Attack. 
+	AlienDrone* AD1, * AD2;
+	//drone attack.
 	return true;
 }
 

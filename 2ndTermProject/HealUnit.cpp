@@ -50,7 +50,9 @@ bool HealUnit::Attack(ArmyUnit* AU0, ArmyUnit* AU1)
 
 	while (templist.dequeue(AU, pri))
 		pGame->AddToUML(AU, pri);
-	
+
+	pGame->AddInKilledList(this); //KILL HU after attack.
+
 	return flag;
 }
 
