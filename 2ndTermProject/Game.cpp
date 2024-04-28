@@ -93,7 +93,7 @@ bool Game::GetUML(ArmyUnit* AU, int pri)
 {
 	return UML.dequeue(AU, pri);
 }
-
+// ----- Return back to lists after being attacked. -----
 void Game::AddToUML(ArmyUnit* passed_AU, int pri) 
 {
 	if(passed_AU)

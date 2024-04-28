@@ -19,7 +19,14 @@ bool AlienArmy::Attack()
 		ALM->Attack();
 
 	AlienDrone* AD1, * AD2;
-	//drone attack.
+	if(AD_DQueue.GetCount()>1)
+	{
+		AD_DQueue.peek(AD1);
+		AD_DQueue.peek_rear(AD2);
+		AD1->Attack();
+		AD2->Attack();
+	}
+
 	return true;
 }
 

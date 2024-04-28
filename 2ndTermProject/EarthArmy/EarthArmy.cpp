@@ -25,9 +25,8 @@ bool EarthArmy::Attack()
 		ET->Attack();
 
 	HealUnit* HU;
-	if (HU_Stack.peek(HU))
+	if (HU_Stack.pop(HU)) //pop because it attacks one time then die
 		HU->Attack();
-	 // How to move the HU to the killedlist in the GAME class?
 	return true;
 }
 
