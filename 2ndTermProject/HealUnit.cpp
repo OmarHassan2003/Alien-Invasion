@@ -37,7 +37,7 @@ bool HealUnit::Attack(ArmyUnit* AU0, ArmyUnit* AU1)
 					}
 					else
 					{
-						//Add to ES_list
+						pGame->Add_ES((EarthSoldier*)AU);
 						AU->Set_StepsInUML(0);
 					}
 				else //still under 20% hp.
