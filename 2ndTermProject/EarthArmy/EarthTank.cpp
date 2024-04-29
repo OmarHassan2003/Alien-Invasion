@@ -28,8 +28,9 @@ bool EarthTank::Attack()
 		AlienMonster* AM = nullptr;
 		while (count < GetAttackCap() / 2 && pGame->Get_AM(AM));
 		{
-			int dmg = (GetPower() * (GetHealth() / 100)) / sqrt(AM->GetHealth());
-			AM -= dmg;
+			int dmg = int((float)GetPower() * (GetHealth() / 100.0) / (float)sqrt(AM->GetHealth()));
+			AM->SetHealth(dmg);
+			
 			count++;
 			if (AM->GetHealth() <= 0)
 				pGame->AddInKilledList(AM);
