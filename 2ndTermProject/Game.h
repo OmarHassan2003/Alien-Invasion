@@ -31,11 +31,19 @@ public:
 	bool Get_EG(EarthGunnery*& AU);
 	bool Get_AD(AlienDrone*& AU);
 	bool Get_L_AD(AlienDrone*& AU);
+	bool Get_ET(EarthTank*& AU);
 	bool GetUML(ArmyUnit* AU, int pri);
 	/////////////////////////////////////
 	void AddToUML(ArmyUnit* passed_AU, int pri);
 	void Add_ES(EarthSoldier* AU);
 	void Add_AS(AlienSoldier* AU);
+
+	void Add_AD(AlienDrone* AU);
+	void Add_AD_Front(AlienDrone* AU);
+
+	void Add_AM(AlienMonster* AU);
+	void Add_ET(EarthTank* AU);
+	void Add_EG(EarthGunnery* AU);
 	/////////////////////////////////////
 	void Attack();
 	void print();

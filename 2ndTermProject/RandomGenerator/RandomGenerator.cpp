@@ -56,6 +56,16 @@ int RandomGenerator::get_n() const
 	return n;
 }
 
+void RandomGenerator::set_HU_percent(unsigned short h)
+{
+	HU_Percent = h;
+}
+
+unsigned short RandomGenerator::get_HU_percent() const
+{
+	return HU_Percent;
+}
+
 void RandomGenerator::set_ES(int es)
 {
 	ES = es;

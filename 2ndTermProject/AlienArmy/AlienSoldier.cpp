@@ -18,7 +18,7 @@ void AlienSoldier::AddAlienUnitToList(AlienArmy* passed_AA)
 	}
 }
 
-bool AlienSoldier::Attack(ArmyUnit* AU0, ArmyUnit* AU1)
+bool AlienSoldier::Attack()
 {
 	bool flag = 1;
 	EarthSoldier* ES = nullptr;
@@ -26,7 +26,7 @@ bool AlienSoldier::Attack(ArmyUnit* AU0, ArmyUnit* AU1)
 	for (int i = 0; i < GetAttackCap(); i++)
 		if (pGame->Get_ES(ES))
 		{
-			ES -= GetPower();
+			ES->SetHealth(ES->GetHealth() - GetPower());
 			if (ES->GetHealth() <= 0)
 				pGame->AddInKilledList(ES);
 			else if (ES->GetHealth() < 0.2 * ES->GetInitialH())

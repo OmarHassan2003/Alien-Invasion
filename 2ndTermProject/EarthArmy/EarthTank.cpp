@@ -15,8 +15,13 @@ void EarthTank::AddAlienUnitToList(AlienArmy* passed_AA)
 {
 }
 
-bool EarthTank::Attack(ArmyUnit* AU0, ArmyUnit* AU1)
+bool EarthTank::Attack()
 {
+	const unsigned short Attack_Cap = GetAttackCap();
+	for (unsigned short i = 0;i < Attack_Cap;i++)
+	{
+		
+	}
 	return false;
 }
 

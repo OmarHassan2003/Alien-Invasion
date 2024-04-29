@@ -101,7 +101,7 @@ void EarthArmy::AddInHUStack(HealUnit* passed_HU)
 
 bool EarthArmy::isCompromised()
 {
-	return ES_Queue.isEmpty() && EG_priQ.isEmpty() && ET_Stack.isEmpty();
+	return ES_Queue.isEmpty() & EG_priQ.isEmpty() & ET_Stack.isEmpty();
 }
 
 EarthArmy::~EarthArmy()

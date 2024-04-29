@@ -89,6 +89,10 @@ bool Game::Get_L_AD(AlienDrone*& AU)
 {
 	return AA.pick_Rear_AD(AU);
 }
+bool Game::Get_ET(EarthTank*& AU)
+{
+	return EA.pick_ET(AU);
+}
 bool Game::GetUML(ArmyUnit* AU, int pri)
 {
 	return UML.dequeue(AU, pri);
@@ -112,67 +116,40 @@ void Game::Add_AS(AlienSoldier* AU)
 	AA.AddInQueue(AU);
 }
 
+void Game::Add_AD(AlienDrone* AU)
+{
+	AA.AddInDoubleLinkedQueueQueue(AU);
+}
+
+void Game::Add_AD_Front(AlienDrone* AU)
+{
+	AA.AddInLinkedQueue_Front(AU);
+}
+
+void Game::Add_AM(AlienMonster* AU)
+{
+	AA.AddInAmArray(AU);
+}
+
+void Game::Add_ET(EarthTank* AU)
+{
+	EA.AddInStack(AU);
+}
+
+void Game::Add_EG(EarthGunnery* AU)
+{
+	EA.AddInPriQueue(AU);
+}
+
 void Game::Attack()
 {
-	EarthGunnery* pEG;
-	AlienDrone* pAD0, * pAD1;
-	AlienMonster* pAM;
-	AA.peek_AM(pAM);
-	if (EA.peek_EG(pEG))
-	{
-		unsigned short i;
-		unsigned short EG_Attack_Drone_Capacity = pEG->GetAttackCap() / 2;
-		unsigned short EG_Attack_Monster_Capacity;
-		for (i = 0;i < EG_Attack_Drone_Capacity; i++)
-		{
-			if (AA.peek_AD(pAD0))
-			{
-				pEG->Attack(pAD0);
-				if (pAD0->GetHealth() <= 0)
-				{
-					AA.pick_AD(pAD0);
-					AddInKilledList(pAD0);
-				}
-			}
-			if (AA.peek_AD_Rear(pAD1))
-			{
-				pEG->Attack(pAD1);
-				if (pAD1->GetHealth() <= 0)
-				{
-					AA.pick_Rear_AD(pAD1);
-					AddInKilledList(pAD1);
-				}
-			}
-			if (!pAD0 && !pAD1)
-				break;
-		}
-		EG_Attack_Monster_Capacity = EG_Attack_Drone_Capacity - i;
-		for (i = 0;i < EG_Attack_Monster_Capacity; i++)
-		{
-			if (Get_AM(pAM))
-			{
-				pEG->Attack(pAM);
-				if (pAM->GetHealth() <= 0)
-				{
-					AA.pick_AM(pAM);
-					AddInKilledList(pAM);
-				}
-			}
-			else
-				break;
-		}
-	}
-	//if (pAD0 && pAD1 && pEG)
-	//{
-	//	pAD0->Attack(pEG);
-	//	pAD1->Attack(pEG);
-	//	if (pEG->GetHealth() <= 0)
-	//		AddInKilledList(pEG);
-	//}
+	EA.Attack();
+	AA.Attack();
 }
 
 void Game::print()
 {
+	cout << "\nCurrent Time Step:" << Tj_value << endl;
 	cout << "============================================ Earth Army Alive Units ==========================================" << endl;
 	EA.PrintArmyInfo();
 	cout << endl;
@@ -180,7 +157,7 @@ void Game::print()
 	AA.PrintArmyInfo();
 	cout << endl;
 	cout << "============================================ Killed/Destructed Units ==========================================" << endl;
-	cout << Killed_List.GetCount() << " units [";
+	cout << Killed_List.GetCount() << " units [ ";
 	Killed_List.print();
 	cout << "]" << endl;
 	cout << "===============================================================================================================" << endl;
@@ -199,13 +176,13 @@ Game::~Game()
 
 void Game::ReadData()
 {
-	unsigned short n, ES, ET, EG, AS, AM, AD, Prop, min_E_Power, min_E_health, min_E_Attack_Capacity, max_E_Power,
+	unsigned short n ,h, ES, ET, EG, AS, AM, AD, Prop, min_E_Power, min_E_health, min_E_Attack_Capacity, max_E_Power,
 		max_E_health, max_E_Attack_Capacity, min_A_Power, min_A_health, min_A_Attack_Capacity, max_A_Power,
 		max_A_health, max_A_Attack_Capacity;
 	ifstream Fin("../test.txt");
 	if (Fin.is_open())
 	{
-		Fin >> n >> ES >> ET >> EG >> AS >> AM >> AD >> Prop;
+		Fin >> n >> h >> ES >> ET >> EG >> AS >> AM >> AD >> Prop;
 		/***********************Read Earth Data*************************/
 		Fin >> min_E_Power;
 		Fin.ignore();
@@ -248,6 +225,7 @@ void Game::ReadData()
 		Fin.close();
 		/***********************Create the random generator object*************************/
 		randgenn->set_n(n);
+		randgenn->set_HU_percent(h);
 		randgenn->set_ES(ES);
 		randgenn->set_ET(ET);
 		randgenn->set_EG(EG);

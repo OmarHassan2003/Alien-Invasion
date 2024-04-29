@@ -32,6 +32,7 @@ public:
 	void AddInQueue(AlienSoldier* passed_AU);
 	void AddInAmArray(AlienMonster* passed_AU);
 	void AddInDoubleLinkedQueueQueue(AlienDrone* passed_AU);
+	void AddInLinkedQueue_Front(AlienDrone* passed_AU);
 	/*************************Check if Army has fallen down***********************/
 	bool isCompromised();
 	~AlienArmy();
