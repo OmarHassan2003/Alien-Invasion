@@ -48,10 +48,14 @@ bool DynamicArray<T>::Peek(T& Entry) const
 	if (count)
 	{
 		int y = 1 + rand() % (count);
-		Entry = arr[y];
+		Entry = arr[y - 1];
 		return true;
 	}
-	else return false;
+	else 
+	{
+		Entry = nullptr;
+		return false;
+	}
 }
 
 template<typename T>

@@ -28,8 +28,8 @@ bool EarthTank::Attack()
 		AlienMonster* AM = nullptr;
 		while (count < GetAttackCap() / 2 && pGame->Get_AM(AM));
 		{
-			int dmg = (GetPower() * (GetHealth() / 100)) / sqrt(AM->GetHealth());
-			AM -= dmg;
+			int dmg = int((float)GetPower() * (GetHealth() / 100.0) / (float)sqrt(AM->GetHealth()));
+			AM->SetHealth(AM->GetHealth() - dmg);
 			count++;
 			if (AM->GetHealth() <= 0)
 				pGame->AddInKilledList(AM);
@@ -42,7 +42,7 @@ bool EarthTank::Attack()
 			if (pGame->Get_AS(AS))
 			{
 				int dmg = (GetPower() * (GetHealth() / 100)) / sqrt(AS->GetHealth());
-				AS -= dmg;
+			//	AS -= dmg;
 				if (AS->GetHealth() <= 0)
 					pGame->AddInKilledList(AS);
 				else tempList2.enqueue(AS);
@@ -57,7 +57,7 @@ bool EarthTank::Attack()
 			if (pGame->Get_AM(AM))
 			{
 				int dmg = (GetPower() * (GetHealth() / 100)) / sqrt(AM->GetHealth());
-				AM -= dmg;
+	//			AM -= dmg;
 				if (AM->GetHealth() <= 0)
 					pGame->AddInKilledList(AM);
 				else tempList1.enqueue(AM);
