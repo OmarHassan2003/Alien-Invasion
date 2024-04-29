@@ -30,7 +30,7 @@ bool EarthTank::Attack()
 		{
 			if (AM)
 			{
-				int dmg = (GetPower() * (GetHealth() / 100.0) / sqrt(AM->GetHealth()));
+				int dmg = int((float)GetPower() * (GetHealth() / 100.0) / (float)sqrt(AM->GetHealth()));
 				AM->SetHealth(AM->GetHealth() - dmg);
 				count++;
 				if (AM->GetHealth() <= 0)
@@ -44,7 +44,7 @@ bool EarthTank::Attack()
 			AlienSoldier* AS = nullptr;
 			if (pGame->Get_AS(AS))
 			{
-				int dmg = (GetPower() * (GetHealth() / 100.0)) / sqrt(AS->GetHealth());
+				int dmg = int((float)GetPower() * (GetHealth() / 100.0) / (float)sqrt(AS->GetHealth()));
 				AS->SetHealth(AS->GetHealth() - dmg);
 				if (AS->GetHealth() <= 0)
 					pGame->AddInKilledList(AS);

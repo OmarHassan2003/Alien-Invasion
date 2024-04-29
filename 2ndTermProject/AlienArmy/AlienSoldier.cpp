@@ -30,7 +30,7 @@ bool AlienSoldier::Attack()
 				ES->Set_Ta(pGame->Get_Tj());
 			
 			int dmg = int((float)GetPower() * (GetHealth() / 100.0) / (float)sqrt(ES->GetHealth()));
-			ES->SetHealth(dmg);
+			ES->SetHealth(ES->GetHealth() - dmg);
 
 			if (ES->GetHealth() <= 0)
 				pGame->AddInKilledList(ES);

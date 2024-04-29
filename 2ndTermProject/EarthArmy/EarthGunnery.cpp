@@ -31,7 +31,8 @@ bool EarthGunnery::Attack()
 		flag = true;
 		if (pGame->Get_AD(pAD0))
 		{
-			pAD0->SetHealth(pAD0->GetHealth() - this->GetPower());
+			int dmg = int((float)GetPower() * (GetHealth() / 100.0) / (float)sqrt(pAD0->GetHealth()));
+			pAD0->SetHealth(pAD0->GetHealth() - dmg);
 			if (pAD0->GetHealth() <= 0)
 				pGame->AddInKilledList(pAD0);
 			else
@@ -39,7 +40,8 @@ bool EarthGunnery::Attack()
 		}
 		if (pGame->Get_L_AD(pAD1))
 		{
-			pAD1->SetHealth(pAD1->GetHealth() - this->GetPower());
+			int dmg = int((float)GetPower() * (GetHealth() / 100.0) / (float)sqrt(pAD1->GetHealth()));
+			pAD1->SetHealth(pAD1->GetHealth() - dmg);
 			if (pAD1->GetHealth() <= 0)
 				pGame->AddInKilledList(pAD1);
 			else
@@ -57,14 +59,15 @@ bool EarthGunnery::Attack()
 		temp_queue1.dequeue(tempAD);
 		pGame->Add_AD_Front(tempAD);
 	}
-	/*******************************Drone Attack*******************************/
+	/*******************************Monster Attack*******************************/
 	Attack_Cap = GetAttackCap() - Attack_Cap;
 	for (unsigned short i = 0;i < Attack_Cap;i++)
 	{
 		flag = true;
 		if (pGame->Get_AM(pAM))
 		{
-			pAM->SetHealth(pAM->GetHealth() - this->GetPower());
+			int dmg = int((float)GetPower() * (GetHealth() / 100.0) / (float)sqrt(pAM->GetHealth()));
+			pAM->SetHealth(pAM->GetHealth() - dmg);
 			if (pAM->GetHealth() <= 0)
 				pGame->AddInKilledList(pAM);
 			else

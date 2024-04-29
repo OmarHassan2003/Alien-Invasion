@@ -30,7 +30,7 @@ bool EarthSoldier::Attack() //PHASE2
 				AS->Set_Ta(pGame->Get_Tj());
 		
 			int dmg = int((float)GetPower()*(GetHealth()/100.0)/ (float)sqrt(AS->GetHealth()));
-			AS->SetHealth(dmg);
+			AS->SetHealth(AS->GetHealth() - dmg);
 			
 			if (AS->GetHealth() <= 0)
 				pGame->AddInKilledList(AS);
