@@ -16,7 +16,8 @@ void Game::Generate_Earth_Army()
 		for (unsigned short i = 0; i < randgenn->get_n(); i++)
 		{
 			AU = randgenn->CreateUnit(Tj_value, this, 'E');
-			EA.AddUnit(AU);
+			if(AU)
+				EA.AddUnit(AU);
 		}
 	}
 }
@@ -29,7 +30,8 @@ void Game::Generate_Alien_Army()
 		for (unsigned short i = 0; i < randgenn->get_n(); i++)
 		{
 			AU = randgenn->CreateUnit(Tj_value, this, 'A');
-			AA.AddUnit(AU);
+			if(AU)
+				AA.AddUnit(AU);
 		}
 	}
 }
@@ -85,6 +87,10 @@ bool Game::Get_AD(AlienDrone*& AU)
 {
 	return AA.pick_AD(AU);
 }
+bool Game::Get_ET(EarthTank*& AU)
+{
+	return EA.pick_ET(AU);
+}
 bool Game::Get_L_AD(AlienDrone*& AU)
 {
 	return AA.pick_Rear_AD(AU);
@@ -96,6 +102,14 @@ bool Game::Get_ET(EarthTank*& AU)
 bool Game::GetUML(ArmyUnit* AU, int pri)
 {
 	return UML.dequeue(AU, pri);
+}
+int Game::Get_ES_Count()
+{
+	return EA.ES_Count();
+}
+int Game::Get_AS_Count()
+{
+	return AA.AS_Count();
 }
 // ----- Return back to lists after being attacked. -----
 void Game::AddToUML(ArmyUnit* passed_AU, int pri) 
@@ -111,11 +125,21 @@ void Game::Add_ES(EarthSoldier* AU)
 {
 	EA.AddInQueue(AU);
 }
+void Game::Add_ET(EarthTank* AU)
+{
+	EA.AddInStack(AU);
+}
 void Game::Add_AS(AlienSoldier* AU)
 {
 	AA.AddInQueue(AU);
 }
 
+void Game::Add_AM(AlienMonster* AU)
+{
+	AA.AddInAmArray(AU);
+}
+
+void Game::Attack()
 void Game::Add_AD(AlienDrone* AU)
 {
 	AA.AddInDoubleLinkedQueueQueue(AU);

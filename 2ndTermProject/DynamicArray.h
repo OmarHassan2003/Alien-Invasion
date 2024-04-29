@@ -5,7 +5,7 @@ class DynamicArray
 {
 	enum { MAX_SIZE = 1000 };
 private:
-	unsigned long int count;
+	int count;
 	T* arr;
 public:
 	DynamicArray();

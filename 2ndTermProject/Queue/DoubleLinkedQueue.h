@@ -7,7 +7,7 @@ template<class T>
 class DoubleLinkedQueue : public Queue<T>
 {
 	DoubleNode<T>* Front,* Rear;
-	unsigned long int count;
+	int count;
 public:
 	DoubleLinkedQueue();
 	bool isEmpty() const;
@@ -170,7 +170,7 @@ template<class T>
 DoubleLinkedQueue<T>::~DoubleLinkedQueue()
 {
 	T x;
-	for (int i = 0;i < count;i++)
+	for (int i = 0; i < count; i++)
 		dequeue(x);
 }
 
