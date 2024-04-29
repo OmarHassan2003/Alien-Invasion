@@ -87,10 +87,6 @@ bool Game::Get_AD(AlienDrone*& AU)
 {
 	return AA.pick_AD(AU);
 }
-bool Game::Get_ET(EarthTank*& AU)
-{
-	return EA.pick_ET(AU);
-}
 bool Game::Get_L_AD(AlienDrone*& AU)
 {
 	return AA.pick_Rear_AD(AU);
@@ -125,21 +121,11 @@ void Game::Add_ES(EarthSoldier* AU)
 {
 	EA.AddInQueue(AU);
 }
-void Game::Add_ET(EarthTank* AU)
-{
-	EA.AddInStack(AU);
-}
+
 void Game::Add_AS(AlienSoldier* AU)
 {
 	AA.AddInQueue(AU);
 }
-
-void Game::Add_AM(AlienMonster* AU)
-{
-	AA.AddInAmArray(AU);
-}
-
-void Game::Attack()
 void Game::Add_AD(AlienDrone* AU)
 {
 	AA.AddInDoubleLinkedQueueQueue(AU);

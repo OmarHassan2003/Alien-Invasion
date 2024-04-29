@@ -32,7 +32,6 @@ public:
 	bool Get_AD(AlienDrone*& AU);
 	bool Get_ET(EarthTank*& AU);
 	bool Get_L_AD(AlienDrone*& AU);
-	bool Get_ET(EarthTank*& AU);
 	bool GetUML(ArmyUnit* AU, int pri);
 	/////////////////////////////////////
 	int Get_ES_Count();
@@ -47,7 +46,6 @@ public:
 	void Add_AD_Front(AlienDrone* AU);
 
 	void Add_AM(AlienMonster* AU);
-	void Add_ET(EarthTank* AU);
 	void Add_EG(EarthGunnery* AU);
 	/////////////////////////////////////
 	void Attack();

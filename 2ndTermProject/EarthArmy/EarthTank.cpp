@@ -16,7 +16,7 @@ void EarthTank::AddAlienUnitToList(AlienArmy* passed_AA)
 {
 }
 
-bool EarthTank::Attack(ArmyUnit* AU0, ArmyUnit* AU1)
+bool EarthTank::Attack()
 {
 	double ES_COUNT = pGame->Get_ES_Count();
 	double AS_COUNT = pGame->Get_AS_Count();
