@@ -30,12 +30,18 @@ public:
 	bool Get_ES(EarthSoldier*& AU);
 	bool Get_EG(EarthGunnery*& AU);
 	bool Get_AD(AlienDrone*& AU);
+	bool Get_ET(EarthTank*& AU);
 	bool Get_L_AD(AlienDrone*& AU);
 	bool GetUML(ArmyUnit* AU, int pri);
 	/////////////////////////////////////
+	int Get_ES_Count();
+	int Get_AS_Count();
+	/////////////////////////////////////
 	void AddToUML(ArmyUnit* passed_AU, int pri);
 	void Add_ES(EarthSoldier* AU);
+	void Add_ET(EarthTank* AU);
 	void Add_AS(AlienSoldier* AU);
+	void Add_AM(AlienMonster* AU);
 	/////////////////////////////////////
 	void Attack();
 	void print();

@@ -5,7 +5,6 @@
 
 int main()
 {
-	int x;
 	Game gmain;
 	bool EndGame = false;
 	while (!EndGame)

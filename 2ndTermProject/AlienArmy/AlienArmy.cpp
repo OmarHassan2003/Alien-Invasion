@@ -72,6 +72,11 @@ bool AlienArmy::peek_AM(AlienMonster*& passed_AM)
 	return AM.Peek(passed_AM);
 }
 
+int AlienArmy::AS_Count() const
+{
+	return AS_Queue.GetCount();
+}
+
 AlienDrone* AlienArmy::pick_AD(AlienDrone*& passed_AD) //change to bool
 {
 	AlienDrone* temp = NULL;

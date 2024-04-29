@@ -27,6 +27,8 @@ public:
 	bool peek_AD(AlienDrone*& passed_AD);
 	bool peek_AD_Rear(AlienDrone*& passed_AD);
 	bool peek_AM(AlienMonster*& passed_AM);
+	/****************Get Counts of lists**********************/
+	int AS_Count() const;
 	/****************insert units to lists********************/
 	bool AddUnit(ArmyUnit* passed_AU); // THE GENERAL ONE
 	void AddInQueue(AlienSoldier* passed_AU);
