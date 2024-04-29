@@ -20,6 +20,11 @@ ArmyUnit* RandomGenerator::CreateUnit(unsigned short Tj, Game* pGame, char u)
 		unsigned short health = RandGen(min_E_health, max_E_health);
 		unsigned short power = RandGen(min_E_Power, max_E_Power);
 		unsigned short attack_capacity = RandGen(min_E_Attack_Capacity, max_E_Attack_Capacity);
+		if (EarthID == 1000)
+		{
+			cout << "NO MORE IDS AVAILABLE FOR EARTH ARMY" << endl;
+			return NULL;
+		}
 		if (x <= ES)
 			pArmyUnit = new EarthSoldier(pGame, health, power, EarthID, attack_capacity, Tj);
 		else if (x <= ES+ET)
@@ -35,6 +40,11 @@ ArmyUnit* RandomGenerator::CreateUnit(unsigned short Tj, Game* pGame, char u)
 		unsigned short health = RandGen(min_A_health, max_A_health);
 		unsigned short power = RandGen(min_A_Power, max_A_Power);
 		unsigned short attack_capacity = RandGen(min_A_Attack_Capacity, max_A_Attack_Capacity);
+		if (AlienID == 3000)
+		{
+			cout << "NO MORE IDS AVAILABLE FOR ALIEN ARMY" << endl;
+			return NULL;
+		}
 		if (x <= AS)
 			pArmyUnit = new AlienSoldier(pGame, health, power, AlienID, attack_capacity, Tj);
 		else if (x <= AS + AM)
@@ -54,6 +64,16 @@ void RandomGenerator::set_n(int N)
 int RandomGenerator::get_n() const
 {
 	return n;
+}
+
+void RandomGenerator::set_HU_percent(unsigned short h)
+{
+	HU_Percent = h;
+}
+
+unsigned short RandomGenerator::get_HU_percent() const
+{
+	return HU_Percent;
 }
 
 void RandomGenerator::set_ES(int es)

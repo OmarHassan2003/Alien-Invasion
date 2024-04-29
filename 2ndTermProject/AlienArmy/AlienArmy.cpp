@@ -14,9 +14,9 @@ bool AlienArmy::Attack()
 	if (AS_Queue.peek(AS))
 		AS->Attack();
 
-	AlienMonster* ALM;
-	if (AM.Peek(ALM))
-		ALM->Attack();
+	//AlienMonster* ALM;
+	//if (AM.Peek(ALM))
+	//	ALM->Attack();
 
 	AlienDrone* AD1, * AD2;
 	if(AD_DQueue.GetCount()>1)
@@ -72,6 +72,11 @@ bool AlienArmy::peek_AM(AlienMonster*& passed_AM)
 	return AM.Peek(passed_AM);
 }
 
+int AlienArmy::AS_Count() const
+{
+	return AS_Queue.GetCount();
+}
+
 AlienDrone* AlienArmy::pick_AD(AlienDrone*& passed_AD) //change to bool
 {
 	AlienDrone* temp = NULL;
@@ -106,9 +111,14 @@ void AlienArmy::AddInDoubleLinkedQueueQueue(AlienDrone* passed_AU)
 	AD_DQueue.enqueue(passed_AU);
 }
 
+void AlienArmy::AddInLinkedQueue_Front(AlienDrone* passed_AU)
+{
+	AD_DQueue.addToFront(passed_AU);
+}
+
 bool AlienArmy::isCompromised()
 {
-	return AS_Queue.isEmpty() && AD_DQueue.isEmpty() && AM.isEmpty();
+	return AS_Queue.isEmpty() & AD_DQueue.isEmpty();
 }
 
 AlienArmy::~AlienArmy()

@@ -22,7 +22,7 @@ private:
 public:
 	ArmyUnit(Game* p, int HP, int pow, int ID_, int cap, int Tj);
 
-	virtual bool Attack(ArmyUnit* AU0 = nullptr,ArmyUnit* AU1 = nullptr) = 0;
+	virtual bool Attack() = 0;
 
 	virtual void Set_Ta(int);
 	virtual void Set_Td(int);

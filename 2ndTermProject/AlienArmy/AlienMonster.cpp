@@ -1,9 +1,5 @@
 #include "AlienMonster.h"
-
-AlienMonster::AlienMonster()
-	:ArmyUnit(0, 0, 0, 0, 0, 0)
-{
-}
+#include "../Game.h"
 
 AlienMonster::AlienMonster(Game* p, int HP, int pow, int ID_, int cap, int _Tj)
 	:ArmyUnit(p, HP, pow, ID_, cap, _Tj)
@@ -18,9 +14,52 @@ void AlienMonster::AddAlienUnitToList(AlienArmy* passed_AA)
 	passed_AA->AddInAmArray(this);
 }
 
-bool AlienMonster::Attack(ArmyUnit* AU0, ArmyUnit* AU1)
+bool AlienMonster::Attack()
 {
-	return false;
+	Stack<EarthTank*> tempList1;
+	Queue<EarthSoldier*> tempList2;
+	EarthTank* ET = nullptr;
+	int i;
+	for (i = 0; i < GetAttackCap() / 2 && pGame->Get_ET(ET); i++)
+	{
+		int dmg = (GetPower() * (GetHealth() / 100)) / sqrt(ET->GetHealth());
+		ET -= dmg;
+		if (ET->GetHealth() <= 0)
+			pGame->AddInKilledList(ET);
+		else if (ET->GetHealth() < 0.2 * ET->GetInitialH())
+			pGame->AddToUML(ET, -1);
+		else
+			tempList1.push(ET);
+	}
+	int remaining_AttackCapacity = GetAttackCap() - i;
+	for (int i = 1; i <= remaining_AttackCapacity; i++)
+	{
+		EarthSoldier* ES = nullptr;
+		if (pGame->Get_ES(ES))
+		{
+			int dmg = (GetPower() * (GetHealth() / 100)) / sqrt(ES->GetHealth());
+			ES -= dmg;
+			if (ES->GetHealth() <= 0)
+				pGame->AddInKilledList(ES);
+			else if (ES->GetHealth() < 0.2 * ES->GetInitialH())
+				pGame->AddToUML(ES, ES->GetInitialH() - ES->GetHealth());
+			else
+				tempList2.enqueue(ES);
+		}
+	}
+	while (!tempList1.isEmpty())
+	{
+		EarthTank* temp = nullptr;
+		tempList1.pop(temp);
+		pGame->Add_ET(temp);
+	}
+	while (!tempList2.isEmpty())
+	{
+		EarthSoldier* temp = nullptr;
+		tempList2.enqueue(temp);
+		pGame->Add_ES(temp);
+	}
+	return true;
 }
 
 ostream& operator<<(ostream& COUT, AlienMonster* PAssed_AM)

@@ -14,6 +14,7 @@ using namespace std;
 class RandomGenerator
 {
 	unsigned short Tj_value;
+	unsigned short HU_Percent;
 	unsigned short n, ES, ET, EG, AS, AM, AD, Prop;
 
 	unsigned short min_E_Power, min_E_health, min_E_Attack_Capacity;
@@ -27,6 +28,8 @@ public:
 	ArmyUnit* CreateUnit(unsigned short Tj, Game* pGame, char u);
 	void set_n(int N);
 	int get_n() const;
+	void set_HU_percent(unsigned short h);
+	unsigned short get_HU_percent() const;
 	void set_ES(int es);
 	void set_ET(int et);
 	void set_EG(int eg);

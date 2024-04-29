@@ -68,7 +68,10 @@ template<typename T>
 bool Queue<T>::peek(T& FrontEntry) const
 {
 	if (!count)
+	{
+		FrontEntry = nullptr;
 		return false;
+	}
 	else
 	{
 		FrontEntry = Front->getItem();

@@ -26,7 +26,9 @@ public:
 	bool pick_EG(EarthGunnery*& EPtr);
 	bool pick_HU(HealUnit*& Eptr);
 	/*****************peek units from list********************/
-	bool peek_EG(EarthGunnery*& EPtr);
+	/****************Get Counts of lists**********************/
+	int ES_Count() const;
+	bool peek_EG(EarthGunnery*& EPtr);  //Sounds Like It has no use
 	/****************insert units to lists********************/
 	bool AddUnit(ArmyUnit* passed_AU); // THE GENERAL ONE
 	void AddInQueue(EarthSoldier* passed_AU);

@@ -18,7 +18,7 @@ void AlienSoldier::AddAlienUnitToList(AlienArmy* passed_AA)
 	}
 }
 
-bool AlienSoldier::Attack(ArmyUnit* AU0, ArmyUnit* AU1)
+bool AlienSoldier::Attack()
 {
 	bool flag = 1;
 	EarthSoldier* ES = nullptr;

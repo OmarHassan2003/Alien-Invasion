@@ -68,6 +68,11 @@ bool EarthArmy::peek_EG(EarthGunnery*& EPtr)
 	return EG_priQ.peek(EPtr,x);
 }
 
+int EarthArmy::ES_Count() const
+{
+	return ES_Queue.GetCount();
+}
+
 bool EarthArmy::AddUnit(ArmyUnit* passed_AU)
 {
 	if(passed_AU)
@@ -101,7 +106,7 @@ void EarthArmy::AddInHUStack(HealUnit* passed_HU)
 
 bool EarthArmy::isCompromised()
 {
-	return ES_Queue.isEmpty() && EG_priQ.isEmpty() && ET_Stack.isEmpty();
+	return ES_Queue.isEmpty() & EG_priQ.isEmpty() & ET_Stack.isEmpty();
 }
 
 EarthArmy::~EarthArmy()
