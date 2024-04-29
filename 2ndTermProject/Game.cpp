@@ -47,6 +47,7 @@ unsigned short Game::Get_Tj()
 void Game::AddInKilledList(ArmyUnit* passed_AU)
 {
 	Killed_List.enqueue(passed_AU);
+	passed_AU->Set_Td(Get_Tj());
 }
 
 bool Game::CheckWhoWins()

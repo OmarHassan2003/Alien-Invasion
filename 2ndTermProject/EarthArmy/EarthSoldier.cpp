@@ -26,7 +26,11 @@ bool EarthSoldier::Attack(ArmyUnit* AU0, ArmyUnit* AU1) //PHASE2
 	for (int i = 0; i < GetAttackCap(); i++)
 		if (pGame->Get_AS(AS))
 		{
-			AS -= GetPower();
+			if (AS->Get_Ta() == 0)
+				AS->Set_Ta(pGame->Get_Tj());
+		
+			AS -= int (GetPower() * GetHealth() / (100 * sqrt(AS->GetHealth())));
+			
 			if (AS->GetHealth() <= 0)
 				pGame->AddInKilledList(AS);
 			else

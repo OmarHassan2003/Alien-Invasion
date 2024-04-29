@@ -26,7 +26,11 @@ bool AlienSoldier::Attack(ArmyUnit* AU0, ArmyUnit* AU1)
 	for (int i = 0; i < GetAttackCap(); i++)
 		if (pGame->Get_ES(ES))
 		{
-			ES -= GetPower();
+			if (ES->Get_Ta() == 0)
+				ES->Set_Ta(pGame->Get_Tj());
+			
+			ES -= int(GetPower() * GetHealth() / (100 * sqrt(ES->GetHealth())));
+
 			if (ES->GetHealth() <= 0)
 				pGame->AddInKilledList(ES);
 			else if (ES->GetHealth() < 0.2 * ES->GetInitialH())
