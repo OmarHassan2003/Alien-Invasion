@@ -28,12 +28,15 @@ bool EarthTank::Attack()
 		AlienMonster* AM = nullptr;
 		while (count < GetAttackCap() / 2 && pGame->Get_AM(AM));
 		{
-			int dmg = int((float)GetPower() * (GetHealth() / 100.0) / (float)sqrt(AM->GetHealth()));
-			AM->SetHealth(AM->GetHealth() - dmg);
-			count++;
-			if (AM->GetHealth() <= 0)
-				pGame->AddInKilledList(AM);
-			else tempList1.enqueue(AM);
+			if (AM)
+			{
+				int dmg = (GetPower() * (GetHealth() / 100.0) / sqrt(AM->GetHealth()));
+				AM->SetHealth(AM->GetHealth() - dmg);
+				count++;
+				if (AM->GetHealth() <= 0)
+					pGame->AddInKilledList(AM);
+				else tempList1.enqueue(AM);
+			}
 		}
 		int remaining_AttackCapacity = GetAttackCap() - count;
 		for (int i = 1; i <= remaining_AttackCapacity; i++)
@@ -41,8 +44,8 @@ bool EarthTank::Attack()
 			AlienSoldier* AS = nullptr;
 			if (pGame->Get_AS(AS))
 			{
-				int dmg = (GetPower() * (GetHealth() / 100)) / sqrt(AS->GetHealth());
-			//	AS -= dmg;
+				int dmg = (GetPower() * (GetHealth() / 100.0)) / sqrt(AS->GetHealth());
+				AS->SetHealth(AS->GetHealth() - dmg);
 				if (AS->GetHealth() <= 0)
 					pGame->AddInKilledList(AS);
 				else tempList2.enqueue(AS);
@@ -56,8 +59,8 @@ bool EarthTank::Attack()
 			AlienMonster* AM = nullptr;
 			if (pGame->Get_AM(AM))
 			{
-				int dmg = (GetPower() * (GetHealth() / 100)) / sqrt(AM->GetHealth());
-	//			AM -= dmg;
+				int dmg = (GetPower() * (GetHealth() / 100.0)) / sqrt(AM->GetHealth());
+				AM->SetHealth(AM->GetHealth() - dmg);
 				if (AM->GetHealth() <= 0)
 					pGame->AddInKilledList(AM);
 				else tempList1.enqueue(AM);

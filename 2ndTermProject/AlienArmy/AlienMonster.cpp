@@ -22,7 +22,7 @@ bool AlienMonster::Attack()
 	int i;
 	for (i = 0; i < GetAttackCap() / 2 && pGame->Get_ET(ET); i++)
 	{
-		int dmg = double((GetPower() * (GetHealth() / 100.0)) / sqrt(ET->GetHealth()));
+		int dmg = (GetPower() * (GetHealth() / 100.0)) / sqrt(ET->GetHealth());
 		ET->SetHealth(ET->GetHealth() - dmg);
 		if (ET->GetHealth() <= 0)
 			pGame->AddInKilledList(ET);
@@ -38,7 +38,7 @@ bool AlienMonster::Attack()
 		if (pGame->Get_ES(ES))
 		{
 			int dmg = (GetPower() * (GetHealth() / 100.0)) / sqrt(ES->GetHealth());
-//			ES -= dmg;
+			ES->SetHealth(ES->GetHealth() - dmg);
 			if (ES->GetHealth() <= 0)
 				pGame->AddInKilledList(ES);
 			else if (ES->GetHealth() < 0.2 * ES->GetInitialH())
