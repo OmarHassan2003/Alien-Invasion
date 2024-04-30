@@ -167,6 +167,10 @@ void Game::print()
 	cout << "============================================ Alien Army Alive Units ==========================================" << endl;
 	AA.PrintArmyInfo();
 	cout << endl;
+	cout << "============================================ UML Units ==========================================" << endl;
+	cout << UML.GetCount() << " units [ ";
+	UML.print();
+	cout << "]" << endl;
 	cout << "============================================ Killed/Destructed Units ==========================================" << endl;
 	cout << Killed_List.GetCount() << " units [ ";
 	Killed_List.print();
