@@ -77,13 +77,9 @@ int AlienArmy::AS_Count() const
 	return AS_Queue.GetCount();
 }
 
-AlienDrone* AlienArmy::pick_AD(AlienDrone*& passed_AD) //change to bool
+bool AlienArmy::pick_AD(AlienDrone*& passed_AD) //change to bool
 {
-	AlienDrone* temp = NULL;
-	AD_DQueue.GetRear(passed_AD);
-	if (AD_DQueue.dequeue(temp))
-		return temp;
-	else return NULL;
+	return AD_DQueue.dequeue(passed_AD);
 }
 
 bool AlienArmy::AddUnit(ArmyUnit* passed_AU)

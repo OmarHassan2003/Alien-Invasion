@@ -16,5 +16,6 @@ int main()
 		gmain.print();
 		if(gmain.Get_Tj()>40)
 			EndGame = gmain.CheckWhoWins();
+		system("pause");
 	}
 }
