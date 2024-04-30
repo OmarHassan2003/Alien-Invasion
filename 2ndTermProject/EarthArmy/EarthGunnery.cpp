@@ -26,7 +26,7 @@ bool EarthGunnery::Attack()
 
 	unsigned short Attack_Cap = GetAttackCap() / 2;
 	/*******************************Drone Attack*******************************/
-	for (unsigned short i = 0;i < Attack_Cap;i++)
+	for (unsigned short i = 0;i < Attack_Cap / 2;i++)
 	{
 		flag = true;
 		if (pGame->Get_AD(pAD0))
@@ -38,6 +38,9 @@ bool EarthGunnery::Attack()
 			else
 				temp_queue0.enqueue(pAD0);
 		}
+	}
+	for (unsigned short i = 0;i < Attack_Cap - Attack_Cap / 2;i++)
+	{
 		if (pGame->Get_L_AD(pAD1))
 		{
 			int dmg = int((float)GetPower() * (GetHealth() / 100.0) / (float)sqrt(pAD1->GetHealth()));
