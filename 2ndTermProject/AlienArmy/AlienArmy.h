@@ -22,7 +22,7 @@ public:
 	/****************pick units from lists********************/
 	bool pick_AS(AlienSoldier*& EPtr);
 	bool pick_AM(AlienMonster*& passed_AM);
-	AlienDrone* pick_AD(AlienDrone*& passed_AD); //change to bool.
+	bool pick_AD(AlienDrone*& passed_AD); //change to bool.
 	bool pick_Rear_AD(AlienDrone*& passed_AD);
 	/****************peek units from lists********************/
 	bool peek_AD(AlienDrone*& passed_AD);
