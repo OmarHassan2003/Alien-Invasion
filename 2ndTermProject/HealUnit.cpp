@@ -1,8 +1,8 @@
 #include "HealUnit.h"
 #include "Game.h"
 
-HealUnit::HealUnit(Game* p, int HP, int pow, int ID_, int cap, int _Tj)
-	:ArmyUnit(p, HP, pow, ID_, cap, _Tj)
+HealUnit::HealUnit(Game* p, int HP, int pow, int ID_, int cap, int _Tj, Unit U)
+	:ArmyUnit(p, HP, pow, ID_, cap, _Tj, U)
 {
 }
 

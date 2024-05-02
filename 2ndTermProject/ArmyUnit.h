@@ -12,7 +12,7 @@ class ArmyUnit
 protected:
 	Game* pGame;
 	enum Unit {
-		ES, EG, ET, AS, AM, AD
+		ES, EG, ET, EH, AS, AM, AD
 	};
 private:
 	int Health;
