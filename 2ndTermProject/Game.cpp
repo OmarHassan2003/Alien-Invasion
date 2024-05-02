@@ -174,6 +174,33 @@ void Game::print()
 	cout << "===============================================================================================================" << endl;
 }
 
+void Game::GenerateOutputFile()
+{
+	ofstream Fout("output.txt");
+	if (!Fout.is_open())
+		cout << "An Error Has Happened During Opening Text File" << endl;
+	else
+	{
+		int LastVariableInThisMotherfProject;
+		priQueue<ArmyUnit*> last_DS_InThisMotherfProject;
+		ArmyUnit* temp;
+		Fout << "Td" << " ID" << " Tj" << " Df" << " Dd" << " Db" << endl;
+		while (!Killed_List.isEmpty())
+		{
+			Killed_List.dequeue(temp);
+			last_DS_InThisMotherfProject.enqueue(temp,temp->Get_Td());
+		}
+		while (!last_DS_InThisMotherfProject.isEmpty())
+		{
+			last_DS_InThisMotherfProject.dequeue(temp, LastVariableInThisMotherfProject);
+			Fout << LastVariableInThisMotherfProject << " " << temp->GetID() << " "
+				<< temp->Get_Tj() << " " << temp->Get_Ta() - temp->Get_Tj() << " "
+				<< LastVariableInThisMotherfProject - temp->Get_Ta() << " "
+				<< LastVariableInThisMotherfProject - temp->Get_Tj() << endl;
+		}
+	}
+}
+
 Game::~Game()
 {
 	delete randgenn;

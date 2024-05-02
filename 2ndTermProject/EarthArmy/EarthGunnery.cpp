@@ -33,7 +33,6 @@ bool EarthGunnery::Attack()
 		{
 			int dmg = int((float)GetPower() * (GetHealth() / 100.0) / (float)sqrt(pAD0->GetHealth()));
 			pAD0->SetHealth(pAD0->GetHealth() - dmg);
-			cout << "pAD0->Heatlth = " << pAD0->GetHealth() << endl;
 			if (pAD0->GetHealth() <= 0)
 				pGame->AddInKilledList(pAD0);
 			else
@@ -47,7 +46,6 @@ bool EarthGunnery::Attack()
 		{
 			int dmg = int((float)GetPower() * (GetHealth() / 100.0) / (float)sqrt(pAD1->GetHealth()));
 			pAD1->SetHealth(pAD1->GetHealth() - dmg);
-			cout << "pAD1->Heatlth = " << pAD1->GetHealth() << endl;
 			if (pAD1->GetHealth() <= 0)
 				pGame->AddInKilledList(pAD1);
 			else

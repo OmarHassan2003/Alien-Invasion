@@ -50,5 +50,7 @@ public:
 	/////////////////////////////////////
 	void Attack();
 	void print();
+	/////////////////////////////////////
+	void GenerateOutputFile();
 	~Game();
 };
