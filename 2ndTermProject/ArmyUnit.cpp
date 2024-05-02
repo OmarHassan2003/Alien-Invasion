@@ -8,7 +8,7 @@ ArmyUnit::ArmyUnit(Game* p, int HP, int pow, int ID_, int cap, int _Tj)
 	ID = ID_;
 	AttackCap = cap;
 	Tj = _Tj;
-	Ta = 0;
+	Ta = -1;
 	Td = 0;
 	InitialHealth = Health;
 	StepsInUML = 0;

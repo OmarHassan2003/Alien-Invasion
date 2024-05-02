@@ -26,7 +26,7 @@ bool AlienSoldier::Attack()
 	for (int i = 0; i < GetAttackCap(); i++)
 		if (pGame->Get_ES(ES))
 		{
-			if (ES->Get_Ta() == 0)
+			if (ES->Get_Ta() == -1)
 				ES->Set_Ta(pGame->Get_Tj());
 			
 			int dmg = int((float)GetPower() * (GetHealth() / 100.0) / (float)sqrt(ES->GetHealth()));
