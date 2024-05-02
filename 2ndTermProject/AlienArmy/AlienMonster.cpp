@@ -22,6 +22,9 @@ bool AlienMonster::Attack()
 	int i;
 	for (i = 0; i < GetAttackCap() / 2 && pGame->Get_ET(ET); i++)
 	{
+		if (ET->Get_Ta() == -1)
+			ET->Set_Ta(pGame->Get_Tj());
+
 		int dmg = int((float)GetPower() * (GetHealth() / 100.0) / (float)sqrt(ET->GetHealth()));
 		ET->SetHealth(ET->GetHealth() - dmg);
 
@@ -33,11 +36,14 @@ bool AlienMonster::Attack()
 			tempList1.push(ET);
 	}
 	int remaining_AttackCapacity = GetAttackCap() - i;
+	EarthSoldier* ES = nullptr;
 	for (int i = 1; i <= remaining_AttackCapacity; i++)
 	{
-		EarthSoldier* ES = nullptr;
 		if (pGame->Get_ES(ES))
 		{
+			if (ES->Get_Ta() == -1)
+				ES->Set_Ta(pGame->Get_Tj());
+
 			int dmg = int((float)GetPower() * (GetHealth() / 100.0) / (float)sqrt(ES->GetHealth()));
 			ES->SetHealth(ES->GetHealth() - dmg);
 

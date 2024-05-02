@@ -68,7 +68,7 @@ bool HealUnit::Attack()
 		pGame->AddToESUML(AU);
 	while (ETtemplist.dequeue(AU))
 		pGame->AddToETUML(AU);
-
+	this->Set_Ta(pGame->Get_Tj());
 	pGame->AddInKilledList(this); //KILL HU after attack.
 
 	return flag;

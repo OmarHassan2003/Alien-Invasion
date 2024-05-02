@@ -30,6 +30,9 @@ bool EarthTank::Attack()
 		{
 			if (AM)
 			{
+				if (AM->Get_Ta() == -1)
+					AM->Set_Ta(pGame->Get_Tj());
+
 				int dmg = int((float)GetPower() * (GetHealth() / 100.0) / (float)sqrt(AM->GetHealth()));
 				AM->SetHealth(AM->GetHealth() - dmg);
 				count++;
@@ -44,6 +47,9 @@ bool EarthTank::Attack()
 			AlienSoldier* AS = nullptr;
 			if (pGame->Get_AS(AS))
 			{
+				if (AS->Get_Ta() == -1)
+					AS->Set_Ta(pGame->Get_Tj());
+
 				int dmg = int((float)GetPower() * (GetHealth() / 100.0) / (float)sqrt(AS->GetHealth()));
 				AS->SetHealth(AS->GetHealth() - dmg);
 				if (AS->GetHealth() <= 0)
@@ -59,6 +65,9 @@ bool EarthTank::Attack()
 			AlienMonster* AM = nullptr;
 			if (pGame->Get_AM(AM))
 			{
+				if (AM->Get_Ta() == -1)
+					AM->Set_Ta(pGame->Get_Tj());
+
 				int dmg = (GetPower() * (GetHealth() / 100.0)) / sqrt(AM->GetHealth());
 				AM->SetHealth(AM->GetHealth() - dmg);
 				if (AM->GetHealth() <= 0)

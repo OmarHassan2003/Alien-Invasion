@@ -29,6 +29,9 @@ bool AlienDrone::Attack()
 		flag = true;
 		if (pGame->Get_ET(pET))
 		{
+			if (pET->Get_Ta() == -1)
+				pET->Set_Ta(pGame->Get_Tj());
+
 			int dmg = int((float)GetPower() * (GetHealth() / 100.0) / (float)sqrt(pET->GetHealth()));
 			pET->SetHealth(pET->GetHealth() - dmg);
 			if (pET->GetHealth() <= 0)
@@ -51,6 +54,9 @@ bool AlienDrone::Attack()
 		flag = true;
 		if (pGame->Get_EG(pEG))
 		{
+			if (pEG->Get_Ta() == -1)
+				pEG->Set_Ta(pGame->Get_Tj());
+
 			int dmg = int((float)GetPower() * (GetHealth() / 100.0) / (float)sqrt(pEG->GetHealth()));
 			pEG->SetHealth(pEG->GetHealth() - dmg);
 			if (pEG->GetHealth() <= 0)

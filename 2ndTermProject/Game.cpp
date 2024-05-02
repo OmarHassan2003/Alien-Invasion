@@ -269,10 +269,31 @@ void Game::GenerateOutputFile()
 		while (!temp_stack.isEmpty())
 		{
 			temp_stack.pop(temp);
+			/*
 			Fout << temp->Get_Td() << " " << temp->GetID() << " "
 				<< temp->Get_Tj() << " " << temp->Get_Ta() - temp->Get_Tj() << " "
-				<< Unit_Td - temp->Get_Ta() << " "
-				<< Unit_Td - temp->Get_Tj() << endl;
+				<< temp->Get_Td() - temp->Get_Ta() << " "
+				<< temp->Get_Td() - temp->Get_Tj() << endl;
+				*/
+			if (temp->Get_Td() < 10)
+				Fout << " ";
+			Fout << temp->Get_Td() <<" ";
+			if (temp->GetID() < 10)
+				Fout << " ";
+			Fout << temp->GetID() << " ";
+			if (temp->Get_Tj() < 10)
+				Fout << " ";
+			Fout << temp->Get_Tj() << " ";
+			if (temp->Get_Ta() - temp->Get_Tj() < 10)
+				Fout << " ";
+			Fout << temp->Get_Ta() - temp->Get_Tj() << " ";
+			if (temp->Get_Td() - temp->Get_Ta() < 10)
+				Fout << " ";
+			Fout << temp->Get_Td() - temp->Get_Ta() << " ";
+			if (temp->Get_Td() - temp->Get_Tj() < 10)
+				Fout << " ";
+			Fout << temp->Get_Td() - temp->Get_Tj() << endl;
+
 		}
 	}
 }
