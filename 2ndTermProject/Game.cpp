@@ -4,7 +4,25 @@ Game::Game()
 {
 	randgenn = new RandomGenerator;
 	Tj_value = 0;
+	ReadData(); //delete.
+}
+
+void Game::Battle()
+{
 	ReadData();
+	bool End = 1;
+	while(End)
+	{
+		Generate_Earth_Army();
+		Generate_Alien_Army();
+		Attack();
+		UpdateUML();
+		print();//if Active mode else print other statement.
+		Get_And_Inc_Tj();
+		if (Get_Tj() > 40)
+			End = CheckWhoWins();
+	}//wait for a click.
+	GenerateOutputFile();
 }
 
 void Game::Generate_Earth_Army()
@@ -44,6 +62,22 @@ unsigned short Game::Get_And_Inc_Tj()
 unsigned short Game::Get_Tj()
 {
 	return Tj_value;
+}
+
+void Game::UpdateUML()
+{
+	ArmyUnit* AU;
+	int x;
+	while (ES_UML.dequeue(AU, x))
+	{
+		AU->Set_StepsInUML(1 + AU->GetStepsInUML());
+		ES_UML.enqueue(AU, x);
+	}
+	while (ET_UML.dequeue(AU))
+	{
+		AU->Set_StepsInUML(1 + AU->GetStepsInUML());
+		ET_UML.enqueue(AU);
+	}
 }
 
 void Game::AddInKilledList(ArmyUnit* passed_AU)
@@ -249,7 +283,6 @@ void Game::ReadData()
 		Fin.ignore();
 
 		Fin >> max_E_health;
-		Max_E_HP = (int) max_E_health;
 		Fin.ignore();
 
 		Fin >> min_E_Attack_Capacity;

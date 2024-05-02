@@ -1,8 +1,8 @@
 #include "AlienDrone.h"
 #include "../Game.h"
 
-AlienDrone::AlienDrone(Game* p, int HP, int pow, int ID_, int cap, int Tj):
-	ArmyUnit(p,HP,pow,ID_,cap,Tj)
+AlienDrone::AlienDrone(Game* p, int HP, int pow, int ID_, int cap, int Tj, Unit U):
+	ArmyUnit(p, HP, pow, ID_, cap, Tj, U)
 {
 
 }

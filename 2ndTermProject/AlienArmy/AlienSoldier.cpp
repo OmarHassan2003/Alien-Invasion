@@ -1,8 +1,8 @@
 #include "AlienSoldier.h"
 #include "../Game.h"
 
-AlienSoldier::AlienSoldier(Game* p, int HP, int pow, int ID_, int cap, int _Tj)
-	:ArmyUnit(p, HP, pow, ID_, cap, _Tj)
+AlienSoldier::AlienSoldier(Game* p, int HP, int pow, int ID_, int cap, int _Tj, Unit U)
+	:ArmyUnit(p, HP, pow, ID_, cap, _Tj, U)
 {
 }
 
@@ -26,7 +26,7 @@ bool AlienSoldier::Attack()
 	for (int i = 0; i < GetAttackCap(); i++)
 		if (pGame->Get_ES(ES))
 		{
-			if (ES->Get_Ta() == 0)
+			if (ES->Get_Ta() == -1)
 				ES->Set_Ta(pGame->Get_Tj());
 			
 			int dmg = int((float)GetPower() * (GetHealth() / 100.0) / (float)sqrt(ES->GetHealth()));

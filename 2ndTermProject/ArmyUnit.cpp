@@ -1,6 +1,6 @@
 #include "ArmyUnit.h"
 
-ArmyUnit::ArmyUnit(Game* p, int HP, int pow, int ID_, int cap, int _Tj)
+ArmyUnit::ArmyUnit(Game* p, int HP, int pow, int ID_, int cap, int _Tj, Unit U)
 {
 	pGame = p;
 	Health = HP;
@@ -8,10 +8,11 @@ ArmyUnit::ArmyUnit(Game* p, int HP, int pow, int ID_, int cap, int _Tj)
 	ID = ID_;
 	AttackCap = cap;
 	Tj = _Tj;
-	Ta = 0;
+	Ta = -1;
 	Td = 0;
 	InitialHealth = Health;
 	StepsInUML = 0;
+	Type = U;
 }
 
 void ArmyUnit::Set_Ta(int _Ta)
@@ -67,6 +68,11 @@ int ArmyUnit::GetID()
 int ArmyUnit::GetAttackCap()
 {
 	return AttackCap;
+}
+
+ArmyUnit::Unit ArmyUnit::GetUnitType()
+{
+	return Type;
 }
 
 int ArmyUnit::GetStepsInUML()

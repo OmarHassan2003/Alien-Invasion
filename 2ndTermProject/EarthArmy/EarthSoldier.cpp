@@ -1,8 +1,8 @@
 #include "EarthSoldier.h"
 #include "../Game.h"
 
-EarthSoldier::EarthSoldier(Game* p, int HP, int pow, int ID_, int cap, int _Tj)
-	:ArmyUnit(p, HP, pow, ID_, cap, _Tj)
+EarthSoldier::EarthSoldier(Game* p, int HP, int pow, int ID_, int cap, int _Tj, Unit U)
+	:ArmyUnit(p, HP, pow, ID_, cap, _Tj, U)
 {
 }
 
@@ -26,7 +26,7 @@ bool EarthSoldier::Attack() //PHASE2
 	for (int i = 0; i < GetAttackCap(); i++)
 		if (pGame->Get_AS(AS))
 		{
-			if (AS->Get_Ta() == 0)
+			if (AS->Get_Ta() == -1)
 				AS->Set_Ta(pGame->Get_Tj());
 		
 			int dmg = int((float)GetPower()*(GetHealth()/100.0)/ (float)sqrt(AS->GetHealth()));

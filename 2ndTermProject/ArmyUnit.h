@@ -11,6 +11,9 @@ class ArmyUnit
 {
 protected:
 	Game* pGame;
+	enum Unit {
+		ES, EG, ET, EH, AS, AM, AD
+	};
 private:
 	int Health;
 	int InitialHealth;
@@ -19,8 +22,9 @@ private:
 	int ID;
 	int AttackCap;
 	int Tj, Ta, Td;
+	Unit Type;
 public:
-	ArmyUnit(Game* p, int HP, int pow, int ID_, int cap, int Tj);
+	ArmyUnit(Game* p, int HP, int pow, int ID_, int cap, int Tj, Unit U);
 
 	virtual bool Attack() = 0;
 
@@ -40,7 +44,8 @@ public:
 	virtual int GetID();
 	virtual int GetAttackCap();
 	virtual int GetStepsInUML();
-	
+	virtual Unit GetUnitType(); // Maybe causes a logical error
+
 	ArmyUnit* operator-=(int damage);
 	// ++ operator to increase StepsInUML
 
