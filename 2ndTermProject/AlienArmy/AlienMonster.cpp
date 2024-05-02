@@ -1,8 +1,8 @@
 #include "AlienMonster.h"
 #include "../Game.h"
 
-AlienMonster::AlienMonster(Game* p, int HP, int pow, int ID_, int cap, int _Tj)
-	:ArmyUnit(p, HP, pow, ID_, cap, _Tj)
+AlienMonster::AlienMonster(Game* p, int HP, int pow, int ID_, int cap, int _Tj, Unit U)
+	:ArmyUnit(p, HP, pow, ID_, cap, _Tj, U)
 {
 }
 
