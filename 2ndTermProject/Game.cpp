@@ -96,9 +96,14 @@ bool Game::Get_ET(EarthTank*& AU)
 {
 	return EA.pick_ET(AU);
 }
-bool Game::GetUML(ArmyUnit* AU, int pri)
+bool Game::Get_ES_UML(ArmyUnit* AU)
 {
-	return UML.dequeue(AU, pri);
+	int pri;
+	return ES_UML.dequeue(AU, pri);
+}
+bool Game::Get_ET_UML(ArmyUnit* AU)
+{
+	return ET_UML.dequeue(AU);
 }
 int Game::Get_ES_Count()
 {
@@ -109,14 +114,13 @@ int Game::Get_AS_Count()
 	return AA.AS_Count();
 }
 // ----- Return back to lists after being attacked. -----
-void Game::AddToUML(ArmyUnit* passed_AU, int pri) 
+void Game::AddToESUML(ArmyUnit* passed_AU) 
 {
-	if(passed_AU)
-		//pri= -1 if Tank and max health-current health for soldiers 
-		if (pri == -1)
-			UML.enqueue(passed_AU, -1);
-		else
-			UML.enqueue(passed_AU, Max_E_HP - passed_AU->GetHealth());
+	ES_UML.enqueue(passed_AU, - passed_AU->GetHealth());
+}
+void Game::AddToETUML(ArmyUnit* passed_AU)
+{
+	ET_UML.enqueue(passed_AU);
 }
 void Game::Add_ES(EarthSoldier* AU)
 {
@@ -168,9 +172,12 @@ void Game::print()
 	AA.PrintArmyInfo();
 	cout << endl;
 	cout << "============================================ UML Units ==========================================" << endl;
-	cout << UML.GetCount() << " units [ ";
-	UML.print();
+	cout << ES_UML.GetCount() << " units [ ";
+	ES_UML.print();
 	cout << "]" << endl;
+	cout << ET_UML.GetCount() << " units [ ";
+	ET_UML.print();
+	cout << "]" << endl;	
 	cout << "============================================ Killed/Destructed Units ==========================================" << endl;
 	cout << Killed_List.GetCount() << " units [ ";
 	Killed_List.print();

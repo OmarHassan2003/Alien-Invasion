@@ -23,33 +23,49 @@ bool HealUnit::Attack(ArmyUnit* AU0, ArmyUnit* AU1)
 	bool flag = 1;
 	ArmyUnit* AU = nullptr;
 	int pri = 0;
-	priQueue<ArmyUnit*> templist;
+	Queue<ArmyUnit*> EStemplist;
+	Queue<ArmyUnit*> ETtemplist;
+
 	for (int i = 0; i < this->GetAttackCap(); i++)
-		if (pGame->GetUML(AU, pri))
+		if (pGame->Get_ES_UML(AU))
 			if (AU->GetStepsInUML() <= 10)
 			{
-				AU += ((this->GetHealth() * this->GetPower()) / (100 * AU->GetHealth()));
+				int dmg = int((float)GetPower() * (GetHealth() / 100.0) / (float)sqrt(AU->GetHealth()));
+				AU->SetHealth(AU->GetHealth() + dmg);
+
 				if (AU->GetHealth() > 0.2 * AU->GetInitialH())
-					if (pri == -1)
-					{
-						//Add to Tanklist 
-						AU->Set_StepsInUML(0);
-					}
-					else
-					{
-						pGame->Add_ES((EarthSoldier*)AU);
-						AU->Set_StepsInUML(0);
-					}
+				{
+					pGame->Add_ES((EarthSoldier*)AU);
+					AU->Set_StepsInUML(0);
+				}
 				else //still under 20% hp.
-					templist.enqueue(AU, pri);
+					EStemplist.enqueue(AU);
+			}
+			else
+				pGame->AddInKilledList(AU);
+		else if(pGame->Get_ET_UML(AU))
+			if (AU->GetStepsInUML() <= 10)
+			{
+				int dmg = int((float)GetPower() * (GetHealth() / 100.0) / (float)sqrt(AU->GetHealth()));
+				AU->SetHealth(AU->GetHealth() + dmg);
+
+				if (AU->GetHealth() > 0.2 * AU->GetInitialH())
+				{
+					pGame->Add_ET((EarthTank*)AU);
+					AU->Set_StepsInUML(0);
+				}
+				else //still under 20% hp.
+					ETtemplist.enqueue(AU);
 			}
 			else
 				pGame->AddInKilledList(AU);
 		else
 			flag = 0; // no. of available units to be attacked less than the attack cap.
 
-	while (templist.dequeue(AU, pri))
-		pGame->AddToUML(AU, pri);
+	while (EStemplist.dequeue(AU))
+		pGame->AddToESUML(AU);
+	while (ETtemplist.dequeue(AU))
+		pGame->AddToETUML(AU);
 
 	pGame->AddInKilledList(this); //KILL HU after attack.
 
