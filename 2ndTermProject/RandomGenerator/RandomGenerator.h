@@ -8,6 +8,7 @@
 #include "../AlienArmy/AlienMonster.h"
 #include "../AlienArmy/AlienSoldier.h"
 #include "../ArmyUnit.h"
+#include "../HealUnit.h"
 
 using namespace std;
 

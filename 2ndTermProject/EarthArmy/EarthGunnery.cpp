@@ -22,7 +22,7 @@ bool EarthGunnery::Attack()
 	AlienMonster* pAM;
 	Queue<AlienDrone*> temp_queue0;
 	Queue<AlienDrone*> temp_queue1;
-	DynamicArray<AlienMonster*> temp_arr;
+	Queue<AlienMonster*> temp_AM_Queue;
 
 	unsigned short Attack_Cap = GetAttackCap() / 2;
 	/*******************************Drone Attack*******************************/
@@ -77,13 +77,13 @@ bool EarthGunnery::Attack()
 			if (pAM->GetHealth() <= 0)
 				pGame->AddInKilledList(pAM);
 			else
-				temp_arr.Add(pAM);
+				temp_AM_Queue.enqueue(pAM);
 		}
 	}
 	AlienMonster* tempAM;
-	while (!temp_arr.isEmpty())
+	while (!temp_AM_Queue.isEmpty())
 	{
-		temp_arr.Pick(tempAM);
+		temp_AM_Queue.dequeue(tempAM);
 		pGame->Add_AM(tempAM);
 	}
 	return flag;

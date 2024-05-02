@@ -19,6 +19,7 @@ public:
 	Game();
 	void Battle();
 	void ReadData();
+	bool GameMode();
 	void Generate_Earth_Army();
 	void Generate_Alien_Army();
 	unsigned short Get_And_Inc_Tj();

@@ -21,8 +21,8 @@ bool AlienDrone::Attack()
 	bool flag = false;
 	EarthTank* pET;
 	EarthGunnery* pEG;
-	Stack<EarthTank*> temp_stack;
-	priQueue<EarthGunnery*> temp_pri;
+	Queue<EarthTank*> temp_ET_Queue;
+	Queue<EarthGunnery*> temp_EG_Queue;
 	unsigned short Attack_Cap = GetAttackCap() / 2;
 	for (unsigned short i = 0;i < Attack_Cap;i++)
 	{
@@ -33,14 +33,16 @@ bool AlienDrone::Attack()
 			pET->SetHealth(pET->GetHealth() - dmg);
 			if (pET->GetHealth() <= 0)
 				pGame->AddInKilledList(pET);
+			else if (pET->GetHealth() < 0.2 * pET->GetInitialH())
+				pGame->AddToETUML(pET);
 			else
-				temp_stack.push(pET);
+				temp_ET_Queue.enqueue(pET);
 		}
 	}
 	EarthTank* tempET;
-	while (!temp_stack.isEmpty())
+	while (!temp_ET_Queue.isEmpty())
 	{
-		temp_stack.pop(tempET);
+		temp_ET_Queue.dequeue(tempET);
 		pGame->Add_ET(tempET);
 	}
 	Attack_Cap = GetAttackCap() - Attack_Cap;
@@ -54,14 +56,13 @@ bool AlienDrone::Attack()
 			if (pEG->GetHealth() <= 0)
 				pGame->AddInKilledList(pEG);
 			else
-				temp_pri.enqueue(pEG, pEG->GetPower() + pEG->GetHealth());
+				temp_EG_Queue.enqueue(pEG);
 		}
 	}
 	EarthGunnery* tempEG;
-	int x;
-	while (!temp_pri.isEmpty())
+	while (!temp_EG_Queue.isEmpty())
 	{
-		temp_pri.dequeue(tempEG,x);
+		temp_EG_Queue.dequeue(tempEG);
 		pGame->Add_EG(tempEG);
 	}
 	return false;
