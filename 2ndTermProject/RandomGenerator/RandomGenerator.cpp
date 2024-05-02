@@ -27,8 +27,10 @@ ArmyUnit* RandomGenerator::CreateUnit(unsigned short Tj, Game* pGame, char u)
 		}
 		if (x <= ES)
 			pArmyUnit = new EarthSoldier(pGame, health, power, EarthID, attack_capacity, Tj);
-		else if (x <= ES+ET)
+		else if (x <= ES + ET)
 			pArmyUnit = new EarthTank(pGame, health, power, EarthID, attack_capacity, Tj);
+		else if (x <= HU_Percent)
+			pArmyUnit = new HealUnit(pGame, health, power, EarthID, attack_capacity, Tj);
 		else
 			pArmyUnit = new EarthGunnery(pGame, health, power, EarthID, attack_capacity, Tj);
 		EarthID++;

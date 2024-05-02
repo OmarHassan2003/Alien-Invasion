@@ -18,7 +18,7 @@ void HealUnit::AddAlienUnitToList(AlienArmy* passed_AA)
 {
 }
 
-bool HealUnit::Attack(ArmyUnit* AU0, ArmyUnit* AU1)
+bool HealUnit::Attack()
 {
 	bool flag = 1;
 	ArmyUnit* AU = nullptr;
