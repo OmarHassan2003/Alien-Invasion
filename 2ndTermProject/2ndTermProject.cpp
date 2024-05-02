@@ -35,6 +35,7 @@ int main()
 		gmain.Get_And_Inc_Tj();
 		gmain.Generate_Earth_Army();
 		gmain.Generate_Alien_Army();
+		gmain.print();
 		gmain.Attack();
 		if(gameMode == ACTIVE_MODE)
 			gmain.print();

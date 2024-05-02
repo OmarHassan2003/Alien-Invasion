@@ -28,7 +28,7 @@ bool AlienMonster::Attack()
 		if (ET->GetHealth() <= 0)
 			pGame->AddInKilledList(ET);
 		else if (ET->GetHealth() < 0.2 * ET->GetInitialH())
-			pGame->AddToUML(ET, -1);
+			pGame->AddToETUML(ET);
 		else
 			tempList1.push(ET);
 	}
@@ -44,7 +44,7 @@ bool AlienMonster::Attack()
 			if (ES->GetHealth() <= 0)
 				pGame->AddInKilledList(ES);
 			else if (ES->GetHealth() < 0.2 * ES->GetInitialH())
-				pGame->AddToUML(ES, ES->GetInitialH() - ES->GetHealth());
+				pGame->AddToESUML(ES);
 			else
 				tempList2.enqueue(ES);
 		}

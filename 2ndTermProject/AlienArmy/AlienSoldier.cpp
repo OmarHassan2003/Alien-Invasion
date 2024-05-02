@@ -35,7 +35,7 @@ bool AlienSoldier::Attack()
 			if (ES->GetHealth() <= 0)
 				pGame->AddInKilledList(ES);
 			else if (ES->GetHealth() < 0.2 * ES->GetInitialH())
-				pGame->AddToUML(ES, 0);
+				pGame->AddToESUML(ES);
 			else
 				templist.enqueue(ES);
 		}
