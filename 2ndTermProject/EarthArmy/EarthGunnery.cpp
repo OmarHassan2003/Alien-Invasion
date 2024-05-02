@@ -56,13 +56,11 @@ bool EarthGunnery::Attack()
 	while (!temp_queue0.isEmpty())
 	{
 		temp_queue0.dequeue(tempAD);
-		cout << tempAD << endl;
 		pGame->Add_AD(tempAD);
 	}
 	while (!temp_queue1.isEmpty())
 	{
 		temp_queue1.dequeue(tempAD);
-		cout << tempAD << endl;
 		pGame->Add_AD_Front(tempAD);
 	}
 	/*******************************Monster Attack*******************************/

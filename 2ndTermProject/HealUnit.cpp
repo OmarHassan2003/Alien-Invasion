@@ -28,37 +28,39 @@ bool HealUnit::Attack()
 
 	for (int i = 0; i < this->GetAttackCap(); i++)
 		if (pGame->Get_ES_UML(AU))
-			if (AU->GetStepsInUML() <= 10)
-			{
-				int dmg = int((float)GetPower() * (GetHealth() / 100.0) / (float)sqrt(AU->GetHealth()));
-				AU->SetHealth(AU->GetHealth() + dmg);
-
-				if (AU->GetHealth() > 0.2 * AU->GetInitialH())
+			if(AU)
+				if (AU->GetStepsInUML() <= 10)
 				{
-					pGame->Add_ES((EarthSoldier*)AU);
-					AU->Set_StepsInUML(0);
+					int dmg = int((float)GetPower() * (GetHealth() / 100.0) / (float)sqrt(AU->GetHealth()));
+					AU->SetHealth(AU->GetHealth() + dmg);
+
+					if (AU->GetHealth() > 0.2 * AU->GetInitialH())
+					{
+						pGame->Add_ES((EarthSoldier*)AU);
+						AU->Set_StepsInUML(0);
+					}
+					else //still under 20% hp.
+						EStemplist.enqueue(AU);
 				}
-				else //still under 20% hp.
-					EStemplist.enqueue(AU);
-			}
-			else
-				pGame->AddInKilledList(AU);
+				else
+					pGame->AddInKilledList(AU);
 		else if(pGame->Get_ET_UML(AU))
-			if (AU->GetStepsInUML() <= 10)
-			{
-				int dmg = int((float)GetPower() * (GetHealth() / 100.0) / (float)sqrt(AU->GetHealth()));
-				AU->SetHealth(AU->GetHealth() + dmg);
-
-				if (AU->GetHealth() > 0.2 * AU->GetInitialH())
+			if(AU)
+				if (AU->GetStepsInUML() <= 10)
 				{
-					pGame->Add_ET((EarthTank*)AU);
-					AU->Set_StepsInUML(0);
+					int dmg = int((float)GetPower() * (GetHealth() / 100.0) / (float)sqrt(AU->GetHealth()));
+					AU->SetHealth(AU->GetHealth() + dmg);
+
+					if (AU->GetHealth() > 0.2 * AU->GetInitialH())
+					{
+						pGame->Add_ET((EarthTank*)AU);
+						AU->Set_StepsInUML(0);
+					}
+					else //still under 20% hp.
+						ETtemplist.enqueue(AU);
 				}
-				else //still under 20% hp.
-					ETtemplist.enqueue(AU);
-			}
-			else
-				pGame->AddInKilledList(AU);
+				else
+					pGame->AddInKilledList(AU);
 		else
 			flag = 0; // no. of available units to be attacked less than the attack cap.
 

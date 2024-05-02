@@ -35,7 +35,8 @@ void EarthArmy::PrintArmyInfo()
 	cout << Total_E_Units << "Total :";
 	cout << ES_Queue.GetCount() << " ES /";
 	cout << ET_Stack.GetCount() << " ET /";
-	cout << EG_priQ.GetCount() << " EG\n";
+	cout << EG_priQ.GetCount() << " EG /";
+	cout << HU_Stack.GetCount() << " HU\n";
 	/*
 	cout << ES_Queue.GetCount() << " ES [";
 	ES_Queue.print();
@@ -113,7 +114,7 @@ void EarthArmy::AddInHUStack(HealUnit* passed_HU)
 
 bool EarthArmy::isCompromised()
 {
-	return ES_Queue.isEmpty() && EG_priQ.isEmpty() && ET_Stack.isEmpty();
+	return ES_Queue.isEmpty() && EG_priQ.isEmpty() && ET_Stack.isEmpty() && HU_Stack.isEmpty();
 }
 
 EarthArmy::~EarthArmy()
