@@ -266,7 +266,7 @@ void Game::GenerateOutputFile()
 		priQueue<ArmyUnit*> temp_pri;
 		Stack<ArmyUnit*> temp_stack;
 		ArmyUnit* temp;
-		Fout << "Td" << " ID" << " Tj" << " Df" << " Dd" << " Db" << endl;
+		Fout << "Td " << "   ID  " << "  Tj  " << "  Df  " << "  Dd  " << "  Db" << endl << endl;
 		while (!Killed_List.isEmpty())
 		{
 			Killed_List.dequeue(temp);
@@ -280,31 +280,57 @@ void Game::GenerateOutputFile()
 		while (!temp_stack.isEmpty())
 		{
 			temp_stack.pop(temp);
-			/*
-			Fout << temp->Get_Td() << " " << temp->GetID() << " "
-				<< temp->Get_Tj() << " " << temp->Get_Ta() - temp->Get_Tj() << " "
-				<< temp->Get_Td() - temp->Get_Ta() << " "
-				<< temp->Get_Td() - temp->Get_Tj() << endl;
-				*/
+			Fout << temp->Get_Td();
 			if (temp->Get_Td() < 10)
-				Fout << " ";
-			Fout << temp->Get_Td() <<" ";
-			if (temp->GetID() < 10)
-				Fout << " ";
-			Fout << temp->GetID() << " ";
-			if (temp->Get_Tj() < 10)
-				Fout << " ";
-			Fout << temp->Get_Tj() << " ";
-			if (temp->Get_Ta() - temp->Get_Tj() < 10)
-				Fout << " ";
-			Fout << temp->Get_Ta() - temp->Get_Tj() << " ";
-			if (temp->Get_Td() - temp->Get_Ta() < 10)
-				Fout << " ";
-			Fout << temp->Get_Td() - temp->Get_Ta() << " ";
-			if (temp->Get_Td() - temp->Get_Tj() < 10)
-				Fout << " ";
-			Fout << temp->Get_Td() - temp->Get_Tj() << endl;
+				Fout << "     ";
+			else if (temp->Get_Td() < 100)
+				Fout << "    ";
+			else if (temp->Get_Td() < 1000)
+				Fout << "   ";
+			else
+				Fout << "  ";
 
+			Fout << temp->GetID();
+			if (temp->GetID() < 10)
+				Fout << "     ";
+			else if (temp->GetID() < 100)
+				Fout << "    ";
+			else if (temp->GetID() < 1000)
+				Fout << "   ";
+			else
+				Fout << "  ";
+
+			Fout << temp->Get_Tj();
+			if (temp->Get_Tj() < 10)
+				Fout << "     ";
+			else if (temp->Get_Tj() < 100)
+				Fout << "    ";
+			else if (temp->Get_Tj() < 1000)
+				Fout << "   ";
+			else
+				Fout << "  ";
+
+			Fout << temp->Get_Ta() - temp->Get_Tj();
+			if (temp->Get_Ta() - temp->Get_Tj() < 10)
+				Fout << "     ";
+			else if (temp->Get_Ta() - temp->Get_Tj() < 100)
+				Fout << "    ";
+			else if (temp->Get_Ta() - temp->Get_Tj() < 1000)
+				Fout << "   ";
+			else
+				Fout << "  ";
+
+			Fout << temp->Get_Td() - temp->Get_Ta();
+			if (temp->Get_Td() - temp->Get_Ta() < 10)
+				Fout << "     ";
+			else if (temp->Get_Td() - temp->Get_Ta() < 100)
+				Fout << "    ";
+			else if (temp->Get_Td() - temp->Get_Ta() < 1000)
+				Fout << "   ";
+			else
+				Fout << "  ";
+
+			Fout << temp->Get_Td() - temp->Get_Tj() << endl;
 		}
 	}
 }
