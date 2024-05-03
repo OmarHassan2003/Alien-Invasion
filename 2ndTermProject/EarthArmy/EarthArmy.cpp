@@ -37,15 +37,16 @@ void EarthArmy::PrintArmyInfo()
 	cout << ET_Stack.GetCount() << " ET /";
 	cout << EG_priQ.GetCount() << " EG /";
 	cout << HU_Stack.GetCount() << " HU\n";*/
-	cout << Total_E_Units << "Total :";
+	cout << Total_E_Units << "Total :" << endl;
 	cout << ES_Queue.GetCount() << " ES [";
 	ES_Queue.print();
 	cout << "]" << endl << ET_Stack.GetCount() << " ET [";
 	ET_Stack.print();
 	cout << "]" << endl << EG_priQ.GetCount() << " EG [";
 	EG_priQ.print();
+	cout << "]" << endl << HU_Stack.GetCount() << " EH [";
+	EG_priQ.print();
 	cout << "]";
-	
 }
 
 bool EarthArmy::pick_ES(EarthSoldier*& EPtr)
@@ -88,6 +89,11 @@ int EarthArmy::ET_Count() const
 int EarthArmy::EG_Count() const
 {
 	return EG_priQ.GetCount();
+}
+
+int EarthArmy::EH_Count() const
+{
+	return HU_Stack.GetCount();
 }
 
 bool EarthArmy::AddUnit(ArmyUnit* passed_AU)

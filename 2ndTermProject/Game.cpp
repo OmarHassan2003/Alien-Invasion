@@ -157,11 +157,14 @@ int Game::Get_Count(ArmyUnit::Unit U)
 		return EA.ET_Count();
 	else if (U == ArmyUnit::EG)
 		return EA.EG_Count();
+	else if (U == ArmyUnit::EH)
+		return EA.EH_Count();
+
 	else if (U == ArmyUnit::AS)
 		return AA.AS_Count();
 	else if (U == ArmyUnit::AD)
 		return AA.AD_Count();
-	else
+	else if (U == ArmyUnit::AM)
 		return AA.AM_Count();
 }
 

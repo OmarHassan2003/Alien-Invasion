@@ -26,11 +26,11 @@ public:
 	bool pick_ET(EarthTank*& EPtr);
 	bool pick_EG(EarthGunnery*& EPtr);
 	bool pick_HU(HealUnit*& Eptr);
-	/*****************peek units from list********************/
 	/****************Get Counts of lists**********************/
 	int ES_Count() const;
 	int ET_Count() const;
 	int EG_Count() const;
+	int EH_Count() const;
 	bool peek_EG(EarthGunnery*& EPtr);  //Sounds Like It has no use
 	/****************insert units to lists********************/
 	bool AddUnit(ArmyUnit* passed_AU); // THE GENERAL ONE
