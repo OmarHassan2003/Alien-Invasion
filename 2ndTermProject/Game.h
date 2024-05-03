@@ -38,8 +38,7 @@ public:
 	bool Get_ES_UML(ArmyUnit* AU);
 	bool Get_ET_UML(ArmyUnit* AU);
 	/////////////////////////////////////
-	int Get_ES_Count();
-	int Get_AS_Count();
+	int Get_Count(ArmyUnit::Unit U);
 	/////////////////////////////////////
 	void AddToESUML(ArmyUnit* passed_AU);
 	void AddToETUML(ArmyUnit* passed_AU);

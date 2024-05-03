@@ -149,14 +149,22 @@ bool Game::Get_ET_UML(ArmyUnit* AU)
 {
 	return ET_UML.dequeue(AU);
 }
-int Game::Get_ES_Count()
+int Game::Get_Count(ArmyUnit::Unit U)
 {
-	return EA.ES_Count();
+	if (U == ArmyUnit::ES)
+		return EA.ES_Count();
+	else if (U == ArmyUnit::ET)
+		return EA.ET_Count();
+	else if (U == ArmyUnit::EG)
+		return EA.EG_Count();
+	else if (U == ArmyUnit::AS)
+		return AA.AS_Count();
+	else if (U == ArmyUnit::AD)
+		return AA.AD_Count();
+	else
+		return AA.AM_Count();
 }
-int Game::Get_AS_Count()
-{
-	return AA.AS_Count();
-}
+
 // ----- Return back to lists after being attacked. -----
 void Game::AddToESUML(ArmyUnit* passed_AU) 
 {
@@ -208,7 +216,7 @@ void Game::Attack()
 
 void Game::print()
 {
-	cout << "\nCurrent Time Step:" << Tj_value << endl;
+	/*cout << "\nCurrent Time Step:" << Tj_value << endl;
 	EA.PrintArmyInfo();
 	AA.PrintArmyInfo();
 	cout << ES_UML.GetCount() << " units [ ";
@@ -220,8 +228,8 @@ void Game::print()
 	cout << Killed_List.GetCount() << " units [ ";
 	Killed_List.print();
 	cout << "]" << endl;
-	cout << "===============================================================================================================" << endl;
-/*
+	cout << "===============================================================================================================" << endl;*/
+
 	cout << "\nCurrent Time Step:" << Tj_value << endl;
 	cout << "============================================ Earth Army Alive Units ==========================================" << endl;
 	EA.PrintArmyInfo();
@@ -241,7 +249,7 @@ void Game::print()
 	Killed_List.print();
 	cout << "]" << endl;
 	cout << "===============================================================================================================" << endl;
-	*/
+	
 }
 
 void Game::GenerateOutputFile()

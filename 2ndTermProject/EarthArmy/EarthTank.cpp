@@ -18,17 +18,18 @@ void EarthTank::AddAlienUnitToList(AlienArmy* passed_AA)
 
 bool EarthTank::Attack()
 {
-	double ES_COUNT = pGame->Get_ES_Count();
-	double AS_COUNT = pGame->Get_AS_Count();
+	double ES_COUNT = pGame->Get_Count(ES);
+	double AS_COUNT = pGame->Get_Count(AS);
 	Queue<AlienMonster*> tempList1;
 	Queue<AlienSoldier*> tempList2;
+
 	if (ES_COUNT < 0.3 * AS_COUNT)
 	{
 		int count = 0;
 		AlienMonster* AM = nullptr;
-		while (count < GetAttackCap() / 2 && pGame->Get_AM(AM));
+		while (count < GetAttackCap() / 2)
 		{
-			if (AM)
+			if (pGame->Get_AM(AM))
 			{
 				if (AM->Get_Ta() == -1)
 					AM->Set_Ta(pGame->Get_Tj());
@@ -41,6 +42,7 @@ bool EarthTank::Attack()
 				else tempList1.enqueue(AM);
 			}
 		}
+
 		int remaining_AttackCapacity = GetAttackCap() - count;
 		for (int i = 1; i <= remaining_AttackCapacity; i++)
 		{
@@ -58,6 +60,7 @@ bool EarthTank::Attack()
 			}
 		}
 	}
+
 	else
 	{
 		for (int i = 1; i <= GetAttackCap(); i++)
@@ -76,6 +79,10 @@ bool EarthTank::Attack()
 			}
 		}
 	}
+
+	if (tempList1.isEmpty() && tempList2.isEmpty())
+		return false;
+
 	while (!tempList1.isEmpty())
 	{
 		AlienMonster* temp = nullptr;
@@ -88,6 +95,7 @@ bool EarthTank::Attack()
 		tempList2.dequeue(temp);
 		pGame->Add_AS(temp);
 	}
+
 	return true;
 }
 

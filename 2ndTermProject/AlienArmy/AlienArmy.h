@@ -30,6 +30,8 @@ public:
 	bool peek_AM(AlienMonster*& passed_AM);
 	/****************Get Counts of lists**********************/
 	int AS_Count() const;
+	int AD_Count() const;
+	int AM_Count() const;
 	/****************insert units to lists********************/
 	bool AddUnit(ArmyUnit* passed_AU); // THE GENERAL ONE
 	void AddInQueue(AlienSoldier* passed_AU);

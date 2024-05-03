@@ -9,11 +9,12 @@ using namespace std;
 
 class ArmyUnit
 {
-protected:
-	Game* pGame;
+public:
 	enum Unit {
 		ES, EG, ET, EH, AS, AM, AD
 	};
+protected:
+	Game* pGame;
 private:
 	int Health;
 	int InitialHealth;

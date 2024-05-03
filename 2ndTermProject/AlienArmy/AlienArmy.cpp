@@ -32,11 +32,11 @@ bool AlienArmy::Attack()
 
 void AlienArmy::PrintArmyInfo()
 {
-	cout << Total_A_Units << "Total :";
+	/*cout << Total_A_Units << "Total :";
 	cout << AS_Queue.GetCount() << " AS /";
 	cout << AM.GetCount() << " AM /";
-	cout << AD_DQueue.GetCount() << " AD \n";
-	/*
+	cout << AD_DQueue.GetCount() << " AD \n";*/
+	cout << Total_A_Units << "Total :";
 	cout << AS_Queue.GetCount() << " AS [";
 	AS_Queue.print();
 	cout << "]" << endl;
@@ -45,7 +45,7 @@ void AlienArmy::PrintArmyInfo()
 	cout << "]" << endl << AD_DQueue.GetCount() << " AD [";
 	AD_DQueue.print();
 	cout << "]";
-	*/
+	
 }
 
 bool AlienArmy::pick_AS(AlienSoldier*& EPtr)
@@ -81,6 +81,16 @@ bool AlienArmy::peek_AM(AlienMonster*& passed_AM)
 int AlienArmy::AS_Count() const
 {
 	return AS_Queue.GetCount();
+}
+
+int AlienArmy::AD_Count() const
+{
+	return AD_DQueue.GetCount();
+}
+
+int AlienArmy::AM_Count() const
+{
+	return AM.GetCount();
 }
 
 bool AlienArmy::pick_AD(AlienDrone*& passed_AD) //change to bool

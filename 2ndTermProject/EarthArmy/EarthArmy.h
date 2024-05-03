@@ -29,6 +29,8 @@ public:
 	/*****************peek units from list********************/
 	/****************Get Counts of lists**********************/
 	int ES_Count() const;
+	int ET_Count() const;
+	int EG_Count() const;
 	bool peek_EG(EarthGunnery*& EPtr);  //Sounds Like It has no use
 	/****************insert units to lists********************/
 	bool AddUnit(ArmyUnit* passed_AU); // THE GENERAL ONE
