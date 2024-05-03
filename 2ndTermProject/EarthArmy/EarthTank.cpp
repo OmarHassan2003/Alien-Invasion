@@ -18,6 +18,7 @@ void EarthTank::AddAlienUnitToList(AlienArmy* passed_AA)
 
 bool EarthTank::Attack()
 {
+	cout << "ET attack." << endl;
 	double ES_COUNT = pGame->Get_Count(ES);
 	double AS_COUNT = pGame->Get_Count(AS);
 	Queue<AlienMonster*> tempList1;
@@ -36,11 +37,11 @@ bool EarthTank::Attack()
 
 				int dmg = int((float)GetPower() * (GetHealth() / 100.0) / (float)sqrt(AM->GetHealth()));
 				AM->SetHealth(AM->GetHealth() - dmg);
-				count++;
 				if (AM->GetHealth() <= 0)
 					pGame->AddInKilledList(AM);
 				else tempList1.enqueue(AM);
 			}
+				count++;
 		}
 
 		int remaining_AttackCapacity = GetAttackCap() - count;
