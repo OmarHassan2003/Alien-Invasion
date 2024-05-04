@@ -21,56 +21,64 @@ void HealUnit::AddAlienUnitToList(AlienArmy* passed_AA)
 bool HealUnit::Attack()
 {
 	bool flag = 1;
+	bool healed = 0;
 	ArmyUnit* AU = nullptr;
 	int pri = 0;
 	Queue<ArmyUnit*> EStemplist;
 	Queue<ArmyUnit*> ETtemplist;
+	cout << "ID." << this->GetID() << endl;
+	cout << "attack cap." << this->GetAttackCap() << endl;
 
 	for (int i = 0; i < this->GetAttackCap(); i++)
 		if (pGame->Get_ES_UML(AU))
-			if(AU)
-				if (AU->GetStepsInUML() <= 10)
+		{
+			if (AU)
+			{
+				int dmg = int((float)GetPower() * (GetHealth() / 100.0) / (float)sqrt(AU->GetHealth()));
+				AU->SetHealth(AU->GetHealth() + dmg);
+				healed = 1;
+				cout << "unit healed." << AU->GetID() << endl;
+				if (AU->GetHealth() >= 0.2 * AU->GetInitialH())
 				{
-					int dmg = int((float)GetPower() * (GetHealth() / 100.0) / (float)sqrt(AU->GetHealth()));
-					AU->SetHealth(AU->GetHealth() + dmg);
-
-					if (AU->GetHealth() > 0.2 * AU->GetInitialH())
-					{
-						pGame->Add_ES((EarthSoldier*)AU);
-						AU->Set_StepsInUML(0);
-					}
-					else //still under 20% hp.
-						EStemplist.enqueue(AU);
+					pGame->Add_ES((EarthSoldier*)AU);
+					AU->Set_StepsInUML(0);
 				}
-				else
-					pGame->AddInKilledList(AU);
-		else if(pGame->Get_ET_UML(AU))
-			if(AU)
-				if (AU->GetStepsInUML() <= 10)
+				else //still under 20% hp.
+					EStemplist.enqueue(AU);
+			}
+
+		}
+		else if (pGame->Get_ET_UML(AU))
+		{
+			if (AU)
+			{
+				int dmg = int((float)GetPower() * (GetHealth() / 100.0) / (float)sqrt(AU->GetHealth()));
+				AU->SetHealth(AU->GetHealth() + dmg);
+				healed = 1;
+				cout << "unit healed." << AU->GetID() << endl;
+				if (AU->GetHealth() >= 0.2 * AU->GetInitialH())
 				{
-					int dmg = int((float)GetPower() * (GetHealth() / 100.0) / (float)sqrt(AU->GetHealth()));
-					AU->SetHealth(AU->GetHealth() + dmg);
-
-					if (AU->GetHealth() > 0.2 * AU->GetInitialH())
-					{
-						pGame->Add_ET((EarthTank*)AU);
-						AU->Set_StepsInUML(0);
-					}
-					else //still under 20% hp.
-						ETtemplist.enqueue(AU);
+					pGame->Add_ET((EarthTank*)AU);
+					AU->Set_StepsInUML(0);
 				}
-				else
-					pGame->AddInKilledList(AU);
+				else //still under 20% hp.
+					ETtemplist.enqueue(AU);
+			}
+		}
 		else
-			flag = 0; // no. of available units to be attacked less than the attack cap.
+			break;// no. of available units to be attacked less than the attack cap.
 
 	while (EStemplist.dequeue(AU))
 		pGame->AddToESUML(AU);
 	while (ETtemplist.dequeue(AU))
 		pGame->AddToETUML(AU);
-	this->Set_Ta(pGame->Get_Tj());
-	pGame->AddInKilledList(this); //KILL HU after attack.
 
+	this->Set_Ta(pGame->Get_Tj());
+
+	if (healed)
+		pGame->AddInKilledList(this); //KILL HU after healing.
+	else
+		flag = false; //return back if hasn't healed.
 	return flag;
 }
 

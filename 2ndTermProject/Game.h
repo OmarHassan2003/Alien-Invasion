@@ -35,8 +35,8 @@ public:
 	bool Get_AD(AlienDrone*& AU);
 	bool Get_ET(EarthTank*& AU);
 	bool Get_L_AD(AlienDrone*& AU);
-	bool Get_ES_UML(ArmyUnit* AU);
-	bool Get_ET_UML(ArmyUnit* AU);
+	bool Get_ES_UML(ArmyUnit*& AU);
+	bool Get_ET_UML(ArmyUnit*& AU);
 	/////////////////////////////////////
 	int Get_Count(ArmyUnit::Unit U);
 	/////////////////////////////////////

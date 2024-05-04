@@ -15,10 +15,11 @@ void Game::Battle()
 		cout << "Silent Mode" << endl << "Simulation Starts." << endl;
 	while(!End)
 	{
+		cout << "\nCurrent Time Step:" << Tj_value << endl;
 		Generate_Earth_Army();
 		Generate_Alien_Army();
-		Attack();
 		UpdateUML();
+		Attack();
 		if (gameMode)
 			print();
 		Get_And_Inc_Tj();
@@ -77,14 +78,20 @@ void Game::UpdateUML()
 	while (ES_UML.dequeue(AU, x))
 	{
 		AU->Set_StepsInUML(1 + AU->GetStepsInUML());
-		tempES.enqueue(AU, x);
+		if (AU->GetStepsInUML() > 10)
+			AddInKilledList(AU);
+		else
+			tempES.enqueue(AU, x);
 	}
 	while (tempES.dequeue(AU, x))
 		ES_UML.enqueue(AU, x);
 	while (ET_UML.dequeue(AU))
 	{
 		AU->Set_StepsInUML(1 + AU->GetStepsInUML());
-		tempET.enqueue(AU);
+		if (AU->GetStepsInUML() > 10)
+			AddInKilledList(AU);
+		else
+			tempET.enqueue(AU);
 	}
 	while (tempET.dequeue(AU))
 		ET_UML.enqueue(AU);
@@ -140,12 +147,12 @@ bool Game::Get_ET(EarthTank*& AU)
 {
 	return EA.pick_ET(AU);
 }
-bool Game::Get_ES_UML(ArmyUnit* AU)
+bool Game::Get_ES_UML(ArmyUnit*& AU)
 {
 	int pri;
 	return ES_UML.dequeue(AU, pri);
 }
-bool Game::Get_ET_UML(ArmyUnit* AU)
+bool Game::Get_ET_UML(ArmyUnit*& AU)
 {
 	return ET_UML.dequeue(AU);
 }
@@ -233,7 +240,6 @@ void Game::print()
 	cout << "]" << endl;
 	cout << "===============================================================================================================" << endl;*/
 
-	cout << "\nCurrent Time Step:" << Tj_value << endl;
 	cout << "============================================ Earth Army Alive Units ==========================================" << endl;
 	EA.PrintArmyInfo();
 	cout << endl;

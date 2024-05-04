@@ -18,7 +18,6 @@ void EarthTank::AddAlienUnitToList(AlienArmy* passed_AA)
 
 bool EarthTank::Attack()
 {
-	cout << "ET attack." << endl;
 	double ES_COUNT = pGame->Get_Count(ES);
 	double AS_COUNT = pGame->Get_Count(AS);
 	Queue<AlienMonster*> tempList1;

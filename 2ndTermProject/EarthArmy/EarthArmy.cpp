@@ -25,8 +25,9 @@ bool EarthArmy::Attack()
 		ET->Attack();
 
 	HealUnit* HU;
-	if (HU_Stack.pop(HU)) //pop because it attacks one time then die
-		HU->Attack();
+	if (HU_Stack.pop(HU))   //pop because it heals one time then die
+		if (!HU->Attack())  // if it doesnt heal return it back
+			HU_Stack.push(HU);
 	return true;
 }
 
@@ -45,7 +46,7 @@ void EarthArmy::PrintArmyInfo()
 	cout << "]" << endl << EG_priQ.GetCount() << " EG [";
 	EG_priQ.print();
 	cout << "]" << endl << HU_Stack.GetCount() << " EH [";
-	EG_priQ.print();
+	HU_Stack.print();
 	cout << "]";
 }
 
