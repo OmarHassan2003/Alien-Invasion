@@ -14,11 +14,15 @@ class AlienArmy :public Army
 	Queue<AlienSoldier*> AS_Queue;
 	DoubleLinkedQueue<AlienDrone*> AD_DQueue;
 	DynamicArray<AlienMonster*> AM;
-	int Total_A_Units = 0;
+	unsigned int Total_A_Units = 0;
+	unsigned int Total_A_Destructed_Units = 0;
 public:
 	AlienArmy();
 	bool Attack();
 	void PrintArmyInfo();
+	unsigned int Get_Total_A_Units() const;
+	unsigned int Get_Total_Destructed_A_Units() const;
+	void Increment_Total_A_Destructed_Units();
 	/****************pick units from lists********************/
 	bool pick_AS(AlienSoldier*& EPtr);
 	bool pick_AM(AlienMonster*& passed_AM);

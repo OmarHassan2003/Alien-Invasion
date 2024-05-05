@@ -16,11 +16,15 @@ class EarthArmy :public Army
 	priQueue<EarthGunnery*> EG_priQ;
 	Stack<EarthTank*> ET_Stack;
 	Stack<HealUnit*> HU_Stack;
-	int Total_E_Units = 0;
+	unsigned int Total_E_Units = 0;
+	unsigned int Total_E_Destructed_Units = 0;
 public:
 	EarthArmy();
 	bool Attack();
 	void PrintArmyInfo(); // Add HU
+	unsigned int Get_Total_E_Units() const;
+	unsigned int Get_Total_E_Destructed_Units() const;
+	void Increment_Total_E_Destructed_Units();
 	/****************pick units from lists********************/
 	bool pick_ES(EarthSoldier*& EPtr);
 	bool pick_ET(EarthTank*& EPtr);

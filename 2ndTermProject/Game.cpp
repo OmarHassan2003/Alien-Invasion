@@ -1,5 +1,6 @@
 #include "Game.h"
 
+
 Game::Game()
 {
 	randgenn = new RandomGenerator;
@@ -15,7 +16,8 @@ void Game::Battle()
 		cout << "Silent Mode" << endl << "Simulation Starts." << endl;
 	while(!End)
 	{
-		cout << "\nCurrent Time Step:" << Tj_value << endl;
+		if(gameMode)
+			cout << "\nCurrent Time Step:" << Tj_value << endl;
 		Generate_Earth_Army();
 		Generate_Alien_Army();
 		UpdateUML();
@@ -101,6 +103,18 @@ void Game::AddInKilledList(ArmyUnit* passed_AU)
 {
 	Killed_List.enqueue(passed_AU);
 	passed_AU->Set_Td(Get_Tj());
+}
+
+void Game::E_AddInKilledList(ArmyUnit* passed_AU)
+{
+	AddInKilledList(passed_AU);
+	passed_AU->Increment_E_Destructed_Units(&EA);
+}
+
+void Game::A_AddInKilledList(ArmyUnit* passed_AU)
+{
+	AddInKilledList(passed_AU);
+	passed_AU->Increment_A_Destructed_Units(&AA);
 }
 
 bool Game::CheckWhoWins()
@@ -261,6 +275,7 @@ void Game::print()
 	
 }
 
+
 void Game::GenerateOutputFile()
 {
 	ofstream Fout("output.txt");
@@ -269,14 +284,34 @@ void Game::GenerateOutputFile()
 	else
 	{
 		int Unit_Td;
+		unsigned int E_Sum_Unit_Df = 0, E_Sum_Unit_Dd = 0, E_Sum_Unit_Db = 0, E_counter = 0;
+		unsigned int A_Sum_Unit_Df = 0, A_Sum_Unit_Dd = 0, A_Sum_Unit_Db = 0, A_counter = 0;
+
+		unsigned int Total_ES = EA.ES_Count(), Total_EG = EA.EG_Count(), Total_ET = EA.ET_Count();
+		unsigned int Total_AS = AA.AS_Count(), Total_AM = AA.AM_Count(), Total_AD = AA.AD_Count();
+
 		priQueue<ArmyUnit*> temp_pri;
 		Stack<ArmyUnit*> temp_stack;
 		ArmyUnit* temp;
-		Fout << "Td " << "   ID  " << "  Tj  " << "  Df  " << "  Dd  " << "  Db" << endl << endl;
+		Fout << "Td  " << "  ID  " << "  Tj  " << "  Df  " << "  Dd  " << "  Db" << endl << endl;
 		while (!Killed_List.isEmpty())
 		{
 			Killed_List.dequeue(temp);
-			temp_pri.enqueue(temp,temp->Get_Td());
+			temp_pri.enqueue(temp, temp->Get_Td());
+			if (temp->GetID() < 1000)
+			{
+				E_counter++;
+				E_Sum_Unit_Df += temp->Get_Ta() - temp->Get_Tj();
+				E_Sum_Unit_Dd += temp->Get_Td() - temp->Get_Ta();
+				E_Sum_Unit_Db += temp->Get_Td() - temp->Get_Tj();
+			}
+			else
+			{
+				A_counter++;
+				A_Sum_Unit_Df += temp->Get_Ta() - temp->Get_Tj();
+				A_Sum_Unit_Dd += temp->Get_Td() - temp->Get_Ta();
+				A_Sum_Unit_Db += temp->Get_Td() - temp->Get_Tj();
+			}
 		}
 		while (!temp_pri.isEmpty())
 		{
@@ -338,8 +373,21 @@ void Game::GenerateOutputFile()
 
 			Fout << temp->Get_Td() - temp->Get_Tj() << endl;
 		}
+		Fout << "\n\n For Earth Army ->\nAverage of Df = " << float(E_Sum_Unit_Df) / float(E_counter) << endl;
+		Fout << "Average of Dd = " << float(E_Sum_Unit_Dd) / float(E_counter) << endl;
+		Fout << "Average of Db = " << float(E_Sum_Unit_Db) / float(E_counter) << endl;
+		Fout << "Df/Db% = " << float(E_Sum_Unit_Df) * 100 / float(E_Sum_Unit_Db) << "%" << endl;
+		Fout << "Dd/Db% = " << float(E_Sum_Unit_Dd) * 100 / float(E_Sum_Unit_Db) << "%";
+
+		Fout << "\n\n For Alien Army ->\nAverage of Df = " << float(A_Sum_Unit_Df) / float(A_counter) << endl;
+		Fout << "Average of Dd = " << float(A_Sum_Unit_Dd) / float(A_counter) << endl;
+		Fout << "Average of Db = " << float(A_Sum_Unit_Db) / float(A_counter) << endl;
+		Fout << "Df/Db% = " << float(A_Sum_Unit_Df) * 100 / float(A_Sum_Unit_Db) << "%" << endl;
+		Fout << "Dd/Db% = " << float(A_Sum_Unit_Dd) * 100 / float(A_Sum_Unit_Db) << "%";
+		Fout.close();
 	}
 }
+
 
 Game::~Game()
 {

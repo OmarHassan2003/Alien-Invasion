@@ -48,6 +48,21 @@ void AlienArmy::PrintArmyInfo()
 	
 }
 
+unsigned int AlienArmy::Get_Total_A_Units() const
+{
+	return Total_A_Units;
+}
+
+unsigned int AlienArmy::Get_Total_Destructed_A_Units() const
+{
+	return Total_A_Destructed_Units;
+}
+
+void AlienArmy::Increment_Total_A_Destructed_Units()
+{
+	Total_A_Destructed_Units++;
+}
+
 bool AlienArmy::pick_AS(AlienSoldier*& EPtr)
 {
 	return AS_Queue.dequeue(EPtr);

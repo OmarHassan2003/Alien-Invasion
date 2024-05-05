@@ -14,6 +14,14 @@ void EarthGunnery::AddAlienUnitToList(AlienArmy* passed_AA)
 {
 }
 
+void EarthGunnery::Increment_E_Destructed_Units(EarthArmy* passed_EA)
+{
+	passed_EA->Increment_Total_E_Destructed_Units();
+}
+
+void EarthGunnery::Increment_A_Destructed_Units(AlienArmy* passed_EA)
+{}
+
 bool EarthGunnery::Attack()
 {
 	bool flag = false;
