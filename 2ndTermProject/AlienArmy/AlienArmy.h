@@ -22,9 +22,6 @@ public:
 	AlienArmy();
 	bool Attack();
 	void PrintArmyInfo();
-	unsigned int Get_Total_A_Units() const;
-	unsigned int Get_Total_Destructed_A_Units() const;
-	void Increment_Total_A_Destructed_Units();
 	/****************pick units from lists********************/
 	bool pick_AS(AlienSoldier*& EPtr);
 	bool pick_AM(AlienMonster*& passed_AM);
@@ -38,6 +35,10 @@ public:
 	int AS_Count() const;
 	int AD_Count() const;
 	int AM_Count() const;
+	int Total_AS_Count() const;
+	int Total_AM_Count() const;
+	int Total_AD_Count() const;
+	int Total_AlienUnits_Count() const;
 	/****************insert units to lists********************/
 	bool AddUnit(ArmyUnit* passed_AU); // THE GENERAL ONE
 	void AddInQueue(AlienSoldier* passed_AU);

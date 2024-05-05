@@ -105,18 +105,6 @@ void Game::AddInKilledList(ArmyUnit* passed_AU)
 	passed_AU->Set_Td(Get_Tj());
 }
 
-void Game::E_AddInKilledList(ArmyUnit* passed_AU)
-{
-	AddInKilledList(passed_AU);
-	passed_AU->Increment_E_Destructed_Units(&EA);
-}
-
-void Game::A_AddInKilledList(ArmyUnit* passed_AU)
-{
-	AddInKilledList(passed_AU);
-	passed_AU->Increment_A_Destructed_Units(&AA);
-}
-
 bool Game::CheckWhoWins()
 {
 	if (EA.isCompromised() && AA.isCompromised())

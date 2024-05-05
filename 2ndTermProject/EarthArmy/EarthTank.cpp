@@ -16,14 +16,6 @@ void EarthTank::AddAlienUnitToList(AlienArmy* passed_AA)
 {
 }
 
-void EarthTank::Increment_E_Destructed_Units(EarthArmy* passed_EA)
-{
-	passed_EA->Increment_Total_E_Destructed_Units();
-}
-
-void EarthTank::Increment_A_Destructed_Units(AlienArmy* passed_EA)
-{}
-
 bool EarthTank::Attack()
 {
 	double ES_COUNT = pGame->Get_Count(ES);

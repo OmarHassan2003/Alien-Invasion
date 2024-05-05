@@ -14,14 +14,6 @@ void AlienMonster::AddAlienUnitToList(AlienArmy* passed_AA)
 	passed_AA->AddInAmArray(this);
 }
 
-void AlienMonster::Increment_E_Destructed_Units(EarthArmy* passed_EA)
-{}
-
-void AlienMonster::Increment_A_Destructed_Units(AlienArmy* passed_EA)
-{
-	passed_EA->Increment_Total_A_Destructed_Units();
-}
-
 bool AlienMonster::Attack()
 {
 	Stack<EarthTank*> tempList1;

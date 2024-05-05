@@ -18,12 +18,6 @@ void HealUnit::AddAlienUnitToList(AlienArmy* passed_AA)
 {
 }
 
-void HealUnit::Increment_E_Destructed_Units(EarthArmy* passed_EA)
-{}
-
-void HealUnit::Increment_A_Destructed_Units(AlienArmy * passed_EA)
-{}
-
 bool HealUnit::Attack()
 {
 	bool flag = 1;

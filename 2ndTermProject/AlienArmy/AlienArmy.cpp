@@ -48,21 +48,6 @@ void AlienArmy::PrintArmyInfo()
 	cout << "]" << endl;
 }
 
-unsigned int AlienArmy::Get_Total_A_Units() const
-{
-	return Total_A_Units;
-}
-
-unsigned int AlienArmy::Get_Total_Destructed_A_Units() const
-{
-	return Total_A_Destructed_Units;
-}
-
-void AlienArmy::Increment_Total_A_Destructed_Units()
-{
-	Total_A_Destructed_Units++;
-}
-
 bool AlienArmy::pick_AS(AlienSoldier*& EPtr)
 {
 	return AS_Queue.dequeue(EPtr);
@@ -106,6 +91,26 @@ int AlienArmy::AD_Count() const
 int AlienArmy::AM_Count() const
 {
 	return AM.GetCount();
+}
+
+int AlienArmy::Total_AS_Count() const
+{
+	return Total_Gen_AS;
+}
+
+int AlienArmy::Total_AM_Count() const
+{
+	return Total_Gen_AM;
+}
+
+int AlienArmy::Total_AD_Count() const
+{
+	return Total_Gen_AD;
+}
+
+int AlienArmy::Total_AlienUnits_Count() const
+{
+	return Total_Gen_A_Units;
 }
 
 bool AlienArmy::pick_AD(AlienDrone*& passed_AD) //change to bool

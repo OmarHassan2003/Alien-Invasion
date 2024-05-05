@@ -16,14 +16,6 @@ void EarthSoldier::AddAlienUnitToList(AlienArmy* passed_AA)
 {
 }
 
-void EarthSoldier::Increment_E_Destructed_Units(EarthArmy* passed_EA)
-{
-	passed_EA->Increment_Total_E_Destructed_Units();
-}
-
-void EarthSoldier::Increment_A_Destructed_Units(AlienArmy* passed_EA)
-{}
-
 bool EarthSoldier::Attack() //PHASE2
 {
 	bool flag = 1;

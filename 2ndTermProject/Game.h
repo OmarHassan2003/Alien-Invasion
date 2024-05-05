@@ -26,8 +26,6 @@ public:
 	unsigned short Get_Tj();
 	void UpdateUML();
 	void AddInKilledList(ArmyUnit* passed_AU);
-	void E_AddInKilledList(ArmyUnit* passed_AU);
-	void A_AddInKilledList(ArmyUnit* passed_AU);
 	bool CheckWhoWins();
 	/////////////////////////////////////
 	bool Get_AM(AlienMonster*& AU);

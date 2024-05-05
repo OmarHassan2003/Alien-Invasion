@@ -36,9 +36,6 @@ public:
 	virtual void AddEarthUnitToList(EarthArmy* passed_EA) = 0;
 	virtual void AddAlienUnitToList(AlienArmy* passed_EA) = 0;
 
-	virtual void Increment_E_Destructed_Units(EarthArmy* passed_EA) = 0;
-	virtual void Increment_A_Destructed_Units(AlienArmy* passed_EA) = 0;
-
 	virtual int Get_Ta();
 	virtual int Get_Tj();
 	virtual int Get_Td();

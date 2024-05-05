@@ -16,15 +16,6 @@ void AlienSoldier::AddAlienUnitToList(AlienArmy* passed_AA)
 		passed_AA->AddInQueue(this);
 }
 
-void AlienSoldier::Increment_E_Destructed_Units(EarthArmy* passed_EA)
-{}
-
-void AlienSoldier::Increment_A_Destructed_Units(AlienArmy * passed_EA)
-{
-	if(passed_EA)
-		passed_EA->Increment_Total_A_Destructed_Units();
-}
-
 bool AlienSoldier::Attack()
 {
 	bool flag = 1;

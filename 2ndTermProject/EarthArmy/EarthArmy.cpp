@@ -53,21 +53,6 @@ void EarthArmy::PrintArmyInfo()
 	cout << "]" << endl;
 }
 
-unsigned int EarthArmy::Get_Total_E_Units() const
-{
-	return Total_E_Units;
-}
-
-unsigned int EarthArmy::Get_Total_E_Destructed_Units() const
-{
-	return Total_E_Destructed_Units;
-}
-
-void EarthArmy::Increment_Total_E_Destructed_Units()
-{
-	Total_E_Destructed_Units++;
-}
-
 bool EarthArmy::pick_ES(EarthSoldier*& EPtr)
 {
 	return ES_Queue.dequeue(EPtr);
@@ -89,12 +74,6 @@ bool EarthArmy::pick_HU(HealUnit*& Eptr)
 	return HU_Stack.pop(Eptr);
 }
 
-bool EarthArmy::peek_EG(EarthGunnery*& EPtr)
-{
-	int x;
-	return EG_priQ.peek(EPtr,x);
-}
-
 int EarthArmy::ES_Count() const
 {
 	return ES_Queue.GetCount();
@@ -113,6 +92,31 @@ int EarthArmy::EG_Count() const
 int EarthArmy::EH_Count() const
 {
 	return HU_Stack.GetCount();
+}
+
+int EarthArmy::Total_ES_Count() const
+{
+	return Total_Gen_ES;
+}
+
+int EarthArmy::Total_ET_Count() const
+{
+	return Total_Gen_ET;
+}
+
+int EarthArmy::Total_EG_Count() const
+{
+	return Total_Gen_EG;
+}
+
+int EarthArmy::Total_EH_Count() const
+{
+	return Total_Gen_EH;
+}
+
+int EarthArmy::Total_EarthUnits_Count() const
+{
+	return Total_Gen_E_Units;
 }
 
 /*

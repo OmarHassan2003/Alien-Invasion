@@ -25,9 +25,6 @@ public:
 	EarthArmy();
 	bool Attack();
 	void PrintArmyInfo(); // Add HU
-	unsigned int Get_Total_E_Units() const;
-	unsigned int Get_Total_E_Destructed_Units() const;
-	void Increment_Total_E_Destructed_Units();
 	/****************pick units from lists********************/
 	bool pick_ES(EarthSoldier*& EPtr);
 	bool pick_ET(EarthTank*& EPtr);
@@ -38,7 +35,11 @@ public:
 	int ET_Count() const;
 	int EG_Count() const;
 	int EH_Count() const;
-	bool peek_EG(EarthGunnery*& EPtr);  //Sounds Like It has no use
+	int Total_ES_Count() const;
+	int Total_ET_Count() const;
+	int Total_EG_Count() const;
+	int Total_EH_Count() const;
+	int Total_EarthUnits_Count() const;
 	/****************insert units to lists********************/
 	bool AddUnit(ArmyUnit* passed_AU); // THE GENERAL ONE
 	void AddInQueue(EarthSoldier* passed_AU);
