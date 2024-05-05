@@ -39,6 +39,7 @@ public:
 	bool Get_ET_UML(ArmyUnit*& AU);
 	/////////////////////////////////////
 	int Get_Count(ArmyUnit::Unit U);
+	int countDestructed(ArmyUnit::Unit U);
 	/////////////////////////////////////
 	void AddToESUML(ArmyUnit* passed_AU);
 	void AddToETUML(ArmyUnit* passed_AU);

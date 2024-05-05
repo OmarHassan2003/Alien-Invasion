@@ -36,16 +36,16 @@ void AlienArmy::PrintArmyInfo()
 	cout << AS_Queue.GetCount() << " AS /";
 	cout << AM.GetCount() << " AM /";
 	cout << AD_DQueue.GetCount() << " AD \n";*/
-	cout << Total_A_Units << "Total :" << endl;
-	cout << AS_Queue.GetCount() << " AS [";
+	cout << "Total :" << Total_Gen_A_Units << endl;
+	cout << "Total ES: " << Total_Gen_AS << " Alive: " << AS_Queue.GetCount() << " ES [";
 	AS_Queue.print();
 	cout << "]" << endl;
-	cout << AM.GetCount() << " AM [";
-	AM.print(); 
-	cout << "]" << endl << AD_DQueue.GetCount() << " AD [";
+	cout << "Total ET: " << Total_Gen_AM << " Alive: " << AM.GetCount() << " ET [";
+	AM.print();
+	cout << "]" << endl;
+	cout << "Total EG: " << Total_Gen_AD << " Alive: " << AD_DQueue.GetCount() << " EG [";
 	AD_DQueue.print();
-	cout << "]";
-	
+	cout << "]" << endl;
 }
 
 bool AlienArmy::pick_AS(AlienSoldier*& EPtr)
@@ -100,10 +100,24 @@ bool AlienArmy::pick_AD(AlienDrone*& passed_AD) //change to bool
 
 bool AlienArmy::AddUnit(ArmyUnit* passed_AU)
 {
-	Total_A_Units++;
+	Total_Gen_A_Units++;
 	if (passed_AU)
 	{
-		passed_AU->AddAlienUnitToList(this);
+		if (passed_AU->GetUnitType() == ArmyUnit::AS)
+		{
+			Total_Gen_AS++;
+			AddInQueue((AlienSoldier*)passed_AU);
+		}
+		else if (passed_AU->GetUnitType() == ArmyUnit::AM)
+		{
+			Total_Gen_AM++;
+			AddInAmArray((AlienMonster*)passed_AU);
+		}
+		else if (passed_AU->GetUnitType() == ArmyUnit::AD)
+		{
+			Total_Gen_AD++;
+			AddInDoubleLinkedQueueQueue((AlienDrone*)passed_AU);
+		}
 		return true;
 	}
 	return false;

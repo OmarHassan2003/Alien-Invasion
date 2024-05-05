@@ -14,7 +14,10 @@ class AlienArmy :public Army
 	Queue<AlienSoldier*> AS_Queue;
 	DoubleLinkedQueue<AlienDrone*> AD_DQueue;
 	DynamicArray<AlienMonster*> AM;
-	int Total_A_Units = 0;
+	int Total_Gen_A_Units = 0;
+	int Total_Gen_AS = 0;
+	int Total_Gen_AM = 0;
+	int Total_Gen_AD = 0;
 public:
 	AlienArmy();
 	bool Attack();

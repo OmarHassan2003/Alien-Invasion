@@ -105,18 +105,15 @@ void Game::AddInKilledList(ArmyUnit* passed_AU)
 
 bool Game::CheckWhoWins()
 {
-	if (EA.isCompromised())
-	{
-		cout << "Alien Army has won the game" << endl;
-		return true;
-	}
+	if (EA.isCompromised() && AA.isCompromised())
+		cout << "War ended with a tie." << endl;
+	else if (EA.isCompromised())
+		cout << "Alien Army has won the game." << endl;
 	else if (AA.isCompromised())
-	{
-		cout << "Earth Army has won the game" << endl;
-		return true;
-	}
+		cout << "Earth Army has won the game." << endl;
 	else
 		return false;
+	return true;
 }
 
 bool Game::Get_AM(AlienMonster*& AU)
@@ -173,6 +170,22 @@ int Game::Get_Count(ArmyUnit::Unit U)
 		return AA.AD_Count();
 	else if (U == ArmyUnit::AM)
 		return AA.AM_Count();
+}
+
+int Game::countDestructed(ArmyUnit::Unit U)
+{
+	int count = 0;
+	Queue<ArmyUnit*> templist;
+	ArmyUnit* temp;
+	while (Killed_List.dequeue(temp))
+	{
+		if (temp->GetUnitType() == U)
+			count++;
+		templist.enqueue(temp);
+	}
+	while (templist.dequeue(temp))
+		Killed_List.enqueue(temp);
+	return count;
 }
 
 // ----- Return back to lists after being attacked. -----
@@ -344,12 +357,14 @@ void Game::GenerateOutputFile()
 Game::~Game()
 {
 	delete randgenn;
-	while (!Killed_List.isEmpty())
-	{
-		ArmyUnit* temp;
-		Killed_List.dequeue(temp);
-		delete temp;
-	}
+	ArmyUnit* au;
+	int x;
+	while (Killed_List.dequeue(au))
+		delete au;
+	while (ES_UML.dequeue(au, x))
+		delete au;
+	while (ET_UML.dequeue(au))
+		delete au;
 }
 
 void Game::ReadData()

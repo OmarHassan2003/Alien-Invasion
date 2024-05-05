@@ -38,16 +38,19 @@ void EarthArmy::PrintArmyInfo()
 	cout << ET_Stack.GetCount() << " ET /";
 	cout << EG_priQ.GetCount() << " EG /";
 	cout << HU_Stack.GetCount() << " HU\n";*/
-	cout << Total_E_Units << "Total :" << endl;
-	cout << ES_Queue.GetCount() << " ES [";
+	cout << "Total :" << Total_Gen_E_Units << endl;
+	cout << "Total ES: " << Total_Gen_ES << " Alive: " << ES_Queue.GetCount() << " ES [";
 	ES_Queue.print();
-	cout << "]" << endl << ET_Stack.GetCount() << " ET [";
+	cout << "]" << endl;
+	cout << "Total ET: " << Total_Gen_ET << " Alive: " << ET_Stack.GetCount() << " ET [";
 	ET_Stack.print();
-	cout << "]" << endl << EG_priQ.GetCount() << " EG [";
+	cout << "]" << endl;
+	cout << "Total EG: " << Total_Gen_EG << " Alive: " << EG_priQ.GetCount() << " EG [";
 	EG_priQ.print();
-	cout << "]" << endl << HU_Stack.GetCount() << " EH [";
+	cout << "]" << endl;
+	cout << "Total EH: " << Total_Gen_EH << " Alive: " << HU_Stack.GetCount() << " EH [";
 	HU_Stack.print();
-	cout << "]";
+	cout << "]" << endl;
 }
 
 bool EarthArmy::pick_ES(EarthSoldier*& EPtr)
@@ -97,9 +100,10 @@ int EarthArmy::EH_Count() const
 	return HU_Stack.GetCount();
 }
 
+/*
 bool EarthArmy::AddUnit(ArmyUnit* passed_AU)
 {
-	Total_E_Units++;
+	Total_Gen_E_Units++;
 	if(passed_AU)
 	{
 		passed_AU->AddEarthUnitToList(this);
@@ -107,10 +111,40 @@ bool EarthArmy::AddUnit(ArmyUnit* passed_AU)
 	}
 	return false;
 }
+*/
+bool EarthArmy::AddUnit(ArmyUnit* passed_AU)
+{
+	Total_Gen_E_Units++;
+	if (passed_AU)
+	{
+		if (passed_AU->GetUnitType() == ArmyUnit::ES)
+		{
+			Total_Gen_ES++;
+			AddInQueue((EarthSoldier*)passed_AU);
+		}
+		else if (passed_AU->GetUnitType() == ArmyUnit::ET)
+		{
+			Total_Gen_ET++;
+			AddInStack((EarthTank*)passed_AU);
+		}
+		else if (passed_AU->GetUnitType() == ArmyUnit::EG)
+		{
+			Total_Gen_EG++;
+			AddInPriQueue((EarthGunnery*)passed_AU);
+		}
+		else if (passed_AU->GetUnitType() == ArmyUnit::EH)
+		{
+			Total_Gen_EH++;
+			AddInHUStack((HealUnit*)passed_AU);
+		}
+		return true;
+	}
+	return false;
+}
 
 void EarthArmy::AddInQueue(EarthSoldier* passed_AU)
 {
-		ES_Queue.enqueue(passed_AU);
+	ES_Queue.enqueue(passed_AU);
 }
 
 void EarthArmy::AddInStack(EarthTank* passed_AU)

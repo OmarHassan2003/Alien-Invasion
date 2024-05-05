@@ -16,7 +16,11 @@ class EarthArmy :public Army
 	priQueue<EarthGunnery*> EG_priQ;
 	Stack<EarthTank*> ET_Stack;
 	Stack<HealUnit*> HU_Stack;
-	int Total_E_Units = 0;
+	int Total_Gen_E_Units = 0;
+	int Total_Gen_ES = 0;
+	int Total_Gen_ET = 0;
+	int Total_Gen_EG = 0;
+	int Total_Gen_EH = 0;
 public:
 	EarthArmy();
 	bool Attack();
