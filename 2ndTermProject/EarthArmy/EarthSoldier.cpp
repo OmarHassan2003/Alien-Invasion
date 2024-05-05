@@ -9,14 +9,20 @@ EarthSoldier::EarthSoldier(Game* p, int HP, int pow, int ID_, int cap, int _Tj, 
 void EarthSoldier::AddEarthUnitToList(EarthArmy* passed_EA)
 {
 	if(passed_EA)
-	{
 		passed_EA->AddInQueue(this);
-	}
 }
 
 void EarthSoldier::AddAlienUnitToList(AlienArmy* passed_AA)
 {
 }
+
+void EarthSoldier::Increment_E_Destructed_Units(EarthArmy* passed_EA)
+{
+	passed_EA->Increment_Total_E_Destructed_Units();
+}
+
+void EarthSoldier::Increment_A_Destructed_Units(AlienArmy* passed_EA)
+{}
 
 bool EarthSoldier::Attack() //PHASE2
 {

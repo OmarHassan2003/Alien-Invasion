@@ -53,6 +53,21 @@ void EarthArmy::PrintArmyInfo()
 	cout << "]" << endl;
 }
 
+unsigned int EarthArmy::Get_Total_E_Units() const
+{
+	return Total_E_Units;
+}
+
+unsigned int EarthArmy::Get_Total_E_Destructed_Units() const
+{
+	return Total_E_Destructed_Units;
+}
+
+void EarthArmy::Increment_Total_E_Destructed_Units()
+{
+	Total_E_Destructed_Units++;
+}
+
 bool EarthArmy::pick_ES(EarthSoldier*& EPtr)
 {
 	return ES_Queue.dequeue(EPtr);

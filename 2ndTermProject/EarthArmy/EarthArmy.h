@@ -25,6 +25,9 @@ public:
 	EarthArmy();
 	bool Attack();
 	void PrintArmyInfo(); // Add HU
+	unsigned int Get_Total_E_Units() const;
+	unsigned int Get_Total_E_Destructed_Units() const;
+	void Increment_Total_E_Destructed_Units();
 	/****************pick units from lists********************/
 	bool pick_ES(EarthSoldier*& EPtr);
 	bool pick_ET(EarthTank*& EPtr);
