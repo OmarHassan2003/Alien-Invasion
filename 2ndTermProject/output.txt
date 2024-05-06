@@ -1,62 +1,70 @@
 Td    ID    Tj    Df    Dd    Db
 
-4     1     2     0     2     2
-6     5     5     0     1     1
-9     3     2     0     7     7
-9     9     6     0     3     3
-9     12    9     0     0     0
-10    2     2     0     8     8
-10    4     5     0     5     5
-11    11    9     0     2     2
-12    8     6     4     2     6
-13    7     6     5     2     7
-15    14    13    0     2     2
-15    17    15    0     0     0
-16    18    15    0     1     1
-20    21    18    0     2     2
-22    22    22    0     0     0
-23    6     5     0     18    18
-24    24    22    0     2     2
-26    13    13    0     13    13
-26    15    13    0     13    13
-27    10    9     0     18    18
-28    27    26    0     2     2
-28    16    15    1     12    13
-33    20    18    0     15    15
-34    19    18    0     16    16
-35    23    22    0     13    13
-38    25    26    0     12    12
-39    26    26    0     13    13
-41    29    39    0     2     2
+1     2003  1     0     0     0
+2     2005  2     0     0     0
+2     2006  2     0     0     0
+2     2002  1     0     1     1
+2     2001  1     0     1     1
+4     2004  2     1     1     2
+7     2010  7     0     0     0
+7     2011  7     0     0     0
+7     2009  6     0     1     1
+7     2008  6     0     1     1
+8     2007  6     0     2     2
+8     2012  7     0     1     1
+9     2014  9     0     0     0
+9     2015  9     0     0     0
+9     2013  9     0     0     0
+10    2018  10    0     0     0
+10    2016  10    0     0     0
+11    2017  10    0     1     1
+15    2021  15    0     0     0
+15    2020  15    0     0     0
+16    2023  16    0     0     0
+16    2019  15    0     1     1
+17    2024  16    0     1     1
+17    2022  16    0     1     1
+24    2029  24    0     0     0
+24    2026  23    0     1     1
+24    2027  23    0     1     1
+25    2030  24    0     1     1
+25    2025  23    0     2     2
+25    2028  24    0     1     1
+33    2033  33    0     0     0
+33    2032  33    0     0     0
+34    2031  33    0     1     1
+36    2034  36    0     0     0
+36    2035  36    0     0     0
+38    2036  36    0     2     2
 
 
  For Earth Army ->
-Total Earth Soldier = 19
-Total Earth Gunnery = 2
-Total Earth Tank = 6
-Total Earth Healing Unit = 3
-Destructed Earth Soldier Percentage = 89.4737
-Destructed Earth Gunnery Percentage = 100
-Destructed Earth Tank Percentage = 100
-Destructed Earth Healing Unit Percentage = 100
-Total Destructed Earth Units Percentage = 93.3333
-Average of Df = 0.357143
-Average of Dd = 6.64286
-Average of Db = 7
-Df/Db% = 5.10204%
-Dd/Db% = 94.898%
-
-
-For Alien Army ->
-Total Alien Soldier = 27
-Total Alien Monster = 11
-Total Alien Drone = 4
-Destructed Alien Soldier Percentage = 0
-Destructed Alien Monster Percentage = 0
-Destructed Alien Drone Percentage = 0
-Total Destructed Alien Units Percentage = 0
+Total Earth Soldier = 12
+Total Earth Gunnery = 14
+Total Earth Tank = 16
+Total Earth Healing Unit = 0
+Destructed Earth Soldier Percentage = 0
+Destructed Earth Gunnery Percentage = 0
+Destructed Earth Tank Percentage = 0
+Destructed Earth Healing Unit Percentage = -nan(ind)
+Total Destructed Earth Units Percentage = 0
 Average of Df = -nan(ind)
 Average of Dd = -nan(ind)
 Average of Db = -nan(ind)
 Df/Db% = -nan(ind)%
 Dd/Db% = -nan(ind)%
+
+
+For Alien Army ->
+Total Alien Soldier = 7
+Total Alien Monster = 8
+Total Alien Drone = 21
+Destructed Alien Soldier Percentage = 100
+Destructed Alien Monster Percentage = 100
+Destructed Alien Drone Percentage = 100
+Total Destructed Alien Units Percentage = 100
+Average of Df = 0.0277778
+Average of Dd = 0.583333
+Average of Db = 0.611111
+Df/Db% = 4.54545%
+Dd/Db% = 95.4545%
