@@ -18,12 +18,13 @@ void AlienSoldier::AddAlienUnitToList(AlienArmy* passed_AA)
 
 bool AlienSoldier::Attack()
 {
-	bool flag = 1;
+	bool flag = false;
 	EarthSoldier* ES = nullptr;
 	Queue<EarthSoldier*> templist;
 	for (int i = 0; i < GetAttackCap(); i++)
 		if (pGame->Get_ES(ES))
 		{
+			flag = true;
 			if (ES->Get_Ta() == -1)
 				ES->Set_Ta(pGame->Get_Tj());
 			
@@ -38,10 +39,7 @@ bool AlienSoldier::Attack()
 				templist.enqueue(ES);
 		}
 		else
-		{
-			flag = 0;
 			break;
-		}
 	while (templist.dequeue(ES))
 		pGame->Add_ES(ES);
 	return flag;

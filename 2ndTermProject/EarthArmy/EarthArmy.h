@@ -12,6 +12,8 @@ class Game;
 
 class EarthArmy :public Army
 {
+	bool Won;
+	bool IsAttack;
 	Queue<EarthSoldier*> ES_Queue;
 	priQueue<EarthGunnery*> EG_priQ;
 	Stack<EarthTank*> ET_Stack;
@@ -25,6 +27,10 @@ public:
 	EarthArmy();
 	bool Attack();
 	void PrintArmyInfo(); // Add HU
+	void SetWon(bool p);
+	bool GetWon() const;
+	void SetIsAttack(bool p);
+	bool GetIsAttack() const;
 	/****************pick units from lists********************/
 	bool pick_ES(EarthSoldier*& EPtr);
 	bool pick_ET(EarthTank*& EPtr);

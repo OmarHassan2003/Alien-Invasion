@@ -10,7 +10,7 @@ Game::Game()
 void Game::Battle()
 {
 	ReadData();
-	bool End = 0;
+	bool End = false;
 	bool gameMode = GameMode();
 	if (!gameMode)
 		cout << "Silent Mode" << endl << "Simulation Starts." << endl;
@@ -21,12 +21,14 @@ void Game::Battle()
 		Generate_Earth_Army();
 		Generate_Alien_Army();
 		UpdateUML();
-		Attack();
+		End = Attack();
 		if (gameMode)
 			print();
 		Get_And_Inc_Tj();
 		if (Get_Tj() > 40)
 			End = CheckWhoWins();
+		else
+			End = false;
 	}//wait for a click.
 	GenerateOutputFile();
 	cout << "Simulation ends, Output file is created" << endl;
@@ -108,11 +110,21 @@ void Game::AddInKilledList(ArmyUnit* passed_AU)
 bool Game::CheckWhoWins()
 {
 	if (EA.isCompromised() && AA.isCompromised())
+	{
 		cout << "War ended with a tie." << endl;
+		EA.SetWon(false);
+		AA.SetWon(false);
+	}
 	else if (EA.isCompromised())
+	{
 		cout << "Alien Army has won the game." << endl;
+		AA.SetWon(true);
+	}
 	else if (AA.isCompromised())
+	{
 		cout << "Earth Army has won the game." << endl;
+		EA.SetWon(true);
+	}
 	else
 		return false;
 	return true;
@@ -233,10 +245,9 @@ void Game::Add_EG(EarthGunnery* AU)
 	EA.AddInPriQueue(AU);
 }
 
-void Game::Attack()
+bool Game::Attack()
 {
-	EA.Attack();
-	AA.Attack();
+	return EA.Attack() & AA.Attack();
 }
 
 void Game::print()
@@ -380,7 +391,7 @@ void Game::GenerateOutputFile()
 
 			Fout << temp->Get_Td() - temp->Get_Tj() << endl;
 		}
-		Fout << "\n\n For Earth Army ->\n";
+		Fout << "\n\nFor Earth Army ->\n";
 		Fout << "Total Earth Soldier = " << Total_ES << endl;
 		Fout << "Total Earth Gunnery = " << Total_EG << endl;
 		Fout << "Total Earth Tank = " << Total_ET << endl;
@@ -414,7 +425,14 @@ void Game::GenerateOutputFile()
 		Fout << "Average of Dd = " << float(A_Sum_Unit_Dd) / float(A_counter) << endl;
 		Fout << "Average of Db = " << float(A_Sum_Unit_Db) / float(A_counter) << endl;
 		Fout << "Df/Db% = " << float(A_Sum_Unit_Df) * 100 / float(A_Sum_Unit_Db) << "%" << endl;
-		Fout << "Dd/Db% = " << float(A_Sum_Unit_Dd) * 100 / float(A_Sum_Unit_Db) << "%";
+		Fout << "Dd/Db% = " << float(A_Sum_Unit_Dd) * 100 / float(A_Sum_Unit_Db) << "%" << endl;
+
+		if (!EA.GetWon() && !AA.GetWon())
+			Fout << "War ended with a tie.";
+		else if (EA.GetWon())
+			Fout << "Earth Army has won the game.";
+		else
+			Fout << "Alien Army has won the game.";
 
 		Fout.close();
 	}

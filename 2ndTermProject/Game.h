@@ -53,7 +53,7 @@ public:
 	void Add_AM(AlienMonster* AU);
 	void Add_EG(EarthGunnery* AU);
 	/////////////////////////////////////
-	void Attack();
+	bool Attack();
 	void print();
 	/////////////////////////////////////
 	void GenerateOutputFile();

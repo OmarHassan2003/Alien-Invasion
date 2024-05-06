@@ -18,6 +18,7 @@ void EarthTank::AddAlienUnitToList(AlienArmy* passed_AA)
 
 bool EarthTank::Attack()
 {
+	bool flag = false;
 	double ES_COUNT = pGame->Get_Count(ES);
 	double AS_COUNT = pGame->Get_Count(AS);
 	Queue<AlienMonster*> tempList1;
@@ -31,6 +32,7 @@ bool EarthTank::Attack()
 		{
 			if (pGame->Get_AM(AM))
 			{
+				flag = true;
 				if (AM->Get_Ta() == -1)
 					AM->Set_Ta(pGame->Get_Tj());
 
@@ -40,6 +42,8 @@ bool EarthTank::Attack()
 					pGame->AddInKilledList(AM);
 				else tempList1.enqueue(AM);
 			}
+			else
+				break;
 			count++;
 		}
 
@@ -49,6 +53,7 @@ bool EarthTank::Attack()
 			AlienSoldier* AS = nullptr;
 			if (pGame->Get_AS(AS))
 			{
+				flag = true;
 				if (AS->Get_Ta() == -1)
 					AS->Set_Ta(pGame->Get_Tj());
 
@@ -58,6 +63,8 @@ bool EarthTank::Attack()
 					pGame->AddInKilledList(AS);
 				else tempList2.enqueue(AS);
 			}
+			else
+				break;
 		}
 	}
 
@@ -68,6 +75,7 @@ bool EarthTank::Attack()
 			AlienMonster* AM = nullptr;
 			if (pGame->Get_AM(AM))
 			{
+				flag = true;
 				if (AM->Get_Ta() == -1)
 					AM->Set_Ta(pGame->Get_Tj());
 
@@ -77,11 +85,13 @@ bool EarthTank::Attack()
 					pGame->AddInKilledList(AM);
 				else tempList1.enqueue(AM);
 			}
+			else
+				break;
 		}
 	}
 
-	if (tempList1.isEmpty() && tempList2.isEmpty())
-		return false;
+	//if (tempList1.isEmpty() && tempList2.isEmpty())
+	//	return false;
 
 	while (!tempList1.isEmpty())
 	{
@@ -96,7 +106,7 @@ bool EarthTank::Attack()
 		pGame->Add_AS(temp);
 	}
 
-	return true;
+	return flag;
 }
 
 ostream& operator<<(ostream& COUT, EarthTank* Passed_AU)

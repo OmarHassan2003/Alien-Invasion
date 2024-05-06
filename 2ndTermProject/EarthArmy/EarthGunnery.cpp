@@ -28,9 +28,9 @@ bool EarthGunnery::Attack()
 	/*******************************Drone Attack*******************************/
 	for (unsigned short i = 0;i < Attack_Cap / 2;i++)
 	{
-		flag = true;
 		if (pGame->Get_AD(pAD0))
 		{
+			flag = true;
 			if (pAD0->Get_Ta() == -1)
 				pAD0->Set_Ta(pGame->Get_Tj());
 
@@ -41,12 +41,14 @@ bool EarthGunnery::Attack()
 			else
 				temp_queue0.enqueue(pAD0);
 		}
+		else
+			break;
 	}
 	for (unsigned short i = 0;i < Attack_Cap - Attack_Cap / 2;i++)
 	{
-		flag = true;
 		if (pGame->Get_L_AD(pAD1))
 		{
+			flag = true;
 			if (pAD1->Get_Ta() == -1)
 				pAD1->Set_Ta(pGame->Get_Tj());
 
@@ -57,6 +59,8 @@ bool EarthGunnery::Attack()
 			else
 				temp_queue1.enqueue(pAD1);
 		}
+		else
+			break;
 	}
 	AlienDrone* tempAD;
 	while (!temp_queue0.isEmpty())
@@ -73,9 +77,9 @@ bool EarthGunnery::Attack()
 	Attack_Cap = GetAttackCap() - Attack_Cap;
 	for (unsigned short i = 0;i < Attack_Cap;i++)
 	{
-		flag = true;
 		if (pGame->Get_AM(pAM))
 		{
+			flag = true;
 			if (pAM->Get_Ta() == -1)
 				pAM->Set_Ta(pGame->Get_Tj());
 
@@ -86,6 +90,8 @@ bool EarthGunnery::Attack()
 			else
 				temp_AM_Queue.enqueue(pAM);
 		}
+		else
+			break;
 	}
 	AlienMonster* tempAM;
 	while (!temp_AM_Queue.isEmpty())

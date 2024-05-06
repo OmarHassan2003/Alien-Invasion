@@ -6,28 +6,34 @@
 
 AlienArmy::AlienArmy()
 {
+	Won = false;
 }
 
 bool AlienArmy::Attack()
 {
-	AlienSoldier* AS;
-	if (AS_Queue.peek(AS))
-		AS->Attack();
-
-	AlienMonster* ALM = nullptr;
-	if (AM.Peek(ALM))
-		ALM->Attack();
-
-	AlienDrone* AD1, * AD2;
-	if(AD_DQueue.GetCount()>1)
+	if (isCompromised())
+		IsAttack = false;
+	else
 	{
-		AD_DQueue.peek(AD1);
-		AD_DQueue.peek_rear(AD2);
-		AD1->Attack();
-		AD2->Attack();
-	}
+		IsAttack = false;
+		AlienSoldier* AS;
+		if (AS_Queue.peek(AS))
+			IsAttack |= AS->Attack();
 
-	return true;
+		AlienMonster* ALM = nullptr;
+		if (AM.Peek(ALM))
+			IsAttack |= ALM->Attack();
+
+		AlienDrone* AD1, * AD2;
+		if (AD_DQueue.GetCount() > 1)
+		{
+			AD_DQueue.peek(AD1);
+			AD_DQueue.peek_rear(AD2);
+			IsAttack |= AD1->Attack();
+			IsAttack |= AD2->Attack();
+		}
+	}
+	return IsAttack;
 }
 
 void AlienArmy::PrintArmyInfo()
@@ -37,15 +43,35 @@ void AlienArmy::PrintArmyInfo()
 	cout << AM.GetCount() << " AM /";
 	cout << AD_DQueue.GetCount() << " AD \n";*/
 	cout << "Total :" << Total_Gen_A_Units << endl;
-	cout << "Total ES: " << Total_Gen_AS << " Alive: " << AS_Queue.GetCount() << " ES [";
+	cout << "Total AS: " << Total_Gen_AS << " Alive: " << AS_Queue.GetCount() << " ES [";
 	AS_Queue.print();
-	cout << "]" << endl;
-	cout << "Total ET: " << Total_Gen_AM << " Alive: " << AM.GetCount() << " ET [";
+	cout << " ]" << endl;
+	cout << "Total AM: " << Total_Gen_AM << " Alive: " << AM.GetCount() << " ET [";
 	AM.print();
-	cout << "]" << endl;
-	cout << "Total EG: " << Total_Gen_AD << " Alive: " << AD_DQueue.GetCount() << " EG [";
+	cout << " ]" << endl;
+	cout << "Total AD: " << Total_Gen_AD << " Alive: " << AD_DQueue.GetCount() << " EG [";
 	AD_DQueue.print();
-	cout << "]" << endl;
+	cout << " ]" << endl;
+}
+
+void AlienArmy::SetWon(bool p)
+{
+	Won = p;
+}
+
+bool AlienArmy::GetWon() const
+{
+	return Won;
+}
+
+void AlienArmy::SetIsAttack(bool p)
+{
+	IsAttack = p;
+}
+
+bool AlienArmy::GetIsAttack() const
+{
+	return IsAttack;
 }
 
 bool AlienArmy::pick_AS(AlienSoldier*& EPtr)
@@ -164,7 +190,7 @@ void AlienArmy::AddInLinkedQueue_Front(AlienDrone* passed_AU)
 }
 
 bool AlienArmy::isCompromised()
-{
+{	
 	return AS_Queue.isEmpty() && AD_DQueue.isEmpty() && AM.isEmpty();
 }
 

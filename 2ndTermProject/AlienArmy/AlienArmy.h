@@ -11,6 +11,8 @@ class Game;
 
 class AlienArmy :public Army
 {
+	bool Won;
+	bool IsAttack;
 	Queue<AlienSoldier*> AS_Queue;
 	DoubleLinkedQueue<AlienDrone*> AD_DQueue;
 	DynamicArray<AlienMonster*> AM;
@@ -22,6 +24,10 @@ public:
 	AlienArmy();
 	bool Attack();
 	void PrintArmyInfo();
+	void SetWon(bool p);
+	bool GetWon() const;
+	void SetIsAttack(bool p);
+	bool GetIsAttack() const;
 	/****************pick units from lists********************/
 	bool pick_AS(AlienSoldier*& EPtr);
 	bool pick_AM(AlienMonster*& passed_AM);

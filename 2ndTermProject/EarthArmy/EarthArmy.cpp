@@ -6,29 +6,35 @@
 #include "../HealUnit.h"
 EarthArmy::EarthArmy()
 {
-	
+	Won = false;
 }
 
 bool EarthArmy::Attack()
 {
-	EarthSoldier* ES = nullptr;
-	if (ES_Queue.peek(ES))
-		ES->Attack();
+	if (isCompromised())
+		IsAttack = false;
+	else
+	{
+		IsAttack = false;
+		EarthSoldier* ES = nullptr;
+		if (ES_Queue.peek(ES))
+			IsAttack |= (ES->Attack());
 
-	EarthGunnery* EG;
-	int x;
-	if (EG_priQ.peek(EG, x))
-		EG->Attack();
+		EarthGunnery* EG;
+		int x;
+		if (EG_priQ.peek(EG, x))
+			IsAttack |= (EG->Attack());
 
-	EarthTank* ET;
-	if (ET_Stack.peek(ET))
-		ET->Attack();
+		EarthTank* ET;
+		if (ET_Stack.peek(ET))
+			IsAttack |= (ET->Attack());
 
-	HealUnit* HU;
-	if (HU_Stack.pop(HU))   //pop because it heals one time then die
-		if (!HU->Attack())  // if it doesnt heal return it back
-			HU_Stack.push(HU);
-	return true;
+		HealUnit* HU;
+		if (HU_Stack.pop(HU))   //pop because it heals one time then die
+			if (!HU->Attack())  // if it doesnt heal return it back
+				HU_Stack.push(HU);
+	}
+	return IsAttack;
 }
 
 void EarthArmy::PrintArmyInfo()
@@ -51,6 +57,26 @@ void EarthArmy::PrintArmyInfo()
 	cout << "Total EH: " << Total_Gen_EH << " Alive: " << HU_Stack.GetCount() << " EH [";
 	HU_Stack.print();
 	cout << "]" << endl;
+}
+
+void EarthArmy::SetWon(bool p)
+{
+	Won = p;
+}
+
+bool EarthArmy::GetWon() const
+{
+	return Won;
+}
+
+void EarthArmy::SetIsAttack(bool p)
+{
+	IsAttack = p;
+}
+
+bool EarthArmy::GetIsAttack() const
+{
+	return IsAttack;
 }
 
 bool EarthArmy::pick_ES(EarthSoldier*& EPtr)
