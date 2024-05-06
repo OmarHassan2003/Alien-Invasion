@@ -264,14 +264,14 @@ void Game::print()
 	cout << "============================================ UML Units ==========================================" << endl;
 	cout << ES_UML.GetCount() << " units [ ";
 	ES_UML.print();
-	cout << "]" << endl;
+	cout << " ]" << endl;
 	cout << ET_UML.GetCount() << " units [ ";
 	ET_UML.print();
-	cout << "]" << endl;
+	cout << " ]" << endl;
 	cout << "============================================ Killed/Destructed Units ==========================================" << endl;
 	cout << Killed_List.GetCount() << " units [ ";
 	Killed_List.print();
-	cout << "]" << endl;
+	cout << " ]" << endl;
 	cout << "===============================================================================================================" << endl;
 	
 }
@@ -288,8 +288,14 @@ void Game::GenerateOutputFile()
 		unsigned int E_Sum_Unit_Df = 0, E_Sum_Unit_Dd = 0, E_Sum_Unit_Db = 0, E_counter = 0;
 		unsigned int A_Sum_Unit_Df = 0, A_Sum_Unit_Dd = 0, A_Sum_Unit_Db = 0, A_counter = 0;
 
-		unsigned int Total_ES = EA.ES_Count(), Total_EG = EA.EG_Count(), Total_ET = EA.ET_Count();
-		unsigned int Total_AS = AA.AS_Count(), Total_AM = AA.AM_Count(), Total_AD = AA.AD_Count();
+		unsigned int Total_ES = EA.Total_ES_Count(), Total_EG = EA.Total_EG_Count(), Total_ET = EA.Total_ET_Count(), Total_EH = EA.Total_EH_Count();
+		unsigned int Total_AS = AA.Total_AS_Count(), Total_AM = AA.Total_AM_Count(), Total_AD = AA.Total_AD_Count();
+
+		unsigned int ES_Alive = EA.ES_Count(), EG_Alive = EA.EG_Count(), ET_ALive = EA.ET_Count(), EH_Alive = EA.EH_Count();
+		unsigned int AS_Alive = AA.AS_Count(), AM_Alive = AA.AM_Count(), AD_Alive = AA.AD_Count();
+
+		unsigned int ES_Destructed = countDestructed(ArmyUnit::ES), EG_Destructed = countDestructed(ArmyUnit::EG), ET_Destructed = countDestructed(ArmyUnit::ET), EH_Destructed = countDestructed(ArmyUnit::EH);
+		unsigned int AS_Destructed = countDestructed(ArmyUnit::AS), AM_Destructed = countDestructed(ArmyUnit::AM), AD_Destructed = countDestructed(ArmyUnit::AD);
 
 		priQueue<ArmyUnit*> temp_pri;
 		Stack<ArmyUnit*> temp_stack;
@@ -374,17 +380,42 @@ void Game::GenerateOutputFile()
 
 			Fout << temp->Get_Td() - temp->Get_Tj() << endl;
 		}
-		Fout << "\n\n For Earth Army ->\nAverage of Df = " << float(E_Sum_Unit_Df) / float(E_counter) << endl;
+		Fout << "\n\n For Earth Army ->\n";
+		Fout << "Total Earth Soldier = " << Total_ES << endl;
+		Fout << "Total Earth Gunnery = " << Total_EG << endl;
+		Fout << "Total Earth Tank = " << Total_ET << endl;
+		Fout << "Total Earth Healing Unit = " << Total_EH << endl;
+
+		Fout << "Destructed Earth Soldier Percentage = " << float(ES_Destructed) * 100 / Total_ES << endl;
+		Fout << "Destructed Earth Gunnery Percentage = " << float(EG_Destructed) * 100 / Total_EG << endl;
+		Fout << "Destructed Earth Tank Percentage = " << float(ET_Destructed) * 100 / Total_ET << endl;
+		Fout << "Destructed Earth Healing Unit Percentage = " << float(EH_Destructed) * 100 / Total_EH << endl;
+
+		Fout << "Total Destructed Earth Units Percentage = " << float(ES_Destructed + EG_Destructed + ET_Destructed + EH_Destructed) * 100 / EA.Total_EarthUnits_Count() << endl;
+
+		Fout << "Average of Df = " << float(E_Sum_Unit_Df) / float(E_counter) << endl;
 		Fout << "Average of Dd = " << float(E_Sum_Unit_Dd) / float(E_counter) << endl;
 		Fout << "Average of Db = " << float(E_Sum_Unit_Db) / float(E_counter) << endl;
 		Fout << "Df/Db% = " << float(E_Sum_Unit_Df) * 100 / float(E_Sum_Unit_Db) << "%" << endl;
-		Fout << "Dd/Db% = " << float(E_Sum_Unit_Dd) * 100 / float(E_Sum_Unit_Db) << "%";
+		Fout << "Dd/Db% = " << float(E_Sum_Unit_Dd) * 100 / float(E_Sum_Unit_Db) << "%" << endl;
 
-		Fout << "\n\n For Alien Army ->\nAverage of Df = " << float(A_Sum_Unit_Df) / float(A_counter) << endl;
+		Fout << "\n\nFor Alien Army ->\n";
+		Fout << "Total Alien Soldier = " << Total_AS << endl;
+		Fout << "Total Alien Monster = " << Total_AM << endl;
+		Fout << "Total Alien Drone = " << Total_AD << endl;
+
+		Fout << "Destructed Alien Soldier Percentage = " << float(AS_Destructed) * 100 / Total_AS << endl;
+		Fout << "Destructed Alien Monster Percentage = " << float(AM_Destructed) * 100 / Total_AM << endl;
+		Fout << "Destructed Alien Drone Percentage = " << float(AD_Destructed) * 100 / Total_AD << endl;
+
+		Fout << "Total Destructed Alien Units Percentage = " << float(AS_Destructed + AM_Destructed + AD_Destructed) * 100 / AA.Total_AlienUnits_Count() << endl;
+
+		Fout << "Average of Df = " << float(A_Sum_Unit_Df) / float(A_counter) << endl;
 		Fout << "Average of Dd = " << float(A_Sum_Unit_Dd) / float(A_counter) << endl;
 		Fout << "Average of Db = " << float(A_Sum_Unit_Db) / float(A_counter) << endl;
 		Fout << "Df/Db% = " << float(A_Sum_Unit_Df) * 100 / float(A_Sum_Unit_Db) << "%" << endl;
 		Fout << "Dd/Db% = " << float(A_Sum_Unit_Dd) * 100 / float(A_Sum_Unit_Db) << "%";
+
 		Fout.close();
 	}
 }
