@@ -43,15 +43,15 @@ void AlienArmy::PrintArmyInfo()
 	cout << AM.GetCount() << " AM /";
 	cout << AD_DQueue.GetCount() << " AD \n";*/
 	cout << "Total :" << Total_Gen_A_Units << endl;
-	cout << "Total AS: " << Total_Gen_AS << " Alive: " << AS_Queue.GetCount() << " ES [";
+	cout << "Total AS: " << Total_Gen_AS << " Alive: " << AS_Queue.GetCount() << " AS [ ";
 	AS_Queue.print();
-	cout << " ]" << endl;
-	cout << "Total AM: " << Total_Gen_AM << " Alive: " << AM.GetCount() << " ET [";
+	cout << "]" << endl;
+	cout << "Total AM: " << Total_Gen_AM << " Alive: " << AM.GetCount() << " AM [ ";
 	AM.print();
-	cout << " ]" << endl;
-	cout << "Total AD: " << Total_Gen_AD << " Alive: " << AD_DQueue.GetCount() << " EG [";
+	cout << "]" << endl;
+	cout << "Total AD: " << Total_Gen_AD << " Alive: " << AD_DQueue.GetCount() << " AD [ ";
 	AD_DQueue.print();
-	cout << " ]" << endl;
+	cout << "]" << endl;
 }
 
 void AlienArmy::SetWon(bool p)

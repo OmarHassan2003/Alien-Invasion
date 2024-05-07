@@ -1,76 +1,105 @@
 Td    ID    Tj    Df    Dd    Db
 
-23    1     8     0     15    15
-26    2     8     0     18    18
-26    3     8     0     18    18
-27    5     12    0     15    15
-29    26    27    0     2     2
-29    19    25    0     4     4
-29    4     12    0     17    17
-30    7     16    0     14    14
-30    6     12    0     18    18
-30    8     16    1     13    14
-31    18    23    0     8     8
-32    28    30    0     2     2
-32    9     16    1     15    16
-34    13    21    0     13    13
-37    17    23    0     14    14
-38    12    20    1     17    18
-40    31    34    0     6     6
-40    11    20    0     20    20
-41    34    35    0     6     6
-41    27    27    0     14    14
-41    25    27    0     14    14
-42    32    34    0     8     8
-43    29    30    1     12    13
-43    33    34    1     8     9
-43    22    26    0     17    17
-43    21    25    0     18    18
-44    15    21    0     23    23
-44    16    23    0     21    21
-44    14    21    1     22    23
-48    10    20    0     28    28
-48    35    35    0     13    13
-48    20    25    1     22    23
-49    39    44    0     5     5
-50    23    26    1     23    24
-51    38    44    1     6     7
-54    42    50    0     4     4
-55    36    35    1     19    20
-55    30    30    1     24    25
-55    24    26    1     28    29
-57    43    53    0     4     4
-58    44    53    0     5     5
+19    11    10    1     8     9
+19    10    10    0     9     9
+25    3     3     4     18    22
+27    4     4     3     20    23
+28    2     3     4     21    25
+28    9     7     0     21    21
+30    8     7     0     23    23
+32    14    14    1     17    18
+35    15    14    0     21    21
+36    18    21    0     15    15
+38    17    21    0     17    17
+41    2013  26    0     15    15
+41    21    24    0     17    17
+43    28    35    0     8     8
+43    23    25    0     18    18
+43    20    24    0     19    19
+43    22    25    0     18    18
+45    27    28    0     17    17
+46    25    28    0     18    18
+51    30    35    0     16    16
+51    29    35    0     16    16
+54    26    28    0     26    26
+57    24    25    0     32    32
+67    32    48    0     19    19
+69    33    48    0     21    21
+70    38    53    0     17    17
+72    36    51    0     21    21
+73    39    53    0     20    20
+73    40    55    1     17    18
+75    47    64    0     11    11
+76    16    21    43    12    55
+76    43    61    0     15    15
+79    48    64    0     15    15
+80    37    53    19    8     27
+80    50    66    0     14    14
+82    55    74    0     8     8
+82    60    76    1     5     6
+82    54    68    0     14    14
+84    49    66    0     18    18
+85    44    61    0     24    24
+85    51    66    0     19    19
+86    52    68    0     18    18
+91    53    68    0     23    23
+91    59    76    0     15    15
+92    66    85    0     7     7
+92    57    74    0     18    18
+94    46    64    0     30    30
+94    45    61    0     33    33
+94    58    76    1     17    18
+94    56    74    0     20    20
+100   62    84    0     16    16
+101   65    85    0     16    16
+104   71    97    0     7     7
+104   61    84    0     20    20
+105   75    101   0     4     4
+106   63    84    0     22    22
+107   69    90    0     17    17
+109   67    90    0     19    19
+110   42    55    0     55    55
+110   64    85    0     25    25
+110   68    90    0     20    20
+111   72    97    0     14    14
+112   35    51    0     61    61
+113   70    97    0     16    16
+115   41    55    1     59    60
+117   76    111   0     6     6
+118   74    101   0     17    17
+118   73    101   0     17    17
+125   78    111   0     14    14
+125   77    111   0     14    14
 
 
 For Earth Army ->
-Total Earth Soldier = 22
+Total Earth Soldier = 43
 Total Earth Gunnery = 7
-Total Earth Tank = 16
+Total Earth Tank = 31
 Total Earth Healing Unit = 0
-Destructed Earth Soldier Percentage = 95.4545
+Destructed Earth Soldier Percentage = 93.0233
 Destructed Earth Gunnery Percentage = 100
-Destructed Earth Tank Percentage = 81.25
+Destructed Earth Tank Percentage = 70.9677
 Destructed Earth Healing Unit Percentage = -nan(ind)
-Total Destructed Earth Units Percentage = 91.1111
-Average of Df = 0.292683
-Average of Dd = 13.9756
-Average of Db = 14.2683
-Df/Db% = 2.05128%
-Dd/Db% = 97.9487%
+Total Destructed Earth Units Percentage = 85.1852
+Average of Df = 1.14493
+Average of Dd = 18.7391
+Average of Db = 19.8841
+Df/Db% = 5.75802%
+Dd/Db% = 94.242%
 
 
 For Alien Army ->
-Total Alien Soldier = 13
-Total Alien Monster = 24
-Total Alien Drone = 8
+Total Alien Soldier = 35
+Total Alien Monster = 46
+Total Alien Drone = 12
 Destructed Alien Soldier Percentage = 0
 Destructed Alien Monster Percentage = 0
-Destructed Alien Drone Percentage = 0
-Total Destructed Alien Units Percentage = 0
-Average of Df = -nan(ind)
-Average of Dd = -nan(ind)
-Average of Db = -nan(ind)
-Df/Db% = -nan(ind)%
-Dd/Db% = -nan(ind)%
+Destructed Alien Drone Percentage = 8.33333
+Total Destructed Alien Units Percentage = 1.07527
+Average of Df = 0
+Average of Dd = 15
+Average of Db = 15
+Df/Db% = 0%
+Dd/Db% = 100%
 Alien Army has won the game.

@@ -45,16 +45,16 @@ void EarthArmy::PrintArmyInfo()
 	cout << EG_priQ.GetCount() << " EG /";
 	cout << HU_Stack.GetCount() << " HU\n";*/
 	cout << "Total :" << Total_Gen_E_Units << endl;
-	cout << "Total ES: " << Total_Gen_ES << " Alive: " << ES_Queue.GetCount() << " ES [";
+	cout << "Total ES: " << Total_Gen_ES << " Alive: " << ES_Queue.GetCount() << " ES [ ";
 	ES_Queue.print();
 	cout << "]" << endl;
-	cout << "Total ET: " << Total_Gen_ET << " Alive: " << ET_Stack.GetCount() << " ET [";
+	cout << "Total ET: " << Total_Gen_ET << " Alive: " << ET_Stack.GetCount() << " ET [ ";
 	ET_Stack.print();
 	cout << "]" << endl;
-	cout << "Total EG: " << Total_Gen_EG << " Alive: " << EG_priQ.GetCount() << " EG [";
+	cout << "Total EG: " << Total_Gen_EG << " Alive: " << EG_priQ.GetCount() << " EG [ ";
 	EG_priQ.print();
 	cout << "]" << endl;
-	cout << "Total EH: " << Total_Gen_EH << " Alive: " << HU_Stack.GetCount() << " EH [";
+	cout << "Total EH: " << Total_Gen_EH << " Alive: " << HU_Stack.GetCount() << " EH [ ";
 	HU_Stack.print();
 	cout << "]" << endl;
 }
