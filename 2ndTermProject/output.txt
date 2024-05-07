@@ -1,105 +1,57 @@
 Td    ID    Tj    Df    Dd    Db
 
-19    11    10    1     8     9
-19    10    10    0     9     9
-25    3     3     4     18    22
-27    4     4     3     20    23
-28    2     3     4     21    25
-28    9     7     0     21    21
-30    8     7     0     23    23
-32    14    14    1     17    18
-35    15    14    0     21    21
-36    18    21    0     15    15
-38    17    21    0     17    17
-41    2013  26    0     15    15
-41    21    24    0     17    17
-43    28    35    0     8     8
-43    23    25    0     18    18
-43    20    24    0     19    19
-43    22    25    0     18    18
-45    27    28    0     17    17
-46    25    28    0     18    18
-51    30    35    0     16    16
-51    29    35    0     16    16
-54    26    28    0     26    26
-57    24    25    0     32    32
-67    32    48    0     19    19
-69    33    48    0     21    21
-70    38    53    0     17    17
-72    36    51    0     21    21
-73    39    53    0     20    20
-73    40    55    1     17    18
-75    47    64    0     11    11
-76    16    21    43    12    55
-76    43    61    0     15    15
-79    48    64    0     15    15
-80    37    53    19    8     27
-80    50    66    0     14    14
-82    55    74    0     8     8
-82    60    76    1     5     6
-82    54    68    0     14    14
-84    49    66    0     18    18
-85    44    61    0     24    24
-85    51    66    0     19    19
-86    52    68    0     18    18
-91    53    68    0     23    23
-91    59    76    0     15    15
-92    66    85    0     7     7
-92    57    74    0     18    18
-94    46    64    0     30    30
-94    45    61    0     33    33
-94    58    76    1     17    18
-94    56    74    0     20    20
-100   62    84    0     16    16
-101   65    85    0     16    16
-104   71    97    0     7     7
-104   61    84    0     20    20
-105   75    101   0     4     4
-106   63    84    0     22    22
-107   69    90    0     17    17
-109   67    90    0     19    19
-110   42    55    0     55    55
-110   64    85    0     25    25
-110   68    90    0     20    20
-111   72    97    0     14    14
-112   35    51    0     61    61
-113   70    97    0     16    16
-115   41    55    1     59    60
-117   76    111   0     6     6
-118   74    101   0     17    17
-118   73    101   0     17    17
-125   78    111   0     14    14
-125   77    111   0     14    14
+10    8     4     0     6     6
+10    5     2     2     6     8
+15    1     0     11    4     15
+15    3     0     13    2     15
+19    9     4     1     14    15
+21    14    16    0     5     5
+21    2     0     4     17    21
+23    7     4     0     19    19
+23    6     2     4     17    21
+25    10    11    0     14    14
+27    4     2     10    15    25
+27    11    11    0     16    16
+28    12    11    0     17    17
+31    13    16    0     15    15
+35    30    31    0     4     4
+37    28    31    1     5     6
+37    24    22    0     15    15
+38    22    22    0     16    16
+38    15    16    1     21    22
+39    17    19    0     20    20
+39    18    19    0     20    20
+40    21    21    0     19    19
 
 
 For Earth Army ->
-Total Earth Soldier = 43
-Total Earth Gunnery = 7
-Total Earth Tank = 31
+Total Earth Soldier = 19
+Total Earth Gunnery = 2
+Total Earth Tank = 9
 Total Earth Healing Unit = 0
-Destructed Earth Soldier Percentage = 93.0233
+Destructed Earth Soldier Percentage = 63.1579
 Destructed Earth Gunnery Percentage = 100
-Destructed Earth Tank Percentage = 70.9677
+Destructed Earth Tank Percentage = 88.8889
 Destructed Earth Healing Unit Percentage = -nan(ind)
-Total Destructed Earth Units Percentage = 85.1852
-Average of Df = 1.14493
-Average of Dd = 18.7391
-Average of Db = 19.8841
-Df/Db% = 5.75802%
-Dd/Db% = 94.242%
+Total Destructed Earth Units Percentage = 73.3333
+Average of Df = 2.13636
+Average of Dd = 13.0455
+Average of Db = 15.1818
+Df/Db% = 14.0719%
+Dd/Db% = 85.9281%
 
 
 For Alien Army ->
-Total Alien Soldier = 35
-Total Alien Monster = 46
-Total Alien Drone = 12
+Total Alien Soldier = 24
+Total Alien Monster = 20
+Total Alien Drone = 4
 Destructed Alien Soldier Percentage = 0
 Destructed Alien Monster Percentage = 0
-Destructed Alien Drone Percentage = 8.33333
-Total Destructed Alien Units Percentage = 1.07527
-Average of Df = 0
-Average of Dd = 15
-Average of Db = 15
-Df/Db% = 0%
-Dd/Db% = 100%
+Destructed Alien Drone Percentage = 0
+Total Destructed Alien Units Percentage = 0
+Average of Df = -nan(ind)
+Average of Dd = -nan(ind)
+Average of Db = -nan(ind)
+Df/Db% = -nan(ind)%
+Dd/Db% = -nan(ind)%
 Alien Army has won the game.

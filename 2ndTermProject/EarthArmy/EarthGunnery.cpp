@@ -105,13 +105,25 @@ bool EarthGunnery::Attack()
 	}
 
 	AlienDrone* tempAD;
+	unsigned short i = 0;
 	while (!temp_queue0.isEmpty())
 	{
 		temp_queue0.dequeue(tempAD);
 		if (tempAD->GetHealth() <= 0)
 			pGame->AddInKilledList(tempAD);
 		else
-			pGame->Add_AD(tempAD);
+		{
+			if (i)
+			{
+				pGame->Add_AD(tempAD);
+				i = 1;
+			}
+			else
+			{
+				pGame->Add_AD_Front(tempAD);
+				i = 0;
+			}
+		}
 	}
 	while (!temp_queue1.isEmpty())
 	{
@@ -119,7 +131,16 @@ bool EarthGunnery::Attack()
 		if (tempAD->GetHealth() <= 0)
 			pGame->AddInKilledList(tempAD);
 		else
-			pGame->Add_AD_Front(tempAD);
+			if (i)
+			{
+				pGame->Add_AD(tempAD);
+				i = 1;
+			}
+			else
+			{
+				pGame->Add_AD_Front(tempAD);
+				i = 0;
+			}
 	}
 
 	AlienMonster* tempAM;
