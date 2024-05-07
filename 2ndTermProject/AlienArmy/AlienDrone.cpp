@@ -33,19 +33,9 @@ bool AlienDrone::Attack()
 
 			int dmg = int((float)GetPower() * (GetHealth() / 100.0) / (float)sqrt(pET->GetHealth()));
 			pET->SetHealth(pET->GetHealth() - dmg);
-			if (pET->GetHealth() <= 0)
-				pGame->AddInKilledList(pET);
-			else if (pET->GetHealth() < 0.2 * pET->GetInitialH())
-				pGame->AddToETUML(pET);
-			else
+		
 				temp_ET_Queue.enqueue(pET);
 		}
-	}
-	EarthTank* tempET;
-	while (!temp_ET_Queue.isEmpty())
-	{
-		temp_ET_Queue.dequeue(tempET);
-		pGame->Add_ET(tempET);
 	}
 	Attack_Cap = GetAttackCap() - Attack_Cap;
 	for (unsigned short i = 0;i < Attack_Cap;i++)
@@ -58,17 +48,50 @@ bool AlienDrone::Attack()
 
 			int dmg = int((float)GetPower() * (GetHealth() / 100.0) / (float)sqrt(pEG->GetHealth()));
 			pEG->SetHealth(pEG->GetHealth() - dmg);
-			if (pEG->GetHealth() <= 0)
-				pGame->AddInKilledList(pEG);
-			else
-				temp_EG_Queue.enqueue(pEG);
+			temp_EG_Queue.enqueue(pEG);
 		}
+	}
+
+	if (pGame->Get_GameMode())
+	{
+		if (!temp_ET_Queue.isEmpty() || !temp_EG_Queue.isEmpty())
+		{
+			cout << "AD " << this << "shots [";
+			if (!temp_ET_Queue.isEmpty())
+			{
+				temp_ET_Queue.print();
+			}
+			if (temp_ET_Queue.isEmpty())
+				cout << "";
+			else cout << "] [";
+			if (!temp_EG_Queue.isEmpty())
+			{
+				temp_EG_Queue.print();
+			}
+			cout << "]";
+			cout << endl;
+		}
+	}
+
+	EarthTank* tempET;
+	while (!temp_ET_Queue.isEmpty())
+	{
+		temp_ET_Queue.dequeue(tempET);
+		if (tempET->GetHealth() <= 0)
+			pGame->AddInKilledList(tempET);
+		else if (tempET->GetHealth() < 0.2 * tempET->GetInitialH())
+			pGame->AddToETUML(tempET);
+		else
+			pGame->Add_ET(tempET);
 	}
 	EarthGunnery* tempEG;
 	while (!temp_EG_Queue.isEmpty())
 	{
 		temp_EG_Queue.dequeue(tempEG);
-		pGame->Add_EG(tempEG);
+		if (tempEG->GetHealth() <= 0)
+			pGame->AddInKilledList(tempEG);
+		else
+			pGame->Add_EG(tempEG);
 	}
 	return false;
 }

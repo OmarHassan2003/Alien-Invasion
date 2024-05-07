@@ -20,14 +20,14 @@ bool EarthArmy::Attack()
 		if (ES_Queue.peek(ES))
 			IsAttack |= (ES->Attack());
 
+		EarthTank* ET;
+		if (ET_Stack.peek(ET))
+			IsAttack |= (ET->Attack());
+
 		EarthGunnery* EG;
 		int x;
 		if (EG_priQ.peek(EG, x))
 			IsAttack |= (EG->Attack());
-
-		EarthTank* ET;
-		if (ET_Stack.peek(ET))
-			IsAttack |= (ET->Attack());
 
 		HealUnit* HU;
 		if (HU_Stack.pop(HU))   //pop because it heals one time then die

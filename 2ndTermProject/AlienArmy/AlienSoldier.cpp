@@ -30,18 +30,28 @@ bool AlienSoldier::Attack()
 			
 			int dmg = int((float)GetPower() * (GetHealth() / 100.0) / (float)sqrt(ES->GetHealth()));
 			ES->SetHealth(ES->GetHealth() - dmg);
-
-			if (ES->GetHealth() <= 0)
-				pGame->AddInKilledList(ES);
-			else if (ES->GetHealth() < 0.2 * ES->GetInitialH())
-				pGame->AddToESUML(ES);
-			else
-				templist.enqueue(ES);
+			templist.enqueue(ES);
 		}
 		else
 			break;
+	if (pGame->Get_GameMode())
+	{
+		if (!templist.isEmpty())
+		{
+			cout << "AS " << this << "shots [";
+			templist.print();
+			cout << "]" << endl;
+		}
+	}
 	while (templist.dequeue(ES))
-		pGame->Add_ES(ES);
+	{
+		if (ES->GetHealth() <= 0)
+			pGame->AddInKilledList(ES);
+		else if (ES->GetHealth() < 0.2 * ES->GetInitialH())
+			pGame->AddToESUML(ES);
+		else
+			pGame->Add_ES(ES);
+	}
 	return flag;
 }
 

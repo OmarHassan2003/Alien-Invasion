@@ -36,10 +36,7 @@ bool EarthGunnery::Attack()
 
 			int dmg = int((float)GetPower() * (GetHealth() / 100.0) / (float)sqrt(pAD0->GetHealth()));
 			pAD0->SetHealth(pAD0->GetHealth() - dmg);
-			if (pAD0->GetHealth() <= 0)
-				pGame->AddInKilledList(pAD0);
-			else
-				temp_queue0.enqueue(pAD0);
+			temp_queue0.enqueue(pAD0);
 		}
 		else
 			break;
@@ -62,17 +59,6 @@ bool EarthGunnery::Attack()
 		else
 			break;
 	}
-	AlienDrone* tempAD;
-	while (!temp_queue0.isEmpty())
-	{
-		temp_queue0.dequeue(tempAD);
-		pGame->Add_AD(tempAD);
-	}
-	while (!temp_queue1.isEmpty())
-	{
-		temp_queue1.dequeue(tempAD);
-		pGame->Add_AD_Front(tempAD);
-	}
 	/*******************************Monster Attack*******************************/
 	Attack_Cap = GetAttackCap() - Attack_Cap;
 	for (unsigned short i = 0;i < Attack_Cap;i++)
@@ -85,19 +71,65 @@ bool EarthGunnery::Attack()
 
 			int dmg = int((float)GetPower() * (GetHealth() / 100.0) / (float)sqrt(pAM->GetHealth()));
 			pAM->SetHealth(pAM->GetHealth() - dmg);
-			if (pAM->GetHealth() <= 0)
-				pGame->AddInKilledList(pAM);
-			else
-				temp_AM_Queue.enqueue(pAM);
+			temp_AM_Queue.enqueue(pAM);
 		}
 		else
 			break;
 	}
+
+	if (pGame->Get_GameMode())
+	{
+		if (!temp_queue0.isEmpty() || !temp_queue1.isEmpty() || !temp_AM_Queue.isEmpty())
+		{
+			cout << "EG " << this << "shots [";
+			if (!temp_queue0.isEmpty())
+			{
+				temp_queue0.print();
+			}
+			if (!temp_queue1.isEmpty())
+			{
+				if (!temp_queue0.isEmpty());
+					cout << " ,";
+				temp_queue1.print();
+			}
+			if (temp_queue0.isEmpty() && temp_queue1.isEmpty())
+				cout << "";
+			else cout << "] [";
+			if (!temp_AM_Queue.isEmpty())
+			{
+				temp_AM_Queue.print();
+			}
+			cout << "]";
+			cout << endl;
+		}
+	}
+
+	AlienDrone* tempAD;
+	while (!temp_queue0.isEmpty())
+	{
+		temp_queue0.dequeue(tempAD);
+		if (tempAD->GetHealth() <= 0)
+			pGame->AddInKilledList(tempAD);
+		else
+			pGame->Add_AD(tempAD);
+	}
+	while (!temp_queue1.isEmpty())
+	{
+		temp_queue1.dequeue(tempAD);
+		if (tempAD->GetHealth() <= 0)
+			pGame->AddInKilledList(tempAD);
+		else
+			pGame->Add_AD_Front(tempAD);
+	}
+
 	AlienMonster* tempAM;
 	while (!temp_AM_Queue.isEmpty())
 	{
 		temp_AM_Queue.dequeue(tempAM);
-		pGame->Add_AM(tempAM);
+		if (tempAM->GetHealth() <= 0)
+			pGame->AddInKilledList(tempAM);
+		else
+			pGame->Add_AM(tempAM);
 	}
 	return flag;
 }

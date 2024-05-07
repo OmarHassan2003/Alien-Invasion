@@ -30,16 +30,26 @@ bool EarthSoldier::Attack() //PHASE2
 		
 			int dmg = int((float)GetPower()*(GetHealth()/100.0)/ (float)sqrt(AS->GetHealth()));
 			AS->SetHealth(AS->GetHealth() - dmg);
-			
-			if (AS->GetHealth() <= 0)
-				pGame->AddInKilledList(AS);
-			else
-				templist.enqueue(AS);
+			templist.enqueue(AS);
 		}
 		else
 			break;
+	if (pGame->Get_GameMode())
+	{
+		if (!templist.isEmpty())
+		{
+			cout << "ES " << this << "shots [";
+			templist.print();
+			cout << "]" << endl;
+		}
+	}
 	while (templist.dequeue(AS))
-		pGame->Add_AS(AS);
+	{
+		if (AS->GetHealth() <= 0)
+			pGame->AddInKilledList(AS);
+		else
+			pGame->Add_AS(AS);
+	}
 	return flag;
 }
 
