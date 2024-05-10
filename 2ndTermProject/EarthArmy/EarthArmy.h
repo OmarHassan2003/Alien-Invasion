@@ -1,14 +1,10 @@
 #pragma once
-
 #include "../Army.h"
-
 class EarthSoldier;
 class EarthGunnery;
 class EarthTank;
 class HealUnit;
-
 class ArmyUnit;
-class Game;
 
 class EarthArmy :public Army
 {

@@ -5,13 +5,14 @@ Game::Game()
 {
 	randgenn = new RandomGenerator;
 	Tj_value = 0;
+	gameMode = false;
 }
 
 void Game::Battle()
 {
 	ReadData();
 	bool End = false;
-	bool gameMode = GameMode();
+	gameMode = GameMode();
 	if (!gameMode)
 		cout << "Silent Mode" << endl << "Simulation Starts." << endl;
 	while(!End)
@@ -21,10 +22,18 @@ void Game::Battle()
 		Generate_Earth_Army();
 		Generate_Alien_Army();
 		UpdateUML();
-		End = Attack();
 		if (gameMode)
-			print();
+		{
+			printArmies();
+		}
+		cout << "============================================ Units Fighting at the current step ============================================" << endl;
+		End = Attack();
 		Get_And_Inc_Tj();
+		if (gameMode)
+		{
+			printUMLQueue();
+			printKilledList();
+		}
 		if (Get_Tj() > 40)
 			End = CheckWhoWins();
 		else
@@ -167,6 +176,10 @@ bool Game::Get_ET_UML(ArmyUnit*& AU)
 {
 	return ET_UML.dequeue(AU);
 }
+bool Game::Get_GameMode() const
+{
+	return gameMode;
+}
 int Game::Get_Count(ArmyUnit::Unit U)
 {
 	if (U == ArmyUnit::ES)
@@ -250,28 +263,18 @@ bool Game::Attack()
 	return EA.Attack() & AA.Attack();
 }
 
-void Game::print()
+void Game::printArmies()
 {
-	/*cout << "\nCurrent Time Step:" << Tj_value << endl;
-	EA.PrintArmyInfo();
-	AA.PrintArmyInfo();
-	cout << ES_UML.GetCount() << " units [ ";
-	ES_UML.print();
-	cout << "]" << endl;
-	cout << ET_UML.GetCount() << " units [ ";
-	ET_UML.print();
-	cout << "]" << endl;	
-	cout << Killed_List.GetCount() << " units [ ";
-	Killed_List.print();
-	cout << "]" << endl;
-	cout << "===============================================================================================================" << endl;*/
-
 	cout << "============================================ Earth Army Alive Units ==========================================" << endl;
 	EA.PrintArmyInfo();
 	cout << endl;
 	cout << "============================================ Alien Army Alive Units ==========================================" << endl;
 	AA.PrintArmyInfo();
 	cout << endl;
+}
+
+void Game::printUMLQueue()
+{
 	cout << "============================================ UML Units ==========================================" << endl;
 	cout << ES_UML.GetCount() << " units [ ";
 	ES_UML.print();
@@ -279,13 +282,34 @@ void Game::print()
 	cout << ET_UML.GetCount() << " units [ ";
 	ET_UML.print();
 	cout << " ]" << endl;
+}
+
+void Game::printKilledList()
+{
 	cout << "============================================ Killed/Destructed Units ==========================================" << endl;
 	cout << Killed_List.GetCount() << " units [ ";
 	Killed_List.print();
 	cout << " ]" << endl;
 	cout << "===============================================================================================================" << endl;
-	
 }
+
+//void Game::print()
+//{
+//	/*cout << "\nCurrent Time Step:" << Tj_value << endl;
+//	EA.PrintArmyInfo();
+//	AA.PrintArmyInfo();
+//	cout << ES_UML.GetCount() << " units [ ";
+//	ES_UML.print();
+//	cout << "]" << endl;
+//	cout << ET_UML.GetCount() << " units [ ";
+//	ET_UML.print();
+//	cout << "]" << endl;	
+//	cout << Killed_List.GetCount() << " units [ ";
+//	Killed_List.print();
+//	cout << "]" << endl;
+//	cout << "===============================================================================================================" << endl;*/	
+//}
+
 
 
 void Game::GenerateOutputFile()

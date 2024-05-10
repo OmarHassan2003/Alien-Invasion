@@ -6,14 +6,6 @@ AlienMonster::AlienMonster(Game* p, int HP, int pow, int ID_, int cap, int _Tj, 
 {
 }
 
-void AlienMonster::AddEarthUnitToList(EarthArmy* passed_EA)
-{}
-
-void AlienMonster::AddAlienUnitToList(AlienArmy* passed_AA)
-{
-	passed_AA->AddInAmArray(this);
-}
-
 bool AlienMonster::Attack()
 {
 	Stack<EarthTank*> tempList1;
@@ -27,17 +19,11 @@ bool AlienMonster::Attack()
 
 		int dmg = int((float)GetPower() * (GetHealth() / 100.0) / (float)sqrt(ET->GetHealth()));
 		ET->SetHealth(ET->GetHealth() - dmg);
-
-		if (ET->GetHealth() <= 0)
-			pGame->AddInKilledList(ET);
-		else if (ET->GetHealth() < 0.2 * ET->GetInitialH())
-			pGame->AddToETUML(ET);
-		else
-			tempList1.push(ET);
+		tempList1.push(ET);
 	}
 	int remaining_AttackCapacity = GetAttackCap() - i;
 	EarthSoldier* ES = nullptr;
-	for (int i = 1; i <= remaining_AttackCapacity; i++)
+	for (int j = 1; j <= remaining_AttackCapacity; j++)
 	{
 		if (pGame->Get_ES(ES))
 		{
@@ -46,26 +32,52 @@ bool AlienMonster::Attack()
 
 			int dmg = int((float)GetPower() * (GetHealth() / 100.0) / (float)sqrt(ES->GetHealth()));
 			ES->SetHealth(ES->GetHealth() - dmg);
-
-			if (ES->GetHealth() <= 0)
-				pGame->AddInKilledList(ES);
-			else if (ES->GetHealth() < 0.2 * ES->GetInitialH())
-				pGame->AddToESUML(ES);
-			else
-				tempList2.enqueue(ES);
+			tempList2.enqueue(ES);
 		}
 	}
+
+	if (pGame->Get_GameMode())
+	{
+		if (!tempList1.isEmpty() || !tempList2.isEmpty())
+		{
+			cout << "AM " << this << "shots [";
+			if (!tempList1.isEmpty())
+			{
+				tempList1.print();
+			}
+			if (tempList1.isEmpty())
+				cout << "";
+			else cout << "] [";
+			if (!tempList2.isEmpty())
+			{
+				tempList2.print();
+			}
+			cout << "]";
+			cout << endl;
+		}
+	}
+
 	while (!tempList1.isEmpty())
 	{
 		EarthTank* temp = nullptr;
 		tempList1.pop(temp);
-		pGame->Add_ET(temp);
+		if (temp->GetHealth() <= 0)
+			pGame->AddInKilledList(temp);
+		else if (temp->GetHealth() < 0.2 * temp->GetInitialH())
+			pGame->AddToETUML(temp);
+		else
+			pGame->Add_ET(temp);
 	}
 	while (!tempList2.isEmpty())
 	{
 		EarthSoldier* temp = nullptr;
 		tempList2.dequeue(temp);
-		pGame->Add_ES(temp);
+		if (temp->GetHealth() <= 0)
+			pGame->AddInKilledList(temp);
+		else if (temp->GetHealth() < 0.2 * temp->GetInitialH())
+			pGame->AddToESUML(temp);
+		else
+			pGame->Add_ES(temp);
 	}
 	return true;
 }

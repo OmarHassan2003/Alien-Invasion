@@ -1,13 +1,9 @@
 #pragma once
 #include "../Army.h"
-#include "../RandomGenerator/RandomGenerator.h"
-
 class AlienSoldier;
 class AlienDrone;
 class AlienMonster;
-
 class ArmyUnit;
-class Game;
 
 class AlienArmy :public Army
 {

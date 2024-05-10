@@ -1,9 +1,9 @@
 #include "EarthArmy.h"
-
 #include "EarthSoldier.h"
 #include "EarthGunnery.h"
 #include "EarthTank.h"
 #include "../HealUnit.h"
+
 EarthArmy::EarthArmy()
 {
 	Won = false;
@@ -20,14 +20,14 @@ bool EarthArmy::Attack()
 		if (ES_Queue.peek(ES))
 			IsAttack |= (ES->Attack());
 
+		EarthTank* ET;
+		if (ET_Stack.peek(ET))
+			IsAttack |= (ET->Attack());
+
 		EarthGunnery* EG;
 		int x;
 		if (EG_priQ.peek(EG, x))
 			IsAttack |= (EG->Attack());
-
-		EarthTank* ET;
-		if (ET_Stack.peek(ET))
-			IsAttack |= (ET->Attack());
 
 		HealUnit* HU;
 		if (HU_Stack.pop(HU))   //pop because it heals one time then die
@@ -39,24 +39,43 @@ bool EarthArmy::Attack()
 
 void EarthArmy::PrintArmyInfo()
 {
-	/*cout << Total_E_Units << "Total :";
+	cout << ES_Queue.GetCount() << " ES [ ";
+	ES_Queue.print();
+	cout << "]" << endl;
+
+	cout << ET_Stack.GetCount() << " ET [ ";
+	ET_Stack.print();
+	cout << "]" << endl;
+
+	cout << EG_priQ.GetCount() << " EG [ ";
+	EG_priQ.print();
+	cout << "]" << endl;
+
+	cout << HU_Stack.GetCount() << " EH [ ";
+	HU_Stack.print();
+	cout << "]" << endl;
+
+	/*
+	cout << Total_E_Units << "Total :";
 	cout << ES_Queue.GetCount() << " ES /";
 	cout << ET_Stack.GetCount() << " ET /";
 	cout << EG_priQ.GetCount() << " EG /";
-	cout << HU_Stack.GetCount() << " HU\n";*/
+	cout << HU_Stack.GetCount() << " HU\n";
 	cout << "Total :" << Total_Gen_E_Units << endl;
-	cout << "Total ES: " << Total_Gen_ES << " Alive: " << ES_Queue.GetCount() << " ES [";
+	//
+	cout << "Total ES: " << Total_Gen_ES << " Alive: " << ES_Queue.GetCount() << " ES [ ";
 	ES_Queue.print();
 	cout << "]" << endl;
-	cout << "Total ET: " << Total_Gen_ET << " Alive: " << ET_Stack.GetCount() << " ET [";
+	cout << "Total ET: " << Total_Gen_ET << " Alive: " << ET_Stack.GetCount() << " ET [ ";
 	ET_Stack.print();
 	cout << "]" << endl;
-	cout << "Total EG: " << Total_Gen_EG << " Alive: " << EG_priQ.GetCount() << " EG [";
+	cout << "Total EG: " << Total_Gen_EG << " Alive: " << EG_priQ.GetCount() << " EG [ ";
 	EG_priQ.print();
 	cout << "]" << endl;
-	cout << "Total EH: " << Total_Gen_EH << " Alive: " << HU_Stack.GetCount() << " EH [";
+	cout << "Total EH: " << Total_Gen_EH << " Alive: " << HU_Stack.GetCount() << " EH [ ";
 	HU_Stack.print();
 	cout << "]" << endl;
+	*/
 }
 
 void EarthArmy::SetWon(bool p)

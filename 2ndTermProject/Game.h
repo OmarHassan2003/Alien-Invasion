@@ -15,6 +15,7 @@ class Game
 	Queue<ArmyUnit*> ET_UML; // HERE or in EA class.
 	RandomGenerator* randgenn;
 	unsigned short Tj_value;
+	bool gameMode;
 public:
 	Game();
 	void Battle();
@@ -37,6 +38,7 @@ public:
 	bool Get_L_AD(AlienDrone*& AU);
 	bool Get_ES_UML(ArmyUnit*& AU);
 	bool Get_ET_UML(ArmyUnit*& AU);
+	bool Get_GameMode() const;
 	/////////////////////////////////////
 	int Get_Count(ArmyUnit::Unit U);
 	int countDestructed(ArmyUnit::Unit U);
@@ -54,7 +56,9 @@ public:
 	void Add_EG(EarthGunnery* AU);
 	/////////////////////////////////////
 	bool Attack();
-	void print();
+	void printArmies();
+	void printUMLQueue();
+	void printKilledList();
 	/////////////////////////////////////
 	void GenerateOutputFile();
 	~Game();

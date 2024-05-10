@@ -6,18 +6,6 @@ HealUnit::HealUnit(Game* p, int HP, int pow, int ID_, int cap, int _Tj, Unit U)
 {
 }
 
-void HealUnit::AddEarthUnitToList(EarthArmy* passed_EA)
-{
-	if (passed_EA)
-	{
-		passed_EA->AddInHUStack(this);
-	}
-}
-
-void HealUnit::AddAlienUnitToList(AlienArmy* passed_AA)
-{
-}
-
 bool HealUnit::Attack()
 {
 	bool flag = 1;

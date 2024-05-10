@@ -1,9 +1,6 @@
 #ifndef ARMY_UNIT_H_
 #define ARMY_UNIT_H_
 class Game;
-class EarthArmy;
-class AlienArmy;
-class Army;
 #include <iostream>
 using namespace std;
 
@@ -32,9 +29,6 @@ public:
 	virtual void Set_Ta(int);
 	virtual void Set_Td(int);
 	virtual void Set_StepsInUML(int);
-
-	virtual void AddEarthUnitToList(EarthArmy* passed_EA) = 0;
-	virtual void AddAlienUnitToList(AlienArmy* passed_EA) = 0;
 
 	virtual int Get_Ta();
 	virtual int Get_Tj();

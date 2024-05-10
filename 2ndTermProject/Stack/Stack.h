@@ -88,13 +88,15 @@ void Stack<T>::print() const
 		return;
 	}
 	while (temp != nullptr) {
-		if (!temp->getNext()) cout << temp->getItem();
+		if (!temp->getNext())
+			break;
 		else
 		{
 			cout << temp->getItem() << ",";
 		}
 		temp = temp->getNext();
 	}
+	cout << temp->getItem();
 }
 
 template<typename T>

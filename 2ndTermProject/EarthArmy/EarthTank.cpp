@@ -7,15 +7,6 @@ EarthTank::EarthTank(Game* p, int HP, int pow, int ID_, int cap, int _Tj, Unit U
 {
 }
 
-void EarthTank::AddEarthUnitToList(EarthArmy* passed_EA)
-{
-	passed_EA->AddInStack(this);
-}
-
-void EarthTank::AddAlienUnitToList(AlienArmy* passed_AA)
-{
-}
-
 bool EarthTank::Attack()
 {
 	bool flag = false;
@@ -38,9 +29,7 @@ bool EarthTank::Attack()
 
 				int dmg = int((float)GetPower() * (GetHealth() / 100.0) / (float)sqrt(AM->GetHealth()));
 				AM->SetHealth(AM->GetHealth() - dmg);
-				if (AM->GetHealth() <= 0)
-					pGame->AddInKilledList(AM);
-				else tempList1.enqueue(AM);
+				tempList1.enqueue(AM);
 			}
 			else
 				break;
@@ -59,9 +48,7 @@ bool EarthTank::Attack()
 
 				int dmg = int((float)GetPower() * (GetHealth() / 100.0) / (float)sqrt(AS->GetHealth()));
 				AS->SetHealth(AS->GetHealth() - dmg);
-				if (AS->GetHealth() <= 0)
-					pGame->AddInKilledList(AS);
-				else tempList2.enqueue(AS);
+				tempList2.enqueue(AS);
 			}
 			else
 				break;
@@ -81,32 +68,56 @@ bool EarthTank::Attack()
 
 				int dmg = (GetPower() * (GetHealth() / 100.0)) / sqrt(AM->GetHealth());
 				AM->SetHealth(AM->GetHealth() - dmg);
-				if (AM->GetHealth() <= 0)
-					pGame->AddInKilledList(AM);
-				else tempList1.enqueue(AM);
+				tempList1.enqueue(AM);
 			}
 			else
 				break;
 		}
 	}
 
-	//if (tempList1.isEmpty() && tempList2.isEmpty())
-	//	return false;
+	if (pGame->Get_GameMode())
+	{
+		if (!tempList1.isEmpty() || !tempList2.isEmpty())
+		{
+			cout << "ET " << this << "shots [";
+			if (!tempList1.isEmpty())
+			{
+				tempList1.print();
+			}
+			if (tempList1.isEmpty())
+				cout << "";
+			else cout << "] [";
+			if (!tempList2.isEmpty())
+			{
+				tempList2.print();
+			}
+			cout << "]";
+			cout << endl;
+		}
+	}
 
 	while (!tempList1.isEmpty())
 	{
 		AlienMonster* temp = nullptr;
 		tempList1.dequeue(temp);
-		pGame->Add_AM(temp);
+		if (temp->GetHealth() <= 0)
+			pGame->AddInKilledList(temp);
+		else
+			pGame->Add_AM(temp);
 	}
+
 	while (!tempList2.isEmpty())
 	{
 		AlienSoldier* temp = nullptr;
 		tempList2.dequeue(temp);
-		pGame->Add_AS(temp);
+		if (temp->GetHealth() <= 0)
+			pGame->AddInKilledList(temp);
+		else
+			pGame->Add_AS(temp);
 	}
 
 	return flag;
+
 }
 
 ostream& operator<<(ostream& COUT, EarthTank* Passed_AU)
