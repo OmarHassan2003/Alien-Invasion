@@ -1,5 +1,5 @@
 #include "RandomGenerator.h"
-
+#include "../Game.h"
 RandomGenerator::RandomGenerator()
 {
 	srand(time(0));
@@ -20,7 +20,7 @@ ArmyUnit* RandomGenerator::CreateUnit(unsigned short Tj, Game* pGame, char u)
 		unsigned short health = RandGen(min_E_health, max_E_health);
 		unsigned short power = RandGen(min_E_Power, max_E_Power);
 		unsigned short attack_capacity = RandGen(min_E_Attack_Capacity, max_E_Attack_Capacity);
-		if (EarthID == 1000)
+		if (EarthID == 1000  && pGame->Get_GameMode())
 		{
 			cout << "NO MORE IDS AVAILABLE FOR EARTH ARMY" << endl;
 			return NULL;
@@ -42,7 +42,7 @@ ArmyUnit* RandomGenerator::CreateUnit(unsigned short Tj, Game* pGame, char u)
 		unsigned short health = RandGen(min_A_health, max_A_health);
 		unsigned short power = RandGen(min_A_Power, max_A_Power);
 		unsigned short attack_capacity = RandGen(min_A_Attack_Capacity, max_A_Attack_Capacity);
-		if (AlienID == 3000)
+		if (AlienID == 3000 && pGame->Get_GameMode())
 		{
 			cout << "NO MORE IDS AVAILABLE FOR ALIEN ARMY" << endl;
 			return NULL;
