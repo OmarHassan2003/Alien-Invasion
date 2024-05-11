@@ -23,8 +23,10 @@ void Game::Battle()
 		Generate_Alien_Army();
 		UpdateUML();
 		if (gameMode)
+		{
 			printArmies();
-		cout << "============================================ Units Fighting at the current step ============================================" << endl;
+			cout << "============================================ Units Fighting at the current step ============================================" << endl;
+		}
 		End = Attack();
 		Get_And_Inc_Tj();
 		if (gameMode)
