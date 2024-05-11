@@ -20,18 +20,25 @@ bool HealUnit::Attack()
 			if (AU)
 			{
 				int dmg = int((float)GetPower() * (GetHealth() / 100.0) / (float)sqrt(AU->GetHealth()));
-				AU->SetHealth(AU->GetHealth() + dmg);
+				
+				EarthSoldier* ES = (EarthSoldier*)AU;
+				if(ES->getInfected())
+					AU->SetHealth(AU->GetHealth() + dmg / 2);
+				else
+					AU->SetHealth(AU->GetHealth() + dmg);
+
 				flag = true;
 				healed = 1;
 				if (AU->GetHealth() >= 0.2 * AU->GetInitialH())
 				{
+					if (ES->getInfected())
+						ES->setImmune(1);
 					pGame->Add_ES((EarthSoldier*)AU);
 					AU->Set_StepsInUML(0);
 				}
 				else //still under 20% hp.
 					EStemplist.enqueue(AU);
 			}
-
 		}
 		else if (pGame->Get_ET_UML(AU))
 		{
