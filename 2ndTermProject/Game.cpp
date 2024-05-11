@@ -23,9 +23,7 @@ void Game::Battle()
 		Generate_Alien_Army();
 		UpdateUML();
 		if (gameMode)
-		{
 			printArmies();
-		}
 		cout << "============================================ Units Fighting at the current step ============================================" << endl;
 		End = Attack();
 		Get_And_Inc_Tj();
@@ -35,7 +33,19 @@ void Game::Battle()
 			printKilledList();
 		}
 		if (Get_Tj() > 40)
-			End |= CheckWhoWins() ;
+		{
+			if (CheckWhoWins())
+			{
+				End = true;
+				continue;
+			}
+			else if (End)
+			{
+				cout << "War ended with a tie." << endl;
+				EA.SetWon(false);
+				AA.SetWon(false);
+			}
+		}
 		else
 			End = false;
 	}//wait for a click.
@@ -118,25 +128,19 @@ void Game::AddInKilledList(ArmyUnit* passed_AU)
 
 bool Game::CheckWhoWins()
 {
-	if (EA.isCompromised() && AA.isCompromised())
-	{
-		cout << "War ended with a tie." << endl;
-		EA.SetWon(false);
-		AA.SetWon(false);
-	}
-	else if (EA.isCompromised())
+	if (EA.isCompromised())
 	{
 		cout << "Alien Army has won the game." << endl;
 		AA.SetWon(true);
+		return true;
 	}
 	else if (AA.isCompromised())
 	{
 		cout << "Earth Army has won the game." << endl;
 		EA.SetWon(true);
+		return true;
 	}
-	else
-		return false;
-	return true;
+	return false;
 }
 
 bool Game::Get_AM(AlienMonster*& AU)
@@ -260,7 +264,7 @@ void Game::Add_EG(EarthGunnery* AU)
 
 bool Game::Attack()
 {
-	return !EA.Attack() & !AA.Attack();
+	return !(EA.Attack() | AA.Attack());
 }
 
 void Game::printArmies()

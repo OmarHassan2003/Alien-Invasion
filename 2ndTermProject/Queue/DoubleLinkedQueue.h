@@ -33,7 +33,7 @@ inline DoubleLinkedQueue<T>::DoubleLinkedQueue()
 template<class T>
 inline bool DoubleLinkedQueue<T>::isEmpty() const
 {
-	return (Front == nullptr);
+	return count == 0;
 }
 
 template<class T>

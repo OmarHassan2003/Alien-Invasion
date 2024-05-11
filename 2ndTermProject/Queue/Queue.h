@@ -30,7 +30,7 @@ Queue<T>::Queue()
 template<typename T>
 bool Queue<T>::isEmpty() const
 {
-	return (Front==nullptr);
+	return count == 0;
 }
 
 template<typename T>

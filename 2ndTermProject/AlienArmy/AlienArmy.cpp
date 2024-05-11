@@ -10,27 +10,22 @@ AlienArmy::AlienArmy()
 
 bool AlienArmy::Attack()
 {
-	if (isCompromised())
-		IsAttack = false;
-	else
+	IsAttack = false;
+	AlienSoldier* AS;
+	if (AS_Queue.peek(AS))
+		IsAttack |= AS->Attack();
+
+	AlienMonster* ALM = nullptr;
+	if (AM.Peek(ALM))
+		IsAttack |= ALM->Attack();
+
+	AlienDrone* AD1, * AD2;
+	if (AD_DQueue.GetCount() > 1)
 	{
-		IsAttack = false;
-		AlienSoldier* AS;
-		if (AS_Queue.peek(AS))
-			IsAttack |= AS->Attack();
-
-		AlienMonster* ALM = nullptr;
-		if (AM.Peek(ALM))
-			IsAttack |= ALM->Attack();
-
-		AlienDrone* AD1, * AD2;
-		if (AD_DQueue.GetCount() > 1)
-		{
-			AD_DQueue.peek(AD1);
-			AD_DQueue.peek_rear(AD2);
-			IsAttack |= AD1->Attack();
-			IsAttack |= AD2->Attack();
-		}
+		AD_DQueue.peek(AD1);
+		AD_DQueue.peek_rear(AD2);
+		IsAttack |= AD1->Attack();
+		IsAttack |= AD2->Attack();
 	}
 	return IsAttack;
 }

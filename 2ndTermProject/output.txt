@@ -1,16 +1,58 @@
 Td    ID    Tj    Df    Dd    Db
 
+12    2001  12    0     0     0
+12    2003  12    0     0     0
+13    2002  12    0     1     1
+20    2004  20    0     0     0
+20    2006  20    0     0     0
+20    2005  20    0     0     0
+21    2007  21    0     0     0
+21    2008  21    0     0     0
+22    2009  21    0     1     1
+25    2011  25    0     0     0
+25    2012  25    0     0     0
+26    2013  26    0     0     0
+26    2010  25    0     1     1
+27    2018  27    0     0     0
+27    2014  26    0     1     1
+27    2015  26    0     1     1
+28    2019  28    0     0     0
+28    2020  28    0     0     0
+28    2017  27    0     1     1
+28    2016  27    0     1     1
+29    2021  28    0     1     1
+30    2024  30    0     0     0
+30    2023  30    0     0     0
+31    2025  31    0     0     0
+31    2022  30    0     1     1
+32    2027  31    0     1     1
+32    2026  31    0     1     1
+33    2030  33    0     0     0
+34    2029  33    0     1     1
+35    2031  34    0     1     1
+35    2032  34    0     1     1
+35    2028  33    0     2     2
+35    2033  34    0     1     1
+36    2035  36    0     0     0
+36    2034  36    0     0     0
+37    2039  37    0     0     0
+37    2036  36    0     1     1
+37    2038  37    0     0     0
+39    2037  37    0     2     2
+40    2040  40    0     0     0
+40    2042  40    0     0     0
+40    2041  40    0     0     0
 
 
 For Earth Army ->
-Total Earth Soldier = 677
-Total Earth Gunnery = 0
-Total Earth Tank = 0
-Total Earth Healing Unit = 23
+Total Earth Soldier = 9
+Total Earth Gunnery = 8
+Total Earth Tank = 4
+Total Earth Healing Unit = 0
 Destructed Earth Soldier Percentage = 0
-Destructed Earth Gunnery Percentage = -nan(ind)
-Destructed Earth Tank Percentage = -nan(ind)
-Destructed Earth Healing Unit Percentage = 0
+Destructed Earth Gunnery Percentage = 0
+Destructed Earth Tank Percentage = 0
+Destructed Earth Healing Unit Percentage = -nan(ind)
 Total Destructed Earth Units Percentage = 0
 Average of Df = -nan(ind)
 Average of Dd = -nan(ind)
@@ -20,16 +62,16 @@ Dd/Db% = -nan(ind)%
 
 
 For Alien Army ->
-Total Alien Soldier = 0
-Total Alien Monster = 0
-Total Alien Drone = 620
-Destructed Alien Soldier Percentage = -nan(ind)
-Destructed Alien Monster Percentage = -nan(ind)
-Destructed Alien Drone Percentage = 0
-Total Destructed Alien Units Percentage = 0
-Average of Df = -nan(ind)
-Average of Dd = -nan(ind)
-Average of Db = -nan(ind)
-Df/Db% = -nan(ind)%
-Dd/Db% = -nan(ind)%
-War ended with a tie.
+Total Alien Soldier = 10
+Total Alien Monster = 16
+Total Alien Drone = 16
+Destructed Alien Soldier Percentage = 100
+Destructed Alien Monster Percentage = 100
+Destructed Alien Drone Percentage = 100
+Total Destructed Alien Units Percentage = 100
+Average of Df = 0
+Average of Dd = 0.47619
+Average of Db = 0.47619
+Df/Db% = 0%
+Dd/Db% = 100%
+Earth Army has won the game.

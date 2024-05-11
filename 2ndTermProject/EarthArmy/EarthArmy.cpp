@@ -11,29 +11,24 @@ EarthArmy::EarthArmy()
 
 bool EarthArmy::Attack()
 {
-	if (isCompromised())
-		IsAttack = false;
-	else
-	{
-		IsAttack = false;
-		EarthSoldier* ES = nullptr;
-		if (ES_Queue.peek(ES))
-			IsAttack |= (ES->Attack());
+	IsAttack = false;
+	EarthSoldier* ES = nullptr;
+	if (ES_Queue.peek(ES))
+		IsAttack |= (ES->Attack());
 
-		EarthTank* ET;
-		if (ET_Stack.peek(ET))
-			IsAttack |= (ET->Attack());
+	EarthTank* ET;
+	if (ET_Stack.peek(ET))
+		IsAttack |= (ET->Attack());
 
-		EarthGunnery* EG;
-		int x;
-		if (EG_priQ.peek(EG, x))
-			IsAttack |= (EG->Attack());
+	EarthGunnery* EG;
+	int x;
+	if (EG_priQ.peek(EG, x))
+		IsAttack |= (EG->Attack());
 
-		HealUnit* HU;
-		if (HU_Stack.pop(HU))   //pop because it heals one time then die
-			if (!HU->Attack())  // if it doesnt heal return it back
-				HU_Stack.push(HU);
-	}
+	HealUnit* HU;
+	if (HU_Stack.pop(HU))   //pop because it heals one time then die
+		if (!HU->Attack())  // if it doesnt heal return it back
+			HU_Stack.push(HU);
 	return IsAttack;
 }
 
