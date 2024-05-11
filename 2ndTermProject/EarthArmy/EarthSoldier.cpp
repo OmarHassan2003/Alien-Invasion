@@ -83,7 +83,6 @@ bool EarthSoldier::Attack() //PHASE2
 		}
 		return flag;
 	}
-	return false;
 }
 
 void EarthSoldier::setInfected(bool inf)

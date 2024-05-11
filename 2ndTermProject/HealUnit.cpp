@@ -8,15 +8,12 @@ HealUnit::HealUnit(Game* p, int HP, int pow, int ID_, int cap, int _Tj, Unit U)
 
 bool HealUnit::Attack()
 {
-	bool flag = 1;
+	bool flag = false;
 	bool healed = 0;
 	ArmyUnit* AU = nullptr;
 	int pri = 0;
 	Queue<ArmyUnit*> EStemplist;
 	Queue<ArmyUnit*> ETtemplist;
-	cout << "ID." << this->GetID() << endl;
-	cout << "attack cap." << this->GetAttackCap() << endl;
-
 	for (int i = 0; i < this->GetAttackCap(); i++)
 		if (pGame->Get_ES_UML(AU))
 		{
@@ -24,8 +21,8 @@ bool HealUnit::Attack()
 			{
 				int dmg = int((float)GetPower() * (GetHealth() / 100.0) / (float)sqrt(AU->GetHealth()));
 				AU->SetHealth(AU->GetHealth() + dmg);
+				flag = true;
 				healed = 1;
-				cout << "unit healed." << AU->GetID() << endl;
 				if (AU->GetHealth() >= 0.2 * AU->GetInitialH())
 				{
 					pGame->Add_ES((EarthSoldier*)AU);
@@ -42,8 +39,8 @@ bool HealUnit::Attack()
 			{
 				int dmg = int((float)GetPower() * (GetHealth() / 100.0) / (float)sqrt(AU->GetHealth()));
 				AU->SetHealth(AU->GetHealth() + dmg);
+				flag = true;
 				healed = 1;
-				cout << "unit healed." << AU->GetID() << endl;
 				if (AU->GetHealth() >= 0.2 * AU->GetInitialH())
 				{
 					pGame->Add_ET((EarthTank*)AU);

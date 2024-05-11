@@ -8,6 +8,7 @@ AlienMonster::AlienMonster(Game* p, int HP, int pow, int ID_, int cap, int _Tj, 
 
 bool AlienMonster::Attack()
 {
+	bool flag = false;
 	Stack<EarthTank*> tempList1;
 	Queue<EarthSoldier*> tempList2;
 	EarthTank* ET = nullptr;
@@ -17,6 +18,7 @@ bool AlienMonster::Attack()
 		if (ET->Get_Ta() == -1)
 			ET->Set_Ta(pGame->Get_Tj());
 
+		flag = true;
 		int dmg = int((float)GetPower() * (GetHealth() / 100.0) / (float)sqrt(ET->GetHealth()));
 		ET->SetHealth(ET->GetHealth() - dmg);
 		tempList1.push(ET);
@@ -30,6 +32,7 @@ bool AlienMonster::Attack()
 			if (ES->Get_Ta() == -1)
 				ES->Set_Ta(pGame->Get_Tj());
 
+			flag = true;
 			int dmg = int((float)GetPower() * (GetHealth() / 100.0) / (float)sqrt(ES->GetHealth()));
 			ES->SetHealth(ES->GetHealth() - dmg);
 			tempList2.enqueue(ES);
@@ -79,7 +82,7 @@ bool AlienMonster::Attack()
 		else
 			pGame->Add_ES(temp);
 	}
-	return true;
+	return flag;
 }
 
 ostream& operator<<(ostream& COUT, AlienMonster* PAssed_AM)

@@ -4,7 +4,7 @@
 Game::Game()
 {
 	randgenn = new RandomGenerator;
-	Tj_value = 0;
+	Tj_value = 1;
 	gameMode = false;
 }
 
@@ -35,7 +35,7 @@ void Game::Battle()
 			printKilledList();
 		}
 		if (Get_Tj() > 40)
-			End = CheckWhoWins();
+			End |= CheckWhoWins() ;
 		else
 			End = false;
 	}//wait for a click.
@@ -260,7 +260,7 @@ void Game::Add_EG(EarthGunnery* AU)
 
 bool Game::Attack()
 {
-	return EA.Attack() & AA.Attack();
+	return !EA.Attack() & !AA.Attack();
 }
 
 void Game::printArmies()

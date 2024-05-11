@@ -16,12 +16,12 @@ bool AlienDrone::Attack()
 	unsigned short Attack_Cap = GetAttackCap() / 2;
 	for (unsigned short i = 0;i < Attack_Cap;i++)
 	{
-		flag = true;
 		if (pGame->Get_ET(pET))
 		{
 			if (pET->Get_Ta() == -1)
 				pET->Set_Ta(pGame->Get_Tj());
 
+			flag = true;
 			int dmg = int((float)GetPower() * (GetHealth() / 100.0) / (float)sqrt(pET->GetHealth()));
 			pET->SetHealth(pET->GetHealth() - dmg);
 		
@@ -31,12 +31,12 @@ bool AlienDrone::Attack()
 	Attack_Cap = GetAttackCap() - Attack_Cap;
 	for (unsigned short i = 0;i < Attack_Cap;i++)
 	{
-		flag = true;
 		if (pGame->Get_EG(pEG))
 		{
 			if (pEG->Get_Ta() == -1)
 				pEG->Set_Ta(pGame->Get_Tj());
 
+			flag = true;
 			int dmg = int((float)GetPower() * (GetHealth() / 100.0) / (float)sqrt(pEG->GetHealth()));
 			pEG->SetHealth(pEG->GetHealth() - dmg);
 			temp_EG_Queue.enqueue(pEG);
@@ -84,7 +84,7 @@ bool AlienDrone::Attack()
 		else
 			pGame->Add_EG(tempEG);
 	}
-	return false;
+	return flag;
 }
 
 ostream& operator<<(ostream& COUT, AlienDrone* PAssed_AD)
