@@ -1,5 +1,7 @@
 #pragma once
 #include "../Army.h"
+
+class RandomGenerator;
 class EarthSoldier;
 class EarthGunnery;
 class EarthTank;
@@ -8,6 +10,7 @@ class ArmyUnit;
 
 class EarthArmy :public Army
 {
+	RandomGenerator* randgen;
 	bool Won;
 	bool IsAttack;
 	Queue<EarthSoldier*> ES_Queue;
@@ -21,12 +24,14 @@ class EarthArmy :public Army
 	int Total_Gen_EH = 0;
 public:
 	EarthArmy();
+	void SetRandGen(RandomGenerator* p);
 	bool Attack();
 	void PrintArmyInfo(); // Add HU
 	void SetWon(bool p);
 	bool GetWon() const;
 	void SetIsAttack(bool p);
 	bool GetIsAttack() const;
+	void SpreadInfection();
 	/****************pick units from lists********************/
 	bool pick_ES(EarthSoldier*& EPtr);
 	bool pick_ET(EarthTank*& EPtr);
@@ -34,6 +39,7 @@ public:
 	bool pick_HU(HealUnit*& Eptr);
 	/****************Get Counts of lists**********************/
 	int ES_Count() const;
+	int ES_Infected_Count();
 	int ET_Count() const;
 	int EG_Count() const;
 	int EH_Count() const;

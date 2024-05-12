@@ -1,41 +1,48 @@
 Td    ID    Tj    Df    Dd    Db
 
-16    2016  13    3     0     3
-17    2021  15    1     1     2
-17    2011  11    5     1     6
-18    2004  7     11    0     11
-18    2001  2     16    0     16
-18    2013  12    4     2     6
-18    2002  2     14    2     16
-19    2012  11    6     2     8
-19    2022  17    2     0     2
-19    2018  13    6     0     6
-19    2024  17    0     2     2
-20    2009  8     11    1     12
-20    2003  2     17    1     18
-20    2008  8     11    1     12
-20    2007  8     11    1     12
-20    2015  12    7     1     8
-21    2028  20    0     1     1
-29    2030  20    9     0     9
-30    2005  7     22    1     23
-31    2029  20    10    1     11
-31    2027  19    12    0     12
-32    2006  7     25    0     25
-32    2026  19    13    0     13
-34    2025  19    14    1     15
-34    2020  15    19    0     19
-34    2023  17    17    0     17
-35    2010  11    22    2     24
-36    2017  13    22    1     23
-36    2019  15    20    1     21
-36    2014  12    24    0     24
+7     2001  7     0     0     0
+7     2002  7     0     0     0
+8     2003  7     0     1     1
+9     2006  8     0     1     1
+10    2008  10    0     0     0
+10    2005  8     1     1     2
+10    2004  8     2     0     2
+10    2009  10    0     0     0
+10    2007  10    0     0     0
+14    2014  14    0     0     0
+14    2012  13    0     1     1
+15    2011  13    1     1     2
+15    2010  13    0     2     2
+15    2013  14    0     1     1
+16    2015  14    0     2     2
+17    2016  17    0     0     0
+18    2021  18    0     0     0
+18    2018  17    0     1     1
+18    2017  17    0     1     1
+19    2023  19    0     0     0
+19    2022  19    0     0     0
+19    2019  18    0     1     1
+19    2020  18    0     1     1
+20    2027  20    0     0     0
+20    2024  19    0     1     1
+20    2026  20    0     0     0
+21    2025  20    0     1     1
+25    2028  25    0     0     0
+26    2030  25    0     1     1
+26    2029  25    0     1     1
+39    2032  39    0     0     0
+39    2031  39    0     0     0
+40    2033  39    0     1     1
+40    2036  40    0     0     0
+41    2034  40    0     1     1
+41    2035  40    0     1     1
 
 
 For Earth Army ->
-Total Earth Soldier = 6
-Total Earth Gunnery = 6
-Total Earth Tank = 6
+Total Earth Soldier = 15
+Total Infected Earth Soldier = 0
+Total Earth Gunnery = 14
+Total Earth Tank = 10
 Total Earth Healing Unit = 0
 Destructed Earth Soldier Percentage = 0
 Destructed Earth Gunnery Percentage = 0
@@ -50,16 +57,16 @@ Dd/Db% = -nan(ind)%
 
 
 For Alien Army ->
-Total Alien Soldier = 5
-Total Alien Monster = 12
+Total Alien Soldier = 9
+Total Alien Monster = 14
 Total Alien Drone = 13
 Destructed Alien Soldier Percentage = 100
 Destructed Alien Monster Percentage = 100
 Destructed Alien Drone Percentage = 100
 Total Destructed Alien Units Percentage = 100
-Average of Df = 11.8
-Average of Dd = 0.766667
-Average of Db = 12.5667
-Df/Db% = 93.8992%
-Dd/Db% = 6.1008%
+Average of Df = 0.111111
+Average of Dd = 0.583333
+Average of Db = 0.694444
+Df/Db% = 16%
+Dd/Db% = 84%
 Earth Army has won the game.

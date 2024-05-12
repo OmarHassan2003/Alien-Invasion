@@ -3,14 +3,21 @@
 #include "EarthGunnery.h"
 #include "EarthTank.h"
 #include "../HealUnit.h"
+#include "../RandomGenerator/RandomGenerator.h"
 
 EarthArmy::EarthArmy()
 {
 	Won = false;
 }
 
+void EarthArmy::SetRandGen(RandomGenerator* p)
+{
+	randgen = p;
+}
+
 bool EarthArmy::Attack()
 {
+	SpreadInfection();
 	IsAttack = false;
 	EarthSoldier* ES = nullptr;
 	if (ES_Queue.peek(ES))
@@ -27,7 +34,7 @@ bool EarthArmy::Attack()
 
 	HealUnit* HU;
 	if (HU_Stack.pop(HU))   //pop because it heals one time then die
-		if (!HU->Attack())  // if it doesnt heal return it back
+		if (!HU->Attack())  // if it doesn't heal return it back
 			HU_Stack.push(HU);
 	return IsAttack;
 }
@@ -93,6 +100,58 @@ bool EarthArmy::GetIsAttack() const
 	return IsAttack;
 }
 
+void EarthArmy::SpreadInfection()
+{
+	Stack<EarthSoldier*>TempES_Stack;
+	Queue<EarthSoldier*>TempES_Queue;
+	Queue<EarthSoldier*>Temp_ES_Infected_Queue;
+	EarthSoldier* tempES_Ptr = nullptr;
+	EarthSoldier* tempES_Infected_Ptr = nullptr;
+	unsigned short random_value;
+	const unsigned short ES_Num = ES_Count();
+	while (!ES_Queue.isEmpty())
+	{
+		ES_Queue.dequeue(tempES_Ptr);
+		TempES_Stack.push(tempES_Ptr);
+		TempES_Queue.enqueue(tempES_Ptr);
+		if (tempES_Ptr->getInfected())
+			Temp_ES_Infected_Queue.enqueue(tempES_Ptr);
+	}
+	while (!Temp_ES_Infected_Queue.isEmpty())
+	{
+		Temp_ES_Infected_Queue.dequeue(tempES_Infected_Ptr);
+		if (randgen->RandGen(0, 100) <= 2)
+		{
+			Queue<EarthSoldier*> ES_Temp;
+			random_value = randgen->RandGen(1, ES_Num);
+			for (unsigned short i = 0;i < random_value - 1;i++)
+			{
+				TempES_Queue.dequeue(tempES_Ptr);
+				ES_Temp.enqueue(tempES_Ptr);
+			}
+			TempES_Queue.dequeue(tempES_Ptr);
+			if(!tempES_Ptr->getImmune())
+				tempES_Ptr->setInfected(true);
+			ES_Temp.enqueue(tempES_Ptr);
+			for (unsigned short i = random_value;i < ES_Num;i++)
+			{
+				TempES_Queue.dequeue(tempES_Ptr);
+				ES_Temp.enqueue(tempES_Ptr);
+			}
+			while (!ES_Temp.isEmpty())
+			{
+				ES_Temp.dequeue(tempES_Ptr);
+				TempES_Queue.enqueue(tempES_Ptr);
+			}
+		}
+	}
+	while (!TempES_Stack.isEmpty())
+	{
+		TempES_Stack.pop(tempES_Ptr);
+		ES_Queue.enqueue(tempES_Ptr);
+	}
+}
+
 bool EarthArmy::pick_ES(EarthSoldier*& EPtr)
 {
 	return ES_Queue.dequeue(EPtr);
@@ -117,6 +176,26 @@ bool EarthArmy::pick_HU(HealUnit*& Eptr)
 int EarthArmy::ES_Count() const
 {
 	return ES_Queue.GetCount();
+}
+
+int EarthArmy::ES_Infected_Count()
+{
+	int Counter = 0;
+	EarthSoldier* Temp_ES;
+	Stack<EarthSoldier*> Temp_Stack;
+	while (!ES_Queue.isEmpty())
+	{
+		ES_Queue.dequeue(Temp_ES);
+		if (Temp_ES->getInfected())
+			Counter++;
+		Temp_Stack.push(Temp_ES);
+	}
+	while (!Temp_Stack.isEmpty())
+	{
+		Temp_Stack.pop(Temp_ES);
+		ES_Queue.enqueue(Temp_ES);
+	}
+	return Counter;
 }
 
 int EarthArmy::ET_Count() const
@@ -254,3 +333,4 @@ EarthArmy::~EarthArmy()
 		delg = nullptr;
 	}
 }
+
