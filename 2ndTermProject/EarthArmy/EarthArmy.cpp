@@ -136,7 +136,7 @@ void EarthArmy::SpreadInfection()
 		if (tempES_Ptr->getInfected())
 			IsThereInfectedSoldiers = true;
 	}
-	while (IsThereInfectedSoldiers)
+	if (IsThereInfectedSoldiers)
 	{
 		if (randgen->RandGen(0, 100) <= 2)
 		{
