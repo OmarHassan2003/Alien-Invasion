@@ -99,11 +99,31 @@ bool EarthArmy::GetIsAttack() const
 	return IsAttack;
 }
 
+int EarthArmy::ES_Infected_Count()
+{
+	int Counter = 0;
+	EarthSoldier* Temp_ES;
+	Stack<EarthSoldier*> Temp_Stack;
+	while (!ES_Queue.isEmpty())
+	{
+		ES_Queue.dequeue(Temp_ES);
+		if (Temp_ES->getInfected())
+			Counter++;
+		Temp_Stack.push(Temp_ES);
+	}
+	while (!Temp_Stack.isEmpty())
+	{
+		Temp_Stack.pop(Temp_ES);
+		ES_Queue.enqueue(Temp_ES);
+	}
+	return Counter;
+}
+
 void EarthArmy::SpreadInfection()
 {
 	Queue<EarthSoldier*>TempES_Queue_Ultra;
 	Queue<EarthSoldier*>TempES_Queue;
-	Queue<EarthSoldier*>Temp_ES_Infected_Queue;
+	bool IsThereInfectedSoldiers = false;
 	EarthSoldier* tempES_Ptr = nullptr;
 	EarthSoldier* tempES_Infected_Ptr = nullptr;
 	unsigned short random_value;
@@ -114,11 +134,10 @@ void EarthArmy::SpreadInfection()
 		TempES_Queue_Ultra.enqueue(tempES_Ptr);
 		TempES_Queue.enqueue(tempES_Ptr);
 		if (tempES_Ptr->getInfected())
-			Temp_ES_Infected_Queue.enqueue(tempES_Ptr);
+			IsThereInfectedSoldiers = true;
 	}
-	while (!Temp_ES_Infected_Queue.isEmpty())
+	while (IsThereInfectedSoldiers)
 	{
-		Temp_ES_Infected_Queue.dequeue(tempES_Infected_Ptr);
 		if (randgen->RandGen(0, 100) <= 2)
 		{
 			Queue<EarthSoldier*> ES_Temp;

@@ -38,6 +38,7 @@ public:
 	bool pick_HU(HealUnit*& Eptr);
 	/****************Get Counts of lists**********************/
 	int ES_Count() const;
+	int ES_Infected_Count();
 	int ET_Count() const;
 	int EG_Count() const;
 	int EH_Count() const;
