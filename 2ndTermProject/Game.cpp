@@ -6,6 +6,7 @@ Game::Game()
 	randgenn = new RandomGenerator;
 	EA.SetRandGen(randgenn);
 	Tj_value = 1;
+	InfectedSoldiers = 0;
 	gameMode = false;
 }
 
@@ -290,7 +291,10 @@ bool Game::WillInfect()
 {
 	int y = randgenn->RandGen(1, 100);
 	if (y <= randgenn->get_InfectionProbability())
+	{
+		InfectedSoldiers++;
 		return true;
+	}
 	else return false;
 }
 
@@ -373,7 +377,7 @@ void Game::GenerateOutputFile()
 		unsigned int ES_Destructed = countDestructed(ArmyUnit::ES), EG_Destructed = countDestructed(ArmyUnit::EG), ET_Destructed = countDestructed(ArmyUnit::ET), EH_Destructed = countDestructed(ArmyUnit::EH);
 		unsigned int AS_Destructed = countDestructed(ArmyUnit::AS), AM_Destructed = countDestructed(ArmyUnit::AM), AD_Destructed = countDestructed(ArmyUnit::AD);
 
-		unsigned int Total_ES_Infected = EA.ES_Infected_Count();
+		unsigned int Total_ES_Infected = InfectedSoldiers;
 
 		priQueue<ArmyUnit*> temp_pri;
 		Stack<ArmyUnit*> temp_stack;
@@ -460,7 +464,7 @@ void Game::GenerateOutputFile()
 		}
 		Fout << "\n\nFor Earth Army ->\n";
 		Fout << "Total Earth Soldier = " << Total_ES << endl;
-		Fout << "Total Infected Earth Soldier = " << Total_ES_Infected << endl;
+		Fout << "Total Infected Earth Soldier = " << float(Total_ES_Infected) * 100 / Total_ES << endl;
 		Fout << "Total Earth Gunnery = " << Total_EG << endl;
 		Fout << "Total Earth Tank = " << Total_ET << endl;
 		Fout << "Total Earth Healing Unit = " << Total_EH << endl;

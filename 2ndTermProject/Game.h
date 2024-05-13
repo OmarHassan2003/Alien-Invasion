@@ -17,6 +17,7 @@ class Game
 	Queue<ArmyUnit*> ET_UML; // HERE or in EA class.
 	RandomGenerator* randgenn;
 	unsigned short Tj_value;
+	unsigned short InfectedSoldiers;
 	bool gameMode;
 public:
 	Game();

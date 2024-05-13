@@ -101,7 +101,7 @@ bool EarthArmy::GetIsAttack() const
 
 void EarthArmy::SpreadInfection()
 {
-	Stack<EarthSoldier*>TempES_Stack;
+	Queue<EarthSoldier*>TempES_Queue_Ultra;
 	Queue<EarthSoldier*>TempES_Queue;
 	Queue<EarthSoldier*>Temp_ES_Infected_Queue;
 	EarthSoldier* tempES_Ptr = nullptr;
@@ -111,7 +111,7 @@ void EarthArmy::SpreadInfection()
 	while (!ES_Queue.isEmpty())
 	{
 		ES_Queue.dequeue(tempES_Ptr);
-		TempES_Stack.push(tempES_Ptr);
+		TempES_Queue_Ultra.enqueue(tempES_Ptr);
 		TempES_Queue.enqueue(tempES_Ptr);
 		if (tempES_Ptr->getInfected())
 			Temp_ES_Infected_Queue.enqueue(tempES_Ptr);
@@ -144,9 +144,9 @@ void EarthArmy::SpreadInfection()
 			}
 		}
 	}
-	while (!TempES_Stack.isEmpty())
+	while (!TempES_Queue_Ultra.isEmpty())
 	{
-		TempES_Stack.pop(tempES_Ptr);
+		TempES_Queue_Ultra.dequeue(tempES_Ptr);
 		ES_Queue.enqueue(tempES_Ptr);
 	}
 }
@@ -175,26 +175,6 @@ bool EarthArmy::pick_HU(HealUnit*& Eptr)
 int EarthArmy::ES_Count() const
 {
 	return ES_Queue.GetCount();
-}
-
-int EarthArmy::ES_Infected_Count()
-{
-	int Counter = 0;
-	EarthSoldier* Temp_ES;
-	Stack<EarthSoldier*> Temp_Stack;
-	while (!ES_Queue.isEmpty())
-	{
-		ES_Queue.dequeue(Temp_ES);
-		if (Temp_ES->getInfected())
-			Counter++;
-		Temp_Stack.push(Temp_ES);
-	}
-	while (!Temp_Stack.isEmpty())
-	{
-		Temp_Stack.pop(Temp_ES);
-		ES_Queue.enqueue(Temp_ES);
-	}
-	return Counter;
 }
 
 int EarthArmy::ET_Count() const
