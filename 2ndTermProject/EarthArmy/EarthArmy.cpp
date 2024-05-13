@@ -41,22 +41,21 @@ bool EarthArmy::Attack()
 
 void EarthArmy::PrintArmyInfo()
 {
-	cout << ES_Queue.GetCount() << " ES [ ";
+	cout << ES_Queue.GetCount() << " ES ";
 	ES_Queue.print();
-	cout << "]" << endl;
+	cout << endl;
 
-	cout << ET_Stack.GetCount() << " ET [ ";
+	cout << ET_Stack.GetCount() << " ET ";
 	ET_Stack.print();
-	cout << "]" << endl;
+	cout << endl;
 
-	cout << EG_priQ.GetCount() << " EG [ ";
+	cout << EG_priQ.GetCount() << " EG ";
 	EG_priQ.print();
-	cout << "]" << endl;
+	cout << endl;
 
-	cout << HU_Stack.GetCount() << " EH [ ";
+	cout << HU_Stack.GetCount() << " EH ";
 	HU_Stack.print();
-	cout << "]" << endl;
-
+	cout << endl;
 	/*
 	cout << Total_E_Units << "Total :";
 	cout << ES_Queue.GetCount() << " ES /";

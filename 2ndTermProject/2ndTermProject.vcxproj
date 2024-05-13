@@ -132,6 +132,7 @@
     <ClCompile Include="AlienArmy\AlienSoldier.cpp" />
     <ClCompile Include="AlienArmy\AlienDrone.cpp" />
     <ClCompile Include="AlienArmy\AlienMonster.cpp" />
+    <ClCompile Include="AlliedArmy.cpp" />
     <ClCompile Include="Army.cpp" />
     <ClCompile Include="ArmyUnit.cpp" />
     <ClCompile Include="EarthArmy\EarthGunnery.cpp" />
@@ -143,6 +144,7 @@
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="Queue\QueueADT.cpp" />
     <ClCompile Include="RandomGenerator\RandomGenerator.cpp" />
+    <ClCompile Include="SaverUnit.cpp" />
     <ClCompile Include="Stack\StackADT.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -150,6 +152,7 @@
     <ClInclude Include="AlienArmy\AlienSoldier.h" />
     <ClInclude Include="AlienArmy\AlienDrone.h" />
     <ClInclude Include="AlienArmy\AlienMonster.h" />
+    <ClInclude Include="AlliedArmy.h" />
     <ClInclude Include="Army.h" />
     <ClInclude Include="ArmyUnit.h" />
     <ClInclude Include="DynamicArray.h" />
@@ -168,6 +171,7 @@
     <ClInclude Include="Queue\QueueADT.h" />
     <ClInclude Include="RandomGenerator\RandomGenerator.h" />
     <ClInclude Include="resource1.h" />
+    <ClInclude Include="SaverUnit.h" />
     <ClInclude Include="Stack\Stack.h" />
     <ClInclude Include="Stack\StackADT.h" />
   </ItemGroup>

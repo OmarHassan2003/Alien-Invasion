@@ -83,20 +83,22 @@ template<typename T>
 void Stack<T>::print() const
 {
 	Node<T>* temp = Top;
+	cout << "[";
 	if (!count) {
-		cout << "NO ELEMENTS";
+		cout << "NO ELEMENTS]";
 		return;
 	}
-	while (temp != nullptr) {
+	while (temp != nullptr)
+	{
 		if (!temp->getNext())
-			break;
+			cout << temp->getItem();
 		else
 		{
-			cout << temp->getItem() << ",";
+			cout << temp->getItem() << " ,";
 		}
 		temp = temp->getNext();
 	}
-	cout << temp->getItem();
+	cout << "]";
 }
 
 template<typename T>

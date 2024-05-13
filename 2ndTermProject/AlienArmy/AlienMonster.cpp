@@ -23,11 +23,33 @@ bool AlienMonster::Attack()
 		ET->SetHealth(ET->GetHealth() - dmg);
 		tempList1.push(ET);
 	}
+
 	int remaining_AttackCapacity = GetAttackCap() - i;
 	EarthSoldier* ES = nullptr;
 	for (int j = 1; j <= remaining_AttackCapacity; j++)
 	{
-		if (pGame->Get_ES(ES))
+		if (pGame->WillInfect())
+		{
+			if (pGame->Get_ES(ES))
+			{
+				flag = true;
+				if (ES->getInfected() || ES->getImmune())
+				{
+					int dmg = int((float)GetPower() * (GetHealth() / 100.0) / (float)sqrt(ES->GetHealth()));
+					ES->SetHealth(ES->GetHealth() - dmg);
+					tempList2.enqueue(ES);
+				}
+				else
+				{
+					if (!ES->getImmune())
+					{
+						ES->setInfected(true);
+						tempList2.enqueue(ES);
+					}
+				}
+			}
+		}
+		else if (pGame->Get_ES(ES))
 		{
 			if (ES->Get_Ta() == -1)
 				ES->Set_Ta(pGame->Get_Tj());
@@ -43,19 +65,10 @@ bool AlienMonster::Attack()
 	{
 		if (!tempList1.isEmpty() || !tempList2.isEmpty())
 		{
-			cout << "AM " << this << "shots [";
-			if (!tempList1.isEmpty())
-			{
-				tempList1.print();
-			}
-			if (tempList1.isEmpty())
-				cout << "";
-			else cout << "] [";
-			if (!tempList2.isEmpty())
-			{
-				tempList2.print();
-			}
-			cout << "]";
+			cout << "AM " << this << " shots ";
+			tempList1.print();
+			cout << " ";
+			tempList2.print();
 			cout << endl;
 		}
 	}
@@ -89,7 +102,7 @@ ostream& operator<<(ostream& COUT, AlienMonster* PAssed_AM)
 {
 	if (PAssed_AM)
 	{
-		COUT << PAssed_AM->GetID() << " ";
+		COUT << PAssed_AM->GetID();
 		return COUT;
 	}
 }

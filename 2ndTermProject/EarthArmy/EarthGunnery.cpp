@@ -42,10 +42,7 @@ bool EarthGunnery::Attack()
 
 			int dmg = int((float)GetPower() * (GetHealth() / 100.0) / (float)sqrt(pAD1->GetHealth()));
 			pAD1->SetHealth(pAD1->GetHealth() - dmg);
-			if (pAD1->GetHealth() <= 0)
-				pGame->AddInKilledList(pAD1);
-			else
-				temp_queue1.enqueue(pAD1);
+			temp_queue1.enqueue(pAD1);
 		}
 		else
 			break;
@@ -72,25 +69,12 @@ bool EarthGunnery::Attack()
 	{
 		if (!temp_queue0.isEmpty() || !temp_queue1.isEmpty() || !temp_AM_Queue.isEmpty())
 		{
-			cout << "EG " << this << "shots [";
-			if (!temp_queue0.isEmpty())
-			{
-				temp_queue0.print();
-			}
-			if (!temp_queue1.isEmpty())
-			{
-				if (!temp_queue0.isEmpty());
-					cout << " ,";
-				temp_queue1.print();
-			}
-			if (temp_queue0.isEmpty() && temp_queue1.isEmpty())
-				cout << "";
-			else cout << "] [";
-			if (!temp_AM_Queue.isEmpty())
-			{
-				temp_AM_Queue.print();
-			}
-			cout << "]";
+			cout << "EG " << this << " shots ";
+			temp_queue0.print();
+			cout << " ";
+			temp_queue1.print();
+			cout << " ";
+			temp_AM_Queue.print();
 			cout << endl;
 		}
 	}
@@ -148,6 +132,6 @@ bool EarthGunnery::Attack()
 
 ostream& operator<<(ostream& COUT, EarthGunnery* Passed_AU)
 {
-	COUT << Passed_AU->GetID() << " ";
+	COUT << Passed_AU->GetID();
 	return COUT;
 }

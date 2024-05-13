@@ -145,19 +145,20 @@ template<class T>
 void DoubleLinkedQueue<T>::print() const
 {
 	DoubleNode<T>* temp = Front;
+	cout << "[";
 	if (!count) {
-		cout << "NO ELEMENTS" ;
+		cout << "NO ELEMENTS]";
 		return;
 	}
 	while (temp != nullptr) {
 		if (!temp->getNext()) cout << temp->getItem();
 		else
 		{
-			cout << temp->getItem() << ",";
+			cout << temp->getItem() << " ,";
 		}
 		temp = temp->getNext();
 	}
-
+	cout << "]";
 }
 
 template<class T>

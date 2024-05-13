@@ -32,17 +32,17 @@ bool AlienArmy::Attack()
 
 void AlienArmy::PrintArmyInfo()
 {
-	cout << AS_Queue.GetCount() << " AS [ ";
+	cout << AS_Queue.GetCount() << " AS ";
 	AS_Queue.print();
-	cout << "]" << endl;
+	cout << endl;
 
-	cout << AM.GetCount() << " AM [ ";
+	cout << AM.GetCount() << " AM ";
 	AM.print();
-	cout << "]" << endl;
-	
-	cout << AD_DQueue.GetCount() << " AD [ ";
+	cout << endl;
+
+	cout << AD_DQueue.GetCount() << " AD ";
 	AD_DQueue.print();
-	cout << "]" << endl;
+	cout << endl;
 
 	/*
 	cout << Total_A_Units << "Total :";

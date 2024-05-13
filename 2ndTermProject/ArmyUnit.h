@@ -8,7 +8,7 @@ class ArmyUnit
 {
 public:
 	enum Unit {
-		ES, EG, ET, EH, AS, AM, AD
+		ES, EG, ET, EH, AS, AM, AD, SU
 	};
 protected:
 	Game* pGame;

@@ -4,12 +4,14 @@
 #include <iostream>
 #include "EarthArmy/EarthArmy.h"
 #include "AlienArmy/AlienArmy.h"
+#include "AlliedArmy.h"
 using namespace std;
 
 class Game
 {
 	EarthArmy EA;
 	AlienArmy AA;
+	AlliedArmy Allies;
 	Queue<ArmyUnit*> Killed_List;
 	priQueue<ArmyUnit*> ES_UML; // HERE or in EA class.
 	Queue<ArmyUnit*> ET_UML; // HERE or in EA class.
@@ -23,6 +25,7 @@ public:
 	bool GameMode();
 	void Generate_Earth_Army();
 	void Generate_Alien_Army();
+	void Generate_Allied_Army();
 	unsigned short Get_And_Inc_Tj();
 	unsigned short Get_Tj();
 	void UpdateUML();
@@ -56,6 +59,8 @@ public:
 	void Add_EG(EarthGunnery* AU);
 	/////////////////////////////////////
 	bool Attack();
+	bool WillInfect();
+	void SU_Withdrawal();
 	void printArmies();
 	void printUMLQueue();
 	void printKilledList();

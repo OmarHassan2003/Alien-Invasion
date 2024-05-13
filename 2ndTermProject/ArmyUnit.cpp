@@ -98,6 +98,6 @@ void ArmyUnit::PrintUnitInfo()
 
 ostream& operator<<(ostream& COUT, ArmyUnit* Passed_AU)
 {
-	COUT << Passed_AU->GetID() << " ";
+	COUT << Passed_AU->GetID();
 	return COUT;
 }

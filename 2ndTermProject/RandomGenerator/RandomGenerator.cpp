@@ -35,7 +35,7 @@ ArmyUnit* RandomGenerator::CreateUnit(unsigned short Tj, Game* pGame, char u)
 			pArmyUnit = new EarthGunnery(pGame, health, power, EarthID, attack_capacity, Tj);
 		EarthID++;
 	}
-	else
+	else if(u == 'A')
 	{
 		static unsigned short AlienID = 2001;
 		unsigned short x = RandGen(1, 100);
@@ -54,6 +54,20 @@ ArmyUnit* RandomGenerator::CreateUnit(unsigned short Tj, Game* pGame, char u)
 		else
 			pArmyUnit = new AlienDrone(pGame, health, power, AlienID, attack_capacity, Tj);;
 		AlienID++;
+	}
+	else
+	{
+		static unsigned short SaverUnitID = 1001;
+		unsigned short x = RandGen(1, 100);
+		unsigned short health = RandGen(min_SU_health, max_SU_health);
+		unsigned short power = RandGen(min_SU_Power, max_SU_Power);
+		unsigned short attack_capacity = RandGen(min_SU_Attack_Capacity, max_SU_Attack_Capacity);
+		if (SaverUnitID == 1250 && pGame->Get_GameMode())
+		{
+			cout << "NO MORE IDS AVAILABLE FOR ALLIES ARMY" << endl;
+			return NULL;
+		}
+		pArmyUnit = new SaverUnit(pGame, health, power, SaverUnitID, attack_capacity, Tj);
 	}
 	return pArmyUnit;
 }
@@ -113,9 +127,29 @@ void RandomGenerator::set_Prop(int prop)
 	Prop = prop;
 }
 
+void RandomGenerator::set_InfectionProbaility(int inf)
+{
+	InfectionProbaility = inf;
+}
+
+void RandomGenerator::set_Threshold(int thres)
+{
+	Threshold = thres;
+}
+
 int RandomGenerator::get_Prop() const
 {
 	return Prop;
+}
+
+int RandomGenerator::get_InfectionProbability() const
+{
+	return InfectionProbaility;
+}
+
+int RandomGenerator::get_Threshold() const
+{
+	return Threshold;
 }
 
 void RandomGenerator::set_MinEpower(int min_e_power)
@@ -176,4 +210,34 @@ void RandomGenerator::set_MaxAhealth(int max_a_health)
 void RandomGenerator::set_MaxAAttackCapacity(int max_a_attackcapcity)
 {
 	max_A_Attack_Capacity = max_a_attackcapcity;
+}
+
+void RandomGenerator::set_MinSUpower(int min_su_power)
+{
+	min_SU_Power = min_su_power;
+}
+
+void RandomGenerator::set_MinSUhealth(int min_su_health)
+{
+	min_SU_health = min_su_health;
+}
+
+void RandomGenerator::set_MinSUAttackCapacity(int min_su_attackcapcity)
+{
+	min_SU_Attack_Capacity = min_su_attackcapcity;
+}
+
+void RandomGenerator::set_MaxSUpower(int max_su_power)
+{
+	max_SU_Power = max_su_power;
+}
+
+void RandomGenerator::set_MaxSUhealth(int max_su_health)
+{
+	max_SU_health = max_su_health;
+}
+
+void RandomGenerator::set_MaxSUAttackCapacity(int max_su_attackcapcity)
+{
+	max_SU_Attack_Capacity = max_su_attackcapcity;
 }

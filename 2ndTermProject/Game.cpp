@@ -51,6 +51,8 @@ void Game::Battle()
 		}
 		else
 			End = false;
+		/*cout << "Press Any key to move to the next timestep" << endl;
+		std::cin.get();*/
 	}//wait for a click.
 	GenerateOutputFile();
 	cout << "Simulation ends, Output file is created" << endl;
@@ -85,6 +87,20 @@ void Game::Generate_Alien_Army()
 	}
 }
 
+void Game::Generate_Allied_Army()
+{
+	ArmyUnit* AU = nullptr;
+	int x = randgenn->RandGen(1, 100);
+	if (x <= randgenn->get_Prop())
+	{
+		for (int i = 0; i < randgenn->get_n(); ++i)
+		{
+			AU = randgenn->CreateUnit(Tj_value, this, 'S');
+			if (AU)
+				Allies.AddUnit(AU);
+		}
+	}
+}
 unsigned short Game::Get_And_Inc_Tj()
 {
 	Tj_value++;
@@ -270,6 +286,24 @@ bool Game::Attack()
 	return !(EA.Attack() | AA.Attack());
 }
 
+bool Game::WillInfect()
+{
+	int y = randgenn->RandGen(1, 100);
+	if (y <= randgenn->get_InfectionProbability())
+		return true;
+	else return false;
+}
+
+void Game::SU_Withdrawal()
+{
+	if (EA.ES_Infected_Count() == 0 && Allies.SU_Count() != 0)
+	{
+		Allies.destroy_SU(this);
+	}
+}
+
+
+
 void Game::printArmies()
 {
 	cout << "============================================ Earth Army Alive Units ==========================================" << endl;
@@ -283,20 +317,20 @@ void Game::printArmies()
 void Game::printUMLQueue()
 {
 	cout << "============================================ UML Units ==========================================" << endl;
-	cout << ES_UML.GetCount() << " units [ ";
+	cout << ES_UML.GetCount() << " units ";
 	ES_UML.print();
-	cout << " ]" << endl;
-	cout << ET_UML.GetCount() << " units [ ";
+	cout << endl;
+	cout << ET_UML.GetCount() << " units ";
 	ET_UML.print();
-	cout << " ]" << endl;
+	cout << endl;
 }
 
 void Game::printKilledList()
 {
 	cout << "============================================ Killed/Destructed Units ==========================================" << endl;
-	cout << Killed_List.GetCount() << " units [ ";
+	cout << Killed_List.GetCount() << " units ";
 	Killed_List.print();
-	cout << " ]" << endl;
+	cout << endl;
 	cout << "===============================================================================================================" << endl;
 }
 
@@ -488,13 +522,14 @@ Game::~Game()
 
 void Game::ReadData()
 {
-	unsigned short n ,h, ES, ET, EG, AS, AM, AD, Prop, min_E_Power, min_E_health, min_E_Attack_Capacity, max_E_Power,
+	unsigned short n, h, ES, ET, EG, AS, AM, AD, Prop, min_E_Power, min_E_health, min_E_Attack_Capacity, max_E_Power,
 		max_E_health, max_E_Attack_Capacity, min_A_Power, min_A_health, min_A_Attack_Capacity, max_A_Power,
-		max_A_health, max_A_Attack_Capacity;
+		max_A_health, max_A_Attack_Capacity, InfectionProbaility, Threshold, min_SU_Power, min_SU_health, min_SU_Attack_Capacity, max_SU_Power,
+		max_SU_health, max_SU_Attack_Capacity;
 	ifstream Fin("../test.txt");
 	if (Fin.is_open())
 	{
-		Fin >> n >> h >> ES >> ET >> EG >> AS >> AM >> AD >> Prop;
+		Fin >> n >> h >> ES >> ET >> EG >> AS >> AM >> AD >> Prop >> Threshold >> InfectionProbaility;
 		/***********************Read Earth Data*************************/
 		Fin >> min_E_Power;
 		Fin.ignore();
@@ -533,6 +568,25 @@ void Game::ReadData()
 		Fin >> max_A_Attack_Capacity;
 		Fin.ignore();
 		/***********************Read ALien Data*************************/
+		/***********************Read Saver Unit Data*************************/
+		Fin >> min_SU_Power;
+		Fin.ignore();
+
+		Fin >> max_SU_Power;
+		Fin.ignore();
+
+		Fin >> min_SU_health;
+		Fin.ignore();
+
+		Fin >> max_SU_health;
+		Fin.ignore();
+
+		Fin >> min_SU_Attack_Capacity;
+		Fin.ignore();
+
+		Fin >> max_SU_Attack_Capacity;
+		Fin.ignore();
+		/***********************Read Saver Unit Data*************************/
 		Fin.close();
 		/***********************Create the random generator object*************************/
 		randgenn->set_n(n);
@@ -544,6 +598,8 @@ void Game::ReadData()
 		randgenn->set_AM(AM);
 		randgenn->set_AD(AD);
 		randgenn->set_Prop(Prop);
+		randgenn->set_InfectionProbaility(InfectionProbaility);
+		randgenn->set_Threshold(Threshold);
 		randgenn->set_MinEpower(min_E_Power);
 		randgenn->set_MinEhealth(min_E_health);
 		randgenn->set_MinEAttackCapacity(min_E_Attack_Capacity);
@@ -556,6 +612,12 @@ void Game::ReadData()
 		randgenn->set_MaxApower(max_A_Power);
 		randgenn->set_MaxAhealth(max_A_health);
 		randgenn->set_MaxAAttackCapacity(max_A_Attack_Capacity);
+		randgenn->set_MinSUpower(min_SU_Power);
+		randgenn->set_MinSUhealth(min_SU_health);
+		randgenn->set_MinSUAttackCapacity(min_SU_Attack_Capacity);
+		randgenn->set_MaxSUpower(max_SU_Power);
+		randgenn->set_MaxSUhealth(max_SU_health);
+		randgenn->set_MaxSUAttackCapacity(max_SU_Attack_Capacity);
 	}
 	else
 		cout << "File failed" << endl;

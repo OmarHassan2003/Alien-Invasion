@@ -32,7 +32,10 @@ bool HealUnit::Attack()
 				if (AU->GetHealth() >= 0.2 * AU->GetInitialH())
 				{
 					if (ES->getInfected())
+					{
 						ES->setImmune(1);
+						ES->setInfected(false);
+					}
 					pGame->Add_ES((EarthSoldier*)AU);
 					AU->Set_StepsInUML(0);
 				}

@@ -47,19 +47,10 @@ bool AlienDrone::Attack()
 	{
 		if (!temp_ET_Queue.isEmpty() || !temp_EG_Queue.isEmpty())
 		{
-			cout << "AD " << this << "shots [";
-			if (!temp_ET_Queue.isEmpty())
-			{
-				temp_ET_Queue.print();
-			}
-			if (temp_ET_Queue.isEmpty())
-				cout << "";
-			else cout << "] [";
-			if (!temp_EG_Queue.isEmpty())
-			{
-				temp_EG_Queue.print();
-			}
-			cout << "]";
+			cout << "AD " << this << " shots ";
+			temp_ET_Queue.print();
+			cout << " ";
+			temp_EG_Queue.print();
 			cout << endl;
 		}
 	}
@@ -89,6 +80,6 @@ bool AlienDrone::Attack()
 
 ostream& operator<<(ostream& COUT, AlienDrone* PAssed_AD)
 {
-	COUT << PAssed_AD->GetID() << " ";
+	COUT << PAssed_AD->GetID();
 	return COUT;
 }

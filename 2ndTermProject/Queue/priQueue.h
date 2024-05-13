@@ -81,9 +81,10 @@ public:
     {
         int x;
         priNode<T>* temp = head;
+        cout << "[";
         if (!count)
         {
-            cout << "NO ELEMENTS";
+            cout << "NO ELEMENTS]";
             return;
         }
         while (temp != nullptr)
@@ -91,10 +92,11 @@ public:
             if (!temp->getNext()) cout << temp->getItem(x);
             else 
             {
-                cout << temp->getItem(x) << ',';
+                cout << temp->getItem(x) << " ,";
             }
             temp = temp->getNext();
         }
+        cout << "]";
     }
 
     int GetCount() const

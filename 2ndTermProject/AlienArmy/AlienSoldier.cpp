@@ -28,9 +28,9 @@ bool AlienSoldier::Attack()
 	{
 		if (!templist.isEmpty())
 		{
-			cout << "AS " << this << "shots [";
+			cout << "AS " << this << " shots ";
 			templist.print();
-			cout << "]" << endl;
+			cout << endl;
 		}
 	}
 	while (templist.dequeue(ES))
@@ -47,6 +47,6 @@ bool AlienSoldier::Attack()
 
 ostream& operator<<(ostream& COUT, AlienSoldier* Passed_AU)
 {
-	COUT << Passed_AU->GetID() << " ";
+	COUT << Passed_AU->GetID();
 	return COUT;
 }

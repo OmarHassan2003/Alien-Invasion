@@ -80,9 +80,10 @@ bool DynamicArray<T>::Pick(T& FrontEntry)
 template<typename T>
 void DynamicArray<T>::print() const
 {
+	cout << "[";
 	if (!count)
 	{
-		cout << "NO ELEMENTS";
+		cout << "NO ELEMENTS]";
 		return;
 	}
 	for (int i = 0; i < count; i++)
@@ -90,9 +91,10 @@ void DynamicArray<T>::print() const
 		if (count)
 		{
 			if (i == count - 1) cout << arr[i];
-			else cout << arr[i] << ",";
+			else cout << arr[i] << " ,";
 		}
 	}
+	cout << "]";
 }
 
 template<typename T>

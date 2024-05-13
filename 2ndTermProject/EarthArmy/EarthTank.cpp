@@ -79,19 +79,10 @@ bool EarthTank::Attack()
 	{
 		if (!tempList1.isEmpty() || !tempList2.isEmpty())
 		{
-			cout << "ET " << this << "shots [";
-			if (!tempList1.isEmpty())
-			{
-				tempList1.print();
-			}
-			if (tempList1.isEmpty())
-				cout << "";
-			else cout << "] [";
-			if (!tempList2.isEmpty())
-			{
-				tempList2.print();
-			}
-			cout << "]";
+			cout << "ET " << this << " shots ";
+			tempList1.print();
+			cout << " ";
+			tempList2.print();
 			cout << endl;
 		}
 	}
@@ -122,6 +113,6 @@ bool EarthTank::Attack()
 
 ostream& operator<<(ostream& COUT, EarthTank* Passed_AU)
 {
-	COUT << Passed_AU->GetID() << " ";
+	COUT << Passed_AU->GetID();
 	return COUT;
 }

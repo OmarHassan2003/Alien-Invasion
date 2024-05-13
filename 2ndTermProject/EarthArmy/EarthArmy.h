@@ -7,7 +7,6 @@ class EarthGunnery;
 class EarthTank;
 class HealUnit;
 class ArmyUnit;
-
 class EarthArmy :public Army
 {
 	RandomGenerator* randgen;

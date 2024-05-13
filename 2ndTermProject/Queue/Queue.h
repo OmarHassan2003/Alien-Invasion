@@ -83,9 +83,10 @@ template<typename T>
 void Queue<T>::print() const
 {
 	Node<T>* temp = Front;
+	cout << "[";
 	if (!count)
 	{
-		cout << "NO ELEMENTS";
+		cout << "NO ELEMENTS]";
 		return;
 	}
 	while (temp != nullptr)
@@ -93,10 +94,11 @@ void Queue<T>::print() const
 		if (!temp->getNext()) cout << temp->getItem();
 		else
 		{
-			cout << temp->getItem() << ",";
+			cout << temp->getItem() << " ,";
 		}
 		temp = temp->getNext();
 	}
+	cout << "]";
 }
 
 template<typename T>

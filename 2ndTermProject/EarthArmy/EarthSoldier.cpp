@@ -22,13 +22,7 @@ bool EarthSoldier::Attack() //PHASE2
 
 				int dmg = int((float)GetPower() * (GetHealth() / 100.0) / (float)sqrt(ES->GetHealth()));
 				ES->SetHealth(ES->GetHealth() - dmg);
-
-				if (ES->GetHealth() <= 0)
-					pGame->AddInKilledList(ES);
-				else if (ES->GetHealth() < 0.2 * ES->GetInitialH())
-					pGame->AddToESUML(ES);
-				else
-					templist.enqueue(ES);
+				templist.enqueue(ES);
 			}
 			else
 				break;
@@ -37,13 +31,20 @@ bool EarthSoldier::Attack() //PHASE2
 		{
 			if (!templist.isEmpty())
 			{
-				cout << "#ES " << this << "shots [";
+				cout << "#ES " << this << " shots ";
 				templist.print();
-				cout << "]" << endl;
+				cout << endl;
 			}
 		}
 		while (templist.dequeue(ES))
-			pGame->Add_ES(ES);
+		{
+			if (ES->GetHealth() <= 0)
+				pGame->AddInKilledList(ES);
+			else if (ES->GetHealth() < 0.2 * ES->GetInitialH())
+				pGame->AddToESUML(ES);
+			else
+				pGame->Add_ES(ES);
+		}
 		return flag;
 	}
 	else
@@ -69,9 +70,9 @@ bool EarthSoldier::Attack() //PHASE2
 		{
 			if (!templist.isEmpty())
 			{
-				cout << "ES " << this << "shots [";
+				cout << "ES " << this << " shots ";
 				templist.print();
-				cout << "]" << endl;
+				cout << endl;
 			}
 		}
 		while (templist.dequeue(AS))
@@ -111,7 +112,7 @@ ostream& operator<<(ostream& COUT, EarthSoldier* Passed_AU)
 	{
 		if (Passed_AU->getInfected())
 			COUT << "#";
-		COUT << Passed_AU->GetID() << " ";
+		COUT << Passed_AU->GetID();
 		return COUT;
 	}
 }
