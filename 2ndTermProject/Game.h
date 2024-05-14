@@ -38,6 +38,7 @@ public:
 	bool Get_ES(EarthSoldier*& AU);
 	bool Get_EG(EarthGunnery*& AU);
 	bool Get_AD(AlienDrone*& AU);
+	bool Get_SU(SaverUnit*& AU);
 	EarthArmy* getEA_ptr();
 	AlienArmy* getAA_ptr();
 	AlliedArmy* getAllies_ptr();
@@ -55,7 +56,7 @@ public:
 	void Add_ES(EarthSoldier* AU);
 	void Add_ET(EarthTank* AU);
 	void Add_AS(AlienSoldier* AU);
-
+	void Add_SU(SaverUnit* SU);
 	void Add_AD(AlienDrone* AU);
 	void Add_AD_Front(AlienDrone* AU);
 

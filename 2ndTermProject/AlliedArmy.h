@@ -20,6 +20,7 @@ public:
 	/****************insert units to lists********************/
 	bool AddUnit(ArmyUnit* passed_AU);
 	void destroy_SU(Game* pGame);
+	bool pick_SU(SaverUnit*& SU);
 	void AddInQueue(SaverUnit* passed_AU);
 	~AlliedArmy();
 };

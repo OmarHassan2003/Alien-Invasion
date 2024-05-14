@@ -11,7 +11,9 @@ bool AlienMonster::Attack()
 	bool flag = false;
 	Stack<EarthTank*> tempList1;
 	Queue<EarthSoldier*> tempList2;
+	Queue<SaverUnit*> tempList3;
 	EarthTank* ET = nullptr;
+	SaverUnit* SU = nullptr;
 	int i;
 	for (i = 0; i < GetAttackCap() / 2 && pGame->Get_ET(ET); i++)
 	{
@@ -26,7 +28,18 @@ bool AlienMonster::Attack()
 
 	int remaining_AttackCapacity = GetAttackCap() - i;
 	EarthSoldier* ES = nullptr;
-	for (int j = 1; j <= remaining_AttackCapacity; j++)
+	int j;
+	for (j = 0; j < remaining_AttackCapacity / 2; j++)
+	{
+		if (pGame->Get_SU(SU))
+		{
+			flag = true;
+			int dmg = int((float)GetPower() * (GetHealth() / 100.0) / (float)sqrt(SU->GetHealth()));
+			SU->SetHealth(SU->GetHealth() - dmg);
+			tempList3.enqueue(SU);
+		}
+	}
+	for (; j <= remaining_AttackCapacity; j++)
 	{
 		if (pGame->WillInfect())
 		{
@@ -63,12 +76,14 @@ bool AlienMonster::Attack()
 
 	if (pGame->Get_GameMode())
 	{
-		if (!tempList1.isEmpty() || !tempList2.isEmpty())
+		if (!tempList1.isEmpty() || !tempList2.isEmpty() || !tempList3.isEmpty())
 		{
 			cout << "AM " << this << " shots ";
 			tempList1.print();
 			cout << " ";
 			tempList2.print();
+			cout << " ";
+			tempList3.print();
 			cout << endl;
 		}
 	}
@@ -94,6 +109,15 @@ bool AlienMonster::Attack()
 			pGame->AddToESUML(temp);
 		else
 			pGame->Add_ES(temp);
+	}
+	while (!tempList3.isEmpty())
+	{
+		SaverUnit* temp = nullptr;
+		tempList3.dequeue(temp);
+		if (temp->GetHealth() <= 0)
+			pGame->AddInKilledList(temp);
+		else
+			pGame->Add_SU(temp);
 	}
 	return flag;
 }

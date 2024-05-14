@@ -41,6 +41,11 @@ void AlliedArmy::AddInQueue(SaverUnit* passed_AU)
 	SU_Queue.enqueue(passed_AU);
 }
 
+bool AlliedArmy::pick_SU(SaverUnit*& SU)
+{
+	return SU_Queue.dequeue(SU);
+}
+
 int AlliedArmy::SU_Count() const
 {
 	return SU_Queue.GetCount();

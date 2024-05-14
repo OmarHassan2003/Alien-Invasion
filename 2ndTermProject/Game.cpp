@@ -32,6 +32,7 @@ void Game::Battle()
 			cout << "============================================ Units Fighting at the current step ============================================" << endl;
 		}
 		End = Attack();
+		Allies->Attack();
 		Get_And_Inc_Tj();
 		if (gameMode)
 		{
@@ -54,8 +55,8 @@ void Game::Battle()
 		}
 		else
 			End = false;
-		cout << "Press Any key to move to the next timestep" << endl;
-		std::cin.get();
+		/*cout << "Press Any key to move to the next timestep" << endl;
+		std::cin.get();*/
 	}//wait for a click.
 	GenerateOutputFile();
 	cout << "Simulation ends, Output file is created" << endl;
@@ -185,6 +186,10 @@ bool Game::Get_AD(AlienDrone*& AU)
 {
 	return AA->pick_AD(AU);
 }
+bool Game::Get_SU(SaverUnit*& AU)
+{
+	return Allies->pick_SU(AU);
+}
 EarthArmy* Game::getEA_ptr()
 {
 	return EA;
@@ -270,6 +275,10 @@ void Game::Add_ES(EarthSoldier* AU)
 void Game::Add_AS(AlienSoldier* AU)
 {
 	AA->AddInQueue(AU);
+}
+void Game::Add_SU(SaverUnit* SU)
+{
+	Allies->AddInQueue(SU);
 }
 void Game::Add_AD(AlienDrone* AU)
 {

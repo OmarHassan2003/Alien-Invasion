@@ -10,30 +10,48 @@ bool AlienSoldier::Attack()
 {
 	bool flag = false;
 	EarthSoldier* ES = nullptr;
-	Queue<EarthSoldier*> templist;
-	for (int i = 0; i < GetAttackCap(); i++)
+	SaverUnit* SU = nullptr;
+	Queue<EarthSoldier*> templist1;
+	Queue<SaverUnit*> templist2;
+	int i;
+	for (i = 0; i < GetAttackCap() / 2; i++)
+	{
+		if (pGame->Get_SU(SU))
+		{
+			flag = true;
+			if (SU->Get_Ta() == -1)
+				SU->Set_Ta(pGame->Get_Tj());
+
+			int dmg = int((float)GetPower() * (GetHealth() / 100.0) / (float)sqrt(SU->GetHealth()));
+			SU->SetHealth(SU->GetHealth() - dmg);
+			templist2.enqueue(SU);
+		}
+	}
+	for (; i < GetAttackCap(); i++)
 		if (pGame->Get_ES(ES))
 		{
 			flag = true;
 			if (ES->Get_Ta() == -1)
 				ES->Set_Ta(pGame->Get_Tj());
-			
+
 			int dmg = int((float)GetPower() * (GetHealth() / 100.0) / (float)sqrt(ES->GetHealth()));
 			ES->SetHealth(ES->GetHealth() - dmg);
-			templist.enqueue(ES);
+			templist1.enqueue(ES);
 		}
 		else
 			break;
 	if (pGame->Get_GameMode())
 	{
-		if (!templist.isEmpty())
+		if (!templist1.isEmpty() || !templist2.isEmpty())
 		{
 			cout << "AS " << this << " shots ";
-			templist.print();
+			templist1.print();
+			cout << " ";
+			templist2.print();
 			cout << endl;
 		}
 	}
-	while (templist.dequeue(ES))
+	while (templist1.dequeue(ES))
 	{
 		if (ES->GetHealth() <= 0)
 			pGame->AddInKilledList(ES);
@@ -41,6 +59,13 @@ bool AlienSoldier::Attack()
 			pGame->AddToESUML(ES);
 		else
 			pGame->Add_ES(ES);
+	}
+	while (templist2.dequeue(SU))
+	{
+		if (SU->GetHealth() <= 0)
+			pGame->AddInKilledList(SU);
+		else
+			pGame->Add_SU(SU);
 	}
 	return flag;
 }

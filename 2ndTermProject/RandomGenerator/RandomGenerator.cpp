@@ -188,9 +188,9 @@ bool RandomGenerator::AddUnits(Game* pGame, int Tj)
 	}
 
 	int tot_count = pGame->getEA_ptr()->ES_Count();
-	if (tot_count != 0)
+	double inf_count = pGame->getEA_ptr()->ES_Infected_Count();
 	{
-		double inf_prcnt = pGame->getEA_ptr()->ES_Infected_Count() / tot_count;
+		double inf_prcnt = (inf_count / float(tot_count)) * 100;
 		if (inf_prcnt >= Threshold)
 		{
 			unsigned short y = RandGen(1, 100);

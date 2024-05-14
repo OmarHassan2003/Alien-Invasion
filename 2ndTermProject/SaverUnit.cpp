@@ -30,7 +30,7 @@ bool SaverUnit::Attack()
 	{
 		if (!templist.isEmpty())
 		{
-			cout << "ES " << this << " shots ";
+			cout << "SU " << this << " shots ";
 			templist.print();
 			cout << endl;
 		}
