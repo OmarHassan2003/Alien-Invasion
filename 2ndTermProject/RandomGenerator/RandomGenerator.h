@@ -30,6 +30,10 @@ public:
 	RandomGenerator();
 	inline unsigned short RandGen(unsigned short lower_bound, unsigned short upper_bound);
 	ArmyUnit* CreateUnit(unsigned short Tj, Game* pGame, char u);
+	ArmyUnit* GenerateEarthUnit(int ID, Game* pGame, int Tj);
+	ArmyUnit* GenerateAlienUnit(int ID, Game* pGame, int Tj);
+	ArmyUnit* GenerateSaverUnit(int ID, Game* pGame, int Tj);
+	bool AddUnits(Game* pGame, int Tj);
 	void set_n(int N);
 	int get_n() const;
 	void set_HU_percent(unsigned short h);

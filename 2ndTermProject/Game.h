@@ -9,9 +9,9 @@ using namespace std;
 
 class Game
 {
-	EarthArmy EA;
-	AlienArmy AA;
-	AlliedArmy Allies;
+	EarthArmy* EA;
+	AlienArmy* AA;
+	AlliedArmy* Allies;
 	Queue<ArmyUnit*> Killed_List;
 	priQueue<ArmyUnit*> ES_UML; // HERE or in EA class.
 	Queue<ArmyUnit*> ET_UML; // HERE or in EA class.
@@ -38,6 +38,9 @@ public:
 	bool Get_ES(EarthSoldier*& AU);
 	bool Get_EG(EarthGunnery*& AU);
 	bool Get_AD(AlienDrone*& AU);
+	EarthArmy* getEA_ptr();
+	AlienArmy* getAA_ptr();
+	AlliedArmy* getAllies_ptr();
 	bool Get_ET(EarthTank*& AU);
 	bool Get_L_AD(AlienDrone*& AU);
 	bool Get_ES_UML(ArmyUnit*& AU);

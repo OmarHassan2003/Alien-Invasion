@@ -72,6 +72,150 @@ ArmyUnit* RandomGenerator::CreateUnit(unsigned short Tj, Game* pGame, char u)
 	return pArmyUnit;
 }
 
+ArmyUnit* RandomGenerator::GenerateEarthUnit(int ID, Game* pGame, int Tj)
+{
+	ArmyUnit* pArmyUnit = nullptr;
+	unsigned short x = RandGen(1, 100);
+	unsigned short health = RandGen(min_E_health, max_E_health);
+	unsigned short power = RandGen(min_E_Power, max_E_Power);
+	unsigned short attack_capacity = RandGen(min_E_Attack_Capacity, max_E_Attack_Capacity);
+	if (x <= ES)
+		pArmyUnit = new EarthSoldier(pGame, health, power, ID, attack_capacity, Tj);
+	else if (x <= ES + ET)
+		pArmyUnit = new EarthTank(pGame, health, power, ID, attack_capacity, Tj);
+	else if (x <= ES + ET + HU_Percent)
+		pArmyUnit = new HealUnit(pGame, health, power, ID, attack_capacity, Tj);
+	else
+		pArmyUnit = new EarthGunnery(pGame, health, power, ID, attack_capacity, Tj);
+
+	return pArmyUnit;
+}
+
+ArmyUnit* RandomGenerator::GenerateAlienUnit(int ID, Game* pGame, int Tj)
+{
+	ArmyUnit* pArmyUnit = nullptr;
+	unsigned short x = RandGen(1, 100);
+	unsigned short health = RandGen(min_A_health, max_A_health);
+	unsigned short power = RandGen(min_A_Power, max_A_Power);
+	unsigned short attack_capacity = RandGen(min_A_Attack_Capacity, max_A_Attack_Capacity);
+	if (x <= AS)
+		pArmyUnit = new AlienSoldier(pGame, health, power, ID, attack_capacity, Tj);
+	else if (x <= AS + AM)
+		pArmyUnit = new AlienMonster(pGame, health, power, ID, attack_capacity, Tj);
+	else
+		pArmyUnit = new AlienDrone(pGame, health, power, ID, attack_capacity, Tj);;
+
+	return pArmyUnit;
+}
+
+ArmyUnit* RandomGenerator::GenerateSaverUnit(int ID, Game* pGame, int Tj)
+{
+	ArmyUnit* pArmyUnit = nullptr;
+	unsigned short x = RandGen(1, 100);
+	unsigned short health = RandGen(min_SU_health, max_SU_health);
+	unsigned short power = RandGen(min_SU_Power, max_SU_Power);
+	unsigned short attack_capacity = RandGen(min_SU_Attack_Capacity, max_SU_Attack_Capacity);
+	pArmyUnit = new SaverUnit(pGame, health, power, ID, attack_capacity, Tj);
+	return pArmyUnit;
+}
+
+
+
+bool RandomGenerator::AddUnits(Game* pGame, int Tj)
+{
+	ArmyUnit* pArmyUnit = nullptr;
+	static unsigned short EarthID = 1;
+	static unsigned short AlienID = 2001;
+	static unsigned short SaverUnitID = 1001;
+	bool gen_Earth = true;
+	bool gen_Alien = true;
+	bool gen_Saver = true;
+	if (pGame->Get_GameMode())
+	{
+		if (EarthID == 1000)
+		{
+			cout << "NO MORE IDS AVAILABLE FOR EARTH ARMY" << endl;
+			gen_Earth = false;
+		}
+		if (AlienID == 3000)
+		{
+			cout << "NO MORE IDS AVAILABLE FOR ALIEN ARMY" << endl;
+			gen_Alien = false;
+		}
+		if (SaverUnitID == 1250)
+		{
+			cout << "NO MORE IDS AVAILABLE FOR ALLIES ARMY" << endl;
+			gen_Saver = false;
+		}
+	}
+
+	unsigned short x = RandGen(1, 100);
+	if (x <= Prop)
+	{
+		for (unsigned short i = 0; i < n && gen_Earth; i++)
+		{
+			if (EarthID == 1000)
+			{
+				cout << "NO MORE IDS AVAILABLE FOR EARTH ARMY" << endl;
+				gen_Earth = false;
+			}
+			else
+			{
+				pArmyUnit = GenerateEarthUnit(EarthID, pGame, Tj);
+				pGame->getEA_ptr()->AddUnit(pArmyUnit);
+				EarthID++;
+			}
+		}
+	}
+
+	unsigned short y = RandGen(1, 100);
+	if (x <= Prop)
+	{
+		for (unsigned short i = 0; i < n && gen_Alien; i++)
+		{
+			if (AlienID == 3000)
+			{
+				cout << "NO MORE IDS AVAILABLE FOR ALIEN ARMY" << endl;
+				gen_Alien = false;
+			}
+			else
+			{
+				pArmyUnit = GenerateAlienUnit(AlienID, pGame, Tj);
+				pGame->getAA_ptr()->AddUnit(pArmyUnit);
+				AlienID++;
+			}
+		}
+	}
+
+	int tot_count = pGame->getEA_ptr()->ES_Count();
+	if (tot_count != 0)
+	{
+		double inf_prcnt = pGame->getEA_ptr()->ES_Infected_Count() / tot_count;
+		if (inf_prcnt >= Threshold)
+		{
+			unsigned short y = RandGen(1, 100);
+			if (x <= Prop)
+			{
+				for (unsigned short i = 0; i < n && gen_Saver; i++)
+				{
+					if (SaverUnitID == 1250)
+					{
+						cout << "NO MORE IDS AVAILABLE FOR ALLIES ARMY" << endl;
+						gen_Saver = false;
+					}
+					else 
+					{
+						pArmyUnit = GenerateSaverUnit(SaverUnitID, pGame, Tj);
+						pGame->getAllies_ptr()->AddUnit(pArmyUnit);
+						SaverUnitID++;
+					}
+				}
+			}
+		}
+		return gen_Earth || gen_Alien;
+	}
+}
+
 void RandomGenerator::set_n(int N)
 {
 	n = N;

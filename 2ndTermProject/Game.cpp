@@ -4,7 +4,10 @@
 Game::Game()
 {
 	randgenn = new RandomGenerator;
-	EA.SetRandGen(randgenn);
+	EA = new EarthArmy;
+	AA = new AlienArmy;
+	Allies = new AlliedArmy;
+	EA->SetRandGen(randgenn);
 	Tj_value = 1;
 	InfectedSoldiers = 0;
 	gameMode = false;
@@ -21,8 +24,7 @@ void Game::Battle()
 	{
 		if(gameMode)
 			cout << "\nCurrent Time Step:" << Tj_value << endl;
-		Generate_Earth_Army();
-		Generate_Alien_Army();
+		randgenn->AddUnits(this, Tj_value);
 		UpdateUML();
 		if (gameMode)
 		{
@@ -46,14 +48,14 @@ void Game::Battle()
 			else if (End)
 			{
 				cout << "War ended with a tie." << endl;
-				EA.SetWon(false);
-				AA.SetWon(false);
+				EA->SetWon(false);
+				AA->SetWon(false);
 			}
 		}
 		else
 			End = false;
-		/*cout << "Press Any key to move to the next timestep" << endl;
-		std::cin.get();*/
+		cout << "Press Any key to move to the next timestep" << endl;
+		std::cin.get();
 	}//wait for a click.
 	GenerateOutputFile();
 	cout << "Simulation ends, Output file is created" << endl;
@@ -69,7 +71,7 @@ void Game::Generate_Earth_Army()
 		{
 			AU = randgenn->CreateUnit(Tj_value, this, 'E');
 			if(AU)
-				EA.AddUnit(AU);
+				EA->AddUnit(AU);
 		}
 	}
 }
@@ -83,7 +85,7 @@ void Game::Generate_Alien_Army()
 		{
 			AU = randgenn->CreateUnit(Tj_value, this, 'A');
 			if(AU)
-				AA.AddUnit(AU);
+				AA->AddUnit(AU);
 		}
 	}
 }
@@ -98,7 +100,7 @@ void Game::Generate_Allied_Army()
 		{
 			AU = randgenn->CreateUnit(Tj_value, this, 'S');
 			if (AU)
-				Allies.AddUnit(AU);
+				Allies->AddUnit(AU);
 		}
 	}
 }
@@ -148,16 +150,16 @@ void Game::AddInKilledList(ArmyUnit* passed_AU)
 
 bool Game::CheckWhoWins()
 {
-	if (EA.isCompromised())
+	if (EA->isCompromised())
 	{
 		cout << "Alien Army has won the game." << endl;
-		AA.SetWon(true);
+		AA->SetWon(true);
 		return true;
 	}
-	else if (AA.isCompromised())
+	else if (AA->isCompromised())
 	{
 		cout << "Earth Army has won the game." << endl;
-		EA.SetWon(true);
+		EA->SetWon(true);
 		return true;
 	}
 	return false;
@@ -165,31 +167,43 @@ bool Game::CheckWhoWins()
 
 bool Game::Get_AM(AlienMonster*& AU)
 {
-	return AA.pick_AM(AU);
+	return AA->pick_AM(AU);
 }
 bool Game::Get_AS(AlienSoldier*& AU)
 {
-	return AA.pick_AS(AU);
+	return AA->pick_AS(AU);
 }
 bool Game::Get_ES(EarthSoldier*& AU)
 {
-	return EA.pick_ES(AU);
+	return EA->pick_ES(AU);
 }
 bool Game::Get_EG(EarthGunnery*& AU)
 {
-	return EA.pick_EG(AU);
+	return EA->pick_EG(AU);
 }
 bool Game::Get_AD(AlienDrone*& AU)
 {
-	return AA.pick_AD(AU);
+	return AA->pick_AD(AU);
+}
+EarthArmy* Game::getEA_ptr()
+{
+	return EA;
+}
+AlienArmy* Game::getAA_ptr()
+{
+	return AA;
+}
+AlliedArmy* Game::getAllies_ptr()
+{
+	return Allies;
 }
 bool Game::Get_L_AD(AlienDrone*& AU)
 {
-	return AA.pick_Rear_AD(AU);
+	return AA->pick_Rear_AD(AU);
 }
 bool Game::Get_ET(EarthTank*& AU)
 {
-	return EA.pick_ET(AU);
+	return EA->pick_ET(AU);
 }
 bool Game::Get_ES_UML(ArmyUnit*& AU)
 {
@@ -207,20 +221,20 @@ bool Game::Get_GameMode() const
 int Game::Get_Count(ArmyUnit::Unit U)
 {
 	if (U == ArmyUnit::ES)
-		return EA.ES_Count();
+		return EA->ES_Count();
 	else if (U == ArmyUnit::ET)
-		return EA.ET_Count();
+		return EA->ET_Count();
 	else if (U == ArmyUnit::EG)
-		return EA.EG_Count();
+		return EA->EG_Count();
 	else if (U == ArmyUnit::EH)
-		return EA.EH_Count();
+		return EA->EH_Count();
 
 	else if (U == ArmyUnit::AS)
-		return AA.AS_Count();
+		return AA->AS_Count();
 	else if (U == ArmyUnit::AD)
-		return AA.AD_Count();
+		return AA->AD_Count();
 	else if (U == ArmyUnit::AM)
-		return AA.AM_Count();
+		return AA->AM_Count();
 }
 
 int Game::countDestructed(ArmyUnit::Unit U)
@@ -250,41 +264,41 @@ void Game::AddToETUML(ArmyUnit* passed_AU)
 }
 void Game::Add_ES(EarthSoldier* AU)
 {
-	EA.AddInQueue(AU);
+	EA->AddInQueue(AU);
 }
 
 void Game::Add_AS(AlienSoldier* AU)
 {
-	AA.AddInQueue(AU);
+	AA->AddInQueue(AU);
 }
 void Game::Add_AD(AlienDrone* AU)
 {
-	AA.AddInDoubleLinkedQueueQueue(AU);
+	AA->AddInDoubleLinkedQueueQueue(AU);
 }
 
 void Game::Add_AD_Front(AlienDrone* AU)
 {
-	AA.AddInLinkedQueue_Front(AU);
+	AA->AddInLinkedQueue_Front(AU);
 }
 
 void Game::Add_AM(AlienMonster* AU)
 {
-	AA.AddInAmArray(AU);
+	AA->AddInAmArray(AU);
 }
 
 void Game::Add_ET(EarthTank* AU)
 {
-	EA.AddInStack(AU);
+	EA->AddInStack(AU);
 }
 
 void Game::Add_EG(EarthGunnery* AU)
 {
-	EA.AddInPriQueue(AU);
+	EA->AddInPriQueue(AU);
 }
 
 bool Game::Attack()
 {
-	return !(EA.Attack() | AA.Attack());
+	return !(EA->Attack() | AA->Attack());
 }
 
 bool Game::WillInfect()
@@ -300,9 +314,9 @@ bool Game::WillInfect()
 
 void Game::SU_Withdrawal()
 {
-	if (EA.ES_Infected_Count() == 0 && Allies.SU_Count() != 0)
+	if (EA->ES_Infected_Count() == 0 && Allies->SU_Count() != 0)
 	{
-		Allies.destroy_SU(this);
+		Allies->destroy_SU(this);
 	}
 }
 
@@ -311,10 +325,13 @@ void Game::SU_Withdrawal()
 void Game::printArmies()
 {
 	cout << "============================================ Earth Army Alive Units ==========================================" << endl;
-	EA.PrintArmyInfo();
+	EA->PrintArmyInfo();
 	cout << endl;
 	cout << "============================================ Alien Army Alive Units ==========================================" << endl;
-	AA.PrintArmyInfo();
+	AA->PrintArmyInfo();
+	cout << endl;
+	cout << "============================================ Allied Army Alive Units ==========================================" << endl;
+	Allies->PrintArmyInfo();
 	cout << endl;
 }
 
@@ -368,11 +385,11 @@ void Game::GenerateOutputFile()
 		unsigned int E_Sum_Unit_Df = 0, E_Sum_Unit_Dd = 0, E_Sum_Unit_Db = 0, E_counter = 0;
 		unsigned int A_Sum_Unit_Df = 0, A_Sum_Unit_Dd = 0, A_Sum_Unit_Db = 0, A_counter = 0;
 
-		unsigned int Total_ES = EA.Total_ES_Count(), Total_EG = EA.Total_EG_Count(), Total_ET = EA.Total_ET_Count(), Total_EH = EA.Total_EH_Count();
-		unsigned int Total_AS = AA.Total_AS_Count(), Total_AM = AA.Total_AM_Count(), Total_AD = AA.Total_AD_Count();
+		unsigned int Total_ES = EA->Total_ES_Count(), Total_EG = EA->Total_EG_Count(), Total_ET = EA->Total_ET_Count(), Total_EH = EA->Total_EH_Count();
+		unsigned int Total_AS = AA->Total_AS_Count(), Total_AM = AA->Total_AM_Count(), Total_AD = AA->Total_AD_Count();
 
-		unsigned int ES_Alive = EA.ES_Count(), EG_Alive = EA.EG_Count(), ET_ALive = EA.ET_Count(), EH_Alive = EA.EH_Count();
-		unsigned int AS_Alive = AA.AS_Count(), AM_Alive = AA.AM_Count(), AD_Alive = AA.AD_Count();
+		unsigned int ES_Alive = EA->ES_Count(), EG_Alive = EA->EG_Count(), ET_ALive = EA->ET_Count(), EH_Alive = EA->EH_Count();
+		unsigned int AS_Alive = AA->AS_Count(), AM_Alive = AA->AM_Count(), AD_Alive = AA->AD_Count();
 
 		unsigned int ES_Destructed = countDestructed(ArmyUnit::ES), EG_Destructed = countDestructed(ArmyUnit::EG), ET_Destructed = countDestructed(ArmyUnit::ET), EH_Destructed = countDestructed(ArmyUnit::EH);
 		unsigned int AS_Destructed = countDestructed(ArmyUnit::AS), AM_Destructed = countDestructed(ArmyUnit::AM), AD_Destructed = countDestructed(ArmyUnit::AD);
@@ -474,7 +491,7 @@ void Game::GenerateOutputFile()
 		Fout << "Destructed Earth Tank Percentage = " << float(ET_Destructed) * 100 / Total_ET << endl;
 		Fout << "Destructed Earth Healing Unit Percentage = " << float(EH_Destructed) * 100 / Total_EH << endl;
 
-		Fout << "Total Destructed Earth Units Percentage = " << float(ES_Destructed + EG_Destructed + ET_Destructed + EH_Destructed) * 100 / EA.Total_EarthUnits_Count() << endl;
+		Fout << "Total Destructed Earth Units Percentage = " << float(ES_Destructed + EG_Destructed + ET_Destructed + EH_Destructed) * 100 / EA->Total_EarthUnits_Count() << endl;
 
 		Fout << "Average of Df = " << float(E_Sum_Unit_Df) / float(E_counter) << endl;
 		Fout << "Average of Dd = " << float(E_Sum_Unit_Dd) / float(E_counter) << endl;
@@ -491,7 +508,7 @@ void Game::GenerateOutputFile()
 		Fout << "Destructed Alien Monster Percentage = " << float(AM_Destructed) * 100 / Total_AM << endl;
 		Fout << "Destructed Alien Drone Percentage = " << float(AD_Destructed) * 100 / Total_AD << endl;
 
-		Fout << "Total Destructed Alien Units Percentage = " << float(AS_Destructed + AM_Destructed + AD_Destructed) * 100 / AA.Total_AlienUnits_Count() << endl;
+		Fout << "Total Destructed Alien Units Percentage = " << float(AS_Destructed + AM_Destructed + AD_Destructed) * 100 / AA->Total_AlienUnits_Count() << endl;
 
 		Fout << "Average of Df = " << float(A_Sum_Unit_Df) / float(A_counter) << endl;
 		Fout << "Average of Dd = " << float(A_Sum_Unit_Dd) / float(A_counter) << endl;
@@ -499,9 +516,9 @@ void Game::GenerateOutputFile()
 		Fout << "Df/Db% = " << float(A_Sum_Unit_Df) * 100 / float(A_Sum_Unit_Db) << "%" << endl;
 		Fout << "Dd/Db% = " << float(A_Sum_Unit_Dd) * 100 / float(A_Sum_Unit_Db) << "%" << endl;
 
-		if (!EA.GetWon() && !AA.GetWon())
+		if (!EA->GetWon() && !AA->GetWon())
 			Fout << "War ended with a tie.";
-		else if (EA.GetWon())
+		else if (EA->GetWon())
 			Fout << "Earth Army has won the game.";
 		else
 			Fout << "Alien Army has won the game.";
