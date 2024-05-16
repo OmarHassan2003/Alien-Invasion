@@ -15,11 +15,13 @@ bool EarthGunnery::Attack()
 	Queue<AlienDrone*> temp_queue1;
 	Queue<AlienMonster*> temp_AM_Queue;
 
+	bool it = true;
 	unsigned short Attack_Cap = GetAttackCap() / 2;
+	unsigned short aid_counter = 0;
 	/*******************************Drone Attack*******************************/
-	for (unsigned short i = 0;i < Attack_Cap / 2;i++)
+	for (unsigned short i = 0;i < Attack_Cap;i++)
 	{
-		if (pGame->Get_AD(pAD0))
+		if (it && pGame->Get_AD(pAD0))
 		{
 			flag = true;
 			if (pAD0->Get_Ta() == -1)
@@ -28,13 +30,10 @@ bool EarthGunnery::Attack()
 			int dmg = int((float)GetPower() * (GetHealth() / 100.0) / (float)sqrt(pAD0->GetHealth()));
 			pAD0->SetHealth(pAD0->GetHealth() - dmg);
 			temp_queue0.enqueue(pAD0);
+			it = false;
+			aid_counter++;
 		}
-		else
-			break;
-	}
-	for (unsigned short i = 0;i < Attack_Cap - Attack_Cap / 2;i++)
-	{
-		if (pGame->Get_L_AD(pAD1))
+		else if (!it && pGame->Get_L_AD(pAD1))
 		{
 			flag = true;
 			if (pAD1->Get_Ta() == -1)
@@ -43,12 +42,14 @@ bool EarthGunnery::Attack()
 			int dmg = int((float)GetPower() * (GetHealth() / 100.0) / (float)sqrt(pAD1->GetHealth()));
 			pAD1->SetHealth(pAD1->GetHealth() - dmg);
 			temp_queue1.enqueue(pAD1);
+			it = true;
+			aid_counter++;
 		}
 		else
 			break;
 	}
 	/*******************************Monster Attack*******************************/
-	Attack_Cap = GetAttackCap() - Attack_Cap;
+	Attack_Cap = GetAttackCap() - aid_counter;
 	for (unsigned short i = 0;i < Attack_Cap;i++)
 	{
 		if (pGame->Get_AM(pAM))
