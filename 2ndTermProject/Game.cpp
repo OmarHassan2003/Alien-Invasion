@@ -495,6 +495,9 @@ void Game::GenerateOutputFile()
 Game::~Game()
 {
 	delete randgenn;
+	delete EA;
+	delete AA;
+	delete Allies;
 	ArmyUnit* au;
 	int x;
 	while (Killed_List.dequeue(au))
@@ -503,6 +506,8 @@ Game::~Game()
 		delete au;
 	while (ET_UML.dequeue(au))
 		delete au;
+
+	au = nullptr;
 }
 
 void Game::ReadData()
