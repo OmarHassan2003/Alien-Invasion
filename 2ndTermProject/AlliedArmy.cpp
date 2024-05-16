@@ -25,7 +25,7 @@ void AlliedArmy::PrintArmyInfo()
 	cout << endl;
 }
 
-void AlliedArmy::destroy_SU(Game* pGame)
+void AlliedArmy::withdraw_SU(Game* pGame)
 {
 	SaverUnit* SU;
 	while (!SU_Queue.isEmpty())
@@ -65,6 +65,11 @@ bool AlliedArmy::AddUnit(ArmyUnit* passed_AU)
 		return true;
 	}
 	else return false;
+}
+
+int AlliedArmy::dead_percent()
+{
+	return double(SU_Count()) / Total_Gen_SU;
 }
 
 AlliedArmy::~AlliedArmy()

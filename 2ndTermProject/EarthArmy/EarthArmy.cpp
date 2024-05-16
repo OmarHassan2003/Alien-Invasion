@@ -21,8 +21,11 @@ bool EarthArmy::Attack()
 	IsAttack = false;
 	EarthSoldier* ES = nullptr;
 	if (ES_Queue.peek(ES))
+	{
+		if (ES->getInfected())
+			ES_Queue.dequeue(ES);
 		IsAttack |= (ES->Attack());
-
+	}
 	EarthTank* ET;
 	if (ET_Stack.peek(ET))
 		IsAttack |= (ET->Attack());

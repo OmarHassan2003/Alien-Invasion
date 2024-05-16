@@ -27,7 +27,7 @@ bool AlienSoldier::Attack()
 			templist2.enqueue(SU);
 		}
 	}
-	for (; i < GetAttackCap(); i++)
+	for (; i <= GetAttackCap(); i++)
 		if (pGame->Get_ES(ES))
 		{
 			flag = true;

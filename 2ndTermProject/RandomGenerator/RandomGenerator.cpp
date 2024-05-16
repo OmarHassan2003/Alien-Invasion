@@ -156,7 +156,8 @@ bool RandomGenerator::AddUnits(Game* pGame, int Tj)
 		{
 			if (EarthID == 1000)
 			{
-				cout << "NO MORE IDS AVAILABLE FOR EARTH ARMY" << endl;
+				if(pGame->Get_GameMode())
+					cout << "NO MORE IDS AVAILABLE FOR EARTH ARMY" << endl;
 				gen_Earth = false;
 			}
 			else
@@ -175,7 +176,8 @@ bool RandomGenerator::AddUnits(Game* pGame, int Tj)
 		{
 			if (AlienID == 3000)
 			{
-				cout << "NO MORE IDS AVAILABLE FOR ALIEN ARMY" << endl;
+				if(pGame->Get_GameMode())
+					cout << "NO MORE IDS AVAILABLE FOR ALIEN ARMY" << endl;
 				gen_Alien = false;
 			}
 			else
@@ -189,6 +191,7 @@ bool RandomGenerator::AddUnits(Game* pGame, int Tj)
 
 	int tot_count = pGame->getEA_ptr()->ES_Count();
 	double inf_count = pGame->getEA_ptr()->ES_Infected_Count();
+	if (tot_count != 0)
 	{
 		double inf_prcnt = (inf_count / float(tot_count)) * 100;
 		if (inf_prcnt >= Threshold)
@@ -200,10 +203,11 @@ bool RandomGenerator::AddUnits(Game* pGame, int Tj)
 				{
 					if (SaverUnitID == 1250)
 					{
-						cout << "NO MORE IDS AVAILABLE FOR ALLIES ARMY" << endl;
+						if(pGame->Get_GameMode())
+							cout << "NO MORE IDS AVAILABLE FOR ALLIES ARMY" << endl;
 						gen_Saver = false;
 					}
-					else 
+					else
 					{
 						pArmyUnit = GenerateSaverUnit(SaverUnitID, pGame, Tj);
 						pGame->getAllies_ptr()->AddUnit(pArmyUnit);

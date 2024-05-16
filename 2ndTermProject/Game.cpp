@@ -22,15 +22,27 @@ void Game::Battle()
 		cout << "Silent Mode" << endl << "Simulation Starts." << endl;
 	while(!End)
 	{
-		if(gameMode)
-			cout << "\nCurrent Time Step:" << Tj_value << endl;
+		if (gameMode)
+				cout << "\nCurrent Time Step:" << Tj_value << endl;
 		randgenn->AddUnits(this, Tj_value);
 		UpdateUML();
 		if (gameMode)
 		{
+			double tot_count = EA->ES_Count();
+			double infected_count = EA->ES_Infected_Count();
+			if (tot_count == 0)
+			{
+				cout << "Current Infected %: No ES Soldiers" << endl;
+			}
+			else
+			{
+				double inf_percent = (infected_count / tot_count) * 100;
+				cout << "Current Infected %:" << inf_percent << endl;
+			}
 			printArmies();
 			cout << "============================================ Units Fighting at the current step ============================================" << endl;
 		}
+		SU_Withdrawal();
 		End = Attack();
 		Allies->Attack();
 		Get_And_Inc_Tj();
@@ -325,7 +337,7 @@ void Game::SU_Withdrawal()
 {
 	if (EA->ES_Infected_Count() == 0 && Allies->SU_Count() != 0)
 	{
-		Allies->destroy_SU(this);
+		Allies->withdraw_SU(this);
 	}
 }
 
@@ -363,25 +375,6 @@ void Game::printKilledList()
 	cout << endl;
 	cout << "===============================================================================================================" << endl;
 }
-
-//void Game::print()
-//{
-//	/*cout << "\nCurrent Time Step:" << Tj_value << endl;
-//	EA.PrintArmyInfo();
-//	AA.PrintArmyInfo();
-//	cout << ES_UML.GetCount() << " units [ ";
-//	ES_UML.print();
-//	cout << "]" << endl;
-//	cout << ET_UML.GetCount() << " units [ ";
-//	ET_UML.print();
-//	cout << "]" << endl;	
-//	cout << Killed_List.GetCount() << " units [ ";
-//	Killed_List.print();
-//	cout << "]" << endl;
-//	cout << "===============================================================================================================" << endl;*/	
-//}
-
-
 
 void Game::GenerateOutputFile()
 {
@@ -490,7 +483,7 @@ void Game::GenerateOutputFile()
 		}
 		Fout << "\n\nFor Earth Army ->\n";
 		Fout << "Total Earth Soldier = " << Total_ES << endl;
-		Fout << "Total Infected Earth Soldier = " << float(Total_ES_Infected) * 100 / Total_ES << endl;
+		Fout << "Total Infected Earth Soldier %= " << float(Total_ES_Infected) * 100 / Total_ES << endl;
 		Fout << "Total Earth Gunnery = " << Total_EG << endl;
 		Fout << "Total Earth Tank = " << Total_ET << endl;
 		Fout << "Total Earth Healing Unit = " << Total_EH << endl;
