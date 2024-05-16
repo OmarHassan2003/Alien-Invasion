@@ -13,6 +13,7 @@ ArmyUnit::ArmyUnit(Game* p, double HP, double pow, int ID_, int cap, int _Tj, Un
 	InitialHealth = Health;
 	StepsInUML = 0;
 	Type = U;
+	IsHealed = 0;
 }
 
 void ArmyUnit::Set_Ta(int _Ta)
@@ -28,6 +29,16 @@ void ArmyUnit::Set_Td(int _Td)
 void ArmyUnit::Set_StepsInUML(int step)
 {
 	StepsInUML = step;
+}
+
+void ArmyUnit::Set_Healed(bool h)
+{
+	IsHealed = h;
+}
+
+bool ArmyUnit::Get_Healed()
+{
+	return IsHealed;
 }
 
 int ArmyUnit::Get_Ta()

@@ -26,7 +26,11 @@ bool HealUnit::Attack()
 					AU->SetHealth(AU->GetHealth() + dmg / 2);
 				else
 					AU->SetHealth(AU->GetHealth() + dmg);
-
+				if(!AU->Get_Healed())
+				{
+					HealedUnitsCount++;
+					AU->Set_Healed(1);
+				}
 				flag = true;
 				healed = 1;
 				if (AU->GetHealth() >= 0.2 * AU->GetInitialH())
@@ -49,6 +53,11 @@ bool HealUnit::Attack()
 			{
 				double dmg = GetPower() * (GetHealth() / 100.0) / sqrt(AU->GetHealth());
 				AU->SetHealth(AU->GetHealth() + dmg);
+				if (!AU->Get_Healed())
+				{
+					HealedUnitsCount++;
+					AU->Set_Healed(1);
+				}
 				flag = true;
 				healed = 1;
 				if (AU->GetHealth() >= 0.2 * AU->GetInitialH())
@@ -87,6 +96,11 @@ bool HealUnit::Attack()
 	else
 		flag = false; //return back if hasn't healed.
 	return flag;
+}
+
+int HealUnit::GetHealedCount()
+{
+	return HealedUnitsCount;
 }
 
 ostream& operator<<(ostream& COUT, HealUnit* Passed_AU)

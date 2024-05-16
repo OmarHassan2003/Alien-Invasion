@@ -21,6 +21,7 @@ class EarthArmy :public Army
 	int Total_Gen_ET = 0;
 	int Total_Gen_EG = 0;
 	int Total_Gen_EH = 0;
+	int Total_Healed = 0;
 public:
 	EarthArmy();
 	void SetRandGen(RandomGenerator* p);
@@ -46,6 +47,7 @@ public:
 	int Total_ET_Count() const;
 	int Total_EG_Count() const;
 	int Total_EH_Count() const;
+	int Total_HealedCount() const;
 	int Total_EarthUnits_Count() const;
 	/****************insert units to lists********************/
 	bool AddUnit(ArmyUnit* passed_AU); // THE GENERAL ONE

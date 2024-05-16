@@ -1,44 +1,63 @@
 Td    ID    Tj    Df    Dd    Db
 
-14    2002  8     2     4     6
-16    2001  8     0     8     8
-32    2005  15    0     17    17
-32    2008  17    2     13    15
-33    2003  10    0     23    23
-36    2006  15    1     20    21
-37    2004  10    0     27    27
-41    2007  17    1     23    24
+26    2001  3     0     23    23
+32    2003  12    0     20    20
+41    6     17    24    0     24
+42    2     3     39    0     39
+44    2004  12    0     32    32
+44    2006  17    21    6     27
+45    2005  17    1     27    28
+45    2010  38    1     6     7
+46    2007  25    1     20    21
+47    2008  25    2     20    22
+47    2009  38    1     8     9
+48    2012  44    2     2     4
+50    2002  3     35    12    47
+53    2014  48    0     5     5
+53    3     12    5     36    41
+54    2013  48    0     6     6
+57    2011  44    2     11    13
+58    2016  49    0     9     9
+60    2015  49    0     11    11
+61    2019  52    0     9     9
+62    2021  53    1     8     9
+64    2018  51    1     12    13
+64    2017  51    1     12    13
+65    2020  52    1     12    13
+66    2022  53    1     12    13
+66    2024  59    2     5     7
+69    2023  59    1     9     10
 
 
 For Earth Army ->
-Total Earth Soldier = 3
-Total Infected Earth Soldier %= 0
-Total Earth Gunnery = 4
-Total Earth Tank = 1
-Total Earth Healing Unit = 0
-Destructed Earth Soldier Percentage = 0
+Total Earth Soldier = 15
+Total Infected Earth Soldier %= 33.3333
+Total Earth Gunnery = 3
+Total Earth Tank = 4
+Total Earth Healing Unit = 2
+Destructed Earth Soldier Percentage = 6.66667
 Destructed Earth Gunnery Percentage = 0
 Destructed Earth Tank Percentage = 0
-Destructed Earth Healing Unit Percentage = -nan(ind)
-Total Destructed Earth Units Percentage = 0
-Average of Df = -nan(ind)
-Average of Dd = -nan(ind)
-Average of Db = -nan(ind)
-Df/Db% = -nan(ind)%
-Dd/Db% = -nan(ind)%
+Destructed Earth Healing Unit Percentage = 100
+Total Destructed Earth Units Percentage = 12.5
+Average of Df = 22.6667
+Average of Dd = 12
+Average of Db = 34.6667
+Df/Db% = 65.3846%
+Dd/Db% = 34.6154%
 
 
 For Alien Army ->
-Total Alien Soldier = 7
-Total Alien Monster = 0
+Total Alien Soldier = 20
+Total Alien Monster = 3
 Total Alien Drone = 1
 Destructed Alien Soldier Percentage = 100
-Destructed Alien Monster Percentage = -nan(ind)
+Destructed Alien Monster Percentage = 100
 Destructed Alien Drone Percentage = 100
 Total Destructed Alien Units Percentage = 100
-Average of Df = 0.75
-Average of Dd = 16.875
-Average of Db = 17.625
-Df/Db% = 4.25532%
-Dd/Db% = 95.7447%
+Average of Df = 3.08333
+Average of Dd = 12.375
+Average of Db = 15.4583
+Df/Db% = 19.9461%
+Dd/Db% = 80.0539%
 Earth Army has won the game.

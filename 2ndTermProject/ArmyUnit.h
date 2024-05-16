@@ -20,6 +20,7 @@ private:
 	int ID;
 	int AttackCap;
 	int Tj, Ta, Td;
+	bool IsHealed;
 	Unit Type;
 public:
 	ArmyUnit(Game* p, double HP, double pow, int ID_, int cap, int Tj, Unit U);
@@ -29,7 +30,9 @@ public:
 	virtual void Set_Ta(int);
 	virtual void Set_Td(int);
 	virtual void Set_StepsInUML(int);
+	virtual void Set_Healed(bool);
 
+	virtual bool Get_Healed();
 	virtual int Get_Ta();
 	virtual int Get_Tj();
 	virtual int Get_Td();

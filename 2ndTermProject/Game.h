@@ -18,6 +18,7 @@ class Game
 	RandomGenerator* randgenn;
 	unsigned short Tj_value;
 	unsigned short InfectedSoldiers;
+	unsigned short HealedUnits = 0;
 	bool gameMode;
 public:
 	Game();

@@ -23,10 +23,11 @@ bool EarthArmy::Attack()
 	if (ES_Queue.peek(ES))
 	{
 		if (ES->getInfected())
+		{
 			ES_Queue.dequeue(ES);
-		IsAttack |= (ES->Attack());
-		if (ES->getInfected())
 			ES_Queue.enqueue(ES);
+		}
+		IsAttack |= (ES->Attack());
 	}
 	EarthTank* ET;
 	if (ET_Stack.peek(ET))
@@ -39,8 +40,11 @@ bool EarthArmy::Attack()
 
 	HealUnit* HU;
 	if (HU_Stack.pop(HU))   //pop because it heals one time then die
+	{
 		if (!HU->Attack())  // if it doesn't heal return it back
 			HU_Stack.push(HU);
+		Total_Healed += HU->GetHealedCount();
+	}
 	return IsAttack;
 }
 
@@ -213,6 +217,11 @@ int EarthArmy::Total_EG_Count() const
 int EarthArmy::Total_EH_Count() const
 {
 	return Total_Gen_EH;
+}
+
+int EarthArmy::Total_HealedCount() const
+{
+	return Total_Healed;
 }
 
 int EarthArmy::Total_EarthUnits_Count() const
