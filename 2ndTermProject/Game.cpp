@@ -359,6 +359,7 @@ void Game::GenerateOutputFile()
 		unsigned int AS_Destructed = countDestructed(ArmyUnit::AS), AM_Destructed = countDestructed(ArmyUnit::AM), AD_Destructed = countDestructed(ArmyUnit::AD);
 
 		unsigned int Total_ES_Infected = InfectedSoldiers;
+		unsigned short Total_H = EA->Total_HealedCount();
 
 		priQueue<ArmyUnit*> temp_pri;
 		Stack<ArmyUnit*> temp_stack;
@@ -449,6 +450,7 @@ void Game::GenerateOutputFile()
 		Fout << "Total Earth Gunnery = " << Total_EG << endl;
 		Fout << "Total Earth Tank = " << Total_ET << endl;
 		Fout << "Total Earth Healing Unit = " << Total_EH << endl;
+		Fout << "Percentage of units healed successfully = " << Total_H * 100 / (Total_ES + Total_EG + Total_ET);
 
 		Fout << "Destructed Earth Soldier Percentage = " << float(ES_Destructed) * 100 / Total_ES << endl;
 		Fout << "Destructed Earth Gunnery Percentage = " << float(EG_Destructed) * 100 / Total_EG << endl;
