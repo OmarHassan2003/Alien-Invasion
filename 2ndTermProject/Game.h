@@ -17,7 +17,6 @@ class Game
 	Queue<ArmyUnit*> ET_UML; // HERE or in EA class.
 	RandomGenerator* randgenn;
 	unsigned short Tj_value;
-	unsigned short InfectedSoldiers;
 	unsigned short HealedUnits = 0;
 	bool gameMode;
 public:
@@ -26,9 +25,6 @@ public:
 	void Battle();
 	void ReadData();
 	bool GameMode();
-	void Generate_Earth_Army();
-	void Generate_Alien_Army();
-	void Generate_Allied_Army();
 	unsigned short Get_And_Inc_Tj();
 	unsigned short Get_Tj();
 	void UpdateUML();

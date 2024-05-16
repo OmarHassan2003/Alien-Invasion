@@ -9,7 +9,6 @@ Game::Game()
 	Allies = new AlliedArmy;
 	EA->SetRandGen(randgenn);
 	Tj_value = 1;
-	InfectedSoldiers = 0;
 	gameMode = false;
 }
 
@@ -294,7 +293,6 @@ bool Game::WillInfect()
 	int y = randgenn->RandGen(1, 100);
 	if (y <= randgenn->get_InfectionProbability())
 	{
-		InfectedSoldiers++;
 		return true;
 	}
 	else return false;
@@ -455,7 +453,7 @@ void Game::GenerateOutputFile()
 		Fout << "Total Earth Gunnery = " << Total_EG << endl;
 		Fout << "Total Earth Tank = " << Total_ET << endl;
 		Fout << "Total Earth Healing Unit = " << Total_EH << endl;
-		Fout << "Percentage of units healed successfully = " << float(Total_H) * 100 / (Total_ES + Total_EG + Total_ET);
+		Fout << "Percentage of units healed successfully = " << float(Total_H) * 100 / (Total_ES + Total_EG + Total_ET) << endl;
 
 		Fout << "Destructed Earth Soldier Percentage = " << float(ES_Destructed) * 100 / Total_ES << endl;
 		Fout << "Destructed Earth Gunnery Percentage = " << float(EG_Destructed) * 100 / Total_EG << endl;
@@ -624,4 +622,6 @@ bool Game::GameMode()
 		return true;
 	else
 		return false;
+	delete EA;
+	delete AA;
 }

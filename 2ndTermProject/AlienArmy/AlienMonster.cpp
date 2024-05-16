@@ -50,7 +50,6 @@ bool AlienMonster::Attack()
 		{
 			if (pGame->Get_ES(ES))
 			{
-				pGame->IncInfectedES();
 				flag = true;
 				if (ES->getInfected() || ES->getImmune())
 				{
@@ -62,6 +61,7 @@ bool AlienMonster::Attack()
 				{
 					if (!ES->getImmune())
 					{
+						pGame->IncInfectedES();
 						ES->setInfected(true);
 						tempList2.enqueue(ES);
 					}

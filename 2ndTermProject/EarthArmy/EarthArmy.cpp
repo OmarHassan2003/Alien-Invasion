@@ -146,9 +146,11 @@ void EarthArmy::SpreadInfection()
 				ES_Temp.enqueue(tempES_Ptr);
 			}
 			TempES_Queue.dequeue(tempES_Ptr);
-			if(!tempES_Ptr->getImmune())
+			if (!tempES_Ptr->getImmune())
+			{
 				tempES_Ptr->setInfected(true);
-			IncInfectedES();
+				IncInfectedES();
+			}
 			ES_Temp.enqueue(tempES_Ptr);
 			for (unsigned short i = random_value;i < ES_Num;i++)
 			{
