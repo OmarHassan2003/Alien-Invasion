@@ -1,7 +1,7 @@
 #include "EarthGunnery.h"
 #include "../Game.h"
 
-EarthGunnery::EarthGunnery(Game* p, int HP, int pow, int ID_, int cap, int Tj, Unit U)
+EarthGunnery::EarthGunnery(Game* p, double HP, double pow, int ID_, int cap, int Tj, Unit U)
 	:ArmyUnit(p, HP, pow, ID_, cap, Tj, U)
 {}
 
@@ -27,7 +27,7 @@ bool EarthGunnery::Attack()
 			if (pAD0->Get_Ta() == -1)
 				pAD0->Set_Ta(pGame->Get_Tj());
 
-			int dmg = int((float)GetPower() * (GetHealth() / 100.0) / (float)sqrt(pAD0->GetHealth()));
+			double dmg = GetPower() * (GetHealth() / 100.0) / sqrt(pAD0->GetHealth());
 			pAD0->SetHealth(pAD0->GetHealth() - dmg);
 			temp_queue0.enqueue(pAD0);
 			it = false;
@@ -39,7 +39,7 @@ bool EarthGunnery::Attack()
 			if (pAD1->Get_Ta() == -1)
 				pAD1->Set_Ta(pGame->Get_Tj());
 
-			int dmg = int((float)GetPower() * (GetHealth() / 100.0) / (float)sqrt(pAD1->GetHealth()));
+			double dmg = GetPower() * (GetHealth() / 100.0) / sqrt(pAD1->GetHealth());
 			pAD1->SetHealth(pAD1->GetHealth() - dmg);
 			temp_queue1.enqueue(pAD1);
 			it = true;
@@ -58,7 +58,7 @@ bool EarthGunnery::Attack()
 			if (pAM->Get_Ta() == -1)
 				pAM->Set_Ta(pGame->Get_Tj());
 
-			int dmg = int((float)GetPower() * (GetHealth() / 100.0) / (float)sqrt(pAM->GetHealth()));
+			double dmg = GetPower() * (GetHealth() / 100.0) / sqrt(pAM->GetHealth());
 			pAM->SetHealth(pAM->GetHealth() - dmg);
 			temp_AM_Queue.enqueue(pAM);
 		}

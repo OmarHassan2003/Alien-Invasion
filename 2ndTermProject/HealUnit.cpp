@@ -1,7 +1,7 @@
 #include "HealUnit.h"
 #include "Game.h"
 
-HealUnit::HealUnit(Game* p, int HP, int pow, int ID_, int cap, int _Tj, Unit U)
+HealUnit::HealUnit(Game* p, double HP, double pow, int ID_, int cap, int _Tj, Unit U)
 	:ArmyUnit(p, HP, pow, ID_, cap, _Tj, U)
 {
 }
@@ -19,7 +19,7 @@ bool HealUnit::Attack()
 		{
 			if (AU)
 			{
-				int dmg = int((float)GetPower() * (GetHealth() / 100.0) / (float)sqrt(AU->GetHealth()));
+				double dmg = GetPower() * (GetHealth() / 100.0) / sqrt(AU->GetHealth());
 				
 				EarthSoldier* ES = (EarthSoldier*)AU;
 				if(ES->getInfected())
@@ -47,7 +47,7 @@ bool HealUnit::Attack()
 		{
 			if (AU)
 			{
-				int dmg = int((float)GetPower() * (GetHealth() / 100.0) / (float)sqrt(AU->GetHealth()));
+				double dmg = GetPower() * (GetHealth() / 100.0) / sqrt(AU->GetHealth());
 				AU->SetHealth(AU->GetHealth() + dmg);
 				flag = true;
 				healed = 1;
@@ -62,6 +62,18 @@ bool HealUnit::Attack()
 		}
 		else
 			break;// no. of available units to be attacked less than the attack cap.
+
+	if (pGame->Get_GameMode())
+	{
+		if (!EStemplist.isEmpty() || !ETtemplist.isEmpty())
+		{
+			cout << "HU " << this << " heals ";
+			EStemplist.print();
+			cout << " ";
+			ETtemplist.print();
+			cout << endl;
+		}
+	}
 
 	while (EStemplist.dequeue(AU))
 		pGame->AddToESUML(AU);

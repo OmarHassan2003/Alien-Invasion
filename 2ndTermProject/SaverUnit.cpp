@@ -2,7 +2,7 @@
 #include "AlienArmy/AlienSoldier.h"
 #include "Game.h"
 
-SaverUnit::SaverUnit(Game* p, int HP, int pow, int ID_, int cap, int _Tj, Unit U)
+SaverUnit::SaverUnit(Game* p, double HP, double pow, int ID_, int cap, int _Tj, Unit U)
 	:ArmyUnit(p, HP, pow, ID_, cap, _Tj, U)
 {
 }
@@ -19,7 +19,7 @@ bool SaverUnit::Attack()
 			if (AS->Get_Ta() == -1)
 				AS->Set_Ta(pGame->Get_Tj());
 
-			int dmg = int((float)GetPower() * (GetHealth() / 100.0) / (float)sqrt(AS->GetHealth()));
+			double dmg = GetPower() * (GetHealth() / 100.0) / sqrt(AS->GetHealth());
 			AS->SetHealth(AS->GetHealth() - dmg);
 			templist.enqueue(AS);
 		}

@@ -83,7 +83,7 @@ void DynamicArray<T>::print() const
 	cout << "[";
 	if (!count)
 	{
-		cout << "NO ELEMENTS]";
+		cout << "]";
 		return;
 	}
 	for (int i = 0; i < count; i++)

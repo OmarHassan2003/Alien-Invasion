@@ -147,7 +147,7 @@ void DoubleLinkedQueue<T>::print() const
 	DoubleNode<T>* temp = Front;
 	cout << "[";
 	if (!count) {
-		cout << "NO ELEMENTS]";
+		cout << "]";
 		return;
 	}
 	while (temp != nullptr) {

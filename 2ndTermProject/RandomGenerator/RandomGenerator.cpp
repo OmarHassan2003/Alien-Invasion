@@ -6,78 +6,16 @@ RandomGenerator::RandomGenerator()
 }
 
 inline unsigned short RandomGenerator::RandGen(unsigned short lower_bound, unsigned short upper_bound)
-{	
-	return lower_bound + rand() % (upper_bound - lower_bound + 1);
-}
-
-ArmyUnit* RandomGenerator::CreateUnit(unsigned short Tj, Game* pGame, char u)
 {
-	ArmyUnit* pArmyUnit = nullptr;
-	if (u == 'E')
-	{
-		static unsigned short EarthID = 1;
-		unsigned short x = RandGen(1, 100);
-		unsigned short health = RandGen(min_E_health, max_E_health);
-		unsigned short power = RandGen(min_E_Power, max_E_Power);
-		unsigned short attack_capacity = RandGen(min_E_Attack_Capacity, max_E_Attack_Capacity);
-		if (EarthID == 1000  && pGame->Get_GameMode())
-		{
-			cout << "NO MORE IDS AVAILABLE FOR EARTH ARMY" << endl;
-			return NULL;
-		}
-		if (x <= ES)
-			pArmyUnit = new EarthSoldier(pGame, health, power, EarthID, attack_capacity, Tj);
-		else if (x <= ES + ET)
-			pArmyUnit = new EarthTank(pGame, health, power, EarthID, attack_capacity, Tj);
-		else if (x <= ES + ET + HU_Percent)
-			pArmyUnit = new HealUnit(pGame, health, power, EarthID, attack_capacity, Tj);
-		else
-			pArmyUnit = new EarthGunnery(pGame, health, power, EarthID, attack_capacity, Tj);
-		EarthID++;
-	}
-	else if(u == 'A')
-	{
-		static unsigned short AlienID = 2001;
-		unsigned short x = RandGen(1, 100);
-		unsigned short health = RandGen(min_A_health, max_A_health);
-		unsigned short power = RandGen(min_A_Power, max_A_Power);
-		unsigned short attack_capacity = RandGen(min_A_Attack_Capacity, max_A_Attack_Capacity);
-		if (AlienID == 3000 && pGame->Get_GameMode())
-		{
-			cout << "NO MORE IDS AVAILABLE FOR ALIEN ARMY" << endl;
-			return NULL;
-		}
-		if (x <= AS)
-			pArmyUnit = new AlienSoldier(pGame, health, power, AlienID, attack_capacity, Tj);
-		else if (x <= AS + AM)
-			pArmyUnit = new AlienMonster(pGame, health, power, AlienID, attack_capacity, Tj);
-		else
-			pArmyUnit = new AlienDrone(pGame, health, power, AlienID, attack_capacity, Tj);;
-		AlienID++;
-	}
-	else
-	{
-		static unsigned short SaverUnitID = 1001;
-		unsigned short x = RandGen(1, 100);
-		unsigned short health = RandGen(min_SU_health, max_SU_health);
-		unsigned short power = RandGen(min_SU_Power, max_SU_Power);
-		unsigned short attack_capacity = RandGen(min_SU_Attack_Capacity, max_SU_Attack_Capacity);
-		if (SaverUnitID == 1250 && pGame->Get_GameMode())
-		{
-			cout << "NO MORE IDS AVAILABLE FOR ALLIES ARMY" << endl;
-			return NULL;
-		}
-		pArmyUnit = new SaverUnit(pGame, health, power, SaverUnitID, attack_capacity, Tj);
-	}
-	return pArmyUnit;
+	return lower_bound + rand() % (upper_bound - lower_bound + 1);
 }
 
 ArmyUnit* RandomGenerator::GenerateEarthUnit(int ID, Game* pGame, int Tj)
 {
 	ArmyUnit* pArmyUnit = nullptr;
 	unsigned short x = RandGen(1, 100);
-	unsigned short health = RandGen(min_E_health, max_E_health);
-	unsigned short power = RandGen(min_E_Power, max_E_Power);
+	double health = RandGen(min_E_health, max_E_health);
+	double power = RandGen(min_E_Power, max_E_Power);
 	unsigned short attack_capacity = RandGen(min_E_Attack_Capacity, max_E_Attack_Capacity);
 	if (x <= ES)
 		pArmyUnit = new EarthSoldier(pGame, health, power, ID, attack_capacity, Tj);
@@ -95,8 +33,8 @@ ArmyUnit* RandomGenerator::GenerateAlienUnit(int ID, Game* pGame, int Tj)
 {
 	ArmyUnit* pArmyUnit = nullptr;
 	unsigned short x = RandGen(1, 100);
-	unsigned short health = RandGen(min_A_health, max_A_health);
-	unsigned short power = RandGen(min_A_Power, max_A_Power);
+	double health = RandGen(min_A_health, max_A_health);
+	double power = RandGen(min_A_Power, max_A_Power);
 	unsigned short attack_capacity = RandGen(min_A_Attack_Capacity, max_A_Attack_Capacity);
 	if (x <= AS)
 		pArmyUnit = new AlienSoldier(pGame, health, power, ID, attack_capacity, Tj);
@@ -112,8 +50,8 @@ ArmyUnit* RandomGenerator::GenerateSaverUnit(int ID, Game* pGame, int Tj)
 {
 	ArmyUnit* pArmyUnit = nullptr;
 	unsigned short x = RandGen(1, 100);
-	unsigned short health = RandGen(min_SU_health, max_SU_health);
-	unsigned short power = RandGen(min_SU_Power, max_SU_Power);
+	double health = RandGen(min_SU_health, max_SU_health);
+	double power = RandGen(min_SU_Power, max_SU_Power);
 	unsigned short attack_capacity = RandGen(min_SU_Attack_Capacity, max_SU_Attack_Capacity);
 	pArmyUnit = new SaverUnit(pGame, health, power, ID, attack_capacity, Tj);
 	return pArmyUnit;

@@ -26,6 +26,7 @@ bool AlienDrone::Attack()
 			pET->SetHealth(pET->GetHealth() - dmg);
 			temp_ET_Queue.enqueue(pET);
 		}
+		else break;
 	}
 	Attack_Cap = GetAttackCap() - Attack_Cap;
 	for (unsigned short i = 0;i < Attack_Cap;i++)

@@ -38,10 +38,11 @@ bool AlienMonster::Attack()
 		if (pGame->Get_SU(SU))
 		{
 			flag = true;
-			int dmg = int((float)GetPower() * (GetHealth() / 100.0) / (float)sqrt(SU->GetHealth()));
+			double dmg = GetPower() * (GetHealth() / 100.0) / sqrt(SU->GetHealth());
 			SU->SetHealth(SU->GetHealth() - dmg);
 			tempList3.enqueue(SU);
 		}
+		else break;
 	}
 	for (; j <= remaining_AttackCapacity; j++)
 	{
@@ -52,7 +53,7 @@ bool AlienMonster::Attack()
 				flag = true;
 				if (ES->getInfected() || ES->getImmune())
 				{
-					int dmg = int((float)GetPower() * (GetHealth() / 100.0) / (float)sqrt(ES->GetHealth()));
+					double dmg = GetPower() * (GetHealth() / 100.0) / sqrt(ES->GetHealth());
 					ES->SetHealth(ES->GetHealth() - dmg);
 					tempList2.enqueue(ES);
 				}
@@ -65,6 +66,8 @@ bool AlienMonster::Attack()
 					}
 				}
 			}
+			else
+				break;
 		}
 		else if (pGame->Get_ES(ES))
 		{
@@ -76,6 +79,8 @@ bool AlienMonster::Attack()
 			ES->SetHealth(ES->GetHealth() - dmg);
 			tempList2.enqueue(ES);
 		}
+		else
+			break;
 	}
 
 	if (pGame->Get_GameMode())
