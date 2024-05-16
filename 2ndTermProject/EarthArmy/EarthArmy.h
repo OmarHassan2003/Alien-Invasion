@@ -22,9 +22,12 @@ class EarthArmy :public Army
 	int Total_Gen_EG = 0;
 	int Total_Gen_EH = 0;
 	int Total_Healed = 0;
+	int Total_Infected = 0;
 public:
 	EarthArmy();
 	void SetRandGen(RandomGenerator* p);
+	void IncInfectedES();
+	int GetTotal_Infected();
 	bool Attack();
 	void PrintArmyInfo(); // Add HU
 	void SetWon(bool p);

@@ -15,6 +15,16 @@ void EarthArmy::SetRandGen(RandomGenerator* p)
 	randgen = p;
 }
 
+void EarthArmy::IncInfectedES()
+{
+	Total_Infected++;
+}
+
+int EarthArmy::GetTotal_Infected()
+{
+	return Total_Infected;
+}
+
 bool EarthArmy::Attack()
 {
 	SpreadInfection();
@@ -138,6 +148,7 @@ void EarthArmy::SpreadInfection()
 			TempES_Queue.dequeue(tempES_Ptr);
 			if(!tempES_Ptr->getImmune())
 				tempES_Ptr->setInfected(true);
+			IncInfectedES();
 			ES_Temp.enqueue(tempES_Ptr);
 			for (unsigned short i = random_value;i < ES_Num;i++)
 			{

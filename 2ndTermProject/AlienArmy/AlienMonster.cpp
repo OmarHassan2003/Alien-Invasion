@@ -50,6 +50,7 @@ bool AlienMonster::Attack()
 		{
 			if (pGame->Get_ES(ES))
 			{
+				pGame->IncInfectedES();
 				flag = true;
 				if (ES->getInfected() || ES->getImmune())
 				{
