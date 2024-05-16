@@ -22,6 +22,7 @@ class Game
 	bool gameMode;
 public:
 	Game();
+	void IncInfectedES();
 	void Battle();
 	void ReadData();
 	bool GameMode();
