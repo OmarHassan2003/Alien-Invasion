@@ -67,8 +67,11 @@ void Game::Battle()
 		}
 		else
 			End = false;
-		/*cout << "Press Any key to move to the next timestep" << endl;
-		std::cin.get();*/
+		if(gameMode)
+		{
+			cout << "Press Any key to move to the next timestep" << endl;
+			std::cin.get();
+		}
 	}//wait for a click.
 	GenerateOutputFile();
 	cout << "Simulation ends, Output file is created" << endl;

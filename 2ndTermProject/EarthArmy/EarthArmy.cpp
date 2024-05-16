@@ -25,6 +25,8 @@ bool EarthArmy::Attack()
 		if (ES->getInfected())
 			ES_Queue.dequeue(ES);
 		IsAttack |= (ES->Attack());
+		if (ES->getInfected())
+			ES_Queue.enqueue(ES);
 	}
 	EarthTank* ET;
 	if (ET_Stack.peek(ET))

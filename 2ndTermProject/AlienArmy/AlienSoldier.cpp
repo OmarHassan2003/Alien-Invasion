@@ -26,8 +26,10 @@ bool AlienSoldier::Attack()
 			SU->SetHealth(SU->GetHealth() - dmg);
 			templist2.enqueue(SU);
 		}
+		else
+			break;
 	}
-	for (; i <= GetAttackCap(); i++)
+	for (; i < GetAttackCap(); i++)
 		if (pGame->Get_ES(ES))
 		{
 			flag = true;
