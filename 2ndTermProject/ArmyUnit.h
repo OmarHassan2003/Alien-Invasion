@@ -13,16 +13,16 @@ public:
 protected:
 	Game* pGame;
 private:
-	int Health;
-	int InitialHealth;
+	double Health;
+	double InitialHealth;
 	int StepsInUML;
-	int Power;
+	double Power;
 	int ID;
 	int AttackCap;
 	int Tj, Ta, Td;
 	Unit Type;
 public:
-	ArmyUnit(Game* p, int HP, int pow, int ID_, int cap, int Tj, Unit U);
+	ArmyUnit(Game* p, double HP, double pow, int ID_, int cap, int Tj, Unit U);
 
 	virtual bool Attack() = 0;
 
@@ -33,9 +33,9 @@ public:
 	virtual int Get_Ta();
 	virtual int Get_Tj();
 	virtual int Get_Td();
-	virtual int GetHealth();
-	virtual int GetInitialH();
-	virtual int GetPower();
+	virtual double GetHealth();
+	virtual double GetInitialH();
+	virtual double GetPower();
 	virtual int GetID();
 	virtual int GetAttackCap();
 	virtual int GetStepsInUML();
@@ -44,7 +44,7 @@ public:
 	ArmyUnit* operator-=(int damage);
 	// ++ operator to increase StepsInUML
 
-	void SetHealth(int h);
+	void SetHealth(double h);
 	friend ostream& operator<<(ostream& COUT, ArmyUnit* Passed_AU);
 	void PrintUnitInfo();
 };

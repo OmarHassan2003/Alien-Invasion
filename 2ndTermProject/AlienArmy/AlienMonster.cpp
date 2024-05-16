@@ -1,7 +1,7 @@
 #include "AlienMonster.h"
 #include "../Game.h"
 
-AlienMonster::AlienMonster(Game* p, int HP, int pow, int ID_, int cap, int _Tj, Unit U)
+AlienMonster::AlienMonster(Game* p, double HP, double pow, int ID_, int cap, int _Tj, Unit U)
 	:ArmyUnit(p, HP, pow, ID_, cap, _Tj, U)
 {
 }
@@ -15,15 +15,19 @@ bool AlienMonster::Attack()
 	EarthTank* ET = nullptr;
 	SaverUnit* SU = nullptr;
 	int i;
-	for (i = 0; i < GetAttackCap() / 2 && pGame->Get_ET(ET); i++)
+	for (i = 0; i < GetAttackCap() / 2; i++)
 	{
-		if (ET->Get_Ta() == -1)
-			ET->Set_Ta(pGame->Get_Tj());
+		if (pGame->Get_ET(ET))
+		{
+			if (ET->Get_Ta() == -1)
+				ET->Set_Ta(pGame->Get_Tj());
 
-		flag = true;
-		int dmg = int((float)GetPower() * (GetHealth() / 100.0) / (float)sqrt(ET->GetHealth()));
-		ET->SetHealth(ET->GetHealth() - dmg);
-		tempList1.push(ET);
+			flag = true;
+			double dmg = GetPower() * (GetHealth() / 100.0) / sqrt(ET->GetHealth());
+			ET->SetHealth(ET->GetHealth() - dmg);
+			tempList1.push(ET);
+		}
+		else break;
 	}
 
 	int remaining_AttackCapacity = GetAttackCap() - i;
