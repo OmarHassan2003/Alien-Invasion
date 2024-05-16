@@ -14,6 +14,7 @@ bool AlienDrone::Attack()
 	Queue<EarthTank*> temp_ET_Queue;
 	Queue<EarthGunnery*> temp_EG_Queue;
 	unsigned short Attack_Cap = GetAttackCap() / 2;
+	unsigned short aid_counter = 0;
 	for (unsigned short i = 0;i < Attack_Cap;i++)
 	{
 		if (pGame->Get_ET(pET))
@@ -24,11 +25,13 @@ bool AlienDrone::Attack()
 			flag = true;
 			int dmg = int((float)GetPower() * (GetHealth() / 100.0) / (float)sqrt(pET->GetHealth()));
 			pET->SetHealth(pET->GetHealth() - dmg);
-		
-				temp_ET_Queue.enqueue(pET);
+			temp_ET_Queue.enqueue(pET);
+			aid_counter++;
 		}
+		else
+			break;
 	}
-	Attack_Cap = GetAttackCap() - Attack_Cap;
+	Attack_Cap = GetAttackCap() - aid_counter;
 	for (unsigned short i = 0;i < Attack_Cap;i++)
 	{
 		if (pGame->Get_EG(pEG))
@@ -41,6 +44,8 @@ bool AlienDrone::Attack()
 			pEG->SetHealth(pEG->GetHealth() - dmg);
 			temp_EG_Queue.enqueue(pEG);
 		}
+		else
+			break;
 	}
 
 	if (pGame->Get_GameMode())
