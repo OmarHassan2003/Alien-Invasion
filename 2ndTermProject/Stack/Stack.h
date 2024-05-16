@@ -85,7 +85,7 @@ void Stack<T>::print() const
 	Node<T>* temp = Top;
 	cout << "[";
 	if (!count) {
-		cout << "NO ELEMENTS]";
+		cout << "]";
 		return;
 	}
 	while (temp != nullptr)

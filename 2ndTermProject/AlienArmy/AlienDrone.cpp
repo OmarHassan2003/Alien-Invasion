@@ -1,7 +1,7 @@
 #include "AlienDrone.h"
 #include "../Game.h"
 
-AlienDrone::AlienDrone(Game* p, int HP, int pow, int ID_, int cap, int Tj, Unit U):
+AlienDrone::AlienDrone(Game* p, double HP, double pow, int ID_, int cap, int Tj, Unit U):
 	ArmyUnit(p, HP, pow, ID_, cap, Tj, U)
 {
 }
@@ -23,7 +23,7 @@ bool AlienDrone::Attack()
 				pET->Set_Ta(pGame->Get_Tj());
 
 			flag = true;
-			int dmg = int((float)GetPower() * (GetHealth() / 100.0) / (float)sqrt(pET->GetHealth()));
+			double dmg = GetPower() * (GetHealth() / 100.0) / sqrt(pET->GetHealth());
 			pET->SetHealth(pET->GetHealth() - dmg);
 			temp_ET_Queue.enqueue(pET);
 			aid_counter++;
@@ -40,7 +40,7 @@ bool AlienDrone::Attack()
 				pEG->Set_Ta(pGame->Get_Tj());
 
 			flag = true;
-			int dmg = int((float)GetPower() * (GetHealth() / 100.0) / (float)sqrt(pEG->GetHealth()));
+			double dmg = GetPower() * (GetHealth() / 100.0) / sqrt(pEG->GetHealth());
 			pEG->SetHealth(pEG->GetHealth() - dmg);
 			temp_EG_Queue.enqueue(pEG);
 		}

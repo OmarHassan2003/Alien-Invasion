@@ -84,7 +84,7 @@ public:
         cout << "[";
         if (!count)
         {
-            cout << "NO ELEMENTS]";
+            cout << "]";
             return;
         }
         while (temp != nullptr)

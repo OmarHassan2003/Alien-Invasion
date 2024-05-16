@@ -86,7 +86,7 @@ void Queue<T>::print() const
 	cout << "[";
 	if (!count)
 	{
-		cout << "NO ELEMENTS]";
+		cout << "]";
 		return;
 	}
 	while (temp != nullptr)

@@ -4,7 +4,7 @@
 class AlienSoldier : public ArmyUnit
 {
 public:
-	AlienSoldier(Game* p, int HP, int pow, int ID_, int cap, int _Tj, Unit U = AS);
+	AlienSoldier(Game* p, double HP, double pow, int ID_, int cap, int _Tj, Unit U = AS);
 	virtual bool Attack(); //PHASE2
 	friend ostream& operator<<(ostream& COUT, AlienSoldier* Passed_AU);
 };

@@ -1,6 +1,6 @@
 #include "ArmyUnit.h"
 
-ArmyUnit::ArmyUnit(Game* p, int HP, int pow, int ID_, int cap, int _Tj, Unit U)
+ArmyUnit::ArmyUnit(Game* p, double HP, double pow, int ID_, int cap, int _Tj, Unit U)
 {
 	pGame = p;
 	Health = HP;
@@ -45,17 +45,17 @@ int ArmyUnit::Get_Td()
 	return Td;
 }
 
-int ArmyUnit::GetHealth()
+double ArmyUnit::GetHealth()
 {
 	return Health;
 }
 
-int ArmyUnit::GetInitialH()
+double ArmyUnit::GetInitialH()
 {
 	return InitialHealth;
 }
 
-int ArmyUnit::GetPower()
+double ArmyUnit::GetPower()
 {
 	return Power;
 }
@@ -86,7 +86,7 @@ ArmyUnit* ArmyUnit::operator-=(int damage)
 	return this;
 }
 
-void ArmyUnit::SetHealth(int h)
+void ArmyUnit::SetHealth(double h)
 {
 	Health = h;
 }

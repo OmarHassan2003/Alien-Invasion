@@ -1,7 +1,7 @@
 #include "AlienSoldier.h"
 #include "../Game.h"
 
-AlienSoldier::AlienSoldier(Game* p, int HP, int pow, int ID_, int cap, int _Tj, Unit U)
+AlienSoldier::AlienSoldier(Game* p, double HP, double pow, int ID_, int cap, int _Tj, Unit U)
 	:ArmyUnit(p, HP, pow, ID_, cap, _Tj, U)
 {
 }
@@ -22,7 +22,7 @@ bool AlienSoldier::Attack()
 			if (SU->Get_Ta() == -1)
 				SU->Set_Ta(pGame->Get_Tj());
 
-			int dmg = int((float)GetPower() * (GetHealth() / 100.0) / (float)sqrt(SU->GetHealth()));
+			double dmg = GetPower() * (GetHealth() / 100.0) / sqrt(SU->GetHealth());
 			SU->SetHealth(SU->GetHealth() - dmg);
 			templist2.enqueue(SU);
 		}
@@ -36,7 +36,7 @@ bool AlienSoldier::Attack()
 			if (ES->Get_Ta() == -1)
 				ES->Set_Ta(pGame->Get_Tj());
 
-			int dmg = int((float)GetPower() * (GetHealth() / 100.0) / (float)sqrt(ES->GetHealth()));
+			double dmg = GetPower() * (GetHealth() / 100.0) / sqrt(ES->GetHealth());
 			ES->SetHealth(ES->GetHealth() - dmg);
 			templist1.enqueue(ES);
 		}

@@ -37,7 +37,7 @@ void Game::Battle()
 			else
 			{
 				double inf_percent = (infected_count / tot_count) * 100;
-				cout << "Current Infected %:" << inf_percent << endl;
+				cout << "Current Infected %:" << inf_percent << "%" << endl;
 			}
 			printArmies();
 			cout << "============================================ Units Fighting at the current step ============================================" << endl;
@@ -69,57 +69,14 @@ void Game::Battle()
 			End = false;
 		if(gameMode)
 		{
-			cout << "Press Any key to move to the next timestep" << endl;
-			std::cin.get();
+			/*cout << "Press Any key to move to the next timestep" << endl;
+			std::cin.get();*/
 		}
 	}//wait for a click.
 	GenerateOutputFile();
 	cout << "Simulation ends, Output file is created" << endl;
 }
 
-void Game::Generate_Earth_Army()
-{
-	ArmyUnit* AU = nullptr;
-	unsigned short x = randgenn->RandGen(1, 100);
-	if (x <= randgenn->get_Prop())
-	{
-		for (unsigned short i = 0; i < randgenn->get_n(); i++)
-		{
-			AU = randgenn->CreateUnit(Tj_value, this, 'E');
-			if(AU)
-				EA->AddUnit(AU);
-		}
-	}
-}
-void Game::Generate_Alien_Army()
-{
-	ArmyUnit* AU = nullptr;
-	unsigned short x = randgenn->RandGen(1, 100);
-	if (x <= randgenn->get_Prop())
-	{
-		for (unsigned short i = 0; i < randgenn->get_n(); i++)
-		{
-			AU = randgenn->CreateUnit(Tj_value, this, 'A');
-			if(AU)
-				AA->AddUnit(AU);
-		}
-	}
-}
-
-void Game::Generate_Allied_Army()
-{
-	ArmyUnit* AU = nullptr;
-	int x = randgenn->RandGen(1, 100);
-	if (x <= randgenn->get_Prop())
-	{
-		for (int i = 0; i < randgenn->get_n(); ++i)
-		{
-			AU = randgenn->CreateUnit(Tj_value, this, 'S');
-			if (AU)
-				Allies->AddUnit(AU);
-		}
-	}
-}
 unsigned short Game::Get_And_Inc_Tj()
 {
 	Tj_value++;
@@ -168,13 +125,15 @@ bool Game::CheckWhoWins()
 {
 	if (EA->isCompromised())
 	{
-		cout << "Alien Army has won the game." << endl;
+		if(gameMode)
+			cout << "Alien Army has won the game." << endl;
 		AA->SetWon(true);
 		return true;
 	}
 	else if (AA->isCompromised())
 	{
-		cout << "Earth Army has won the game." << endl;
+		if(gameMode)
+			cout << "Earth Army has won the game." << endl;
 		EA->SetWon(true);
 		return true;
 	}

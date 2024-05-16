@@ -2,7 +2,7 @@
 #include "../Game.h"
 
 
-EarthTank::EarthTank(Game* p, int HP, int pow, int ID_, int cap, int _Tj, Unit U)
+EarthTank::EarthTank(Game* p, double HP, double pow, int ID_, int cap, int _Tj, Unit U)
 	:ArmyUnit(p, HP, pow, ID_, cap, _Tj, U)
 {
 }
@@ -27,7 +27,7 @@ bool EarthTank::Attack()
 				if (AM->Get_Ta() == -1)
 					AM->Set_Ta(pGame->Get_Tj());
 
-				int dmg = int((float)GetPower() * (GetHealth() / 100.0) / (float)sqrt(AM->GetHealth()));
+				double dmg = GetPower() * (GetHealth() / 100.0) / sqrt(AM->GetHealth());
 				AM->SetHealth(AM->GetHealth() - dmg);
 				tempList1.enqueue(AM);
 			}
@@ -46,7 +46,7 @@ bool EarthTank::Attack()
 				if (AS->Get_Ta() == -1)
 					AS->Set_Ta(pGame->Get_Tj());
 
-				int dmg = int((float)GetPower() * (GetHealth() / 100.0) / (float)sqrt(AS->GetHealth()));
+				double dmg = GetPower() * (GetHealth() / 100.0) / sqrt(AS->GetHealth());
 				AS->SetHealth(AS->GetHealth() - dmg);
 				tempList2.enqueue(AS);
 			}
@@ -66,7 +66,7 @@ bool EarthTank::Attack()
 				if (AM->Get_Ta() == -1)
 					AM->Set_Ta(pGame->Get_Tj());
 
-				int dmg = (GetPower() * (GetHealth() / 100.0)) / sqrt(AM->GetHealth());
+				double dmg = (GetPower() * (GetHealth() / 100.0)) / sqrt(AM->GetHealth());
 				AM->SetHealth(AM->GetHealth() - dmg);
 				tempList1.enqueue(AM);
 			}
